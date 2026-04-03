@@ -1,0 +1,24 @@
+{
+  "algorithm": "christofides_with_2opt",
+  "n": 500,
+  "num_instances": 2,
+  "average_tour_length": 17.735999503479533,
+  "std_tour_length": 0.1806645504988733,
+  "average_time": 11.170048832893372,
+  "results": [
+    {
+      "instance": 0,
+      "seed": 0,
+      "tour_length": 17.916664053978405,
+      "time": 10.611977100372314,
+      "algorithm": "christofides_with_2opt"
+    },
+    {
+      "instance": 1,
+      "seed": 1,
+      "tour_length": 17.555334952980658,
+      "time": 11.728120565414429,
+      "algorithm": "christofides_with_2opt"
+    }
+  ]
+}

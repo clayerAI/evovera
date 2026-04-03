@@ -337,6 +337,274 @@ class EuclideanTSPChristofides:
         return tour, distance
 
 
+def solve_tsp(coordinates: List[Tuple[float, float]]) -> List[int]:
+    """
+    Solve TSP using Christofides algorithm with 2-opt (Evo's algorithm).
+    Wrapper for adversarial testing framework.
+    
+    Args:
+        coordinates: List of (x, y) coordinates for each city
+    
+    Returns:
+        List of city indices in visitation order (0-based)
+    """
+    n = len(coordinates)
+    
+    # Convert coordinates to numpy array
+    points = np.array(coordinates)
+    
+    # Create a custom TSP instance with these points
+    class CustomTSP:
+        def __init__(self, points):
+            self.n = len(points)
+            self.points = points
+            self.dist_matrix = self._compute_distance_matrix()
+        
+        def _compute_distance_matrix(self):
+            dist = np.zeros((self.n, self.n))
+            for i in range(self.n):
+                for j in range(i + 1, self.n):
+                    d = math.sqrt(((self.points[i] - self.points[j]) ** 2).sum())
+                    dist[i, j] = d
+                    dist[j, i] = d
+            return dist
+        
+        def distance(self, i, j):
+            return self.dist_matrix[i, j]
+        
+        def prim_mst(self):
+            """Prim's algorithm for MST."""
+            visited = [False] * self.n
+            min_edge = [float('inf')] * self.n
+            parent = [-1] * self.n
+            min_edge[0] = 0
+            
+            for _ in range(self.n):
+                # Find minimum edge vertex
+                u = -1
+                for v in range(self.n):
+                    if not visited[v] and (u == -1 or min_edge[v] < min_edge[u]):
+                        u = v
+                
+                visited[u] = True
+                
+                # Update adjacent vertices
+                for v in range(self.n):
+                    if not visited[v] and self.distance(u, v) < min_edge[v]:
+                        min_edge[v] = self.distance(u, v)
+                        parent[v] = u
+            
+            # Build MST edges
+            mst_edges = []
+            for v in range(1, self.n):
+                if parent[v] != -1:
+                    mst_edges.append((parent[v], v))
+            return mst_edges
+        
+        def find_odd_degree_vertices(self, edges):
+            """Find vertices with odd degree in the MST."""
+            degree = [0] * self.n
+            for u, v in edges:
+                degree[u] += 1
+                degree[v] += 1
+            
+            odd_vertices = [i for i in range(self.n) if degree[i] % 2 == 1]
+            return odd_vertices
+        
+        def greedy_minimum_matching(self, odd_vertices):
+            """Greedy minimum-weight perfect matching on odd vertices (O(m²))."""
+            if not odd_vertices:
+                return []
+            
+            matched = [False] * self.n
+            matching_edges = []
+            
+            # Create list of odd vertices
+            odd_list = odd_vertices.copy()
+            
+            while odd_list:
+                u = odd_list.pop(0)
+                if matched[u]:
+                    continue
+                
+                # Find closest unmatched odd vertex
+                best_v = None
+                best_dist = float('inf')
+                
+                for v in odd_list:
+                    if not matched[v]:
+                        dist = self.distance(u, v)
+                        if dist < best_dist:
+                            best_dist = dist
+                            best_v = v
+                
+                if best_v is not None:
+                    matching_edges.append((u, best_v))
+                    matched[u] = True
+                    matched[best_v] = True
+                    odd_list.remove(best_v)
+            
+            return matching_edges
+        
+        def combine_mst_and_matching(self, mst_edges, matching_edges):
+            """Combine MST and matching edges to create Eulerian multigraph."""
+            # Use adjacency list representation
+            graph = [[] for _ in range(self.n)]
+            
+            # Add MST edges
+            for u, v in mst_edges:
+                graph[u].append(v)
+                graph[v].append(u)
+            
+            # Add matching edges
+            for u, v in matching_edges:
+                graph[u].append(v)
+                graph[v].append(u)
+            
+            return graph
+        
+        def find_eulerian_tour(self, graph):
+            """Find Eulerian tour using Hierholzer's algorithm."""
+            # Make a copy of the graph
+            graph_copy = [neighbors.copy() for neighbors in graph]
+            
+            # Find a vertex with neighbors
+            start = 0
+            for i in range(self.n):
+                if graph_copy[i]:
+                    start = i
+                    break
+            
+            stack = [start]
+            tour = []
+            
+            while stack:
+                v = stack[-1]
+                if graph_copy[v]:
+                    u = graph_copy[v].pop()
+                    graph_copy[u].remove(v)
+                    stack.append(u)
+                else:
+                    tour.append(stack.pop())
+            
+            return tour[::-1]
+        
+        def shortcut_eulerian_tour(self, eulerian_tour):
+            """Shortcut Eulerian tour to Hamiltonian tour."""
+            visited = [False] * self.n
+            tour = []
+            total_distance = 0.0
+            
+            for v in eulerian_tour:
+                if not visited[v]:
+                    visited[v] = True
+                    tour.append(v)
+            
+            # Calculate total distance
+            for i in range(len(tour)):
+                j = (i + 1) % len(tour)
+                total_distance += self.distance(tour[i], tour[j])
+            
+            return tour, total_distance
+        
+        def two_opt(self, tour, max_iterations=500):
+            """2-opt local search with limited neighbor search."""
+            best_tour = tour.copy()
+            best_distance = self.tour_distance(tour)
+            
+            n = len(tour)
+            improved = True
+            iterations = 0
+            
+            while improved and iterations < max_iterations:
+                improved = False
+                
+                for i in range(n):
+                    # Only check limited window of neighbors for speed
+                    window_size = min(50, n)
+                    for k in range(1, window_size):
+                        j = (i + k) % n
+                        
+                        # Calculate potential improvement
+                        a1, a2 = best_tour[i], best_tour[(i + 1) % n]
+                        b1, b2 = best_tour[j], best_tour[(j + 1) % n]
+                        
+                        current = self.distance(a1, a2) + self.distance(b1, b2)
+                        new = self.distance(a1, b1) + self.distance(a2, b2)
+                        
+                        if new < current:
+                            # Perform 2-opt swap
+                            if i < j:
+                                best_tour[i+1:j+1] = reversed(best_tour[i+1:j+1])
+                            else:
+                                # Handle wrap-around case
+                                segment = best_tour[i+1:] + best_tour[:j+1]
+                                segment.reverse()
+                                best_tour[i+1:] = segment[:len(best_tour)-i-1]
+                                best_tour[:j+1] = segment[len(best_tour)-i-1:]
+                            
+                            best_distance = self.tour_distance(best_tour)
+                            improved = True
+                            break
+                    
+                    if improved:
+                        break
+                
+                iterations += 1
+            
+            return best_tour, best_distance
+        
+        def tour_distance(self, tour):
+            """Calculate total distance of a tour."""
+            total = 0.0
+            for i in range(len(tour)):
+                j = (i + 1) % len(tour)
+                total += self.distance(tour[i], tour[j])
+            return total
+        
+        def christofides(self, apply_two_opt: bool = True):
+            """
+            Christofides algorithm for Euclidean TSP.
+            
+            Args:
+                apply_two_opt: Whether to apply 2-opt local search improvement
+                
+            Returns:
+                tour: Hamiltonian tour
+                total_distance: Total tour length
+            """
+            # Step 1: Compute MST
+            mst_edges = self.prim_mst()
+            
+            # Step 2: Find odd-degree vertices in MST
+            odd_vertices = self.find_odd_degree_vertices(mst_edges)
+            
+            # Step 3: Minimum-weight perfect matching on odd vertices
+            matching_edges = self.greedy_minimum_matching(odd_vertices)
+            
+            # Step 4: Combine MST and matching to create Eulerian multigraph
+            eulerian_graph = self.combine_mst_and_matching(mst_edges, matching_edges)
+            
+            # Step 5: Find Eulerian tour
+            eulerian_tour = self.find_eulerian_tour(eulerian_graph)
+            
+            # Step 6: Shortcut to Hamiltonian tour
+            tour, distance = self.shortcut_eulerian_tour(eulerian_tour)
+            
+            # Step 7: Optional 2-opt local search improvement
+            if apply_two_opt:
+                tour, distance = self.two_opt(tour, max_iterations=500)
+            
+            return tour, distance
+    
+    tsp = CustomTSP(points)
+    
+    # Run Christofides algorithm
+    tour, distance = tsp.christofides(apply_two_opt=True)
+    
+    return tour
+
+
 def benchmark_christofides():
     """Benchmark Christofides algorithm."""
     print("Benchmarking Christofides Algorithm for Euclidean TSP (n=500)")

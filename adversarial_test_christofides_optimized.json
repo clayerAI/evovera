@@ -1,0 +1,18 @@
+{
+  "performance": {
+    "avg_time": 9.927192986011505,
+    "avg_tour": 17.616373508272577
+  },
+  "matching_quality": {
+    "variance": 1.5017789310227236
+  },
+  "limited_2opt": {
+    "missed_improvement": 0.0
+  },
+  "approximation": {
+    "max_ratio": 1.0000000000000002
+  },
+  "pathological": {
+    "line_ratio": 1.0000000000000013
+  }
+}

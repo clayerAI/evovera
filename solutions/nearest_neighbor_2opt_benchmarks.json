@@ -1,0 +1,124 @@
+{
+  "algorithm": "nearest_neighbor_with_2opt",
+  "n": 500,
+  "num_instances": 10,
+  "average_tour_length": 17.689749127194222,
+  "std_tour_length": 0.32994369077050706,
+<<<<<<< HEAD
+  "average_time": 17.917858695983888,
+=======
+  "average_time": 6.711686444282532,
+>>>>>>> cb303be (Integrate benchmarking into solution files as requested by Vera)
+  "results": [
+    {
+      "instance": 0,
+      "seed": 0,
+      "tour_length": 17.653562633530296,
+<<<<<<< HEAD
+      "time": 29.491614818572998,
+=======
+      "time": 10.77426028251648,
+>>>>>>> cb303be (Integrate benchmarking into solution files as requested by Vera)
+      "algorithm": "nearest_neighbor_2opt"
+    },
+    {
+      "instance": 1,
+      "seed": 1,
+      "tour_length": 17.497277585981134,
+<<<<<<< HEAD
+      "time": 13.796504497528076,
+=======
+      "time": 4.801752090454102,
+>>>>>>> cb303be (Integrate benchmarking into solution files as requested by Vera)
+      "algorithm": "nearest_neighbor_2opt"
+    },
+    {
+      "instance": 2,
+      "seed": 2,
+      "tour_length": 17.443280605585542,
+<<<<<<< HEAD
+      "time": 15.136216402053833,
+=======
+      "time": 5.8044750690460205,
+>>>>>>> cb303be (Integrate benchmarking into solution files as requested by Vera)
+      "algorithm": "nearest_neighbor_2opt"
+    },
+    {
+      "instance": 3,
+      "seed": 3,
+      "tour_length": 17.39817094294213,
+<<<<<<< HEAD
+      "time": 15.890858888626099,
+=======
+      "time": 6.4340293407440186,
+>>>>>>> cb303be (Integrate benchmarking into solution files as requested by Vera)
+      "algorithm": "nearest_neighbor_2opt"
+    },
+    {
+      "instance": 4,
+      "seed": 4,
+      "tour_length": 17.214312200549948,
+<<<<<<< HEAD
+      "time": 19.675638914108276,
+=======
+      "time": 7.01677942276001,
+>>>>>>> cb303be (Integrate benchmarking into solution files as requested by Vera)
+      "algorithm": "nearest_neighbor_2opt"
+    },
+    {
+      "instance": 5,
+      "seed": 5,
+      "tour_length": 17.617571272712265,
+<<<<<<< HEAD
+      "time": 20.396782875061035,
+=======
+      "time": 6.658768653869629,
+>>>>>>> cb303be (Integrate benchmarking into solution files as requested by Vera)
+      "algorithm": "nearest_neighbor_2opt"
+    },
+    {
+      "instance": 6,
+      "seed": 6,
+      "tour_length": 17.830692283068302,
+<<<<<<< HEAD
+      "time": 18.992486238479614,
+=======
+      "time": 6.815371513366699,
+>>>>>>> cb303be (Integrate benchmarking into solution files as requested by Vera)
+      "algorithm": "nearest_neighbor_2opt"
+    },
+    {
+      "instance": 7,
+      "seed": 7,
+      "tour_length": 18.430581557343043,
+<<<<<<< HEAD
+      "time": 13.001977443695068,
+=======
+      "time": 4.965906381607056,
+>>>>>>> cb303be (Integrate benchmarking into solution files as requested by Vera)
+      "algorithm": "nearest_neighbor_2opt"
+    },
+    {
+      "instance": 8,
+      "seed": 8,
+      "tour_length": 17.98023147093012,
+<<<<<<< HEAD
+      "time": 17.585276126861572,
+=======
+      "time": 7.118841648101807,
+>>>>>>> cb303be (Integrate benchmarking into solution files as requested by Vera)
+      "algorithm": "nearest_neighbor_2opt"
+    },
+    {
+      "instance": 9,
+      "seed": 9,
+      "tour_length": 17.831810719299437,
+<<<<<<< HEAD
+      "time": 15.211230754852295,
+=======
+      "time": 6.726680040359497,
+>>>>>>> cb303be (Integrate benchmarking into solution files as requested by Vera)
+      "algorithm": "nearest_neighbor_2opt"
+    }
+  ]
+}
