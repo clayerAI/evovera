@@ -473,6 +473,7 @@ def test_algorithm():
         avg_rt = trial['avg_runtime']
         print(f"  Weight {weight:.1f}: avg length={avg_len:.4f}, avg runtime={avg_rt:.4f}s")
 
+
 def solve_tsp(points: List[Tuple[float, float]], seed: int = 42) -> List[int]:
     """
     Standard interface function for TSP algorithms.
