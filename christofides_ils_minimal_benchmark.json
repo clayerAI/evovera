@@ -1,0 +1,22 @@
+[
+  {
+    "n": 50,
+    "hybrid_length": 599.9293651790314,
+    "nn_baseline_length": 677.8348355935675,
+    "improvement_vs_nn": 1.1298577381543702,
+    "elapsed_time": 0.08879518508911133,
+    "restarts": 0,
+    "improvements": 6,
+    "ils_iterations": 30
+  },
+  {
+    "n": 100,
+    "hybrid_length": 793.49842810972,
+    "nn_baseline_length": 918.335731819423,
+    "improvement_vs_nn": 1.1573252060588095,
+    "elapsed_time": 0.30245089530944824,
+    "restarts": 0,
+    "improvements": 6,
+    "ils_iterations": 30
+  }
+]
