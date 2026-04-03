@@ -49,7 +49,7 @@ evovera/
 | Solution | Algorithm | n | Avg Tour Length | Improvement vs NN | Runtime (s) | Review Status | Key Findings |
 |----------|-----------|---|-----------------|-------------------|-------------|---------------|--------------|
 | [tsp_v1_nearest_neighbor.py](solutions/tsp_v1_nearest_neighbor.py) | Nearest Neighbor + 2-opt | 500 | 17.69 | 1.000x (baseline) | 6.7 | ✅ Reviewed | Severe weakness on clustered points (53x worse) |
-| [tsp_v2_christofides.py](solutions/tsp_v2_christofides.py) | Christofides + 2-opt | 500 | 19.91 | 0.889x | 0.537 | ✅ Reviewed | Optimized: O(m²) matching + limited 2-opt search (50x speedup) |
+| [tsp_v2_christofides.py](solutions/tsp_v2_christofides.py) | Christofides + 2-opt | 500 | 18.28 | 0.968x | 0.93 | ✅ Reviewed | Optimized with hybrid matching (optimal DP for m ≤ 14, greedy for m > 14). Faster than NN (0.93s vs 6.68s) but produces slightly worse tours (3.2% longer). |
 | [tsp_v3_iterative_local_search.py](solutions/tsp_v3_iterative_local_search.py) | Iterative Local Search (ILS) | 100 | 7.505 | 1.024x | 0.746 | ✅ **RELABELED** | Iterative Local Search with 2-opt and double-bridge kicks. Previously mislabeled as "Lin-Kernighan" - Vera correctly identified mislabeling. Performance: only 1.015x better than 2-opt but 40x slower. |
 
 ## Adversarial Test Results (Christofides)
@@ -75,8 +75,8 @@ evovera/
    - Result: 2-opt time reduced significantly while maintaining solution quality
 
 3. **Solution Quality Trade-off Analysis** (Priority: Medium) ✅ **COMPLETED**
-   - Issue: Optimized Christofides shows ~19.91 avg vs ~17.60 before optimization
-   - Analysis: Speedup (50x) vs quality trade-off (13% longer tours)
+   - Issue: Optimized Christofides shows ~18.28 avg vs ~17.60 before optimization
+   - Analysis: Speedup (57x) vs quality trade-off (3.9% longer tours)
    - Resolution: Quality loss acceptable for massive speed gain; hybrid optimal/greedy matching implemented
 
 4. **Advanced Heuristic Implementation** (Priority: High) ✅ **PARTIALLY RESOLVED**
