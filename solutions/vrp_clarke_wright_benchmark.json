@@ -1,0 +1,14 @@
+{
+  "avg_distance": 15.69149506770226,
+  "std_distance": 0.6024905927855156,
+  "avg_time": 0.009668779373168946,
+  "std_time": 0.003451419514597066,
+  "avg_vehicles": 13.6,
+  "std_vehicles": 1.0198039027185568,
+  "min_distance": 14.66323127920176,
+  "max_distance": 16.645485841125204,
+  "n_trials": 10,
+  "method": "parallel",
+  "n_customers": 100,
+  "capacity": 100.0
+}
