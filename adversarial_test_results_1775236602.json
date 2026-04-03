@@ -1,0 +1,481 @@
+{
+  "timestamp": 1775236602.0774505,
+  "test_cases": [
+    "Random Uniform (Baseline)",
+    "Clustered Points",
+    "Grid Points",
+    "Grid Points with Noise",
+    "Line Points (Horizontal)",
+    "Line Points (Vertical)",
+    "Concentric Circles",
+    "Sparse-Dense Mix",
+    "Christofides Matching Challenge",
+    "ILS Local Optima Trap"
+  ],
+  "results": [
+    {
+      "test_name": "Random Uniform (Baseline)",
+      "n": 30,
+      "algorithms": {
+        "Nearest Neighbor + 2-opt": {
+          "success": true,
+          "tour_length": 4.585944738087373,
+          "execution_time": 0.04011654853820801,
+          "tour": [
+            10,
+            19,
+            24,
+            13,
+            12,
+            8,
+            26,
+            4,
+            7,
+            17
+          ]
+        },
+        "Christofides": {
+          "success": true,
+          "tour_length": 4.669284648471841,
+          "execution_time": 0.0024738311767578125,
+          "tour": [
+            0,
+            11,
+            27,
+            5,
+            15,
+            25,
+            6,
+            14,
+            16,
+            28
+          ]
+        },
+        "Iterative Local Search": {
+          "success": false,
+          "error": "name 'EuclideanTSPLinKernighan' is not defined"
+        }
+      }
+    },
+    {
+      "test_name": "Clustered Points",
+      "n": 30,
+      "algorithms": {
+        "Nearest Neighbor + 2-opt": {
+          "success": true,
+          "tour_length": 3.219131126134963,
+          "execution_time": 0.03722190856933594,
+          "tour": [
+            27,
+            25,
+            13,
+            12,
+            15,
+            17,
+            14,
+            16,
+            8,
+            9
+          ]
+        },
+        "Christofides": {
+          "success": true,
+          "tour_length": 3.2191311261349624,
+          "execution_time": 0.0038275718688964844,
+          "tour": [
+            0,
+            2,
+            5,
+            1,
+            3,
+            21,
+            19,
+            22,
+            18,
+            23
+          ]
+        },
+        "Iterative Local Search": {
+          "success": false,
+          "error": "name 'EuclideanTSPLinKernighan' is not defined"
+        }
+      }
+    },
+    {
+      "test_name": "Grid Points",
+      "n": 30,
+      "algorithms": {
+        "Nearest Neighbor + 2-opt": {
+          "success": true,
+          "tour_length": 6.000000000000003,
+          "execution_time": 0.010411977767944336,
+          "tour": [
+            9,
+            8,
+            2,
+            3,
+            4,
+            5,
+            11,
+            17,
+            23,
+            29
+          ]
+        },
+        "Christofides": {
+          "success": true,
+          "tour_length": 6.412899020449198,
+          "execution_time": 0.0023038387298583984,
+          "tour": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            11,
+            17,
+            23,
+            29
+          ]
+        },
+        "Iterative Local Search": {
+          "success": false,
+          "error": "name 'EuclideanTSPLinKernighan' is not defined"
+        }
+      }
+    },
+    {
+      "test_name": "Grid Points with Noise",
+      "n": 30,
+      "algorithms": {
+        "Nearest Neighbor + 2-opt": {
+          "success": true,
+          "tour_length": 5.926919786102197,
+          "execution_time": 0.019925355911254883,
+          "tour": [
+            10,
+            11,
+            5,
+            4,
+            3,
+            2,
+            8,
+            7,
+            1,
+            0
+          ]
+        },
+        "Christofides": {
+          "success": true,
+          "tour_length": 6.19767297990738,
+          "execution_time": 0.003780841827392578,
+          "tour": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            11,
+            17,
+            23,
+            29
+          ]
+        },
+        "Iterative Local Search": {
+          "success": false,
+          "error": "name 'EuclideanTSPLinKernighan' is not defined"
+        }
+      }
+    },
+    {
+      "test_name": "Line Points (Horizontal)",
+      "n": 30,
+      "algorithms": {
+        "Nearest Neighbor + 2-opt": {
+          "success": true,
+          "tour_length": 1.9964140643195727,
+          "execution_time": 0.0142669677734375,
+          "tour": [
+            18,
+            17,
+            14,
+            13,
+            9,
+            8,
+            5,
+            0,
+            1,
+            2
+          ]
+        },
+        "Christofides": {
+          "success": true,
+          "tour_length": 1.9964140643195734,
+          "execution_time": 0.0021820068359375,
+          "tour": [
+            0,
+            5,
+            8,
+            9,
+            13,
+            14,
+            17,
+            18,
+            19,
+            21
+          ]
+        },
+        "Iterative Local Search": {
+          "success": false,
+          "error": "name 'EuclideanTSPLinKernighan' is not defined"
+        }
+      }
+    },
+    {
+      "test_name": "Line Points (Vertical)",
+      "n": 30,
+      "algorithms": {
+        "Nearest Neighbor + 2-opt": {
+          "success": true,
+          "tour_length": 1.9980268318431695,
+          "execution_time": 0.03401947021484375,
+          "tour": [
+            16,
+            15,
+            13,
+            9,
+            8,
+            7,
+            5,
+            3,
+            1,
+            0
+          ]
+        },
+        "Christofides": {
+          "success": true,
+          "tour_length": 1.9980407396898519,
+          "execution_time": 0.0021178722381591797,
+          "tour": [
+            0,
+            2,
+            4,
+            5,
+            6,
+            10,
+            11,
+            12,
+            14,
+            17
+          ]
+        },
+        "Iterative Local Search": {
+          "success": false,
+          "error": "name 'EuclideanTSPLinKernighan' is not defined"
+        }
+      }
+    },
+    {
+      "test_name": "Concentric Circles",
+      "n": 30,
+      "algorithms": {
+        "Nearest Neighbor + 2-opt": {
+          "success": true,
+          "tour_length": 6.355417527999328,
+          "execution_time": 0.0160977840423584,
+          "tour": [
+            15,
+            5,
+            4,
+            3,
+            2,
+            1,
+            0,
+            9,
+            8,
+            7
+          ]
+        },
+        "Christofides": {
+          "success": true,
+          "tour_length": 6.736218755488348,
+          "execution_time": 0.002681732177734375,
+          "tour": [
+            0,
+            10,
+            20,
+            21,
+            11,
+            12,
+            22,
+            23,
+            13,
+            14
+          ]
+        },
+        "Iterative Local Search": {
+          "success": false,
+          "error": "name 'EuclideanTSPLinKernighan' is not defined"
+        }
+      }
+    },
+    {
+      "test_name": "Sparse-Dense Mix",
+      "n": 30,
+      "algorithms": {
+        "Nearest Neighbor + 2-opt": {
+          "success": true,
+          "tour_length": 3.926198036906754,
+          "execution_time": 0.01841282844543457,
+          "tour": [
+            8,
+            7,
+            5,
+            6,
+            4,
+            1,
+            0,
+            22,
+            13,
+            16
+          ]
+        },
+        "Christofides": {
+          "success": true,
+          "tour_length": 3.902163157166375,
+          "execution_time": 0.00601649284362793,
+          "tour": [
+            0,
+            6,
+            5,
+            2,
+            3,
+            7,
+            8,
+            22,
+            13,
+            16
+          ]
+        },
+        "Iterative Local Search": {
+          "success": false,
+          "error": "name 'EuclideanTSPLinKernighan' is not defined"
+        }
+      }
+    },
+    {
+      "test_name": "Christofides Matching Challenge",
+      "n": 30,
+      "algorithms": {
+        "Nearest Neighbor + 2-opt": {
+          "success": true,
+          "tour_length": 2.883849284347307,
+          "execution_time": 0.01810765266418457,
+          "tour": [
+            19,
+            21,
+            18,
+            12,
+            9,
+            3,
+            2,
+            7,
+            0,
+            8
+          ]
+        },
+        "Christofides": {
+          "success": true,
+          "tour_length": 2.8765558503309347,
+          "execution_time": 0.0054323673248291016,
+          "tour": [
+            0,
+            8,
+            6,
+            11,
+            10,
+            5,
+            4,
+            1,
+            24,
+            25
+          ]
+        },
+        "Iterative Local Search": {
+          "success": false,
+          "error": "name 'EuclideanTSPLinKernighan' is not defined"
+        }
+      }
+    },
+    {
+      "test_name": "ILS Local Optima Trap",
+      "n": 30,
+      "algorithms": {
+        "Nearest Neighbor + 2-opt": {
+          "success": true,
+          "tour_length": 3.240650304202687,
+          "execution_time": 0.020337581634521484,
+          "tour": [
+            11,
+            10,
+            9,
+            8,
+            7,
+            6,
+            5,
+            4,
+            3,
+            2
+          ]
+        },
+        "Christofides": {
+          "success": true,
+          "tour_length": 3.240650304202689,
+          "execution_time": 0.0017483234405517578,
+          "tour": [
+            0,
+            29,
+            28,
+            27,
+            26,
+            25,
+            24,
+            23,
+            22,
+            21
+          ]
+        },
+        "Iterative Local Search": {
+          "success": false,
+          "error": "name 'EuclideanTSPLinKernighan' is not defined"
+        }
+      }
+    }
+  ],
+  "metrics": {
+    "total_tests": 10,
+    "algorithm_performance": {
+      "Christofides": {
+        "success_rate": 1.0,
+        "avg_tour_length": 4.124903064616116,
+        "avg_execution_time": 0.003256487846374512,
+        "tests_run": 10
+      },
+      "Nearest Neighbor + 2-opt": {
+        "success_rate": 1.0,
+        "avg_tour_length": 4.013255169994336,
+        "avg_execution_time": 0.022891807556152343,
+        "tests_run": 10
+      },
+      "Iterative Local Search": {
+        "success_rate": 0,
+        "avg_tour_length": 0,
+        "avg_execution_time": 0,
+        "tests_run": 0
+      }
+    },
+    "weaknesses_found": []
+  }
+}

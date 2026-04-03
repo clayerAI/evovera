@@ -1,0 +1,481 @@
+{
+  "timestamp": 1775236785.5582566,
+  "test_cases": [
+    "Random Uniform (Baseline)",
+    "Clustered Points",
+    "Grid Points",
+    "Grid Points with Noise",
+    "Line Points (Horizontal)",
+    "Line Points (Vertical)",
+    "Concentric Circles",
+    "Sparse-Dense Mix",
+    "Christofides Matching Challenge",
+    "ILS Local Optima Trap"
+  ],
+  "results": [
+    {
+      "test_name": "Random Uniform (Baseline)",
+      "n": 30,
+      "algorithms": {
+        "Nearest Neighbor + 2-opt": {
+          "success": true,
+          "tour_length": 4.031127982658644,
+          "execution_time": 0.025272130966186523,
+          "tour": [
+            4,
+            6,
+            0,
+            3,
+            22,
+            12,
+            20,
+            1,
+            11,
+            9
+          ]
+        },
+        "Christofides": {
+          "success": true,
+          "tour_length": 4.163892493288872,
+          "execution_time": 0.02407550811767578,
+          "tour": [
+            0,
+            12,
+            20,
+            22,
+            3,
+            13,
+            15,
+            19,
+            1,
+            11
+          ]
+        },
+        "Iterative Local Search": {
+          "success": false,
+          "error": "unsupported operand type(s) for -: 'tuple' and 'tuple'"
+        }
+      }
+    },
+    {
+      "test_name": "Clustered Points",
+      "n": 30,
+      "algorithms": {
+        "Nearest Neighbor + 2-opt": {
+          "success": true,
+          "tour_length": 2.4699821337906966,
+          "execution_time": 0.019439697265625,
+          "tour": [
+            29,
+            28,
+            8,
+            11,
+            9,
+            6,
+            10,
+            7,
+            2,
+            3
+          ]
+        },
+        "Christofides": {
+          "success": true,
+          "tour_length": 2.4699821337906975,
+          "execution_time": 0.0031976699829101562,
+          "tour": [
+            0,
+            4,
+            1,
+            5,
+            15,
+            14,
+            12,
+            13,
+            17,
+            16
+          ]
+        },
+        "Iterative Local Search": {
+          "success": false,
+          "error": "unsupported operand type(s) for -: 'tuple' and 'tuple'"
+        }
+      }
+    },
+    {
+      "test_name": "Grid Points",
+      "n": 30,
+      "algorithms": {
+        "Nearest Neighbor + 2-opt": {
+          "success": true,
+          "tour_length": 6.000000000000003,
+          "execution_time": 0.010587692260742188,
+          "tour": [
+            4,
+            5,
+            11,
+            17,
+            23,
+            29,
+            28,
+            27,
+            26,
+            25
+          ]
+        },
+        "Christofides": {
+          "success": true,
+          "tour_length": 6.412899020449198,
+          "execution_time": 0.0023636817932128906,
+          "tour": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            11,
+            17,
+            23,
+            29
+          ]
+        },
+        "Iterative Local Search": {
+          "success": false,
+          "error": "unsupported operand type(s) for -: 'tuple' and 'tuple'"
+        }
+      }
+    },
+    {
+      "test_name": "Grid Points with Noise",
+      "n": 30,
+      "algorithms": {
+        "Nearest Neighbor + 2-opt": {
+          "success": true,
+          "tour_length": 5.8322362941596,
+          "execution_time": 0.016007423400878906,
+          "tour": [
+            20,
+            26,
+            27,
+            21,
+            22,
+            28,
+            29,
+            23,
+            17,
+            16
+          ]
+        },
+        "Christofides": {
+          "success": true,
+          "tour_length": 6.081800373263415,
+          "execution_time": 0.003988027572631836,
+          "tour": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            11,
+            10,
+            17,
+            23
+          ]
+        },
+        "Iterative Local Search": {
+          "success": false,
+          "error": "unsupported operand type(s) for -: 'tuple' and 'tuple'"
+        }
+      }
+    },
+    {
+      "test_name": "Line Points (Horizontal)",
+      "n": 30,
+      "algorithms": {
+        "Nearest Neighbor + 2-opt": {
+          "success": true,
+          "tour_length": 1.9995105570122451,
+          "execution_time": 0.014482736587524414,
+          "tour": [
+            0,
+            1,
+            4,
+            5,
+            7,
+            10,
+            11,
+            13,
+            14,
+            15
+          ]
+        },
+        "Christofides": {
+          "success": true,
+          "tour_length": 1.9995354176233016,
+          "execution_time": 0.0019960403442382812,
+          "tour": [
+            0,
+            2,
+            3,
+            6,
+            9,
+            12,
+            17,
+            19,
+            20,
+            25
+          ]
+        },
+        "Iterative Local Search": {
+          "success": false,
+          "error": "unsupported operand type(s) for -: 'tuple' and 'tuple'"
+        }
+      }
+    },
+    {
+      "test_name": "Line Points (Vertical)",
+      "n": 30,
+      "algorithms": {
+        "Nearest Neighbor + 2-opt": {
+          "success": true,
+          "tour_length": 1.998537620397193,
+          "execution_time": 0.03005504608154297,
+          "tour": [
+            3,
+            5,
+            7,
+            10,
+            11,
+            12,
+            13,
+            14,
+            16,
+            17
+          ]
+        },
+        "Christofides": {
+          "success": true,
+          "tour_length": 1.9985648692552571,
+          "execution_time": 0.002194643020629883,
+          "tour": [
+            0,
+            4,
+            6,
+            9,
+            15,
+            20,
+            22,
+            24,
+            28,
+            29
+          ]
+        },
+        "Iterative Local Search": {
+          "success": false,
+          "error": "unsupported operand type(s) for -: 'tuple' and 'tuple'"
+        }
+      }
+    },
+    {
+      "test_name": "Concentric Circles",
+      "n": 30,
+      "algorithms": {
+        "Nearest Neighbor + 2-opt": {
+          "success": true,
+          "tour_length": 6.355417527999329,
+          "execution_time": 0.01630115509033203,
+          "tour": [
+            8,
+            7,
+            6,
+            5,
+            4,
+            3,
+            2,
+            1,
+            0,
+            10
+          ]
+        },
+        "Christofides": {
+          "success": true,
+          "tour_length": 6.736218755488348,
+          "execution_time": 0.0026366710662841797,
+          "tour": [
+            0,
+            10,
+            20,
+            21,
+            11,
+            12,
+            22,
+            23,
+            13,
+            14
+          ]
+        },
+        "Iterative Local Search": {
+          "success": false,
+          "error": "unsupported operand type(s) for -: 'tuple' and 'tuple'"
+        }
+      }
+    },
+    {
+      "test_name": "Sparse-Dense Mix",
+      "n": 30,
+      "algorithms": {
+        "Nearest Neighbor + 2-opt": {
+          "success": true,
+          "tour_length": 4.273816818163544,
+          "execution_time": 0.01870560646057129,
+          "tour": [
+            27,
+            10,
+            21,
+            26,
+            14,
+            12,
+            11,
+            29,
+            15,
+            19
+          ]
+        },
+        "Christofides": {
+          "success": true,
+          "tour_length": 4.384414067142674,
+          "execution_time": 0.004298210144042969,
+          "tour": [
+            0,
+            3,
+            6,
+            2,
+            7,
+            25,
+            18,
+            16,
+            13,
+            28
+          ]
+        },
+        "Iterative Local Search": {
+          "success": false,
+          "error": "unsupported operand type(s) for -: 'tuple' and 'tuple'"
+        }
+      }
+    },
+    {
+      "test_name": "Christofides Matching Challenge",
+      "n": 30,
+      "algorithms": {
+        "Nearest Neighbor + 2-opt": {
+          "success": true,
+          "tour_length": 2.5032107790333216,
+          "execution_time": 0.012333869934082031,
+          "tour": [
+            23,
+            22,
+            13,
+            3,
+            9,
+            0,
+            4,
+            11,
+            1,
+            6
+          ]
+        },
+        "Christofides": {
+          "success": true,
+          "tour_length": 2.547768095740609,
+          "execution_time": 0.0021774768829345703,
+          "tour": [
+            0,
+            9,
+            3,
+            23,
+            22,
+            13,
+            20,
+            12,
+            19,
+            14
+          ]
+        },
+        "Iterative Local Search": {
+          "success": false,
+          "error": "unsupported operand type(s) for -: 'tuple' and 'tuple'"
+        }
+      }
+    },
+    {
+      "test_name": "ILS Local Optima Trap",
+      "n": 30,
+      "algorithms": {
+        "Nearest Neighbor + 2-opt": {
+          "success": true,
+          "tour_length": 3.240650304202688,
+          "execution_time": 0.004378080368041992,
+          "tour": [
+            20,
+            19,
+            18,
+            17,
+            16,
+            15,
+            14,
+            13,
+            12,
+            11
+          ]
+        },
+        "Christofides": {
+          "success": true,
+          "tour_length": 3.240650304202689,
+          "execution_time": 0.0017261505126953125,
+          "tour": [
+            0,
+            29,
+            28,
+            27,
+            26,
+            25,
+            24,
+            23,
+            22,
+            21
+          ]
+        },
+        "Iterative Local Search": {
+          "success": false,
+          "error": "unsupported operand type(s) for -: 'tuple' and 'tuple'"
+        }
+      }
+    }
+  ],
+  "metrics": {
+    "total_tests": 10,
+    "algorithm_performance": {
+      "Nearest Neighbor + 2-opt": {
+        "success_rate": 1.0,
+        "avg_tour_length": 3.870449001741727,
+        "avg_execution_time": 0.016756343841552734,
+        "tests_run": 10
+      },
+      "Christofides": {
+        "success_rate": 1.0,
+        "avg_tour_length": 4.003572553024506,
+        "avg_execution_time": 0.004865407943725586,
+        "tests_run": 10
+      },
+      "Iterative Local Search": {
+        "success_rate": 0,
+        "avg_tour_length": 0,
+        "avg_execution_time": 0,
+        "tests_run": 0
+      }
+    },
+    "weaknesses_found": []
+  }
+}

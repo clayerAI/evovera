@@ -1,0 +1,86 @@
+{
+  "timestamp": 1775237048.334034,
+  "results": [
+    {
+      "test_name": "Matching Challenge 1: Star Pattern",
+      "n": 30,
+      "algorithms": {
+        "Nearest Neighbor + 2-opt": {
+          "success": true,
+          "tour_length": 3.717328110335756,
+          "execution_time": 0.015384912490844727
+        },
+        "Christofides": {
+          "success": true,
+          "tour_length": 3.7352130681777616,
+          "execution_time": 0.004412174224853516
+        }
+      }
+    },
+    {
+      "test_name": "Matching Challenge 2: Two Clusters",
+      "n": 30,
+      "algorithms": {
+        "Nearest Neighbor + 2-opt": {
+          "success": true,
+          "tour_length": 2.1401516086883063,
+          "execution_time": 0.027004480361938477
+        },
+        "Christofides": {
+          "success": true,
+          "tour_length": 2.1085786545298904,
+          "execution_time": 0.005949974060058594
+        }
+      }
+    },
+    {
+      "test_name": "Matching Challenge 3: Line with Perturbations",
+      "n": 30,
+      "algorithms": {
+        "Nearest Neighbor + 2-opt": {
+          "success": true,
+          "tour_length": 2.106835976854366,
+          "execution_time": 0.01704716682434082
+        },
+        "Christofides": {
+          "success": true,
+          "tour_length": 2.105940007487056,
+          "execution_time": 0.00264739990234375
+        }
+      }
+    },
+    {
+      "test_name": "Matching Challenge 4: Irregular Grid",
+      "n": 30,
+      "algorithms": {
+        "Nearest Neighbor + 2-opt": {
+          "success": true,
+          "tour_length": 5.600008288051064,
+          "execution_time": 0.03376030921936035
+        },
+        "Christofides": {
+          "success": true,
+          "tour_length": 5.804862345223948,
+          "execution_time": 0.003438234329223633
+        }
+      }
+    },
+    {
+      "test_name": "Optimal Matching Test (n=14)",
+      "n": 14,
+      "algorithms": {
+        "Nearest Neighbor + 2-opt": {
+          "success": true,
+          "tour_length": 2.2337205504377198,
+          "execution_time": 0.0017914772033691406
+        },
+        "Christofides": {
+          "success": true,
+          "tour_length": 2.23372055043772,
+          "execution_time": 0.0006816387176513672
+        }
+      }
+    }
+  ],
+  "performance_issues": []
+}

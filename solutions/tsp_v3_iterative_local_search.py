@@ -552,17 +552,22 @@ class EuclideanTSPIterativeLocalSearch:
         return results
 
 
-def solve_tsp(points: np.ndarray) -> Tuple[List[int], float]:
+def solve_tsp(coordinates: List[Tuple[float, float]]) -> List[int]:
     """
-    Wrapper function for adversarial testing framework.
+    Solve TSP using Iterative Local Search (ILS) algorithm.
+    Wrapper for adversarial testing framework.
     
     Args:
-        points: Nx2 array of city coordinates
+        coordinates: List of (x, y) coordinates for each city
     
     Returns:
-        Tuple of (tour, tour_length)
+        List of city indices in visitation order (0-based)
     """
-    n = len(points)
+    n = len(coordinates)
+    
+    # Convert coordinates to numpy array
+    points = np.array(coordinates)
+    
     solver = EuclideanTSPIterativeLocalSearch(n=n, seed=42)
     solver.points = points  # Use provided points
     solver.dist_matrix = solver._compute_distance_matrix()  # Recompute distances
@@ -570,12 +575,12 @@ def solve_tsp(points: np.ndarray) -> Tuple[List[int], float]:
     
     # Use ILS algorithm
     tour, length, _ = solver.solve_tsp("iterative_local_search", max_iterations=50)
-    return tour, length
+    return tour
 
 
 if __name__ == "__main__":
     # Example usage and self-test
-    print("=== TSP Solver v3: Iterative Local Search (ILS) ===")
+    print("=== TSP Solver v3: Iterative Local Search ===")
     
     # Create instance
     solver = EuclideanTSPIterativeLocalSearch(n=100, seed=42)  # Smaller for quick test
@@ -592,7 +597,7 @@ if __name__ == "__main__":
     print(f"2-opt: {two_opt_length:.4f} ({two_opt_time:.3f}s)")
     print(f"  Improvement: {((nn_length - two_opt_length) / nn_length * 100):.2f}%")
     
-    # Iterative Local Search
+    # Lin-Kernighan
     ils_tour, ils_length, ils_time = solver.solve_tsp("iterative_local_search", max_iterations=20)
     print(f"Iterative Local Search: {ils_length:.4f} ({ils_time:.3f}s)")
     print(f"  Improvement over 2-opt: {((two_opt_length - ils_length) / two_opt_length * 100):.2f}%")
