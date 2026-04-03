@@ -4,76 +4,76 @@
   "num_instances": 10,
   "average_tour_length": 17.689749127194222,
   "std_tour_length": 0.32994369077050706,
-  "average_time": 6.711686444282532,
+  "average_time": 6.679410910606384,
   "results": [
     {
       "instance": 0,
       "seed": 0,
       "tour_length": 17.653562633530296,
-      "time": 10.77426028251648,
+      "time": 10.735232591629028,
       "algorithm": "nearest_neighbor_2opt"
     },
     {
       "instance": 1,
       "seed": 1,
       "tour_length": 17.497277585981134,
-      "time": 4.801752090454102,
+      "time": 4.767427682876587,
       "algorithm": "nearest_neighbor_2opt"
     },
     {
       "instance": 2,
       "seed": 2,
       "tour_length": 17.443280605585542,
-      "time": 5.8044750690460205,
+      "time": 5.735074996948242,
       "algorithm": "nearest_neighbor_2opt"
     },
     {
       "instance": 3,
       "seed": 3,
       "tour_length": 17.39817094294213,
-      "time": 6.4340293407440186,
+      "time": 6.633217811584473,
       "algorithm": "nearest_neighbor_2opt"
     },
     {
       "instance": 4,
       "seed": 4,
       "tour_length": 17.214312200549948,
-      "time": 7.01677942276001,
+      "time": 6.929126024246216,
       "algorithm": "nearest_neighbor_2opt"
     },
     {
       "instance": 5,
       "seed": 5,
       "tour_length": 17.617571272712265,
-      "time": 6.658768653869629,
+      "time": 6.619532585144043,
       "algorithm": "nearest_neighbor_2opt"
     },
     {
       "instance": 6,
       "seed": 6,
       "tour_length": 17.830692283068302,
-      "time": 6.815371513366699,
+      "time": 6.750296115875244,
       "algorithm": "nearest_neighbor_2opt"
     },
     {
       "instance": 7,
       "seed": 7,
       "tour_length": 18.430581557343043,
-      "time": 4.965906381607056,
+      "time": 5.1413514614105225,
       "algorithm": "nearest_neighbor_2opt"
     },
     {
       "instance": 8,
       "seed": 8,
-      "tour_length": 17.66515636437956,
-      "time": 7.23241662979126,
+      "tour_length": 17.98023147093012,
+      "time": 7.019965887069702,
       "algorithm": "nearest_neighbor_2opt"
     },
     {
       "instance": 9,
       "seed": 9,
-      "tour_length": 17.69809599127089,
-      "time": 6.214305469444275,
+      "tour_length": 17.831810719299437,
+      "time": 6.462883949279785,
       "algorithm": "nearest_neighbor_2opt"
     }
   ]

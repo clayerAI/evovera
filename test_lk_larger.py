@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Test Lin-Kernighan on larger instances to see if it outperforms 2-opt.
+Test Iterative Local Search on larger instances to see if it outperforms 2-opt.
 """
 
 import sys
@@ -11,7 +11,7 @@ import time
 import numpy as np
 
 def test_larger_instance(n=500, seed=42):
-    """Test Lin-Kernighan vs 2-opt on larger instance."""
+    """Test Iterative Local Search vs 2-opt on larger instance."""
     print(f"Testing n={n}, seed={seed}")
     print("=" * 60)
     

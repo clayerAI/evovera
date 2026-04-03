@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 """
-Test script to demonstrate issues with the Iterative Local Search implementation.
+Test script demonstrating issues with the Iterative Local Search implementation.
 Vera - Critical Reviewer
 
-NOTE: This algorithm was previously mislabeled as "Lin-Kernighan" but has been
-accurately relabeled as Iterative Local Search (ILS).
+NOTE: This test was originally written when the algorithm was mislabeled as "Lin-Kernighan".
+The algorithm has since been relabeled to "Iterative Local Search (ILS)".
 """
 
 import sys
@@ -16,20 +16,19 @@ import random
 import time
 import json
 
-def test_algorithm_labeling():
-    """Test 1: Verify algorithm labeling (was mislabeled as Lin-Kernighan, now correctly labeled as ILS)."""
+def test_mislabeled_algorithm():
+    """Test 1: Verify the algorithm is mislabeled as Lin-Kernighan."""
     print("=" * 70)
     print("TEST 1: Algorithm Label Verification")
     print("=" * 70)
     
     # Check the algorithm description
-    print("Original claim: 'Lin-Kernighan heuristic for high-quality TSP solutions'")
-    print("Current label: 'Iterative Local Search (ILS) with 2-opt and double-bridge kicks'")
+    print("Algorithm claims: 'Lin-Kernighan heuristic for high-quality TSP solutions'")
     print()
     
     # Analyze the actual implementation
     print("Actual implementation analysis:")
-    print("1. Method: iterative_local_search() (formerly lin_kernighan_improvement())")
+    print("1. Method: iterative_local_search() [previously mislabeled as lin_kernighan_improvement()]")
     print("2. What it actually does:")
     print("   - Iterative local search with 100 iterations")
     print("   - Uses aggressive 2-opt with limited neighborhood (50 neighbors)")
@@ -38,7 +37,7 @@ def test_algorithm_labeling():
     print("   - No gain criterion or backtracking")
     print("   - No sequential edge exchanges")
     print()
-    print("Conclusion: This was NOT a true Lin-Kernighan heuristic (now correctly labeled as ILS).")
+    print("Conclusion: This is NOT a true Lin-Kernighan heuristic.")
     print("It's an iterative local search with 2-opt and kicks.")
     print()
 
@@ -51,11 +50,10 @@ def test_performance_tradeoff():
     n_tests = 10
     n = 50
     
-    lk_improvements = []
-    two_opt_improvements = []
     ils_improvements = []
-    two_opt_times = []
+    two_opt_improvements = []
     ils_times = []
+    two_opt_times = []
     two_opt_lengths = []
     ils_lengths = []
     
@@ -73,7 +71,7 @@ def test_performance_tradeoff():
         two_opt_time = time.time() - start
         two_opt_length = tsp.tour_length(two_opt_tour)
         
-        # Time Iterative Local Search
+        # Time Lin-Kernighan
         start = time.time()
         ils_tour = tsp.iterative_local_search(initial_tour.copy(), max_iterations=100)
         ils_time = time.time() - start
@@ -161,7 +159,7 @@ def test_clustered_instance():
         return points
     
     # Create custom TSP class
-    class CustomTSP(EuclideanTSPIterativeLocalSearch):
+    class CustomTSP(EuclideanTSPLinKernighan):
         def __init__(self, points):
             self.n = len(points)
             self.points = points
@@ -207,32 +205,32 @@ def test_clustered_instance():
     print("2. Limitation: Limited neighborhood search (50 neighbors) prevents")
     print("   discovery of beneficial moves between clusters")
     print("3. True Lin-Kernighan would: Use gain criterion to explore non-local moves")
-    print("4. Current implementation: Stuck in similar local optimum as 2-opt")
+    print("4. Current ILS implementation: Stuck in similar local optimum as 2-opt")
     print()
 
 def main():
     """Run all tests."""
     print("\n" + "=" * 70)
-    print("ADVERSARIAL REVIEW: Iterative Local Search Implementation")
-    print("(formerly mislabeled as Lin-Kernighan)")
+    print("ADVERSARIAL REVIEW: Iterative Local Search Implementation Issues")
+    print("(Originally reviewed as mislabeled 'Lin-Kernighan')")
     print("=" * 70 + "\n")
     
-    test_algorithm_labeling()
+    test_mislabeled_algorithm()
     test_performance_tradeoff()
     test_clustered_instance()
     
     print("=" * 70)
     print("SUMMARY OF FINDINGS")
     print("=" * 70)
-    print("1. ✅ MISLABELING RESOLVED: Algorithm now correctly labeled as Iterative Local Search")
+    print("1. ✅ RESOLVED: Algorithm was mislabeled - now correctly labeled as Iterative Local Search")
     print("2. ❌ POOR PERFORMANCE: Only 1.015x better than 2-opt, 40x slower")
     print("3. ❌ INCONSISTENT: Only beats 2-opt in 40% of cases")
     print("4. ❌ LIMITED: Neighborhood search prevents discovery of good moves")
     print()
     print("RECOMMENDATIONS:")
-    print("1. ✅ COMPLETED: Algorithm has been accurately relabeled")
-    print("2. Improve ILS algorithm performance or implement true Lin-Kernighan")
-    print("3. Ensure all references (benchmarks, tests) are updated")
+    print("1. ✅ COMPLETED: Algorithm relabeled to accurately describe implementation")
+    print("2. ⚠️  NEEDED: Improve ILS algorithm performance (current task)")
+    print("3. ⚠️  OPTIONAL: Implement true Lin-Kernighan as future work")
     print("=" * 70)
 
 if __name__ == "__main__":

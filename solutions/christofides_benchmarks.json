@@ -1,23 +1,44 @@
 {
   "algorithm": "christofides_with_2opt",
   "n": 500,
-  "num_instances": 2,
-  "average_tour_length": 17.735999503479533,
-  "std_tour_length": 0.1806645504988733,
-  "average_time": 11.170048832893372,
+  "num_instances": 5,
+  "average_tour_length": 18.278914102633415,
+  "std_tour_length": 0.23945331627246047,
+  "average_time": 0.9303518772125244,
   "results": [
     {
       "instance": 0,
       "seed": 0,
-      "tour_length": 17.916664053978405,
-      "time": 10.611977100372314,
+      "tour_length": 18.49860433145259,
+      "time": 0.760469913482666,
       "algorithm": "christofides_with_2opt"
     },
     {
       "instance": 1,
       "seed": 1,
-      "tour_length": 17.555334952980658,
-      "time": 11.728120565414429,
+      "tour_length": 18.246168223458373,
+      "time": 0.8775322437286377,
+      "algorithm": "christofides_with_2opt"
+    },
+    {
+      "instance": 2,
+      "seed": 2,
+      "tour_length": 18.270039229428143,
+      "time": 0.9672832489013672,
+      "algorithm": "christofides_with_2opt"
+    },
+    {
+      "instance": 3,
+      "seed": 3,
+      "tour_length": 18.522610661058742,
+      "time": 0.9216799736022949,
+      "algorithm": "christofides_with_2opt"
+    },
+    {
+      "instance": 4,
+      "seed": 4,
+      "tour_length": 17.857148067769216,
+      "time": 1.1247940063476562,
       "algorithm": "christofides_with_2opt"
     }
   ]
