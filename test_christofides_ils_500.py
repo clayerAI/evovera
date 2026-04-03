@@ -15,7 +15,7 @@ from pathlib import Path
 sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 
 # Import algorithms
-from solutions.tsp_v5_christofides_ils_hybrid_simple import solve_tsp as solve_christofides_ils
+from solutions.tsp_v8_christofides_ils_hybrid_fixed import solve_tsp as solve_christofides_ils
 from solutions.tsp_v1_nearest_neighbor import solve_tsp as solve_nn_2opt
 
 def generate_random_points(n, seed=0):
@@ -53,7 +53,7 @@ def run_benchmark(n=500, num_instances=10, seed_offset=0):
         # Run Christofides-ILS hybrid
         print("Running Christofides-ILS hybrid...")
         start_time = time.time()
-        hybrid_tour, hybrid_length, stats = solve_christofides_ils(points)
+        hybrid_tour, hybrid_length = solve_christofides_ils(points)
         hybrid_time = time.time() - start_time
         print(f"  Hybrid length: {hybrid_length:.6f}, time: {hybrid_time:.3f}s")
         
