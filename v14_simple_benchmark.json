@@ -1,0 +1,68 @@
+{
+  "algorithm": "tsp_v14_christofides_adaptive_matching",
+  "n": 500,
+  "num_instances": 3,
+  "averages": {
+    "weight_0.0": {
+      "avg_length": 17.498453479186644,
+      "avg_runtime": 2.978100617726644,
+      "improvement_vs_baseline": 1.0827954822688386
+    },
+    "weight_0.3": {
+      "avg_length": 17.456764098415135,
+      "avg_runtime": 3.0606764952341714,
+      "improvement_vs_baseline": 1.3184618518081737
+    }
+  },
+  "improvement_adaptive_vs_standard": 0.2382460874104984,
+  "baseline_comparison": {
+    "baseline_algorithm": "nearest_neighbor_with_2opt",
+    "baseline_length": 17.69,
+    "v14_weight_0_vs_baseline": 1.0827954822688386,
+    "v14_weight_0.3_vs_baseline": 1.3184618518081737
+  },
+  "results": [
+    {
+      "instance": 0,
+      "seed": 0,
+      "results": {
+        "0.0": {
+          "length": 17.39141835951451,
+          "runtime": 2.7225348949432373
+        },
+        "0.3": {
+          "length": 17.39141835951451,
+          "runtime": 2.993884801864624
+        }
+      }
+    },
+    {
+      "instance": 1,
+      "seed": 1,
+      "results": {
+        "0.0": {
+          "length": 17.6608545820177,
+          "runtime": 3.04763126373291
+        },
+        "0.3": {
+          "length": 17.6608545820177,
+          "runtime": 3.028597593307495
+        }
+      }
+    },
+    {
+      "instance": 2,
+      "seed": 2,
+      "results": {
+        "0.0": {
+          "length": 17.443087496027722,
+          "runtime": 3.164135694503784
+        },
+        "0.3": {
+          "length": 17.318019353713197,
+          "runtime": 3.1595470905303955
+        }
+      }
+    }
+  ]
+}
