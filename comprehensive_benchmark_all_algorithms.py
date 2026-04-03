@@ -85,25 +85,25 @@ def run_algorithm(algorithm_name: str, points: np.ndarray, points_list: List[Tup
     
     try:
         if algorithm_name == "NN+2opt":
-            tour = solve_tsp_nn_2opt(points_list)
+            result = solve_tsp_nn_2opt(points_list)
         elif algorithm_name == "Christofides":
-            tour = solve_tsp_christofides(points)
+            result = solve_tsp_christofides(points)
         elif algorithm_name == "ILS":
-            tour = solve_tsp_ils(points_list)
+            result = solve_tsp_ils(points_list)
         elif algorithm_name == "NN-ILS Hybrid":
-            tour = solve_tsp_nn_ils_hybrid(points_list)
+            result = solve_tsp_nn_ils_hybrid(points_list)
         elif algorithm_name == "Christofides-ILS Hybrid":
-            tour = solve_tsp_christofides_ils_hybrid(points)
+            result = solve_tsp_christofides_ils_hybrid(points)
         elif algorithm_name == "Multi-start Adaptive 2-opt":
-            tour = solve_tsp_multi_start_adaptive_2opt(points_list)
+            result = solve_tsp_multi_start_adaptive_2opt(points_list)
         elif algorithm_name == "Christofides-Tabu Hybrid":
             solver = EuclideanTSPChristofidesTabuHybrid(points)
-            tour = solver.solve()
+            result = solver.solve()
         elif algorithm_name == "Christofides-ILS Fixed":
-            tour = solve_tsp_christofides_ils_fixed(points)
+            result = solve_tsp_christofides_ils_fixed(points)
         elif algorithm_name == "NN-GA Christofides Crossover":
             # v9 uses different function name and parameters
-            tour = nn_ga_christofides_crossover_hybrid(
+            result = nn_ga_christofides_crossover_hybrid(
                 points_list,
                 generations=50,
                 population_size=30,
@@ -112,17 +112,17 @@ def run_algorithm(algorithm_name: str, points: np.ndarray, points_list: List[Tup
                 elitism=2
             )
         elif algorithm_name == "Christofides MST ILS Memory" and v10_available:
-            tour = solve_tsp_christofides_mst_ils_memory(points)
+            result = solve_tsp_christofides_mst_ils_memory(points)
         elif algorithm_name == "NN ILS Adaptive Memory" and v11_available:
-            tour = solve_tsp_nn_ils_adaptive_memory(points_list)
+            result = solve_tsp_nn_ils_adaptive_memory(points_list)
         elif algorithm_name == "NN Fast ILS" and v12_available:
-            tour = solve_tsp_nn_fast_ils(points_list)
+            result = solve_tsp_nn_fast_ils(points_list)
         elif algorithm_name == "NN Efficient ILS" and v13_available:
-            tour = solve_tsp_nn_efficient_ils(points_list)
+            result = solve_tsp_nn_efficient_ils(points_list)
         elif algorithm_name == "Christofides Adaptive Matching" and v14_available:
-            tour = solve_tsp_christofides_adaptive_matching(points)
+            result = solve_tsp_christofides_adaptive_matching(points)
         elif algorithm_name == "Algorithmic Ecology" and v15_available:
-            tour = solve_tsp_algorithmic_ecology(points_list)
+            result = solve_tsp_algorithmic_ecology(points_list)
         else:
             # Algorithm not available
             print(f"  Algorithm {algorithm_name} not available or import failed")
@@ -130,6 +130,14 @@ def run_algorithm(algorithm_name: str, points: np.ndarray, points_list: List[Tup
     except Exception as e:
         print(f"  ERROR running {algorithm_name}: {e}")
         return [], float('inf')
+    
+    # Handle different return types
+    if isinstance(result, tuple):
+        # Most algorithms return (tour, length)
+        tour = result[0]
+    else:
+        # Some algorithms return just the tour
+        tour = result
     
     runtime = time.time() - start_time
     return tour, runtime

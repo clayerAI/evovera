@@ -473,5 +473,21 @@ def test_algorithm():
         avg_rt = trial['avg_runtime']
         print(f"  Weight {weight:.1f}: avg length={avg_len:.4f}, avg runtime={avg_rt:.4f}s")
 
+def solve_tsp(points: List[Tuple[float, float]], seed: int = 42) -> List[int]:
+    """
+    Standard interface function for TSP algorithms.
+    
+    Args:
+        points: List of (x, y) coordinates
+        seed: Random seed for reproducibility
+        
+    Returns:
+        List of node indices representing the tour
+    """
+    solver = ChristofidesAdaptiveMatching(points, seed=seed)
+    tour, length, runtime = solver.solve(centrality_weight=0.3, apply_2opt=True)
+    return tour
+
+
 if __name__ == "__main__":
     test_algorithm()
