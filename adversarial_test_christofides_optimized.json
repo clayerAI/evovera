@@ -1,18 +1,18 @@
 {
   "performance": {
-    "avg_time": 9.927192986011505,
-    "avg_tour": 17.616373508272577
+    "avg_time": 1.0451858043670654,
+    "avg_tour": 19.05340472296828
   },
   "matching_quality": {
     "variance": 1.5017789310227236
   },
   "limited_2opt": {
-    "missed_improvement": 0.0
+    "missed_improvement": 8.881784197001252e-16
   },
   "approximation": {
     "max_ratio": 1.0000000000000002
   },
   "pathological": {
-    "line_ratio": 1.0000000000000013
+    "line_ratio": 1.000000000000002
   }
 }

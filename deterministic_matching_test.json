@@ -1,0 +1,23 @@
+{
+  "random_shuffle": {
+    "matching_distance_avg": 4.509338186701434,
+    "matching_distance_std": 0.4034131540161183,
+    "variance_percent": 8.946172083651453
+  },
+  "sorted_by_x": {
+    "matching_distance": 3.8048847821478864,
+    "final_tour_length": 11.469938577593968
+  },
+  "sorted_by_y": {
+    "matching_distance": 3.7280498086720697,
+    "final_tour_length": 11.246504304952023
+  },
+  "sorted_by_xy": {
+    "matching_distance": 3.8048847821478864,
+    "final_tour_length": 11.469938577593968
+  },
+  "sorted_by_distance": {
+    "matching_distance": 3.579317509046331,
+    "final_tour_length": 11.390767333975704
+  }
+}

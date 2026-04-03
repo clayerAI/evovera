@@ -1,0 +1,431 @@
+{
+  "test_config": {
+    "n": 200,
+    "num_trials": 15,
+    "num_instances": 3,
+    "seed": 42
+  },
+  "results": [
+    {
+      "instance": 0,
+      "seed": 42,
+      "n": 200,
+      "trials": [
+        {
+          "trial": 0,
+          "matching_distance": 4.450214100142376,
+          "initial_tour_length": 13.125760139902514,
+          "final_tour_length": 11.641925778690783,
+          "improvement_percent": 11.304749937497723,
+          "time": 0.1989884376525879
+        },
+        {
+          "trial": 1,
+          "matching_distance": 4.755185446958861,
+          "initial_tour_length": 13.491802640856935,
+          "final_tour_length": 12.461495203667617,
+          "improvement_percent": 7.63654394164691,
+          "time": 0.17168641090393066
+        },
+        {
+          "trial": 2,
+          "matching_distance": 4.044814773257872,
+          "initial_tour_length": 12.63817375122707,
+          "final_tour_length": 11.120693933111719,
+          "improvement_percent": 12.007113116070395,
+          "time": 0.1957099437713623
+        },
+        {
+          "trial": 3,
+          "matching_distance": 5.040133014936746,
+          "initial_tour_length": 13.674735277637753,
+          "final_tour_length": 12.126155389571656,
+          "improvement_percent": 11.324386590492063,
+          "time": 0.12331581115722656
+        },
+        {
+          "trial": 4,
+          "matching_distance": 5.245208502101674,
+          "initial_tour_length": 13.859027759886281,
+          "final_tour_length": 10.974322394851983,
+          "improvement_percent": 20.814630109796163,
+          "time": 0.25566530227661133
+        },
+        {
+          "trial": 5,
+          "matching_distance": 4.481722402501097,
+          "initial_tour_length": 13.169251363975556,
+          "final_tour_length": 11.784254091326753,
+          "improvement_percent": 10.516902095417958,
+          "time": 0.19270706176757812
+        },
+        {
+          "trial": 6,
+          "matching_distance": 4.154708554680491,
+          "initial_tour_length": 12.767568235875824,
+          "final_tour_length": 11.287486316983584,
+          "improvement_percent": 11.592512305775907,
+          "time": 0.2312941551208496
+        },
+        {
+          "trial": 7,
+          "matching_distance": 4.480828086513874,
+          "initial_tour_length": 13.0561244587473,
+          "final_tour_length": 11.15732170193496,
+          "improvement_percent": 14.54338737970736,
+          "time": 0.16942644119262695
+        },
+        {
+          "trial": 8,
+          "matching_distance": 3.8811581048408863,
+          "initial_tour_length": 12.364196066727184,
+          "final_tour_length": 11.191204520085968,
+          "improvement_percent": 9.487002149681274,
+          "time": 0.20052766799926758
+        },
+        {
+          "trial": 9,
+          "matching_distance": 4.559408881080464,
+          "initial_tour_length": 12.986563294846055,
+          "final_tour_length": 11.545190961748045,
+          "improvement_percent": 11.098951280436484,
+          "time": 0.15941214561462402
+        },
+        {
+          "trial": 10,
+          "matching_distance": 4.620648262296302,
+          "initial_tour_length": 13.211008295715002,
+          "final_tour_length": 11.858284557511624,
+          "improvement_percent": 10.239367865979883,
+          "time": 0.17654156684875488
+        },
+        {
+          "trial": 11,
+          "matching_distance": 4.185172921958329,
+          "initial_tour_length": 12.884401138654132,
+          "final_tour_length": 11.49761913499846,
+          "improvement_percent": 10.7632631794987,
+          "time": 0.2098543643951416
+        },
+        {
+          "trial": 12,
+          "matching_distance": 4.21907861507302,
+          "initial_tour_length": 12.910144640742372,
+          "final_tour_length": 11.433714505533196,
+          "improvement_percent": 11.436201346263745,
+          "time": 0.18616223335266113
+        },
+        {
+          "trial": 13,
+          "matching_distance": 4.529790812032969,
+          "initial_tour_length": 13.152869144543917,
+          "final_tour_length": 11.753806093947968,
+          "improvement_percent": 10.636941911463547,
+          "time": 0.17281460762023926
+        },
+        {
+          "trial": 14,
+          "matching_distance": 4.723111335344793,
+          "initial_tour_length": 13.470925992768814,
+          "final_tour_length": 11.785258166729971,
+          "improvement_percent": 12.513377528342955,
+          "time": 0.20988011360168457
+        }
+      ],
+      "statistics": {
+        "matching_min": 3.8811581048408863,
+        "matching_max": 5.245208502101674,
+        "matching_range": 1.3640503972607876,
+        "matching_max_ratio": 1.3514544783835105,
+        "tour_min": 10.974322394851983,
+        "tour_max": 12.461495203667617,
+        "tour_range": 1.4871728088156342,
+        "tour_max_ratio": 1.1355138618410976,
+        "correlation": 0.3715127514230834
+      }
+    },
+    {
+      "instance": 1,
+      "seed": 43,
+      "n": 200,
+      "trials": [
+        {
+          "trial": 0,
+          "matching_distance": 4.679756849745162,
+          "initial_tour_length": 13.642537469779139,
+          "final_tour_length": 12.32257941832827,
+          "improvement_percent": 9.675311901285452,
+          "time": 0.18433570861816406
+        },
+        {
+          "trial": 1,
+          "matching_distance": 4.363089932287667,
+          "initial_tour_length": 13.40057978527923,
+          "final_tour_length": 11.597968556929908,
+          "improvement_percent": 13.451740575654211,
+          "time": 0.1773688793182373
+        },
+        {
+          "trial": 2,
+          "matching_distance": 5.153158214286343,
+          "initial_tour_length": 14.049102874937132,
+          "final_tour_length": 12.108541618934595,
+          "improvement_percent": 13.812705859421085,
+          "time": 0.16672444343566895
+        },
+        {
+          "trial": 3,
+          "matching_distance": 5.138544496701763,
+          "initial_tour_length": 14.204730878014411,
+          "final_tour_length": 12.457906490302266,
+          "improvement_percent": 12.297483160457615,
+          "time": 0.1744828224182129
+        },
+        {
+          "trial": 4,
+          "matching_distance": 5.331867692304402,
+          "initial_tour_length": 14.353909304846802,
+          "final_tour_length": 13.277302474103303,
+          "improvement_percent": 7.500443313933768,
+          "time": 0.13016080856323242
+        },
+        {
+          "trial": 5,
+          "matching_distance": 4.539197783661957,
+          "initial_tour_length": 13.585928187015256,
+          "final_tour_length": 11.758183797808181,
+          "improvement_percent": 13.453216917147703,
+          "time": 0.2493138313293457
+        },
+        {
+          "trial": 6,
+          "matching_distance": 5.8650322254170195,
+          "initial_tour_length": 14.931557037672427,
+          "final_tour_length": 12.497759206050917,
+          "improvement_percent": 16.29969215856739,
+          "time": 0.20003294944763184
+        },
+        {
+          "trial": 7,
+          "matching_distance": 4.639819999456139,
+          "initial_tour_length": 13.675910888242665,
+          "final_tour_length": 12.429126559535288,
+          "improvement_percent": 9.116645603323228,
+          "time": 0.12128877639770508
+        },
+        {
+          "trial": 8,
+          "matching_distance": 4.21781596906871,
+          "initial_tour_length": 13.284268043057992,
+          "final_tour_length": 12.20073928555844,
+          "improvement_percent": 8.156480688190989,
+          "time": 0.19445300102233887
+        },
+        {
+          "trial": 9,
+          "matching_distance": 4.8754426158438475,
+          "initial_tour_length": 13.870522713902218,
+          "final_tour_length": 12.045652041035835,
+          "improvement_percent": 13.156466490173027,
+          "time": 0.2420482635498047
+        },
+        {
+          "trial": 10,
+          "matching_distance": 5.141201763221682,
+          "initial_tour_length": 14.047772515983572,
+          "final_tour_length": 12.578812817333816,
+          "improvement_percent": 10.456887004529527,
+          "time": 0.17383074760437012
+        },
+        {
+          "trial": 11,
+          "matching_distance": 5.476226255163844,
+          "initial_tour_length": 14.439336483564054,
+          "final_tour_length": 12.008389799226212,
+          "improvement_percent": 16.835584426645433,
+          "time": 0.22824454307556152
+        },
+        {
+          "trial": 12,
+          "matching_distance": 5.114719804183068,
+          "initial_tour_length": 14.21966271622876,
+          "final_tour_length": 12.563971270401941,
+          "improvement_percent": 11.643675935697082,
+          "time": 0.16176152229309082
+        },
+        {
+          "trial": 13,
+          "matching_distance": 4.948514086648987,
+          "initial_tour_length": 13.98638464485031,
+          "final_tour_length": 11.928828702125895,
+          "improvement_percent": 14.711135114405657,
+          "time": 0.24703145027160645
+        },
+        {
+          "trial": 14,
+          "matching_distance": 4.888832319273179,
+          "initial_tour_length": 14.022039510577454,
+          "final_tour_length": 11.956847097181221,
+          "improvement_percent": 14.728188519497218,
+          "time": 0.21140813827514648
+        }
+      ],
+      "statistics": {
+        "matching_min": 4.21781596906871,
+        "matching_max": 5.8650322254170195,
+        "matching_range": 1.64721625634831,
+        "matching_max_ratio": 1.3905377257870295,
+        "tour_min": 11.597968556929908,
+        "tour_max": 13.277302474103303,
+        "tour_range": 1.6793339171733948,
+        "tour_max_ratio": 1.1447955225029451,
+        "correlation": 0.4781338258387539
+      }
+    },
+    {
+      "instance": 2,
+      "seed": 44,
+      "n": 200,
+      "trials": [
+        {
+          "trial": 0,
+          "matching_distance": 4.347985268289761,
+          "initial_tour_length": 13.363825533808063,
+          "final_tour_length": 12.183498723043055,
+          "improvement_percent": 8.832252469766194,
+          "time": 0.12489938735961914
+        },
+        {
+          "trial": 1,
+          "matching_distance": 5.026860371981422,
+          "initial_tour_length": 13.921868215933154,
+          "final_tour_length": 12.25630934124533,
+          "improvement_percent": 11.963616153050795,
+          "time": 0.15393447875976562
+        },
+        {
+          "trial": 2,
+          "matching_distance": 5.2728666261201464,
+          "initial_tour_length": 14.35455858678715,
+          "final_tour_length": 12.578374361721453,
+          "improvement_percent": 12.373659658894768,
+          "time": 0.1486673355102539
+        },
+        {
+          "trial": 3,
+          "matching_distance": 4.447253745077107,
+          "initial_tour_length": 13.59293074589146,
+          "final_tour_length": 11.709274176750847,
+          "improvement_percent": 13.85761911359666,
+          "time": 0.2220780849456787
+        },
+        {
+          "trial": 4,
+          "matching_distance": 3.690591076636358,
+          "initial_tour_length": 12.731475873735226,
+          "final_tour_length": 11.720409171255895,
+          "improvement_percent": 7.941472870126088,
+          "time": 0.11347699165344238
+        },
+        {
+          "trial": 5,
+          "matching_distance": 3.879822471713461,
+          "initial_tour_length": 12.91309874515893,
+          "final_tour_length": 11.780640231225574,
+          "improvement_percent": 8.769843213333363,
+          "time": 0.1361076831817627
+        },
+        {
+          "trial": 6,
+          "matching_distance": 4.0541905273904915,
+          "initial_tour_length": 13.110387884657134,
+          "final_tour_length": 11.855500363380248,
+          "improvement_percent": 9.57170399775479,
+          "time": 0.13816404342651367
+        },
+        {
+          "trial": 7,
+          "matching_distance": 4.212431132815037,
+          "initial_tour_length": 13.203816951255693,
+          "final_tour_length": 12.514714413144606,
+          "improvement_percent": 5.218964642232126,
+          "time": 0.09057044982910156
+        },
+        {
+          "trial": 8,
+          "matching_distance": 4.018525822748608,
+          "initial_tour_length": 13.02649351718983,
+          "final_tour_length": 11.584370016620637,
+          "improvement_percent": 11.070696029335599,
+          "time": 0.2083740234375
+        },
+        {
+          "trial": 9,
+          "matching_distance": 4.750002409669638,
+          "initial_tour_length": 13.722344205331861,
+          "final_tour_length": 12.515205702045973,
+          "improvement_percent": 8.796882553178126,
+          "time": 0.19600772857666016
+        },
+        {
+          "trial": 10,
+          "matching_distance": 4.460200057765794,
+          "initial_tour_length": 13.572462395184449,
+          "final_tour_length": 11.743393381483765,
+          "improvement_percent": 13.476324048240821,
+          "time": 0.1995096206665039
+        },
+        {
+          "trial": 11,
+          "matching_distance": 4.0143868034159755,
+          "initial_tour_length": 12.964245474345693,
+          "final_tour_length": 11.748849781108724,
+          "improvement_percent": 9.374982104759246,
+          "time": 0.11465692520141602
+        },
+        {
+          "trial": 12,
+          "matching_distance": 4.254327075918269,
+          "initial_tour_length": 13.352417730255903,
+          "final_tour_length": 12.152909832814258,
+          "improvement_percent": 8.983450950037467,
+          "time": 0.13694000244140625
+        },
+        {
+          "trial": 13,
+          "matching_distance": 4.518346736915441,
+          "initial_tour_length": 13.556032067304491,
+          "final_tour_length": 12.34847004978783,
+          "improvement_percent": 8.907931255408835,
+          "time": 0.15803170204162598
+        },
+        {
+          "trial": 14,
+          "matching_distance": 4.200102259947996,
+          "initial_tour_length": 13.251299938650117,
+          "final_tour_length": 11.679294361448227,
+          "improvement_percent": 11.863029170570776,
+          "time": 0.21918892860412598
+        }
+      ],
+      "statistics": {
+        "matching_min": 3.690591076636358,
+        "matching_max": 5.2728666261201464,
+        "matching_range": 1.5822755494837883,
+        "matching_max_ratio": 1.4287322861371816,
+        "tour_min": 11.584370016620637,
+        "tour_max": 12.578374361721453,
+        "tour_range": 0.9940043451008158,
+        "tour_max_ratio": 1.0858056453371803,
+        "correlation": 0.6827898061226315
+      }
+    }
+  ],
+  "summary": {
+    "average_correlation": 0.5108121277948229,
+    "average_matching_ratio_variance": 1.3902414967692405,
+    "average_tour_ratio_variance": 1.1220383432270744,
+    "matching_variance_percent": 39.02414967692405,
+    "tour_variance_percent": 12.20383432270744
+  }
+}
