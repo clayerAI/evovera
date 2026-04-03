@@ -120,8 +120,14 @@ class EuclideanTSPChristofides:
         if len(odd_vertices) % 2 != 0:
             raise ValueError("Number of odd vertices must be even")
         
-        vertices = odd_vertices[:]
-        random.shuffle(vertices)  # Randomize for different matchings
+        # Deterministic sorting by distance from center to eliminate variance
+        # Calculate center of all points
+        center = np.mean(self.points, axis=0)
+        
+        # Sort odd vertices by distance from center (deterministic)
+        vertices = sorted(odd_vertices, 
+                         key=lambda v: np.linalg.norm(self.points[v] - center))
+        
         matched = [False] * self.n
         matching_edges = []
         
@@ -451,8 +457,13 @@ def solve_tsp(coordinates: List[Tuple[float, float]]) -> List[int]:
             matched = [False] * self.n
             matching_edges = []
             
-            # Create list of odd vertices
-            odd_list = odd_vertices.copy()
+            # Deterministic sorting by distance from center to eliminate variance
+            # Calculate center of all points
+            center = np.mean(self.points, axis=0)
+            
+            # Sort odd vertices by distance from center (deterministic)
+            odd_list = sorted(odd_vertices, 
+                            key=lambda v: np.linalg.norm(self.points[v] - center))
             
             while odd_list:
                 u = odd_list.pop(0)
