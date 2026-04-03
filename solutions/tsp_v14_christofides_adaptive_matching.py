@@ -474,7 +474,7 @@ def test_algorithm():
         print(f"  Weight {weight:.1f}: avg length={avg_len:.4f}, avg runtime={avg_rt:.4f}s")
 
 
-def solve_tsp(points: List[Tuple[float, float]], seed: int = 42) -> List[int]:
+def solve_tsp(points: List[Tuple[float, float]], seed: int = 42) -> Tuple[List[int], float]:
     """
     Standard interface function for TSP algorithms.
     
@@ -483,11 +483,16 @@ def solve_tsp(points: List[Tuple[float, float]], seed: int = 42) -> List[int]:
         seed: Random seed for reproducibility
         
     Returns:
-        List of node indices representing the tour
+        Tuple of (tour, length) where tour is list of node indices
     """
     solver = ChristofidesAdaptiveMatching(points, seed=seed)
     tour, length, runtime = solver.solve(centrality_weight=0.3, apply_2opt=True)
-    return tour
+    
+    # Convert closed tour to open tour (remove duplicate start city)
+    if len(tour) > 0 and tour[0] == tour[-1]:
+        tour = tour[:-1]
+    
+    return tour, length
 
 
 if __name__ == "__main__":

@@ -56,6 +56,68 @@ def create_distance_matrix(points: np.ndarray) -> np.ndarray:
             dist_matrix[j, i] = dist
     return dist_matrix
 
+
+def minimum_spanning_tree_prim(dist_matrix: np.ndarray) -> List[Tuple[int, int, float]]:
+    """
+    Prim's algorithm for Minimum Spanning Tree.
+    
+    Args:
+        dist_matrix: Distance matrix (n x n)
+        
+    Returns:
+        List of (u, v, weight) edges in MST
+    """
+    n = len(dist_matrix)
+    visited = [False] * n
+    mst_edges = []
+    
+    # Start from vertex 0
+    visited[0] = True
+    
+    # Priority queue: (weight, u, v)
+    heap = []
+    
+    # Add edges from vertex 0 to heap
+    for v in range(1, n):
+        heapq.heappush(heap, (dist_matrix[0, v], 0, v))
+    
+    while heap and len(mst_edges) < n - 1:
+        weight, u, v = heapq.heappop(heap)
+        
+        if visited[v]:
+            continue
+            
+        # Add edge to MST
+        mst_edges.append((u, v, weight))
+        visited[v] = True
+        
+        # Add edges from v to unvisited vertices
+        for w in range(n):
+            if not visited[w] and w != v:
+                heapq.heappush(heap, (dist_matrix[v, w], v, w))
+    
+    return mst_edges
+
+
+def find_odd_degree_vertices(mst_edges: List[Tuple[int, int, float]], n: int) -> List[int]:
+    """
+    Find vertices with odd degree in MST.
+    
+    Args:
+        mst_edges: List of (u, v, weight) edges in MST
+        n: Number of vertices
+        
+    Returns:
+        List of vertices with odd degree
+    """
+    degree = [0] * n
+    for u, v, _ in mst_edges:
+        degree[u] += 1
+        degree[v] += 1
+    
+    odd_vertices = [i for i in range(n) if degree[i] % 2 == 1]
+    return odd_vertices
+
 def christofides_tour(
     dist_matrix: np.ndarray, 
     use_optimal_matching: bool = True,
@@ -335,12 +397,12 @@ def christofides_ils_hybrid(
     
     return best_tour, best_length, stats
 
-def solve_tsp(
+def solve_tsp_original(
     points: np.ndarray,
     time_limit: float = 30.0
 ) -> Tuple[List[int], float, dict]:
     """
-    Solve TSP using Christofides-ILS hybrid algorithm.
+    Original solve_tsp function returning (tour, length, statistics).
     
     Args:
         points: Array of (x, y) coordinates
@@ -367,6 +429,26 @@ def solve_tsp(
     )
     
     return tour, length, stats
+
+
+def solve_tsp(points: np.ndarray, time_limit: float = 30.0) -> Tuple[List[int], float]:
+    """
+    Standard interface function for TSP algorithms.
+    
+    Args:
+        points: Array of (x, y) coordinates
+        time_limit: Maximum time in seconds
+    
+    Returns:
+        Tuple of (tour, length) where tour is list of node indices
+    """
+    tour, length, stats = solve_tsp_original(points, time_limit)
+    
+    # Convert closed tour to open tour (remove duplicate start city)
+    if len(tour) > 0 and tour[0] == tour[-1]:
+        tour = tour[:-1]
+    
+    return tour, length
 
 def benchmark():
     """Run benchmark tests."""

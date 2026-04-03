@@ -233,6 +233,26 @@ def solve_tsp_nn_efficient_ils(points: np.ndarray,
     
     return best_tour, best_length, stats
 
+
+def solve_tsp(points: np.ndarray, max_iterations: int = 200) -> Tuple[List[int], float]:
+    """
+    Standard interface function for TSP algorithms.
+    
+    Args:
+        points: numpy array of shape (n, 2) with coordinates
+        max_iterations: maximum ILS iterations
+    
+    Returns:
+        Tuple of (tour, length) where tour is list of node indices
+    """
+    tour, length, stats = solve_tsp_nn_efficient_ils(points, max_iterations)
+    
+    # Convert closed tour to open tour (remove duplicate start city)
+    if len(tour) > 0 and tour[0] == tour[-1]:
+        tour = tour[:-1]
+    
+    return tour, length
+
 # Quick test
 if __name__ == "__main__":
     np.random.seed(42)

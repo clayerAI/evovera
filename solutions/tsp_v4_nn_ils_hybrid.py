@@ -275,9 +275,9 @@ def adaptive_restart_ils_hybrid(
     stats['improvement_history'] = improvement_history
     return best_tour, best_length, stats
 
-def solve_tsp(points: np.ndarray, time_limit: float = 30.0) -> Tuple[List[int], float, dict]:
+def solve_tsp_original(points: np.ndarray, time_limit: float = 30.0) -> Tuple[List[int], float, dict]:
     """
-    Solve TSP using NN-ILS Hybrid with Adaptive Restart.
+    Original solve_tsp function returning (tour, length, statistics).
     
     Args:
         points: Array of points (n x 2)
@@ -319,6 +319,26 @@ def solve_tsp(points: np.ndarray, time_limit: float = 30.0) -> Tuple[List[int], 
     }
     
     return tour, length, stats
+
+
+def solve_tsp(points: np.ndarray, time_limit: float = 30.0) -> Tuple[List[int], float]:
+    """
+    Standard interface function for TSP algorithms.
+    
+    Args:
+        points: Array of points (n x 2)
+        time_limit: Maximum time in seconds
+    
+    Returns:
+        Tuple of (tour, length) where tour is list of node indices
+    """
+    tour, length, stats = solve_tsp_original(points, time_limit)
+    
+    # Convert closed tour to open tour (remove duplicate start city)
+    if len(tour) > 0 and tour[0] == tour[-1]:
+        tour = tour[:-1]
+    
+    return tour, length
 
 def benchmark_algorithm():
     """Run benchmark tests on the hybrid algorithm."""

@@ -705,6 +705,10 @@ def solve_tsp(points):
     # Run Christofides algorithm
     tour, distance = tsp.christofides(apply_two_opt=True)
     
+    # Convert closed tour to open tour (remove duplicate start city)
+    if len(tour) > 0 and tour[0] == tour[-1]:
+        tour = tour[:-1]
+    
     return tour, distance
 
 

@@ -203,6 +203,11 @@ def solve_tsp(
         (tour, length)
     """
     tour, length, _ = christofides_ils_hybrid(points, time_limit=time_limit)
+    
+    # Convert closed tour to open tour (remove duplicate start city)
+    if len(tour) > 0 and tour[0] == tour[-1]:
+        tour = tour[:-1]
+    
     return tour, length
 
 def benchmark_christofides_ils_hybrid(

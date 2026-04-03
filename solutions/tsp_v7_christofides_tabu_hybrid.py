@@ -344,7 +344,13 @@ def solve_tsp(points: List[Tuple[float, float]], seed: int = 42) -> Tuple[List[i
     Wrapper function for compatibility with benchmark framework.
     """
     solver = EuclideanTSPChristofidesTabuHybrid(points, seed)
-    return solver.solve_tsp()
+    tour, length = solver.solve_tsp()
+    
+    # Convert closed tour to open tour (remove duplicate start city)
+    if len(tour) > 0 and tour[0] == tour[-1]:
+        tour = tour[:-1]
+    
+    return tour, length
 
 # Test with small instance
 if __name__ == "__main__":

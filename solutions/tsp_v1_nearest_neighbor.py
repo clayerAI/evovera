@@ -290,67 +290,11 @@ def solve_tsp(points):
     tour = tsp.two_opt(tour, max_iterations=1000)
     length = tsp.tour_distance(tour)
     
+    # Convert closed tour to open tour (remove duplicate start city)
+    if len(tour) > 0 and tour[0] == tour[-1]:
+        tour = tour[:-1]
+    
     return tour, length
-        def two_opt(self, tour, max_iterations=1000):
-            if len(tour) < 4 or tour[0] != tour[-1]:
-                return tour
-            
-            tour = tour[:-1]
-            n = len(tour)
-            best_tour = tour[:]
-            best_distance = self.tour_distance(tour + [tour[0]])
-            
-            improved = True
-            iterations = 0
-            
-            while improved and iterations < max_iterations:
-                improved = False
-                iterations += 1
-                
-                for i in range(n):
-                    for j in range(i + 2, n):
-                        if j == n - 1 and i == 0:
-                            continue
-                        
-                        a, b = tour[i], tour[(i + 1) % n]
-                        c, d = tour[j], tour[(j + 1) % n]
-                        
-                        old_distance = self.distance(a, b) + self.distance(c, d)
-                        new_distance = self.distance(a, c) + self.distance(b, d)
-                        
-                        if new_distance < old_distance:
-                            new_tour = tour[:i+1] + tour[i+1:j+1][::-1] + tour[j+1:]
-                            new_tour_distance = self.tour_distance(new_tour + [new_tour[0]])
-                            
-                            if new_tour_distance < best_distance:
-                                best_tour = new_tour[:]
-                                tour = new_tour[:]
-                                improved = True
-                                break
-                    
-                    if improved:
-                        break
-            
-            best_tour.append(best_tour[0])
-            return best_tour
-    
-    tsp = CustomTSP(points)
-    
-    # Run nearest neighbor from multiple starts
-    best_tour = None
-    best_distance = float('inf')
-    
-    for _ in range(10):  # Try 10 random starts
-        tour = tsp.nearest_neighbor()
-        tour = tsp.two_opt(tour, max_iterations=500)  # Apply 2-opt
-        distance = tsp.tour_distance(tour)
-        
-        if distance < best_distance:
-            best_tour = tour
-            best_distance = distance
-    
-    # Remove the duplicate end city (TSP convention returns open tour)
-    return best_tour[:-1]
 
 
 def benchmark_nearest_neighbor():

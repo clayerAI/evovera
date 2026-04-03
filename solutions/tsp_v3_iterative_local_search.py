@@ -552,7 +552,7 @@ class EuclideanTSPIterativeLocalSearch:
         return results
 
 
-def solve_tsp(coordinates: List[Tuple[float, float]]) -> List[int]:
+def solve_tsp(coordinates: List[Tuple[float, float]]) -> Tuple[List[int], float]:
     """
     Solve TSP using Iterative Local Search (ILS) algorithm.
     Wrapper for adversarial testing framework.
@@ -561,7 +561,7 @@ def solve_tsp(coordinates: List[Tuple[float, float]]) -> List[int]:
         coordinates: List of (x, y) coordinates for each city
     
     Returns:
-        List of city indices in visitation order (0-based)
+        Tuple of (tour, length) where tour is list of city indices
     """
     n = len(coordinates)
     
@@ -575,7 +575,12 @@ def solve_tsp(coordinates: List[Tuple[float, float]]) -> List[int]:
     
     # Use ILS algorithm
     tour, length, _ = solver.solve_tsp("iterative_local_search", max_iterations=50)
-    return tour
+    
+    # Convert closed tour to open tour (remove duplicate start city)
+    if len(tour) > 0 and tour[0] == tour[-1]:
+        tour = tour[:-1]
+    
+    return tour, length
 
 
 if __name__ == "__main__":
