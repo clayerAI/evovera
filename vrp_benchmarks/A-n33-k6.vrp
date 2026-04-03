@@ -1,0 +1,18 @@
+NAME: A-n33-k6
+COMMENT: Placeholder file - real instance would be downloaded from CVRPLIB
+TYPE: CVRP
+DIMENSION: 32
+EDGE_WEIGHT_TYPE: EUC_2D
+CAPACITY: 100
+NODE_COORD_SECTION
+1 82 76
+2 96 44
+...
+DEMAND_SECTION
+1 0
+2 19
+...
+DEPOT_SECTION
+1
+-1
+EOF

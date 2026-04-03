@@ -119,35 +119,64 @@ def parse_vrp_file(filepath: str) -> Dict:
     
     return data
 
-def load_standard_benchmarks() -> List[Dict]:
+def load_standard_benchmarks(vrp_dir: str = "vrp_benchmarks") -> List[Dict]:
     """
-    Load standard VRP benchmark instances.
+    Load standard VRP benchmark instances from files.
     Returns list of instance data dictionaries.
     """
-    # For now, create synthetic instances since we don't have actual files
-    # In a real implementation, we would download from:
-    # - http://vrp.atd-lab.inf.puc-rio.br/index.php/en/
-    # - http://www.bernabe.dorronsoro.es/vrp/
+    import os
+    import glob
     
+    instances = []
+    
+    # Find all .vrp files in the directory
+    vrp_files = glob.glob(os.path.join(vrp_dir, "*.vrp"))
+    
+    if not vrp_files:
+        print(f"No VRP files found in {vrp_dir}. Creating synthetic instances.")
+        return _create_synthetic_instances()
+    
+    print(f"Found {len(vrp_files)} VRP files")
+    
+    for vrp_file in vrp_files:
+        try:
+            instance_data = parse_vrp_file(vrp_file)
+            if instance_data['name'] and instance_data['coordinates']:
+                instances.append(instance_data)
+                print(f"  Loaded: {instance_data['name']} ({instance_data['dimension']} nodes)")
+            else:
+                print(f"  Skipped {vrp_file}: incomplete data")
+        except Exception as e:
+            print(f"  Error parsing {vrp_file}: {e}")
+    
+    # If no instances loaded, create synthetic ones
+    if not instances:
+        print("No valid instances loaded. Creating synthetic instances.")
+        instances = _create_synthetic_instances()
+    
+    return instances
+
+def _create_synthetic_instances() -> List[Dict]:
+    """Create synthetic instances when real ones aren't available."""
     synthetic_instances = []
     
     # Create some synthetic instances for testing
-    instances = [
+    instance_configs = [
         {
             'name': 'SYNTHETIC-16',
             'dimension': 16,
             'capacity': 100,
-            'optimal_value': 145  # Made up for testing
+            'optimal_value': 145
         },
         {
             'name': 'SYNTHETIC-32', 
             'dimension': 32,
             'capacity': 100,
-            'optimal_value': 280  # Made up for testing
+            'optimal_value': 280
         }
     ]
     
-    for instance_info in instances:
+    for instance_info in instance_configs:
         n = instance_info['dimension']
         
         # Generate random coordinates
@@ -352,10 +381,25 @@ def benchmark_clarke_wright():
     
     # Save results
     import json
-    with open('vrp_benchmark_results.json', 'w') as f:
+    results_file = 'vrp_benchmark_results.json'
+    with open(results_file, 'w') as f:
         json.dump(results, f, indent=2)
     
-    print(f"\nResults saved to vrp_benchmark_results.json")
+    print(f"\nResults saved to {results_file}")
+    
+    # Calculate summary statistics
+    if results:
+        gaps = [r['gap_percent'] for r in results if r['gap_percent'] is not None]
+        if gaps:
+            avg_gap = sum(gaps) / len(gaps)
+            max_gap = max(gaps)
+            min_gap = min(gaps)
+            print(f"\nSummary (for instances with known optimal):")
+            print(f"  Average gap: {avg_gap:.2f}%")
+            print(f"  Minimum gap: {min_gap:.2f}%")
+            print(f"  Maximum gap: {max_gap:.2f}%")
+            print(f"  Instances: {len(gaps)}/{len(results)}")
+    
     return results
 
 if __name__ == "__main__":
