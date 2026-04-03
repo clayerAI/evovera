@@ -1,13 +1,22 @@
 {
-  "last_check": "2026-04-03T10:52:45.841028",
+  "last_check": "2026-04-03T11:09:29.533863",
   "known_solutions": {
     "sample-problem-001": {
-      "hash": "b8c645add7804110db7bf34ca10bc297",
+      "hash": "410c29c10ef88683a8004dd4b3661d91",
       "first_seen": "2026-04-03T10:52:45.841018",
-      "last_updated": "2026-04-03T10:52:45.841022",
-      "review_status": "reviewed",
+      "last_updated": "2026-04-03T11:09:29.532982",
+      "review_status": "needs_review",
       "last_reviewed": "2026-04-03T10:53:00"
+    },
+    "__pycache__": {
+      "hash": "be58881cdcf39c94d0cd462a7c0d2224",
+      "first_seen": "2026-04-03T11:09:29.533832",
+      "last_updated": "2026-04-03T11:09:29.533838",
+      "review_status": "pending"
     }
   },
-  "pending_reviews": []
+  "pending_reviews": [
+    "sample-problem-001",
+    "__pycache__"
+  ]
 }
