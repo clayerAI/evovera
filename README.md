@@ -48,8 +48,8 @@ evovera/
 
 | Solution | Algorithm | n | Avg Tour Length | Improvement vs NN | Runtime (s) | Review Status | Key Findings |
 |----------|-----------|---|-----------------|-------------------|-------------|---------------|--------------|
-| [tsp_v1_nearest_neighbor.py](solutions/tsp_v1_nearest_neighbor.py) | Nearest Neighbor + 2-opt | 500 | 20.20 | 1.000x (baseline) | 0.5 | ✅ Reviewed | Severe weakness on clustered points (16x worse) |
-| [tsp_v2_christofides.py](solutions/tsp_v2_christofides.py) | Christofides + 2-opt | 500 | 17.60 | 1.148x | 53.0 | ✅ Reviewed | Matching algorithm O(m³) performance issue |
+| [tsp_v1_nearest_neighbor.py](solutions/tsp_v1_nearest_neighbor.py) | Nearest Neighbor + 2-opt | 500 | 17.69 | 1.000x (baseline) | 6.7 | ✅ Reviewed | Severe weakness on clustered points (53x worse) |
+| [tsp_v2_christofides.py](solutions/tsp_v2_christofides.py) | Christofides + 2-opt | 500 | 17.60 | 1.005x | 53.0 | ✅ Reviewed | Matching algorithm O(m³) performance issue |
 
 ## Adversarial Test Results (Christofides)
 
