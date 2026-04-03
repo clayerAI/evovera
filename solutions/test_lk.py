@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Test Lin-Kernighan implementation"""
+"""Test Iterative Local Search implementation"""
 
 import numpy as np
 import math
@@ -8,11 +8,11 @@ from typing import List
 import sys
 sys.path.append('.')
 
-from tsp_v3_lin_kernighan import EuclideanTSPLinKernighan
+from tsp_v3_iterative_local_search import EuclideanTSPIterativeLocalSearch
 
 def test_aggressive_two_opt():
     """Test if aggressive 2-opt finds improvements."""
-    solver = EuclideanTSPLinKernighan(n=20, seed=42)
+    solver = EuclideanTSPIterativeLocalSearch(n=20, seed=42)
     
     # Create a simple tour
     tour = list(range(20))
@@ -36,7 +36,7 @@ def test_aggressive_two_opt():
 
 def test_double_bridge():
     """Test double-bridge kick."""
-    solver = EuclideanTSPLinKernighan(n=20, seed=42)
+    solver = EuclideanTSPIterativeLocalSearch(n=20, seed=42)
     
     tour = list(range(20))
     print("Original tour:", tour[:10], "...")
@@ -48,7 +48,7 @@ def test_double_bridge():
     assert sorted(kicked) == list(range(20)), "Double-bridge produced invalid tour"
     print("✓ Double-bridge produces valid tour")
 
-def test_lin_kernighan():
+def test_iterative_local_search():
     """Test full Lin-Kernighan."""
     solver = EuclideanTSPLinKernighan(n=50, seed=42)
     
@@ -62,17 +62,17 @@ def test_lin_kernighan():
     two_opt_length = solver.tour_length(two_opt_tour)
     print("2-opt length:", two_opt_length)
     
-    # Apply Lin-Kernighan
-    lk_tour = solver.lin_kernighan_improvement(two_opt_tour, max_iterations=20)
-    lk_length = solver.tour_length(lk_tour)
-    print("Lin-Kernighan length:", lk_length)
+    # Apply Iterative Local Search
+    ils_tour = solver.iterative_local_search(two_opt_tour, max_iterations=20)
+    ils_length = solver.tour_length(ils_tour)
+    print("Iterative Local Search length:", ils_length)
     
-    if lk_length < two_opt_length:
-        improvement = (two_opt_length - lk_length) / two_opt_length * 100
-        print(f"✓ Lin-Kernighan improved by {improvement:.2f}%")
+    if ils_length < two_opt_length:
+        improvement = (two_opt_length - ils_length) / two_opt_length * 100
+        print(f"✓ Iterative Local Search improved by {improvement:.2f}%")
         return True
     else:
-        print("✗ Lin-Kernighan did not improve")
+        print("✗ Iterative Local Search did not improve")
         return False
 
 if __name__ == "__main__":
@@ -86,8 +86,8 @@ if __name__ == "__main__":
     test_double_bridge()
     print()
     
-    print("3. Testing full Lin-Kernighan...")
-    success = test_lin_kernighan()
+    print("3. Testing full Iterative Local Search...")
+    success = test_iterative_local_search()
     
     if success:
         print("\n✓ All tests passed!")

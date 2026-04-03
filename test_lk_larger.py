@@ -5,7 +5,7 @@ Test Lin-Kernighan on larger instances to see if it outperforms 2-opt.
 
 import sys
 sys.path.append('.')
-from solutions.tsp_v3_lin_kernighan import EuclideanTSPLinKernighan
+from solutions.tsp_v3_iterative_local_search import EuclideanTSPIterativeLocalSearch
 from solutions.tsp_v1_nearest_neighbor import EuclideanTSP
 import time
 import numpy as np
@@ -16,7 +16,7 @@ def test_larger_instance(n=500, seed=42):
     print("=" * 60)
     
     # Create instance
-    lk = EuclideanTSPLinKernighan(n=n, seed=seed)
+    ils = EuclideanTSPIterativeLocalSearch(n=n, seed=seed)
     nn = EuclideanTSP(n=n, seed=seed)
     
     # Run Nearest Neighbor + 2-opt using the function
@@ -35,35 +35,35 @@ def test_larger_instance(n=500, seed=42):
     print(f"   Tour length: {nn_length:.6f}")
     print(f"   Time: {nn_time:.3f}s")
     
-    # Run Lin-Kernighan using the function
-    print("\n2. Lin-Kernighan:")
-    from solutions.tsp_v3_lin_kernighan import solve_tsp as solve_tsp_lk
+    # Run Iterative Local Search using the function
+    print("\n2. Iterative Local Search:")
+    from solutions.tsp_v3_iterative_local_search import solve_tsp as solve_tsp_ils
     start = time.time()
-    lk_tour = solve_tsp_lk([(x, y) for x, y in lk.points])
-    lk_time = time.time() - start
+    ils_tour = solve_tsp_ils([(x, y) for x, y in ils.points])
+    ils_time = time.time() - start
     
     # Calculate tour length
-    lk_length = 0.0
-    for i in range(len(lk_tour)):
-        j = (i + 1) % len(lk_tour)
-        lk_length += np.linalg.norm(lk.points[lk_tour[i]] - lk.points[lk_tour[j]])
+    ils_length = 0.0
+    for i in range(len(ils_tour)):
+        j = (i + 1) % len(ils_tour)
+        ils_length += np.linalg.norm(ils.points[ils_tour[i]] - ils.points[ils_tour[j]])
     
-    print(f"   Tour length: {lk_length:.6f}")
-    print(f"   Time: {lk_time:.3f}s")
+    print(f"   Tour length: {ils_length:.6f}")
+    print(f"   Time: {ils_time:.3f}s")
     
     # Comparison
     print("\n" + "=" * 60)
     print("COMPARISON:")
     print(f"   2-opt length: {nn_length:.6f}")
-    print(f"   L-K length:   {lk_length:.6f}")
-    print(f"   Improvement:  {nn_length/lk_length:.6f}x")
+    print(f"   ILS length:   {ils_length:.6f}")
+    print(f"   Improvement:  {nn_length/ils_length:.6f}x")
     print(f"   2-opt time:   {nn_time:.3f}s")
-    print(f"   L-K time:     {lk_time:.3f}s")
-    print(f"   Time ratio:   {lk_time/nn_time:.3f}x")
+    print(f"   ILS time:     {ils_time:.3f}s")
+    print(f"   Time ratio:   {ils_time/nn_time:.3f}x")
     
-    if lk_length < nn_length - 1e-10:
-        print("\n✓ Lin-Kernighan found better tour!")
-    elif abs(lk_length - nn_length) < 1e-10:
+    if ils_length < nn_length - 1e-10:
+        print("\n✓ Iterative Local Search found better tour!")
+    elif abs(ils_length - nn_length) < 1e-10:
         print("\n⚠️  Both found same tour length")
     else:
         print(f"\n✗ 2-opt found better tour (unexpected!)")

@@ -1,8 +1,19 @@
 #!/usr/bin/env python3
 """
-Traveling Salesman Problem (TSP) Solver - Version 3: Lin-Kernighan Heuristic
+Traveling Salesman Problem (TSP) Solver - Version 3: Iterative Local Search (ILS)
 Evo - Algorithmic Solver
-Lin-Kernighan heuristic for high-quality TSP solutions
+Iterative Local Search with 2-opt and double-bridge kicks for TSP solutions
+
+NOTE: This was previously mislabeled as "Lin-Kernighan". Vera correctly identified that 
+this is NOT a true Lin-Kernighan implementation. True Lin-Kernighan includes:
+- Sequential k-opt moves with backtracking
+- Gain criterion for move acceptance
+- More sophisticated neighborhood search
+
+This implementation is Iterative Local Search (ILS) with:
+- Aggressive 2-opt local search
+- Double-bridge kicks to escape local optima
+- Multiple random restarts
 """
 
 import numpy as np
@@ -14,8 +25,17 @@ from typing import List, Tuple, Dict, Set, Optional
 import json
 
 
-class EuclideanTSPLinKernighan:
-    """Euclidean TSP with Lin-Kernighan heuristic implementation"""
+class EuclideanTSPIterativeLocalSearch:
+    """Euclidean TSP with Iterative Local Search (ILS) implementation
+    
+    This implements Iterative Local Search (ILS) with:
+    1. Aggressive 2-opt local search using limited neighborhood
+    2. Double-bridge kicks (4-opt moves) to escape local optima
+    3. Multiple iterations with restarts
+    
+    Note: This was previously mislabeled as "Lin-Kernighan". For true
+    Lin-Kernighan implementation, see research on LK/LKH algorithms.
+    """
     
     def __init__(self, n: int = 500, seed: int = None):
         """
@@ -128,19 +148,17 @@ class EuclideanTSPLinKernighan:
         
         return current_tour
     
-    def lin_kernighan_improvement(self, initial_tour: List[int], max_k: int = 5, 
-                                  max_iterations: int = 100) -> List[int]:
+    def iterative_local_search(self, initial_tour: List[int], max_iterations: int = 100) -> List[int]:
         """
-        Apply Lin-Kernighan-style heuristic to improve tour.
+        Apply Iterative Local Search (ILS) to improve tour.
         
-        This implements an iterative local search with:
-        1. Multiple random restarts
-        2. Aggressive 2-opt with limited neighborhood
-        3. Kick moves to escape local optima
+        This implements Iterative Local Search (ILS) with:
+        1. Aggressive 2-opt local search using limited neighborhood
+        2. Double-bridge kicks (4-opt moves) to escape local optima
+        3. Multiple iterations with restarts
         
         Args:
             initial_tour: Starting tour
-            max_k: Maximum k for k-opt moves (unused in this simplified version)
             max_iterations: Maximum iterations
         
         Returns:
@@ -263,12 +281,12 @@ class EuclideanTSPLinKernighan:
         
         return new_tour
     
-    def solve_tsp(self, algorithm: str = "lin_kernighan", **kwargs) -> Tuple[List[int], float, float]:
+    def solve_tsp(self, algorithm: str = "iterative_local_search", **kwargs) -> Tuple[List[int], float, float]:
         """
         Solve TSP using specified algorithm.
         
         Args:
-            algorithm: "nearest_neighbor", "two_opt", or "lin_kernighan"
+            algorithm: "nearest_neighbor", "two_opt", or "iterative_local_search"
             **kwargs: Algorithm-specific parameters
         
         Returns:
@@ -281,10 +299,10 @@ class EuclideanTSPLinKernighan:
         elif algorithm == "two_opt":
             nn_tour = self.nearest_neighbor_tour()
             tour = self.two_opt_improvement(nn_tour, **kwargs)
-        elif algorithm == "lin_kernighan":
+        elif algorithm == "iterative_local_search":
             nn_tour = self.nearest_neighbor_tour()
             two_opt_tour = self.two_opt_improvement(nn_tour)
-            tour = self.lin_kernighan_improvement(two_opt_tour, **kwargs)
+            tour = self.iterative_local_search(two_opt_tour, **kwargs)
         else:
             raise ValueError(f"Unknown algorithm: {algorithm}")
         
@@ -305,7 +323,7 @@ class EuclideanTSPLinKernighan:
             Dictionary with benchmark results
         """
         if algorithms is None:
-            algorithms = ["nearest_neighbor", "two_opt", "lin_kernighan"]
+            algorithms = ["nearest_neighbor", "two_opt", "iterative_local_search"]
         
         results = {
             "instance_info": {
@@ -328,8 +346,8 @@ class EuclideanTSPLinKernighan:
                     tour, length, runtime = self.solve_tsp("nearest_neighbor")
                 elif algo == "two_opt":
                     tour, length, runtime = self.solve_tsp("two_opt", max_iterations=1000)
-                elif algo == "lin_kernighan":
-                    tour, length, runtime = self.solve_tsp("lin_kernighan", max_k=3, max_iterations=50)
+                elif algo == "iterative_local_search":
+                    tour, length, runtime = self.solve_tsp("iterative_local_search", max_iterations=50)
                 
                 algo_results["tour_lengths"].append(length)
                 algo_results["runtimes"].append(runtime)
@@ -365,7 +383,7 @@ def solve_tsp(points: np.ndarray) -> Tuple[List[int], float]:
     solver.nearest_neighbors = solver._compute_nearest_neighbors(k=50)
     
     # Use LK algorithm
-    tour, length, _ = solver.solve_tsp("lin_kernighan", max_k=3, max_iterations=50)
+    tour, length, _ = solver.solve_tsp("iterative_local_search", max_iterations=50)
     return tour, length
 
 
@@ -389,22 +407,22 @@ if __name__ == "__main__":
     print(f"  Improvement: {((nn_length - two_opt_length) / nn_length * 100):.2f}%")
     
     # Lin-Kernighan
-    lk_tour, lk_length, lk_time = solver.solve_tsp("lin_kernighan", max_k=3, max_iterations=20)
-    print(f"Lin-Kernighan: {lk_length:.4f} ({lk_time:.3f}s)")
-    print(f"  Improvement over 2-opt: {((two_opt_length - lk_length) / two_opt_length * 100):.2f}%")
+    ils_tour, ils_length, ils_time = solver.solve_tsp("iterative_local_search", max_iterations=20)
+    print(f"Iterative Local Search: {ils_length:.4f} ({ils_time:.3f}s)")
+    print(f"  Improvement over 2-opt: {((two_opt_length - ils_length) / two_opt_length * 100):.2f}%")
     
     # Run benchmark
     print("\nRunning benchmark...")
     benchmark_results = solver.benchmark(n_runs=3)
     
     # Save results
-    with open("lin_kernighan_benchmark.json", "w") as f:
+    with open("iterative_local_search_benchmark.json", "w") as f:
         json.dump(benchmark_results, f, indent=2)
     
-    print("Benchmark results saved to lin_kernighan_benchmark.json")
+    print("Benchmark results saved to iterative_local_search_benchmark.json")
     
     # Verify solve_tsp wrapper
     print("\nTesting solve_tsp wrapper for adversarial testing...")
     test_tour, test_length = solve_tsp(solver.points)
     print(f"Wrapper result: {test_length:.4f}")
-    print(f"Matches direct call: {abs(test_length - lk_length) < 0.001}")
+    print(f"Matches direct call: {abs(test_length - ils_length) < 0.001}")
