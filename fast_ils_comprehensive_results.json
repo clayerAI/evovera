@@ -1,0 +1,174 @@
+[
+  {
+    "n": 20,
+    "trials": 3,
+    "avg_improvement_percent": -0.2641127714234751,
+    "avg_nn_time": 0.00948794682820638,
+    "avg_ils_time": 5.359191258748372,
+    "speed_ratio": 564.8420417804432,
+    "trial_details": [
+      {
+        "n": 20,
+        "trial": 0,
+        "nn_length": 415.29088298803987,
+        "ils_length": 415.2908829880399,
+        "improvement_percent": -1.3687615401478745e-14,
+        "nn_time": 0.012478828430175781,
+        "ils_time": 6.175718069076538,
+        "iterations": 110,
+        "improvements": 45
+      },
+      {
+        "n": 20,
+        "trial": 1,
+        "nn_length": 395.3457617821129,
+        "ils_length": 398.4782377265568,
+        "improvement_percent": -0.7923383142704117,
+        "nn_time": 0.007414102554321289,
+        "ils_time": 5.3068687915802,
+        "iterations": 110,
+        "improvements": 59
+      },
+      {
+        "n": 20,
+        "trial": 2,
+        "nn_length": 352.99946995513307,
+        "ils_length": 352.99946995513307,
+        "improvement_percent": 0.0,
+        "nn_time": 0.00857090950012207,
+        "ils_time": 4.594986915588379,
+        "iterations": 110,
+        "improvements": 40
+      }
+    ]
+  },
+  {
+    "n": 50,
+    "trials": 3,
+    "avg_improvement_percent": -6.2546396172165535,
+    "avg_nn_time": 0.597527265548706,
+    "avg_ils_time": 15.134646892547607,
+    "speed_ratio": 25.328797136394343,
+    "trial_details": [
+      {
+        "n": 50,
+        "trial": 0,
+        "nn_length": 579.9229476626788,
+        "ils_length": 619.7194829259536,
+        "improvement_percent": -6.862383256891408,
+        "nn_time": 0.5045855045318604,
+        "ils_time": 14.976056098937988,
+        "iterations": 125,
+        "improvements": 95
+      },
+      {
+        "n": 50,
+        "trial": 1,
+        "nn_length": 586.1724059415484,
+        "ils_length": 617.5719898449341,
+        "improvement_percent": -5.356714779664472,
+        "nn_time": 0.7145001888275146,
+        "ils_time": 15.614312648773193,
+        "iterations": 125,
+        "improvements": 97
+      },
+      {
+        "n": 50,
+        "trial": 2,
+        "nn_length": 547.2044476797668,
+        "ils_length": 583.0179982726311,
+        "improvement_percent": -6.544820815093779,
+        "nn_time": 0.5734961032867432,
+        "ils_time": 14.81357192993164,
+        "iterations": 125,
+        "improvements": 90
+      }
+    ]
+  },
+  {
+    "n": 100,
+    "trials": 3,
+    "avg_improvement_percent": -15.886425751282525,
+    "avg_nn_time": 4.01547368367513,
+    "avg_ils_time": 37.21301380793253,
+    "speed_ratio": 9.267403235444348,
+    "trial_details": [
+      {
+        "n": 100,
+        "trial": 0,
+        "nn_length": 794.0503711948188,
+        "ils_length": 916.8830720255726,
+        "improvement_percent": -15.469132096232846,
+        "nn_time": 3.712144374847412,
+        "ils_time": 37.48430323600769,
+        "iterations": 150,
+        "improvements": 116
+      },
+      {
+        "n": 100,
+        "trial": 1,
+        "nn_length": 825.737109787723,
+        "ils_length": 955.8088160680297,
+        "improvement_percent": -15.752193372264077,
+        "nn_time": 4.816839933395386,
+        "ils_time": 37.77740001678467,
+        "iterations": 150,
+        "improvements": 126
+      },
+      {
+        "n": 100,
+        "trial": 2,
+        "nn_length": 791.2656729435328,
+        "ils_length": 921.3335427560211,
+        "improvement_percent": -16.437951785350656,
+        "nn_time": 3.5174367427825928,
+        "ils_time": 36.37733817100525,
+        "iterations": 150,
+        "improvements": 123
+      }
+    ]
+  },
+  {
+    "n": 200,
+    "trials": 3,
+    "avg_improvement_percent": -21.5265037464261,
+    "avg_nn_time": 28.424949725468952,
+    "avg_ils_time": 97.01129659016927,
+    "speed_ratio": 3.412892459867624,
+    "trial_details": [
+      {
+        "n": 200,
+        "trial": 0,
+        "nn_length": 1117.967641442995,
+        "ils_length": 1407.9436393117157,
+        "improvement_percent": -25.937780944575444,
+        "nn_time": 36.51115012168884,
+        "ils_time": 100.21236300468445,
+        "iterations": 200,
+        "improvements": 167
+      },
+      {
+        "n": 200,
+        "trial": 1,
+        "nn_length": 1070.179022289784,
+        "ils_length": 1271.0189005540628,
+        "improvement_percent": -18.76694217333437,
+        "nn_time": 26.27623963356018,
+        "ils_time": 95.71696782112122,
+        "iterations": 200,
+        "improvements": 158
+      },
+      {
+        "n": 200,
+        "trial": 2,
+        "nn_length": 1081.0212124557622,
+        "ils_length": 1295.8718879783937,
+        "improvement_percent": -19.874788121368493,
+        "nn_time": 22.487459421157837,
+        "ils_time": 95.10455894470215,
+        "iterations": 200,
+        "improvements": 160
+      }
+    ]
+  }
+]

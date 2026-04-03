@@ -1,0 +1,185 @@
+{
+  "20": {
+    "christofides_mst_ils_memory": {
+      "lengths": [
+        352.31817646185084,
+        392.19797963939834,
+        434.2923416409486
+      ],
+      "times": [
+        0.05862927436828613,
+        0.01330876350402832,
+        0.009702682495117188
+      ],
+      "stats": [
+        {
+          "initial_length": 363.42514153583153,
+          "final_length": 352.31817646185084,
+          "improvement_percentage": 3.056190616599267,
+          "iterations": 10,
+          "time": 0.05843091011047363,
+          "edge_swap_count": 23,
+          "memory_guided_perturbations": 0
+        },
+        {
+          "initial_length": 414.5691980820948,
+          "final_length": 392.19797963939834,
+          "improvement_percentage": 5.396256775995786,
+          "iterations": 16,
+          "time": 0.013200759887695312,
+          "edge_swap_count": 52,
+          "memory_guided_perturbations": 6
+        },
+        {
+          "initial_length": 498.0562213837375,
+          "final_length": 434.2923416409486,
+          "improvement_percentage": 12.802546581113928,
+          "iterations": 10,
+          "time": 0.009644269943237305,
+          "edge_swap_count": 63,
+          "memory_guided_perturbations": 0
+        }
+      ],
+      "avg_length": 392.9361659140659,
+      "avg_time": 0.027213573455810547
+    },
+    "nn_2opt": {
+      "lengths": [
+        352.31817646185084,
+        383.3700495944592,
+        429.29682948102186
+      ],
+      "times": [
+        0.014966964721679688,
+        0.0060765743255615234,
+        0.004604816436767578
+      ],
+      "avg_length": 388.32835184577726,
+      "avg_time": 0.00854945182800293
+    },
+    "improvement_percent": -1.1865767838961714,
+    "speedup_factor": 0.3141613078446146
+  },
+  "50": {
+    "christofides_mst_ils_memory": {
+      "lengths": [
+        587.2464366409005,
+        591.3743277786774,
+        601.5362054914109
+      ],
+      "times": [
+        0.48822617530822754,
+        0.3197755813598633,
+        0.19927239418029785
+      ],
+      "stats": [
+        {
+          "initial_length": 697.7074997706155,
+          "final_length": 587.2464366409005,
+          "improvement_percentage": 15.83200168638451,
+          "iterations": 11,
+          "time": 0.4878978729248047,
+          "edge_swap_count": 126,
+          "memory_guided_perturbations": 1
+        },
+        {
+          "initial_length": 697.257512002307,
+          "final_length": 591.3743277786774,
+          "improvement_percentage": 15.185664177294544,
+          "iterations": 13,
+          "time": 0.31949925422668457,
+          "edge_swap_count": 136,
+          "memory_guided_perturbations": 3
+        },
+        {
+          "initial_length": 734.4372861227333,
+          "final_length": 601.5362054914109,
+          "improvement_percentage": 18.095633642586204,
+          "iterations": 10,
+          "time": 0.1990036964416504,
+          "edge_swap_count": 101,
+          "memory_guided_perturbations": 0
+        }
+      ],
+      "avg_length": 593.3856566369963,
+      "avg_time": 0.3357580502827962
+    },
+    "nn_2opt": {
+      "lengths": [
+        572.24891717374,
+        591.7132117206504,
+        610.4029513807096
+      ],
+      "times": [
+        0.06582951545715332,
+        0.08551287651062012,
+        0.05802655220031738
+      ],
+      "avg_length": 591.4550267583667,
+      "avg_time": 0.06978964805603027
+    },
+    "improvement_percent": -0.32642040244563325,
+    "speedup_factor": 0.20785696127687517
+  },
+  "100": {
+    "christofides_mst_ils_memory": {
+      "lengths": [
+        816.2872414008566,
+        807.8197706638698,
+        789.2974463444764
+      ],
+      "times": [
+        3.193051338195801,
+        4.0046844482421875,
+        4.378434896469116
+      ],
+      "stats": [
+        {
+          "initial_length": 923.1623405142925,
+          "final_length": 816.2872414008566,
+          "improvement_percentage": 11.577064447180105,
+          "iterations": 14,
+          "time": 3.191869020462036,
+          "edge_swap_count": 142,
+          "memory_guided_perturbations": 4
+        },
+        {
+          "initial_length": 941.629829655709,
+          "final_length": 807.8197706638698,
+          "improvement_percentage": 14.210473667849353,
+          "iterations": 18,
+          "time": 4.003649711608887,
+          "edge_swap_count": 126,
+          "memory_guided_perturbations": 8
+        },
+        {
+          "initial_length": 984.2201073705965,
+          "final_length": 789.2974463444764,
+          "improvement_percentage": 19.804783459145916,
+          "iterations": 10,
+          "time": 4.377379894256592,
+          "edge_swap_count": 191,
+          "memory_guided_perturbations": 0
+        }
+      ],
+      "avg_length": 804.4681528030675,
+      "avg_time": 3.8587235609690347
+    },
+    "nn_2opt": {
+      "lengths": [
+        803.7522785548333,
+        791.9175218337967,
+        799.9410486599378
+      ],
+      "times": [
+        0.6698377132415771,
+        0.668806791305542,
+        0.5678226947784424
+      ],
+      "avg_length": 798.5369496828558,
+      "avg_time": 0.6354890664418539
+    },
+    "improvement_percent": -0.7427587568198647,
+    "speedup_factor": 0.16468893311503885
+  }
+}

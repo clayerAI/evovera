@@ -1,0 +1,86 @@
+{
+  "instances": [
+    {
+      "name": "SYNTHETIC-S-n16-k4",
+      "file": "synthetic_vrp_benchmarks/SYNTHETIC-S-n16-k4.vrp",
+      "n_customers": 15,
+      "n_vehicles": 4,
+      "capacity": 30,
+      "total_demand": 123,
+      "min_vehicles_needed": 5,
+      "optimal_estimate": 168.02309852756412
+    },
+    {
+      "name": "SYNTHETIC-S-n22-k5",
+      "file": "synthetic_vrp_benchmarks/SYNTHETIC-S-n22-k5.vrp",
+      "n_customers": 21,
+      "n_vehicles": 5,
+      "capacity": 40,
+      "total_demand": 225,
+      "min_vehicles_needed": 6,
+      "optimal_estimate": 298.27763199826137
+    },
+    {
+      "name": "SYNTHETIC-M-n32-k5",
+      "file": "synthetic_vrp_benchmarks/SYNTHETIC-M-n32-k5.vrp",
+      "n_customers": 31,
+      "n_vehicles": 5,
+      "capacity": 100,
+      "total_demand": 221,
+      "min_vehicles_needed": 3,
+      "optimal_estimate": 411.4888340380923
+    },
+    {
+      "name": "SYNTHETIC-M-n36-k5",
+      "file": "synthetic_vrp_benchmarks/SYNTHETIC-M-n36-k5.vrp",
+      "n_customers": 35,
+      "n_vehicles": 5,
+      "capacity": 100,
+      "total_demand": 269,
+      "min_vehicles_needed": 3,
+      "optimal_estimate": 360.3678175771098
+    },
+    {
+      "name": "SYNTHETIC-M-n45-k6",
+      "file": "synthetic_vrp_benchmarks/SYNTHETIC-M-n45-k6.vrp",
+      "n_customers": 44,
+      "n_vehicles": 6,
+      "capacity": 100,
+      "total_demand": 306,
+      "min_vehicles_needed": 4,
+      "optimal_estimate": 736.2227128114762
+    },
+    {
+      "name": "SYNTHETIC-L-n60-k8",
+      "file": "synthetic_vrp_benchmarks/SYNTHETIC-L-n60-k8.vrp",
+      "n_customers": 59,
+      "n_vehicles": 8,
+      "capacity": 150,
+      "total_demand": 466,
+      "min_vehicles_needed": 4,
+      "optimal_estimate": 805.4372541786062
+    },
+    {
+      "name": "SYNTHETIC-L-n80-k10",
+      "file": "synthetic_vrp_benchmarks/SYNTHETIC-L-n80-k10.vrp",
+      "n_customers": 79,
+      "n_vehicles": 10,
+      "capacity": 150,
+      "total_demand": 658,
+      "min_vehicles_needed": 5,
+      "optimal_estimate": 823.4407680592379
+    },
+    {
+      "name": "SYNTHETIC-C-n40-k5-highvar",
+      "file": "synthetic_vrp_benchmarks/SYNTHETIC-C-n40-k5-highvar.vrp",
+      "n_customers": 39,
+      "n_vehicles": 5,
+      "capacity": 80,
+      "total_demand": 275,
+      "min_vehicles_needed": 4,
+      "optimal_estimate": 456.8480547222467
+    }
+  ],
+  "generated_at": "2026-04-03",
+  "description": "Synthetic VRP instances for benchmarking Clarke-Wright algorithm"
+}

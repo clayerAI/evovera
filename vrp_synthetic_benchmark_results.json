@@ -1,0 +1,685 @@
+{
+  "SYNTHETIC-S-n16-k4": {
+    "instance_info": {
+      "name": "SYNTHETIC-S-n16-k4",
+      "file": "synthetic_vrp_benchmarks/SYNTHETIC-S-n16-k4.vrp",
+      "n_customers": 15,
+      "n_vehicles": 4,
+      "capacity": 30,
+      "total_demand": 123,
+      "min_vehicles_needed": 5,
+      "optimal_estimate": 168.02309852756412
+    },
+    "clarke_wright_stats": {
+      "total_distance": 419.55949934382966,
+      "num_routes": 5,
+      "computation_time": 0.072784423828125,
+      "route_lengths": [
+        17.01763790894612,
+        33.49180722237329,
+        20.723899247004656,
+        13.808818473420725,
+        79.11499629566588
+      ],
+      "route_demands": [
+        30,
+        25,
+        27,
+        19,
+        22
+      ],
+      "has_capacity_violations": false,
+      "capacity_violations": [],
+      "routes": [
+        [
+          9,
+          12
+        ],
+        [
+          8,
+          5,
+          7,
+          6
+        ],
+        [
+          14,
+          15
+        ],
+        [
+          1,
+          2,
+          3,
+          4
+        ],
+        [
+          13,
+          10,
+          11
+        ]
+      ]
+    },
+    "optimality_gap_percent": 149.70346519053217,
+    "optimal_estimate": 168.02309852756412
+  },
+  "SYNTHETIC-S-n22-k5": {
+    "instance_info": {
+      "name": "SYNTHETIC-S-n22-k5",
+      "file": "synthetic_vrp_benchmarks/SYNTHETIC-S-n22-k5.vrp",
+      "n_customers": 21,
+      "n_vehicles": 5,
+      "capacity": 40,
+      "total_demand": 225,
+      "min_vehicles_needed": 6,
+      "optimal_estimate": 298.27763199826137
+    },
+    "clarke_wright_stats": {
+      "total_distance": 655.3509270608344,
+      "num_routes": 7,
+      "computation_time": 0.006541728973388672,
+      "route_lengths": [
+        0.0,
+        0.0,
+        22.28307176311445,
+        22.40089283934906,
+        29.924999796391127,
+        161.9409867460539,
+        30.677679182102416
+      ],
+      "route_demands": [
+        28,
+        30,
+        28,
+        35,
+        37,
+        39,
+        28
+      ],
+      "has_capacity_violations": false,
+      "capacity_violations": [],
+      "routes": [
+        [
+          3
+        ],
+        [
+          9
+        ],
+        [
+          18,
+          20,
+          19,
+          21
+        ],
+        [
+          15,
+          16
+        ],
+        [
+          12,
+          13,
+          10,
+          11
+        ],
+        [
+          6,
+          8,
+          7,
+          2,
+          4,
+          5,
+          1
+        ],
+        [
+          14,
+          17
+        ]
+      ]
+    },
+    "optimality_gap_percent": 119.71172382937999,
+    "optimal_estimate": 298.27763199826137
+  },
+  "SYNTHETIC-M-n32-k5": {
+    "instance_info": {
+      "name": "SYNTHETIC-M-n32-k5",
+      "file": "synthetic_vrp_benchmarks/SYNTHETIC-M-n32-k5.vrp",
+      "n_customers": 31,
+      "n_vehicles": 5,
+      "capacity": 100,
+      "total_demand": 221,
+      "min_vehicles_needed": 3,
+      "optimal_estimate": 411.4888340380923
+    },
+    "clarke_wright_stats": {
+      "total_distance": 409.0336418151001,
+      "num_routes": 3,
+      "computation_time": 0.009879350662231445,
+      "route_lengths": [
+        48.64244918798464,
+        127.61978642108582,
+        156.27282368293257
+      ],
+      "route_demands": [
+        51,
+        81,
+        89
+      ],
+      "has_capacity_violations": false,
+      "capacity_violations": [],
+      "routes": [
+        [
+          14,
+          15,
+          18,
+          16,
+          17,
+          19
+        ],
+        [
+          3,
+          6,
+          4,
+          7,
+          1,
+          5,
+          2,
+          12,
+          13,
+          9,
+          11,
+          10,
+          8
+        ],
+        [
+          28,
+          27,
+          30,
+          29,
+          26,
+          31,
+          20,
+          21,
+          24,
+          25,
+          23,
+          22
+        ]
+      ]
+    },
+    "optimality_gap_percent": -0.5966607158931836,
+    "optimal_estimate": 411.4888340380923
+  },
+  "SYNTHETIC-M-n36-k5": {
+    "instance_info": {
+      "name": "SYNTHETIC-M-n36-k5",
+      "file": "synthetic_vrp_benchmarks/SYNTHETIC-M-n36-k5.vrp",
+      "n_customers": 35,
+      "n_vehicles": 5,
+      "capacity": 100,
+      "total_demand": 269,
+      "min_vehicles_needed": 3,
+      "optimal_estimate": 360.3678175771098
+    },
+    "clarke_wright_stats": {
+      "total_distance": 348.92863998166297,
+      "num_routes": 3,
+      "computation_time": 0.010956764221191406,
+      "route_lengths": [
+        112.27872413499313,
+        123.37741070208614,
+        91.08991177979091
+      ],
+      "route_demands": [
+        84,
+        87,
+        98
+      ],
+      "has_capacity_violations": false,
+      "capacity_violations": [],
+      "routes": [
+        [
+          12,
+          13,
+          9,
+          10,
+          14,
+          11,
+          19,
+          20,
+          21,
+          15,
+          17,
+          16,
+          18
+        ],
+        [
+          1,
+          6,
+          5,
+          2,
+          4,
+          3,
+          7,
+          33,
+          30,
+          32,
+          31,
+          34,
+          29,
+          35
+        ],
+        [
+          8,
+          27,
+          25,
+          22,
+          28,
+          26,
+          23,
+          24
+        ]
+      ]
+    },
+    "optimality_gap_percent": -3.174306094355702,
+    "optimal_estimate": 360.3678175771098
+  },
+  "SYNTHETIC-M-n45-k6": {
+    "instance_info": {
+      "name": "SYNTHETIC-M-n45-k6",
+      "file": "synthetic_vrp_benchmarks/SYNTHETIC-M-n45-k6.vrp",
+      "n_customers": 44,
+      "n_vehicles": 6,
+      "capacity": 100,
+      "total_demand": 306,
+      "min_vehicles_needed": 4,
+      "optimal_estimate": 736.2227128114762
+    },
+    "clarke_wright_stats": {
+      "total_distance": 631.3628941036038,
+      "num_routes": 5,
+      "computation_time": 0.007508277893066406,
+      "route_lengths": [
+        35.43509683261895,
+        52.274582388607826,
+        54.51725585818098,
+        54.268080551668376,
+        136.3888290124067
+      ],
+      "route_demands": [
+        53,
+        67,
+        63,
+        56,
+        67
+      ],
+      "has_capacity_violations": false,
+      "capacity_violations": [],
+      "routes": [
+        [
+          26,
+          30,
+          24,
+          25,
+          29,
+          28,
+          27
+        ],
+        [
+          42,
+          44,
+          39,
+          43,
+          41,
+          40,
+          38
+        ],
+        [
+          17,
+          23,
+          20,
+          18,
+          22,
+          21,
+          19
+        ],
+        [
+          32,
+          35,
+          36,
+          33,
+          31,
+          34,
+          37
+        ],
+        [
+          3,
+          6,
+          7,
+          4,
+          1,
+          5,
+          2,
+          8,
+          13,
+          9,
+          10,
+          14,
+          15,
+          12,
+          11,
+          16
+        ]
+      ]
+    },
+    "optimality_gap_percent": -14.24294807578474,
+    "optimal_estimate": 736.2227128114762
+  },
+  "SYNTHETIC-L-n60-k8": {
+    "instance_info": {
+      "name": "SYNTHETIC-L-n60-k8",
+      "file": "synthetic_vrp_benchmarks/SYNTHETIC-L-n60-k8.vrp",
+      "n_customers": 59,
+      "n_vehicles": 8,
+      "capacity": 150,
+      "total_demand": 466,
+      "min_vehicles_needed": 4,
+      "optimal_estimate": 805.4372541786062
+    },
+    "clarke_wright_stats": {
+      "total_distance": 587.1260776729114,
+      "num_routes": 4,
+      "computation_time": 0.015887975692749023,
+      "route_lengths": [
+        137.4124880180343,
+        51.24138657096776,
+        84.91252346303851,
+        201.86601648467982
+      ],
+      "route_demands": [
+        128,
+        79,
+        136,
+        123
+      ],
+      "has_capacity_violations": false,
+      "capacity_violations": [],
+      "routes": [
+        [
+          12,
+          16,
+          13,
+          11,
+          14,
+          15,
+          9,
+          10,
+          1,
+          3,
+          5,
+          6,
+          7,
+          8,
+          2,
+          4
+        ],
+        [
+          22,
+          17,
+          24,
+          23,
+          18,
+          21,
+          19,
+          20
+        ],
+        [
+          38,
+          29,
+          31,
+          27,
+          28,
+          25,
+          26,
+          30,
+          37,
+          32,
+          33,
+          34,
+          36
+        ],
+        [
+          35,
+          44,
+          43,
+          41,
+          42,
+          40,
+          45,
+          39,
+          49,
+          48,
+          51,
+          50,
+          46,
+          52,
+          57,
+          55,
+          56,
+          58,
+          59,
+          54,
+          53,
+          47
+        ]
+      ]
+    },
+    "optimality_gap_percent": -27.104678281653477,
+    "optimal_estimate": 805.4372541786062
+  },
+  "SYNTHETIC-L-n80-k10": {
+    "instance_info": {
+      "name": "SYNTHETIC-L-n80-k10",
+      "file": "synthetic_vrp_benchmarks/SYNTHETIC-L-n80-k10.vrp",
+      "n_customers": 79,
+      "n_vehicles": 10,
+      "capacity": 150,
+      "total_demand": 658,
+      "min_vehicles_needed": 5,
+      "optimal_estimate": 823.4407680592379
+    },
+    "clarke_wright_stats": {
+      "total_distance": 637.6452051894762,
+      "num_routes": 5,
+      "computation_time": 0.06086087226867676,
+      "route_lengths": [
+        89.32658101337279,
+        103.52379756384114,
+        113.08024957928478,
+        119.94650183044473,
+        127.62040748312026
+      ],
+      "route_demands": [
+        136,
+        116,
+        150,
+        148,
+        108
+      ],
+      "has_capacity_violations": false,
+      "capacity_violations": [],
+      "routes": [
+        [
+          69,
+          65,
+          68,
+          67,
+          72,
+          61,
+          59,
+          63,
+          57,
+          60,
+          58,
+          64,
+          62
+        ],
+        [
+          26,
+          12,
+          22,
+          21,
+          17,
+          18,
+          23,
+          24,
+          20,
+          19,
+          30,
+          28,
+          29,
+          27,
+          31,
+          25,
+          32
+        ],
+        [
+          3,
+          6,
+          4,
+          7,
+          2,
+          1,
+          5,
+          74,
+          76,
+          75,
+          73,
+          78,
+          79,
+          77,
+          71,
+          66,
+          70
+        ],
+        [
+          52,
+          53,
+          50,
+          56,
+          54,
+          46,
+          47,
+          48,
+          41,
+          45,
+          44,
+          40,
+          35,
+          38,
+          39,
+          34,
+          33,
+          36,
+          37
+        ],
+        [
+          49,
+          51,
+          43,
+          42,
+          55,
+          13,
+          14,
+          9,
+          11,
+          15,
+          10,
+          8,
+          16
+        ]
+      ]
+    },
+    "optimality_gap_percent": -22.563318465232424,
+    "optimal_estimate": 823.4407680592379
+  },
+  "SYNTHETIC-C-n40-k5-highvar": {
+    "instance_info": {
+      "name": "SYNTHETIC-C-n40-k5-highvar",
+      "file": "synthetic_vrp_benchmarks/SYNTHETIC-C-n40-k5-highvar.vrp",
+      "n_customers": 39,
+      "n_vehicles": 5,
+      "capacity": 80,
+      "total_demand": 275,
+      "min_vehicles_needed": 4,
+      "optimal_estimate": 456.8480547222467
+    },
+    "clarke_wright_stats": {
+      "total_distance": 508.2574692024725,
+      "num_routes": 4,
+      "computation_time": 0.010353803634643555,
+      "route_lengths": [
+        84.12422044915661,
+        45.20820666708211,
+        98.12268583581847,
+        172.46111420966844
+      ],
+      "route_demands": [
+        77,
+        63,
+        62,
+        73
+      ],
+      "has_capacity_violations": false,
+      "capacity_violations": [],
+      "routes": [
+        [
+          1,
+          14,
+          10,
+          9,
+          16,
+          15,
+          13,
+          11
+        ],
+        [
+          34,
+          35,
+          33,
+          39,
+          36,
+          38,
+          37
+        ],
+        [
+          12,
+          23,
+          17,
+          21,
+          20,
+          18,
+          24,
+          22,
+          19
+        ],
+        [
+          7,
+          4,
+          2,
+          3,
+          6,
+          5,
+          8,
+          31,
+          28,
+          32,
+          29,
+          25,
+          26,
+          30,
+          27
+        ]
+      ]
+    },
+    "optimality_gap_percent": 11.253066298264445,
+    "optimal_estimate": 456.8480547222467
+  }
+}

@@ -1,0 +1,44 @@
+NAME: SYNTHETIC-S-n16-k4
+COMMENT: Synthetic instance, optimal estimate: 168.0, min vehicles: 5
+TYPE: CVRP
+DIMENSION: 16
+EDGE_WEIGHT_TYPE: EUC_2D
+CAPACITY: 30
+NODE_COORD_SECTION
+1 0.0 0.0
+2 18.6 0.2
+3 25.0 0.7
+4 24.1 -0.3
+5 22.1 -1.3
+6 -0.4 44.9
+7 7.9 43.9
+8 5.9 43.1
+9 0.8 33.1
+10 -40.9 -1.1
+11 -41.3 -2.0
+12 -37.1 -1.0
+13 -45.1 6.3
+14 -7.7 -21.6
+15 -2.6 -26.1
+16 1.3 -35.7
+DEMAND_SECTION
+1 0
+2 4
+3 10
+4 4
+5 1
+6 4
+7 8
+8 4
+9 9
+10 21
+11 11
+12 4
+13 9
+14 7
+15 18
+16 9
+DEPOT_SECTION
+1
+-1
+EOF
