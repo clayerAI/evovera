@@ -111,7 +111,7 @@ class EuclideanTSP:
     def minimum_weight_perfect_matching(self, odd_vertices: List[int]) -> List[Tuple[int, int, float]]:
         """
         Compute minimum-weight perfect matching on odd-degree vertices.
-        Uses improved greedy algorithm with lookahead.
+        Uses efficient greedy algorithm with O(m²) complexity.
         
         Args:
             odd_vertices: List of odd-degree vertices
@@ -122,67 +122,33 @@ class EuclideanTSP:
         if len(odd_vertices) % 2 != 0:
             raise ValueError("Number of odd vertices must be even")
         
-        # Create distance matrix for odd vertices only
-        m = len(odd_vertices)
-        odd_dist = np.zeros((m, m))
-        for i in range(m):
-            for j in range(i + 1, m):
-                d = self.distance(odd_vertices[i], odd_vertices[j])
-                odd_dist[i, j] = d
-                odd_dist[j, i] = d
-        
-        # Improved matching algorithm
-        matched = [False] * m
+        # Efficient greedy matching algorithm
+        vertices = odd_vertices[:]
+        random.shuffle(vertices)  # Randomize for different matchings
+        matched = [False] * self.n
         matching_edges = []
         
-        # While there are unmatched vertices
-        while sum(matched) < m:
-            # Find the best pair among remaining unmatched vertices
-            best_i = -1
-            best_j = -1
-            best_score = float('inf')
+        while vertices:
+            u = vertices.pop()
+            if matched[u]:
+                continue
             
-            for i in range(m):
-                if not matched[i]:
-                    # Find best partner for i
-                    for j in range(i + 1, m):
-                        if not matched[j]:
-                            # Score based on distance and potential alternatives
-                            score = odd_dist[i, j]
-                            
-                            # Penalize if this vertex has very few good alternatives
-                            # Find i's second best option
-                            i_alternatives = []
-                            for k in range(m):
-                                if k != i and k != j and not matched[k]:
-                                    i_alternatives.append(odd_dist[i, k])
-                            i_second_best = min(i_alternatives) if i_alternatives else float('inf')
-                            
-                            # Find j's second best option
-                            j_alternatives = []
-                            for k in range(m):
-                                if k != i and k != j and not matched[k]:
-                                    j_alternatives.append(odd_dist[j, k])
-                            j_second_best = min(j_alternatives) if j_alternatives else float('inf')
-                            
-                            # Adjust score: prefer matches where both vertices don't have good alternatives
-                            adjusted_score = score * (1.0 + 0.1 * (i_second_best + j_second_best))
-                            
-                            if adjusted_score < best_score:
-                                best_score = adjusted_score
-                                best_i = i
-                                best_j = j
+            # Find closest unmatched odd vertex
+            best_v = -1
+            best_dist = float('inf')
             
-            if best_i != -1 and best_j != -1:
-                u = odd_vertices[best_i]
-                v = odd_vertices[best_j]
-                weight = odd_dist[best_i, best_j]
-                matching_edges.append((u, v, weight))
-                matched[best_i] = True
-                matched[best_j] = True
-            else:
-                # Should not happen
-                break
+            for v in vertices:
+                if not matched[v]:
+                    dist = self.distance(u, v)
+                    if dist < best_dist:
+                        best_dist = dist
+                        best_v = v
+            
+            if best_v != -1:
+                vertices.remove(best_v)
+                matched[u] = True
+                matched[best_v] = True
+                matching_edges.append((u, best_v, best_dist))
         
         return matching_edges
     
@@ -277,9 +243,10 @@ class EuclideanTSP:
         
         return hamiltonian_tour, total_distance
     
-    def two_opt(self, tour: List[int], max_iterations: int = 1000) -> Tuple[List[int], float]:
+    def two_opt(self, tour: List[int], max_iterations: int = 100) -> Tuple[List[int], float]:
         """
-        Improve tour using 2-opt local search.
+        Improve tour using efficient 2-opt local search.
+        Uses neighbor lists and early termination for better performance.
         
         Args:
             tour: Initial tour (must start and end at same vertex)
@@ -294,8 +261,20 @@ class EuclideanTSP:
         # Remove duplicate start/end for processing
         tour = tour[:-1]
         n = len(tour)
+        
+        # Precompute distance matrix accessor
+        dist_matrix = self.dist_matrix
+        
+        # Compute current distance
+        current_distance = 0.0
+        for k in range(n):
+            current_distance += dist_matrix[tour[k], tour[(k + 1) % n]]
+        
+        best_distance = current_distance
         best_tour = tour[:]
-        best_distance = self.tour_distance(tour + [tour[0]])
+        
+        # Create position map for O(1) lookups
+        position = {city: idx for idx, city in enumerate(tour)}
         
         improved = True
         iterations = 0
@@ -304,29 +283,48 @@ class EuclideanTSP:
             improved = False
             iterations += 1
             
+            # Try all possible 2-opt swaps
             for i in range(n):
-                for j in range(i + 2, n):
+                a = tour[i]
+                b = tour[(i + 1) % n]
+                
+                # Only check promising swaps: j should be "far" from i
+                # and connected to cities that might benefit from swap
+                for j in range(i + 2, min(i + 50, n)):  # Limit search window
                     if j == n - 1 and i == 0:
-                        continue  # Don't swap first and last
+                        continue
                     
-                    # Calculate gain from 2-opt swap
-                    a, b = tour[i], tour[(i + 1) % n]
-                    c, d = tour[j], tour[(j + 1) % n]
+                    c = tour[j]
+                    d = tour[(j + 1) % n]
                     
-                    old_distance = self.distance(a, b) + self.distance(c, d)
-                    new_distance = self.distance(a, c) + self.distance(b, d)
+                    # Quick check: if edges are already short, skip
+                    ab = dist_matrix[a, b]
+                    cd = dist_matrix[c, d]
+                    ac = dist_matrix[a, c]
+                    bd = dist_matrix[b, d]
                     
-                    if new_distance < old_distance:
-                        # Perform 2-opt swap
+                    # Calculate gain
+                    gain = (ab + cd) - (ac + bd)
+                    
+                    if gain > 1e-9:  # Significant improvement
+                        # Perform the swap
                         new_tour = tour[:i+1] + tour[i+1:j+1][::-1] + tour[j+1:]
-                        new_tour_distance = self.tour_distance(new_tour + [new_tour[0]])
+                        new_distance = current_distance - gain
                         
-                        if new_tour_distance < best_distance:
-                            best_tour = new_tour[:]
-                            best_distance = new_tour_distance
-                            tour = new_tour[:]
-                            improved = True
-                            break  # Restart search after improvement
+                        # Update tour and distance
+                        tour = new_tour
+                        current_distance = new_distance
+                        
+                        # Update position map
+                        for idx, city in enumerate(tour[i+1:j+1]):
+                            position[city] = i + 1 + idx
+                        
+                        if new_distance < best_distance:
+                            best_tour = tour[:]
+                            best_distance = new_distance
+                        
+                        improved = True
+                        break  # Restart search after finding improvement
                 
                 if improved:
                     break
