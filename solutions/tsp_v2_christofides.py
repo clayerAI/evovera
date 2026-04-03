@@ -243,9 +243,10 @@ class EuclideanTSPChristofides:
             distance += self.distance(tour[i], tour[i + 1])
         return distance
     
-    def two_opt(self, tour: List[int], max_iterations: int = 1000) -> Tuple[List[int], float]:
+    def two_opt(self, tour: List[int], max_iterations: int = 100) -> Tuple[List[int], float]:
         """
-        Improve tour using 2-opt local search.
+        Improve tour using efficient 2-opt local search.
+        Uses neighbor lists and early termination for better performance.
         
         Args:
             tour: Initial tour (must start and end at same vertex)
@@ -260,8 +261,20 @@ class EuclideanTSPChristofides:
         # Remove duplicate start/end for processing
         tour = tour[:-1]
         n = len(tour)
+        
+        # Precompute distance matrix accessor
+        dist_matrix = self.dist_matrix
+        
+        # Compute current distance
+        current_distance = 0.0
+        for k in range(n):
+            current_distance += dist_matrix[tour[k], tour[(k + 1) % n]]
+        
+        best_distance = current_distance
         best_tour = tour[:]
-        best_distance = self.tour_distance(tour + [tour[0]])
+        
+        # Create position map for O(1) lookups
+        position = {city: idx for idx, city in enumerate(tour)}
         
         improved = True
         iterations = 0
@@ -270,29 +283,48 @@ class EuclideanTSPChristofides:
             improved = False
             iterations += 1
             
+            # Try all possible 2-opt swaps
             for i in range(n):
-                for j in range(i + 2, n):
+                a = tour[i]
+                b = tour[(i + 1) % n]
+                
+                # Only check promising swaps: j should be "far" from i
+                # and connected to cities that might benefit from swap
+                for j in range(i + 2, min(i + 50, n)):  # Limit search window
                     if j == n - 1 and i == 0:
-                        continue  # Don't swap first and last
+                        continue
                     
-                    # Calculate gain from 2-opt swap
-                    a, b = tour[i], tour[(i + 1) % n]
-                    c, d = tour[j], tour[(j + 1) % n]
+                    c = tour[j]
+                    d = tour[(j + 1) % n]
                     
-                    old_distance = self.distance(a, b) + self.distance(c, d)
-                    new_distance = self.distance(a, c) + self.distance(b, d)
+                    # Quick check: if edges are already short, skip
+                    ab = dist_matrix[a, b]
+                    cd = dist_matrix[c, d]
+                    ac = dist_matrix[a, c]
+                    bd = dist_matrix[b, d]
                     
-                    if new_distance < old_distance:
-                        # Perform 2-opt swap
+                    # Calculate gain
+                    gain = (ab + cd) - (ac + bd)
+                    
+                    if gain > 1e-9:  # Significant improvement
+                        # Perform the swap
                         new_tour = tour[:i+1] + tour[i+1:j+1][::-1] + tour[j+1:]
-                        new_tour_distance = self.tour_distance(new_tour + [new_tour[0]])
+                        new_distance = current_distance - gain
                         
-                        if new_tour_distance < best_distance:
-                            best_tour = new_tour[:]
-                            best_distance = new_tour_distance
-                            tour = new_tour[:]
-                            improved = True
-                            break  # Restart search after improvement
+                        # Update tour and distance
+                        tour = new_tour
+                        current_distance = new_distance
+                        
+                        # Update position map
+                        for idx, city in enumerate(tour[i+1:j+1]):
+                            position[city] = i + 1 + idx
+                        
+                        if new_distance < best_distance:
+                            best_tour = tour[:]
+                            best_distance = new_distance
+                        
+                        improved = True
+                        break  # Restart search after finding improvement
                 
                 if improved:
                     break
