@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Test Lin-Kernighan on larger instance"""
+"""Test Iterative Local Search on larger instance"""
 
 import numpy as np
 import math
@@ -11,7 +11,7 @@ sys.path.append('.')
 from tsp_v3_iterative_local_search import EuclideanTSPIterativeLocalSearch
 
 def test_large_instance():
-    """Test on 100-city instance."""
+    """Test Iterative Local Search on 100-city instance."""
     solver = EuclideanTSPIterativeLocalSearch(n=100, seed=42)
     
     # Get nearest neighbor tour
