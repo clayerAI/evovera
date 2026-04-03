@@ -51,6 +51,7 @@ evovera/
 | [tsp_v1_nearest_neighbor.py](solutions/tsp_v1_nearest_neighbor.py) | Nearest Neighbor + 2-opt | 500 | 17.69 | 1.000x (baseline) | 6.7 | ✅ Reviewed | Severe weakness on clustered points (53x worse) |
 | [tsp_v2_christofides.py](solutions/tsp_v2_christofides.py) | Christofides + 2-opt | 500 | 18.28 | 0.968x | 0.93 | ✅ Reviewed | Optimized with hybrid matching (optimal DP for m ≤ 14, greedy for m > 14). Faster than NN (0.93s vs 6.68s) but produces slightly worse tours (3.2% longer). |
 | [tsp_v3_iterative_local_search.py](solutions/tsp_v3_iterative_local_search.py) | Iterative Local Search (ILS) | 100 | 7.493 | 1.002x | 0.110 | ✅ **RELABELED** | Iterative Local Search with strategic perturbations and fast local search. Previously mislabeled as "Lin-Kernighan" - Vera correctly identified mislabeling. Performance: 0.17% better than 2-opt on average (0.51% best case), ~1.1x slower than 2-opt. Stochastic algorithm - finds improvements in ~80% of runs. |
+| [tsp_v14_christofides_adaptive_matching.py](solutions/tsp_v14_christofides_adaptive_matching.py) | Christofides Adaptive Matching | 500 | 17.57 | 0.993x | 3.14 | ❌ **REJECTED** | **CRITICAL FINDING**: Claimed 1.32% improvement was based on weaker baseline. Actual performance: -0.71% worse than strong NN+2opt. Does NOT meet 0.1% publication threshold. Algorithm uses MST edge centrality to guide matching - concept novel but ineffective. |
 
 ## Adversarial Test Results (Christofides)
 
@@ -61,6 +62,32 @@ evovera/
 | Nearly Collinear | 3.71 | 4.82 | 1.300x | 2-opt local search test |
 | Extreme Distance | 3.25 | 3.45 | 1.062x | Numerical stability |
 | Degenerate MST | 4.06 | 4.11 | 1.013x | Odd-degree vertex test |
+
+## Novelty Review Results (NEW MISSION)
+
+**Mission**: Verify novelty of hybrid TSP algorithms. Only algorithms with >0.1% improvement over NN+2opt baseline (17.69) and no literature matches qualify for publication.
+
+### 📊 **Novelty Assessment Summary**
+
+| Algorithm | Improvement | Novelty Status | Key Finding |
+|-----------|-------------|----------------|-------------|
+| **v8 Christofides-ILS** | +0.74% | ✅ **POTENTIALLY NOVEL** | Combines Christofides theoretical guarantee with ILS metaheuristic. No direct literature matches found. |
+| **v14 Christofides Adaptive Matching** | -0.71% | ❌ **REJECTED** | Claimed 1.32% improvement was based on weaker baseline. Actual performance worse than strong NN+2opt. |
+| **v15 Algorithmic Ecology** | N/A | ❌ **REJECTED** | Ensemble methods well-established in literature. Not novel. |
+| **v4-v7, v9-v13** | Various | ❌ **REJECTED** | Incremental improvements or established concepts. |
+
+### 🔍 **Critical Discovery: v14 Baseline Issue**
+- **Claim**: 1.32% improvement over NN+2opt (17.69 → 17.4568)
+- **Reality**: -0.71% worse than strong NN+2opt implementation (17.4438 → 17.5669)
+- **Root Cause**: Baseline comparison used weaker NN+2opt implementation
+- **Verification**: Double-checked with 10-instance benchmark, confirmed discrepancy
+- **Result**: Algorithm REJECTED for publication despite novel concept (MST edge centrality)
+
+### 📈 **Best Performing Novel Algorithm**
+- **v8 Christofides-ILS**: +0.74% improvement (exceeds 0.1% threshold)
+- **Concept**: Christofides 1.5x approximation + Iterative Local Search refinement
+- **Novelty**: No literature matches for this specific integration
+- **Status**: ✅ **POTENTIAL PUBLICATION CANDIDATE**
 
 ## Active Challenges
 
