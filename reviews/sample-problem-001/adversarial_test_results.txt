@@ -1,0 +1,12 @@
+Adversarial Vulnerability Score: 0.64/3.0
+Edge cases to test: 10
+Arrays with alternating very large positive and negative numbers
+Arrays where all elements are zero
+Arrays with duplicate maximum subarrays
+Arrays where maximum subarray is the entire array
+Arrays where maximum subarray is a single element
+Arrays with arithmetic progressions
+Arrays with geometric progressions
+Random arrays with known optimal solutions (for property testing)
+Arrays with overflow potential in other languages (test with sys.maxsize)
+Arrays with numpy arrays or other sequence types

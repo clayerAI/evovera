@@ -1,0 +1,36 @@
+{
+  "version": "1.0",
+  "description": "Track challenges issued by Vera and their resolution status",
+  "challenges": [
+    {
+      "challenge_id": "sample-001-type-safety",
+      "date": "2026-04-03",
+      "severity": "medium",
+      "status": "open",
+      "description": "Solution lacks input validation for type safety",
+      "evidence": "Function crashes on non-integer inputs (strings, None) and accepts floats despite integer documentation",
+      "adversarial_score": 0.64,
+      "solution": "sample-problem-001",
+      "reviewer": "Vera"
+    },
+    {
+      "challenge_id": "sample-001-infinity-handling",
+      "date": "2026-04-03",
+      "severity": "low",
+      "status": "open",
+      "description": "Poor handling of infinity values",
+      "evidence": "Function returns incorrect results for arrays containing float('inf') or float('-inf')",
+      "adversarial_score": 0.64,
+      "solution": "sample-problem-001",
+      "reviewer": "Vera"
+    }
+  ],
+  "statistics": {
+    "total_challenges": 2,
+    "open_challenges": 2,
+    "addressed_challenges": 0,
+    "resolved_challenges": 0,
+    "average_resolution_time_days": 0
+  },
+  "last_updated": "2026-04-03"
+}
