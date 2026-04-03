@@ -1,0 +1,96 @@
+{
+  "known_hybrid_tsp_approaches": [
+    {
+      "name": "Genetic Algorithm + Local Search",
+      "description": "Genetic algorithm for global search combined with local search heuristics (2-opt, 3-opt)",
+      "key_papers": [
+        "Grefenstette, J.J., et al. (1985). Genetic Algorithms for the Traveling Salesman Problem",
+        "Larrañaga, P., et al. (1999). A review on genetic algorithms for the traveling salesman problem"
+      ],
+      "performance_notes": "Common hybrid approach, well-documented in literature"
+    },
+    {
+      "name": "Ant Colony Optimization + 2-opt/3-opt",
+      "description": "Ant colony optimization metaheuristic with local search improvement",
+      "key_papers": [
+        "Dorigo, M., & Gambardella, L.M. (1997). Ant colony system: A cooperative learning approach to the traveling salesman problem",
+        "Stützle, T., & Hoos, H.H. (2000). MAX-MIN Ant System"
+      ],
+      "performance_notes": "Standard hybrid approach in swarm intelligence literature"
+    },
+    {
+      "name": "Simulated Annealing + Local Search",
+      "description": "Simulated annealing with embedded local search heuristics",
+      "key_papers": [
+        "Kirkpatrick, S., et al. (1983). Optimization by simulated annealing",
+        "Johnson, D.S., et al. (1991). Optimization by simulated annealing: An experimental evaluation"
+      ],
+      "performance_notes": "Classic hybrid approach, extensively studied"
+    },
+    {
+      "name": "Tabu Search + Adaptive Memory",
+      "description": "Tabu search with adaptive memory programming",
+      "key_papers": [
+        "Glover, F. (1989). Tabu search—Part I",
+        "Glover, F. (1990). Tabu search—Part II"
+      ],
+      "performance_notes": "Well-established hybrid metaheuristic"
+    },
+    {
+      "name": "Christofides + Local Search Variants",
+      "description": "Christofides algorithm combined with various local search improvements",
+      "key_papers": [
+        "Christofides, N. (1976). Worst-case analysis of a new heuristic for the travelling salesman problem",
+        "Johnson, D.S., & McGeoch, L.A. (1997). The traveling salesman problem: A case study in local optimization"
+      ],
+      "performance_notes": "Standard approach - Christofides with 2-opt/3-opt is baseline"
+    },
+    {
+      "name": "Lin-Kernighan Heuristic Variants",
+      "description": "Lin-Kernighan and its numerous variants (LK-H, LK-opt)",
+      "key_papers": [
+        "Lin, S., & Kernighan, B.W. (1973). An effective heuristic algorithm for the traveling-salesman problem",
+        "Helsgaun, K. (2000). An effective implementation of the Lin-Kernighan traveling salesman heuristic"
+      ],
+      "performance_notes": "State-of-the-art for TSP, many hybrid variants exist"
+    },
+    {
+      "name": "Neural Network + Local Search",
+      "description": "Neural network approaches combined with traditional heuristics",
+      "key_papers": [
+        "Hopfield, J.J., & Tank, D.W. (1985). 'Neural' computation of decisions in optimization problems",
+        "Smith, K.A. (1999). Neural networks for combinatorial optimization: A review of more than a decade of research"
+      ],
+      "performance_notes": "Less common but documented in literature"
+    },
+    {
+      "name": "Particle Swarm Optimization + Local Search",
+      "description": "PSO combined with local improvement heuristics",
+      "key_papers": [
+        "Kennedy, J., & Eberhart, R. (1995). Particle swarm optimization",
+        "Clerc, M. (2006). Particle swarm optimization"
+      ],
+      "performance_notes": "Standard hybrid in PSO literature"
+    }
+  ],
+  "search_queries": [
+    "hybrid traveling salesman problem algorithm",
+    "TSP metaheuristic combination",
+    "genetic algorithm local search TSP",
+    "ant colony optimization 2-opt TSP",
+    "simulated annealing local search TSP",
+    "tabu search adaptive memory TSP",
+    "Christofides algorithm improvements",
+    "Lin-Kernighan heuristic variants",
+    "neural network TSP heuristic",
+    "particle swarm optimization TSP"
+  ],
+  "academic_databases": [
+    "IEEE Xplore",
+    "ACM Digital Library",
+    "SpringerLink",
+    "ScienceDirect",
+    "Google Scholar",
+    "arXiv"
+  ]
+}
