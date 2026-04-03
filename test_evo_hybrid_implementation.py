@@ -68,6 +68,20 @@ def test_hybrid_implementation():
     except AttributeError:
         print("No nested CustomTSP class found")
     
+    # Direct method verification - more reliable than pattern matching
+    print("\nDirect method verification:")
+    methods_to_check = [
+        'greedy_minimum_matching',
+        'optimal_minimum_matching_dp', 
+        'hybrid_minimum_matching'
+    ]
+    
+    for method in methods_to_check:
+        if hasattr(tsp, method):
+            print(f"✓ Has {method}() method")
+        else:
+            print(f"✗ Missing {method}() method")
+    
     return len(odd_vertices)
 
 def check_dp_implementation():
@@ -75,10 +89,17 @@ def check_dp_implementation():
     print("\n" + "=" * 60)
     print("Checking for DP optimal matching implementation...")
     
-    # Search for DP implementation patterns
+    # Search for DP implementation patterns using proper regex
     import os
+    import re
     
-    dp_patterns = ['def.*optimal.*matching', 'def.*dp.*matching', 'dynamic.*programming.*matching']
+    dp_patterns = [
+        r'def.*optimal.*matching',
+        r'def.*dp.*matching', 
+        r'dynamic.*programming.*matching',
+        r'optimal_minimum_matching_dp',  # Direct method name
+        r'hybrid_minimum_matching'       # Hybrid method name
+    ]
     found_files = []
     
     for root, dirs, files in os.walk('/workspace/evovera'):
@@ -87,21 +108,22 @@ def check_dp_implementation():
                 filepath = os.path.join(root, file)
                 try:
                     with open(filepath, 'r') as f:
-                        content = f.read()
+                        content = f.read().lower()
                         for pattern in dp_patterns:
-                            if pattern in content.lower():
-                                found_files.append(filepath)
+                            # Use regex search instead of string 'in' operator
+                            if re.search(pattern, content):
+                                found_files.append((filepath, pattern))
                                 break
                 except:
                     pass
     
     if found_files:
-        print(f"Found DP patterns in {len(found_files)} files:")
-        for f in found_files:
-            print(f"  - {f}")
+        print(f"Found DP/hybrid patterns in {len(found_files)} files:")
+        for filepath, pattern in found_files:
+            print(f"  - {filepath} (pattern: {pattern})")
         return True
     else:
-        print("No DP optimal matching implementation found")
+        print("No DP optimal matching implementation found via pattern search")
         return False
 
 if __name__ == "__main__":
