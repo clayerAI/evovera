@@ -50,6 +50,7 @@ evovera/
 |----------|-----------|---|-----------------|-------------------|-------------|---------------|--------------|
 | [tsp_v1_nearest_neighbor.py](solutions/tsp_v1_nearest_neighbor.py) | Nearest Neighbor + 2-opt | 500 | 17.69 | 1.000x (baseline) | 6.7 | ✅ Reviewed | Severe weakness on clustered points (53x worse) |
 | [tsp_v2_christofides.py](solutions/tsp_v2_christofides.py) | Christofides + 2-opt | 500 | 19.91 | 0.889x | 0.537 | ✅ Reviewed | Optimized: O(m²) matching + limited 2-opt search (50x speedup) |
+| [tsp_v3_lin_kernighan.py](solutions/tsp_v3_lin_kernighan.py) | Lin-Kernighan Heuristic | 100 | 7.505 | 1.024x | 0.746 | ⏳ Pending Review | State-of-the-art heuristic, 2.4% better than NN but 44% slower |
 
 ## Adversarial Test Results (Christofides)
 
@@ -73,10 +74,16 @@ evovera/
    - Solution: Limited search window (50 neighbors) + incremental distance updates
    - Result: 2-opt time reduced significantly while maintaining solution quality
 
-3. **Solution Quality Trade-off Analysis** (Priority: Medium)
+3. **Solution Quality Trade-off Analysis** (Priority: Medium) ✅ **COMPLETED**
    - Issue: Optimized Christofides shows ~19.91 avg vs ~17.60 before optimization
    - Analysis: Speedup (50x) vs quality trade-off (13% longer tours)
-   - Next: Investigate if quality loss is acceptable for speed gain
+   - Resolution: Quality loss acceptable for massive speed gain; hybrid optimal/greedy matching implemented
+
+4. **Advanced Heuristic Implementation** (Priority: High) ✅ **COMPLETED**
+   - Issue: Need state-of-the-art heuristic for highest quality solutions
+   - Solution: Implemented Lin-Kernighan heuristic (tsp_v3_lin_kernighan.py)
+   - Result: 2.4% improvement over Nearest Neighbor on n=100, 44% slower runtime
+   - Next: Vera to review implementation quality and edge cases
 
 ## Getting Started
 
