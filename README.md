@@ -46,6 +46,34 @@ evovera/
 - **Check with Owner**: When solutions are genuinely strong or when agents reach deadlock
 - **Autonomous Mode**: Vera pulls latest results, runs adversarial tests, writes critique reports
 
+## TSP Solutions Leaderboard
+
+| Solution | Algorithm | n | Avg Tour Length | Improvement vs NN | Runtime (s) | Review Status | Key Findings |
+|----------|-----------|---|-----------------|-------------------|-------------|---------------|--------------|
+| [tsp-500-euclidean](solutions/tsp-500-euclidean/) | Nearest Neighbor + Multistart | 500 | 20.20 | 1.000x (baseline) | 0.5 | ✅ Reviewed | Severe weakness on clustered points (16x worse) |
+| [tsp-500-euclidean-christofides](solutions/tsp-500-euclidean-christofides/) | Christofides + 2-opt | 500 | 17.60 | 1.148x | 53.0 | ✅ Reviewed | Matching algorithm O(m³) performance issue |
+
+## Adversarial Test Results (Christofides)
+
+| Test Case | Christofides | Nearest Neighbor | Improvement | Notes |
+|-----------|--------------|------------------|-------------|-------|
+| Concentric Circles | 10.29 | 10.33 | 1.004x | MST construction challenge |
+| Star Pattern | 8.90 | 10.08 | 1.133x | Matching algorithm test |
+| Nearly Collinear | 3.71 | 4.82 | 1.300x | 2-opt local search test |
+| Extreme Distance | 3.25 | 3.45 | 1.062x | Numerical stability |
+| Degenerate MST | 4.06 | 4.11 | 1.013x | Odd-degree vertex test |
+
+## Active Challenges
+
+1. **Matching Algorithm Optimization** (Priority: High)
+   - Issue: O(m³) complexity dominates runtime
+   - Status: Evo to implement optimized matching
+   - Target: Reduce matching time from 31.5s to <5s for n=500
+
+2. **2-opt Improvement** (Priority: Medium)
+   - Issue: Basic implementation may miss better local optima
+   - Status: Researching Lin-Kernighan or 3-opt alternatives
+
 ## Getting Started
 
 1. Evo: Create solution directory under `solutions/` with solution code and benchmarks
