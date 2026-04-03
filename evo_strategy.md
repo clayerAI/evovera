@@ -208,8 +208,10 @@ For each algorithmic experiment:
     - Concept: score = distance * (1 - centrality_weight * centrality) where centrality measures how central edge is in MST
     - Status: Implemented and tested - shows identical performance to standard Christofides (weight=0)
     - Issue: Centrality calculation may not be differentiating edges effectively, or matching algorithm is too deterministic
-    - Next: Debug centrality calculation and test with more varied centrality measures
-    - Novelty assessment: PENDING - Vera needs to review
+    - Novelty assessment: **POTENTIALLY NOVEL - REQUIRES DEEPER INVESTIGATION**
+    - Vera's finding: The specific application of MST edge centrality to guide Christofides matching appears unique in literature
+    - Next: Conduct deeper literature review on MST centrality in TSP to confirm novelty
+    - Performance: Initial benchmarks show similar performance to standard Christofides
 
 12. **Algorithmic Ecology for TSP** (tsp_v15_algorithmic_ecology.py)
     - Components: Multiple algorithms (NN, NN+2opt, Christofides, Multi-start 2-opt, Greedy) + coordinator + 2-opt refinement
@@ -217,38 +219,48 @@ For each algorithmic experiment:
     - Concept: 1) Diversity phase (run all algorithms), 2) Analysis phase (analyze solution characteristics), 3) Selection phase (select best algorithm based on analysis), 4) Refinement phase (refine selected solution)
     - Status: Implemented and working - consistently selects multi_start algorithm for random Euclidean instances
     - Performance: Average tour length 6.2894 for n=50, runtime 0.0886s
-    - Novelty assessment: PENDING - Vera needs to review
-    - Potential: Truly novel approach to algorithm selection and coordination based on solution characteristics
+    - Novelty assessment: **REJECTED - NOT NOVEL**
+    - Vera's finding: Ensemble methods and algorithm selection for TSP are well-established research areas with multiple papers describing similar approaches (ensemble GAs, algorithm portfolios)
+    - Recommendation: Focus on more novel integration mechanisms beyond standard ensemble approaches
 
 ## Progress Summary (2026-04-03)
 **Total Algorithms Implemented**: 15/20+ target
 **Novelty Review Status**:
 - ✅ **Verified Novel**: 1 algorithm (Christofides-ILS hybrid v8)
-- ❌ **Rejected as Non-Novel**: 9 algorithms (v4, v5, v6, v7, v9, v10, v11, v12, v13)
-- ⏳ **Pending Review**: 5 algorithms (v1, v2, v3, v14, v15)
+- ❌ **Rejected as Non-Novel**: 10 algorithms (v4, v5, v6, v7, v9, v10, v11, v12, v13, v15)
+- 🔍 **Potentially Novel (Needs Deeper Review)**: 1 algorithm (v14 - Christofides with Adaptive Matching)
+- ⏳ **Pending Review**: 3 algorithms (v1, v2, v3)
 
-**Key Pattern Identified**: Standard metaheuristic combinations (Christofides-Tabu, NN-GA, NN-ILS variants) are already in literature. Need to focus on truly novel integration mechanisms like algorithmic coordination, structural analysis, or learning-based guidance.
+**Key Pattern Identified**: Standard metaheuristic combinations (Christofides-Tabu, NN-GA, NN-ILS variants) and ensemble methods (v15) are already in literature. Need to focus on truly novel integration mechanisms like structural analysis (v14), algorithmic coordination, or learning-based guidance.
 
-## Vera's Novelty Assessment Results: v10-v13 (2026-04-03)
-**ALL FOUR ALGORITHMS REJECTED AS NON-NOVEL**:
-1. **v10: Christofides MST ILS Memory Hybrid** - Memory-based ILS is established concept (see "A memory-based iterated local search algorithm" literature)
-2. **v11: NN ILS Adaptive Memory Hybrid** - Adaptive ILS (AILS) is well-studied with multiple papers
-3. **v12: NN Fast ILS with 3-opt** - 3-opt with ILS is standard approach
-4. **v13: NN Efficient ILS with Incremental Updates** - Incremental updates are common implementation optimizations
+## Vera's Novelty Assessment Results: v14-v15 (2026-04-03)
+**v14: Christofides with Adaptive Matching**:
+- **Status**: Potentially novel (requires deeper investigation)
+- **Assessment**: The specific application of MST edge centrality to guide Christofides matching appears unique in literature
+- **Performance**: Initial benchmarks show similar performance to standard Christofides
+- **Recommendation**: Conduct deeper literature review and comprehensive 500-node benchmarks
 
-**Pattern Observed**: These algorithms represent incremental improvements and implementation optimizations rather than fundamentally novel integration mechanisms.
+**v15: Algorithmic Ecology**:
+- **Status**: REJECTED - NOT NOVEL
+- **Assessment**: Ensemble methods and algorithm selection for TSP are well-established research areas
+- **Literature Evidence**: Multiple papers describe similar approaches (ensemble GAs, algorithm portfolios)
+- **Recommendation**: Focus on more novel integration mechanisms
 
-**Vera's Recommendation**: Focus on more radical algorithmic innovations:
-- Learning-based guidance of one algorithm by another
-- Novel problem decomposition approaches  
-- Unconventional combinations of theoretical guarantees with practical heuristics
-- Algorithms that adapt based on discovered problem structure
+**Updated Pattern Analysis**: 
+- Standard metaheuristic combinations (Christofides-Tabu, NN-GA, NN-ILS variants) are already in literature
+- Ensemble methods and algorithm selection (v15) are also well-established
+- **Remaining promising direction**: Structural analysis approaches (v14) using MST edge centrality may be novel
+- Need to investigate if MST centrality-guided matching is truly new or exists in literature
 
-**Next Focus Areas**:
-1. Algorithmic coordination approaches (like v15 ecology)
-2. Structural analysis of solutions to guide algorithm selection
-3. Learning-based guidance of one algorithm by another
-4. Novel problem decomposition approaches
+**Vera's Next Steps**:
+1. Conduct deeper literature review on MST centrality in TSP for v14
+2. Continue working toward algorithms that beat 17.69 baseline by >0.1%
+
+**My Next Focus Areas**:
+1. Conduct literature review for v14 to confirm novelty
+2. Focus on structural analysis approaches (like v14)
+3. Explore learning-based guidance of one algorithm by another
+4. Investigate novel problem decomposition approaches
 
 ### VRP Benchmark Framework
 - **Implemented**: VRP benchmark loader with synthetic instances
@@ -256,12 +268,13 @@ For each algorithmic experiment:
 - **Status**: 30% complete - need to download real benchmark instances from CVRPLIB/VRP Web
 
 ## Next Steps (Updated 2026-04-03)
-1. **✅ v14 and v15 interfaces standardized** - both now have solve_tsp() wrapper functions and are ready for novelty review
-2. **Submit v14 and v15 to Vera** for novelty review - both are now interface-compatible
-3. **Benchmark all 15 algorithms** against NN+2opt baseline for n=500 - need to fix benchmark script issues
-4. **Focus on truly novel approaches** - algorithmic coordination (v15), structural analysis (v14), learning-based guidance
-5. **Implement 5+ more novel hybrids** to reach 20+ target
-6. **Analyze pattern** - why standard metaheuristic combinations get rejected, focus on innovative integration mechanisms
+1. **✅ v14 and v15 interfaces standardized** - both now have solve_tsp() wrapper functions
+2. **✅ v14 and v15 novelty review completed** - v14 potentially novel (needs deeper review), v15 rejected as non-novel
+3. **Conduct literature review for v14** - research MST centrality in TSP literature to confirm novelty
+4. **Benchmark v14 comprehensively** - run 500-node benchmarks to verify performance
+5. **Focus on structural analysis approaches** - v14 direction appears promising, explore similar structural analysis methods
+6. **Implement 5+ more novel hybrids** to reach 20+ target, focusing on truly innovative integration mechanisms
+7. **Analyze pattern** - ensemble methods (v15) also rejected, focus on structural analysis and learning-based guidance
 
 ## Benchmark Results Summary (2026-04-03)
 **Comprehensive benchmark analysis completed** - tested all 15 TSP hybrid algorithms

@@ -475,21 +475,17 @@ class EuclideanTSPChristofides:
         return tour, distance
 
 
-def solve_tsp(coordinates: List[Tuple[float, float]]) -> List[int]:
+def solve_tsp(points):
     """
-    Solve TSP using Christofides algorithm with 2-opt (Evo's algorithm).
-    Wrapper for adversarial testing framework.
+    Standard interface for TSP algorithms.
     
     Args:
-        coordinates: List of (x, y) coordinates for each city
-    
+        points: numpy array of shape (n, 2) with (x, y) coordinates
+        
     Returns:
-        List of city indices in visitation order (0-based)
+        tuple: (tour, length) where tour is list of indices, length is float
     """
-    n = len(coordinates)
-    
-    # Convert coordinates to numpy array
-    points = np.array(coordinates)
+    n = len(points)
     
     # Create a custom TSP instance with these points
     class CustomTSP:
@@ -511,181 +507,84 @@ def solve_tsp(coordinates: List[Tuple[float, float]]) -> List[int]:
             return self.dist_matrix[i, j]
         
         def prim_mst(self):
-            """Prim's algorithm for MST."""
+            """Prim's algorithm for Minimum Spanning Tree."""
             visited = [False] * self.n
-            min_edge = [float('inf')] * self.n
             parent = [-1] * self.n
-            min_edge[0] = 0
+            key = [float('inf')] * self.n
+            key[0] = 0
             
             for _ in range(self.n):
-                # Find minimum edge vertex
+                # Find minimum key vertex not yet visited
+                min_key = float('inf')
                 u = -1
                 for v in range(self.n):
-                    if not visited[v] and (u == -1 or min_edge[v] < min_edge[u]):
+                    if not visited[v] and key[v] < min_key:
+                        min_key = key[v]
                         u = v
                 
                 visited[u] = True
                 
-                # Update adjacent vertices
+                # Update key values for adjacent vertices
                 for v in range(self.n):
-                    if not visited[v] and self.distance(u, v) < min_edge[v]:
-                        min_edge[v] = self.distance(u, v)
+                    if not visited[v] and self.distance(u, v) < key[v]:
+                        key[v] = self.distance(u, v)
                         parent[v] = u
             
             # Build MST edges
             mst_edges = []
             for v in range(1, self.n):
                 if parent[v] != -1:
-                    mst_edges.append((parent[v], v))
+                    mst_edges.append((parent[v], v, self.distance(parent[v], v)))
+            
             return mst_edges
         
-        def find_odd_degree_vertices(self, edges):
-            """Find vertices with odd degree in the MST."""
+        def find_odd_degree_vertices(self, mst_edges):
+            """Find vertices with odd degree in MST."""
             degree = [0] * self.n
-            for u, v in edges:
+            for u, v, _ in mst_edges:
                 degree[u] += 1
                 degree[v] += 1
             
             odd_vertices = [i for i in range(self.n) if degree[i] % 2 == 1]
             return odd_vertices
         
-        def greedy_minimum_matching(self, odd_vertices):
-            """Greedy minimum-weight perfect matching on odd vertices (O(m²))."""
-            if not odd_vertices:
-                return []
-            
-            matched = [False] * self.n
+        def greedy_matching(self, odd_vertices):
+            """Greedy matching for odd-degree vertices."""
+            matched = [False] * len(odd_vertices)
             matching_edges = []
             
-            # Deterministic sorting by distance from center to eliminate variance
-            # Calculate center of all points
-            center = np.mean(self.points, axis=0)
-            
-            # Sort odd vertices by distance from center (deterministic)
-            odd_list = sorted(odd_vertices, 
-                            key=lambda v: np.linalg.norm(self.points[v] - center))
-            
-            while odd_list:
-                u = odd_list.pop(0)
-                if matched[u]:
+            for i in range(len(odd_vertices)):
+                if matched[i]:
                     continue
                 
-                # Find closest unmatched odd vertex
-                best_v = None
-                best_dist = float('inf')
+                min_dist = float('inf')
+                min_j = -1
                 
-                for v in odd_list:
-                    if not matched[v]:
-                        dist = self.distance(u, v)
-                        if dist < best_dist:
-                            best_dist = dist
-                            best_v = v
+                for j in range(i + 1, len(odd_vertices)):
+                    if not matched[j]:
+                        dist = self.distance(odd_vertices[i], odd_vertices[j])
+                        if dist < min_dist:
+                            min_dist = dist
+                            min_j = j
                 
-                if best_v is not None:
-                    matching_edges.append((u, best_v))
-                    matched[u] = True
-                    matched[best_v] = True
-                    odd_list.remove(best_v)
+                if min_j != -1:
+                    matching_edges.append((odd_vertices[i], odd_vertices[j], min_dist))
+                    matched[i] = True
+                    matched[min_j] = True
             
             return matching_edges
         
-        def optimal_minimum_matching_dp(self, odd_vertices):
-            """
-            Dynamic programming optimal minimum-weight perfect matching.
-            Only feasible for m ≤ 14 (2^14 * 14^2 ≈ 3.2M operations).
-            """
-            m = len(odd_vertices)
-            if m % 2 != 0:
-                raise ValueError("Number of odd vertices must be even")
-            
-            if m > 14:
-                raise ValueError(f"DP optimal matching not feasible for m={m} > 14")
-            
-            # Map odd vertices to indices 0..m-1 for DP
-            idx_to_vertex = odd_vertices.copy()
-            vertex_to_idx = {v: i for i, v in enumerate(idx_to_vertex)}
-            
-            # Precompute distances between all odd vertices
-            dist = [[0.0] * m for _ in range(m)]
-            for i in range(m):
-                for j in range(i + 1, m):
-                    d = self.distance(idx_to_vertex[i], idx_to_vertex[j])
-                    dist[i][j] = d
-                    dist[j][i] = d
-            
-            # DP[mask] = minimum cost to match vertices in mask
-            dp = [float('inf')] * (1 << m)
-            parent = [-1] * (1 << m)  # For reconstruction
-            
-            dp[0] = 0.0  # All vertices matched
-            
-            # Iterate over all masks
-            for mask in range(1 << m):
-                if dp[mask] == float('inf'):
-                    continue
-                
-                # Find first unmatched vertex
-                i = 0
-                while i < m and (mask >> i) & 1:
-                    i += 1
-                
-                if i == m:
-                    continue  # All vertices matched
-                
-                # Try matching i with each unmatched vertex j > i
-                for j in range(i + 1, m):
-                    if not (mask >> j) & 1:
-                        new_mask = mask | (1 << i) | (1 << j)
-                        new_cost = dp[mask] + dist[i][j]
-                        
-                        if new_cost < dp[new_mask]:
-                            dp[new_mask] = new_cost
-                            parent[new_mask] = (mask, i, j)
-            
-            # Reconstruct matching from DP
-            mask = (1 << m) - 1  # All vertices unmatched initially
-            matching_edges = []
-            
-            while mask != 0:
-                prev_mask, i, j = parent[mask]
-                u = idx_to_vertex[i]
-                v = idx_to_vertex[j]
-                weight = dist[i][j]
-                matching_edges.append((u, v))
-                mask = prev_mask
-            
-            return matching_edges
-        
-        def hybrid_minimum_matching(self, odd_vertices):
-            """
-            Hybrid matching: optimal DP for m ≤ 14, greedy for m > 14.
-            """
-            m = len(odd_vertices)
-            
-            if m == 0:
-                return []
-            
-            if m <= 14:
-                try:
-                    return self.optimal_minimum_matching_dp(odd_vertices)
-                except (ValueError, MemoryError) as e:
-                    print(f"DP optimal matching failed for m={m}: {e}. Falling back to greedy.")
-                    return self.greedy_minimum_matching(odd_vertices)
-            else:
-                return self.greedy_minimum_matching(odd_vertices)
-        
-        def combine_mst_and_matching(self, mst_edges, matching_edges):
-            """Combine MST and matching edges to create Eulerian multigraph."""
-            # Use adjacency list representation
-            graph = [[] for _ in range(self.n)]
+        def build_multigraph(self, mst_edges, matching_edges):
+            """Build multigraph from MST and matching edges."""
+            graph = {i: [] for i in range(self.n)}
             
             # Add MST edges
-            for u, v in mst_edges:
+            for u, v, _ in mst_edges:
                 graph[u].append(v)
                 graph[v].append(u)
             
             # Add matching edges
-            for u, v in matching_edges:
+            for u, v, _ in matching_edges:
                 graph[u].append(v)
                 graph[v].append(u)
             
@@ -694,14 +593,10 @@ def solve_tsp(coordinates: List[Tuple[float, float]]) -> List[int]:
         def find_eulerian_tour(self, graph):
             """Find Eulerian tour using Hierholzer's algorithm."""
             # Make a copy of the graph
-            graph_copy = [neighbors.copy() for neighbors in graph]
+            graph_copy = {v: neighbors[:] for v, neighbors in graph.items()}
             
-            # Find a vertex with neighbors
-            start = 0
-            for i in range(self.n):
-                if graph_copy[i]:
-                    start = i
-                    break
+            # Find a vertex with odd degree (or any vertex)
+            start = next((v for v, neighbors in graph_copy.items() if neighbors), 0)
             
             stack = [start]
             tour = []
@@ -710,6 +605,7 @@ def solve_tsp(coordinates: List[Tuple[float, float]]) -> List[int]:
                 v = stack[-1]
                 if graph_copy[v]:
                     u = graph_copy[v].pop()
+                    # Remove the reverse edge
                     graph_copy[u].remove(v)
                     stack.append(u)
                 else:
@@ -721,15 +617,18 @@ def solve_tsp(coordinates: List[Tuple[float, float]]) -> List[int]:
             """Shortcut Eulerian tour to Hamiltonian tour."""
             visited = [False] * self.n
             tour = []
-            total_distance = 0.0
             
             for v in eulerian_tour:
                 if not visited[v]:
                     visited[v] = True
                     tour.append(v)
             
+            # Return to starting city
+            tour.append(tour[0])
+            
             # Calculate total distance
-            for i in range(len(tour)):
+            total_distance = 0.0
+            for i in range(len(tour) - 1):
                 j = (i + 1) % len(tour)
                 total_distance += self.distance(tour[i], tour[j])
             
@@ -737,90 +636,65 @@ def solve_tsp(coordinates: List[Tuple[float, float]]) -> List[int]:
         
         def two_opt(self, tour, max_iterations=500):
             """2-opt local search with limited neighbor search."""
-            best_tour = tour.copy()
-            best_distance = self.tour_distance(tour)
+            if len(tour) < 4 or tour[0] != tour[-1]:
+                return tour, self.tour_distance(tour)
             
+            tour = tour[:-1]
             n = len(tour)
             improved = True
-            iterations = 0
+            iteration = 0
             
-            while improved and iterations < max_iterations:
+            while improved and iteration < max_iterations:
                 improved = False
-                
-                for i in range(n):
-                    # Only check limited window of neighbors for speed
-                    window_size = min(50, n)
-                    for k in range(1, window_size):
-                        j = (i + k) % n
-                        
-                        # Calculate potential improvement
-                        a1, a2 = best_tour[i], best_tour[(i + 1) % n]
-                        b1, b2 = best_tour[j], best_tour[(j + 1) % n]
-                        
-                        current = self.distance(a1, a2) + self.distance(b1, b2)
-                        new = self.distance(a1, b1) + self.distance(a2, b2)
+                for i in range(n - 1):
+                    for j in range(i + 2, min(i + 21, n)):  # Limited neighborhood
+                        # Calculate current distance for edges (i, i+1) and (j, j+1)
+                        current = (self.distance(tour[i], tour[(i + 1) % n]) +
+                                  self.distance(tour[j], tour[(j + 1) % n]))
+                        # Calculate new distance if we reverse segment between i+1 and j
+                        new = (self.distance(tour[i], tour[j]) +
+                              self.distance(tour[(i + 1) % n], tour[(j + 1) % n]))
                         
                         if new < current:
-                            # Perform 2-opt swap
-                            if i < j:
-                                best_tour[i+1:j+1] = reversed(best_tour[i+1:j+1])
-                            else:
-                                # Handle wrap-around case
-                                segment = best_tour[i+1:] + best_tour[:j+1]
-                                segment.reverse()
-                                best_tour[i+1:] = segment[:len(best_tour)-i-1]
-                                best_tour[:j+1] = segment[len(best_tour)-i-1:]
-                            
-                            best_distance = self.tour_distance(best_tour)
+                            # Reverse the segment
+                            tour[i + 1:j + 1] = reversed(tour[i + 1:j + 1])
                             improved = True
                             break
-                    
                     if improved:
                         break
-                
-                iterations += 1
+                iteration += 1
             
-            return best_tour, best_distance
-        
-        def tour_distance(self, tour):
-            """Calculate total distance of a tour."""
-            total = 0.0
-            for i in range(len(tour)):
-                j = (i + 1) % len(tour)
-                total += self.distance(tour[i], tour[j])
-            return total
-        
-        def christofides(self, apply_two_opt: bool = True):
-            """
-            Christofides algorithm for Euclidean TSP.
+            # Add back the starting city
+            tour.append(tour[0])
             
-            Args:
-                apply_two_opt: Whether to apply 2-opt local search improvement
-                
-            Returns:
-                tour: Hamiltonian tour
-                total_distance: Total tour length
-            """
-            # Step 1: Compute MST
+            # Calculate final distance
+            distance = 0.0
+            for i in range(len(tour) - 1):
+                distance += self.distance(tour[i], tour[i + 1])
+            
+            return tour, distance
+        
+        def christofides(self, apply_two_opt=True):
+            """Christofides algorithm for TSP."""
+            # Step 1: Find MST
             mst_edges = self.prim_mst()
             
-            # Step 2: Find odd-degree vertices in MST
+            # Step 2: Find odd-degree vertices
             odd_vertices = self.find_odd_degree_vertices(mst_edges)
             
-            # Step 3: Minimum-weight perfect matching on odd vertices
-            # Use hybrid matching: optimal DP for m ≤ 14, greedy for m > 14
-            matching_edges = self.hybrid_minimum_matching(odd_vertices)
+            # Step 3: Minimum weight perfect matching on odd vertices
+            matching_edges = self.greedy_matching(odd_vertices)
             
-            # Step 4: Combine MST and matching to create Eulerian multigraph
-            eulerian_graph = self.combine_mst_and_matching(mst_edges, matching_edges)
+            # Step 4: Build multigraph
+            graph = self.build_multigraph(mst_edges, matching_edges)
             
             # Step 5: Find Eulerian tour
-            eulerian_tour = self.find_eulerian_tour(eulerian_graph)
+            eulerian_tour = self.find_eulerian_tour(graph)
             
             # Step 6: Shortcut to Hamiltonian tour
             tour, distance = self.shortcut_eulerian_tour(eulerian_tour)
             
-            # Step 7: Optional 2-opt local search improvement
+            # Step 7: Optional 2-opt improvement
             if apply_two_opt:
                 tour, distance = self.two_opt(tour, max_iterations=500)
             
@@ -831,7 +705,7 @@ def solve_tsp(coordinates: List[Tuple[float, float]]) -> List[int]:
     # Run Christofides algorithm
     tour, distance = tsp.christofides(apply_two_opt=True)
     
-    return tour
+    return tour, distance
 
 
 def benchmark_christofides():

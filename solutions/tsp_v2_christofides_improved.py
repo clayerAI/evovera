@@ -670,6 +670,33 @@ class ImprovedMatchingChristofides:
         print(f"{'='*80}")
 
 
+def solve_tsp(points):
+    """
+    Standard interface for TSP algorithms.
+    
+    Args:
+        points: numpy array of shape (n, 2) with (x, y) coordinates
+        
+    Returns:
+        tuple: (tour, length) where tour is list of indices, length is float
+    """
+    n = points.shape[0]
+    
+    # Create solver instance with the given points
+    # We need to modify the class to accept external points
+    # For now, create a simple wrapper
+    class ExternalPointsSolver(ImprovedMatchingChristofides):
+        def __init__(self, points, matching_algorithm='path_growing'):
+            self.points = points
+            self.n = points.shape[0]
+            self.seed = None
+            self.matching_algorithm = matching_algorithm
+            self.dist_matrix = None
+            self._compute_distance_matrix()
+    
+    solver = ExternalPointsSolver(points, matching_algorithm='path_growing')
+    return solver.solve()
+
 # ===== MAIN EXECUTION =====
 
 def main():
