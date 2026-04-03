@@ -213,7 +213,11 @@ def solve_tsp(points):
     class CustomTSP:
         def __init__(self, points):
             self.n = len(points)
-            self.points = points
+            # Convert to numpy array if needed
+            if not isinstance(points, np.ndarray):
+                self.points = np.array(points)
+            else:
+                self.points = points
             self.dist_matrix = self._compute_distance_matrix()
         
         def _compute_distance_matrix(self):

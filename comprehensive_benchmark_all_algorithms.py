@@ -10,55 +10,30 @@ import json
 from typing import List, Tuple, Dict, Any
 import os
 
-# Import all algorithms
+# Import all algorithms with standardized solve_tsp interfaces
 from solutions.tsp_v1_nearest_neighbor import solve_tsp as solve_tsp_nn_2opt
 from solutions.tsp_v2_christofides import solve_tsp as solve_tsp_christofides
 from solutions.tsp_v3_iterative_local_search import solve_tsp as solve_tsp_ils
 from solutions.tsp_v4_nn_ils_hybrid import solve_tsp as solve_tsp_nn_ils_hybrid
 from solutions.tsp_v5_christofides_ils_hybrid import solve_tsp as solve_tsp_christofides_ils_hybrid
 from solutions.tsp_v6_multi_start_adaptive_2opt import solve_tsp as solve_tsp_multi_start_adaptive_2opt
-from solutions.tsp_v7_christofides_tabu_hybrid import EuclideanTSPChristofidesTabuHybrid
+from solutions.tsp_v7_christofides_tabu_hybrid import solve_tsp as solve_tsp_christofides_tabu_hybrid
 from solutions.tsp_v8_christofides_ils_hybrid_fixed import solve_tsp as solve_tsp_christofides_ils_fixed
+from solutions.tsp_v9_nn_ga_christofides_crossover import solve_tsp as solve_tsp_nn_ga_christofides
+from solutions.tsp_v10_christofides_mst_ils_memory import solve_tsp as solve_tsp_christofides_mst_ils_memory
+from solutions.tsp_v11_nn_ils_adaptive_memory import solve_tsp as solve_tsp_nn_ils_adaptive_memory
+from solutions.tsp_v12_nn_fast_ils import solve_tsp as solve_tsp_nn_fast_ils
+from solutions.tsp_v13_nn_efficient_ils import solve_tsp as solve_tsp_nn_efficient_ils
+from solutions.tsp_v14_christofides_adaptive_matching import solve_tsp as solve_tsp_christofides_adaptive_matching
+from solutions.tsp_v15_algorithmic_ecology import solve_tsp as solve_tsp_algorithmic_ecology
 
-# v9 has different function name
-from solutions.tsp_v9_nn_ga_christofides_crossover import nn_ga_christofides_crossover_hybrid
-
-# Check which functions exist for v10-v15
-try:
-    from solutions.tsp_v10_christofides_mst_ils_memory import solve_tsp as solve_tsp_christofides_mst_ils_memory
-    v10_available = True
-except ImportError:
-    v10_available = False
-
-try:
-    from solutions.tsp_v11_nn_ils_adaptive_memory import solve_tsp as solve_tsp_nn_ils_adaptive_memory
-    v11_available = True
-except ImportError:
-    v11_available = False
-
-try:
-    from solutions.tsp_v12_nn_fast_ils import solve_tsp as solve_tsp_nn_fast_ils
-    v12_available = True
-except ImportError:
-    v12_available = False
-
-try:
-    from solutions.tsp_v13_nn_efficient_ils import solve_tsp as solve_tsp_nn_efficient_ils
-    v13_available = True
-except ImportError:
-    v13_available = False
-
-try:
-    from solutions.tsp_v14_christofides_adaptive_matching import solve_tsp as solve_tsp_christofides_adaptive_matching
-    v14_available = True
-except ImportError:
-    v14_available = False
-
-try:
-    from solutions.tsp_v15_algorithmic_ecology import solve_tsp as solve_tsp_algorithmic_ecology
-    v15_available = True
-except ImportError:
-    v15_available = False
+# All algorithms now have standardized solve_tsp interfaces
+v10_available = True
+v11_available = True
+v12_available = True
+v13_available = True
+v14_available = True
+v15_available = True
 
 def generate_random_instance(n: int, seed: int = 42):
     """Generate random Euclidean TSP instance."""
@@ -97,20 +72,11 @@ def run_algorithm(algorithm_name: str, points: np.ndarray, points_list: List[Tup
         elif algorithm_name == "Multi-start Adaptive 2-opt":
             result = solve_tsp_multi_start_adaptive_2opt(points_list)
         elif algorithm_name == "Christofides-Tabu Hybrid":
-            solver = EuclideanTSPChristofidesTabuHybrid(points)
-            result = solver.solve()
+            result = solve_tsp_christofides_tabu_hybrid(points_list)
         elif algorithm_name == "Christofides-ILS Fixed":
             result = solve_tsp_christofides_ils_fixed(points)
         elif algorithm_name == "NN-GA Christofides Crossover":
-            # v9 uses different function name and parameters
-            result = nn_ga_christofides_crossover_hybrid(
-                points_list,
-                generations=50,
-                population_size=30,
-                crossover_rate=0.8,
-                mutation_rate=0.1,
-                elitism=2
-            )
+            result = solve_tsp_nn_ga_christofides(points_list)
         elif algorithm_name == "Christofides MST ILS Memory" and v10_available:
             result = solve_tsp_christofides_mst_ils_memory(points)
         elif algorithm_name == "NN ILS Adaptive Memory" and v11_available:

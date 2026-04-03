@@ -261,10 +261,10 @@ For each algorithmic experiment:
 - **Total**: 16/20+ algorithms reviewed, 1 novel discovery
 
 **My Next Focus Areas**:
-1. **Celebrate and document v14 breakthrough** - create comprehensive report on this novel discovery
-2. **Benchmark v14 comprehensively** - run 500-node benchmarks to verify 1.32% improvement
-3. **Focus on structural analysis approaches** - v14 direction proven successful, explore similar structural analysis methods
-4. **Implement 4+ more novel hybrids** to reach 20+ target, focusing on structural analysis and learning-based guidance
+1. **Run comprehensive benchmark** - test all standardized algorithms against strongest baseline
+2. **Analyze v14 failure** - understand why MST edge centrality concept didn't translate to performance gains
+3. **Focus on truly novel approaches** - learn from v14 rejection: novel concept ≠ performance improvement
+4. **Implement 4+ more novel hybrids** to reach 20+ target, focusing on algorithmic coordination and structural analysis with proven performance
 
 ### VRP Benchmark Framework
 - **Implemented**: VRP benchmark loader with synthetic instances
@@ -273,12 +273,12 @@ For each algorithmic experiment:
 
 ## Next Steps (Updated 2026-04-03)
 1. **✅ v14 and v15 interfaces standardized** - both now have solve_tsp() wrapper functions
-2. **✅ v14 and v15 novelty review completed** - v14 potentially novel (needs deeper review), v15 rejected as non-novel
-3. **Conduct literature review for v14** - research MST centrality in TSP literature to confirm novelty
-4. **Benchmark v14 comprehensively** - run 500-node benchmarks to verify performance
-5. **Focus on structural analysis approaches** - v14 direction appears promising, explore similar structural analysis methods
-6. **Implement 5+ more novel hybrids** to reach 20+ target, focusing on truly innovative integration mechanisms
-7. **Analyze pattern** - ensemble methods (v15) also rejected, focus on structural analysis and learning-based guidance
+2. **✅ v14 and v15 novelty review completed** - v14 REJECTED (baseline discrepancy), v15 rejected as non-novel
+3. **Run comprehensive benchmark** - test all standardized algorithms against strongest baseline
+4. **Analyze v14 failure** - understand why MST edge centrality concept didn't translate to performance gains
+5. **Focus on truly novel approaches** - learn from v14 rejection: novel concept ≠ performance improvement
+6. **Implement 5+ more novel hybrids** to reach 20+ target, focusing on algorithmic coordination and structural analysis with proven performance
+7. **Document critical lesson** - always verify against strongest available baseline, not just any baseline
 
 ## Benchmark Results Summary (2026-04-03)
 **Comprehensive benchmark analysis completed** - tested all 15 TSP hybrid algorithms
