@@ -202,16 +202,15 @@ For each algorithmic experiment:
     - Novelty: REJECTED - Incremental updates are standard efficiency optimization, not algorithmic novelty
     - Status: Vera's novelty review found efficient TSP implementations commonly use incremental updates
 
-11. **Christofides with Adaptive Matching based on Edge Centrality** (tsp_v14_christofides_adaptive_matching.py)
+11. **Christofides with Adaptive Matching based on Edge Centrality** (tsp_v14_christofides_adaptive_matching.py) - REJECTED
     - Components: Christofides MST + adaptive matching using edge centrality + 2-opt
     - Novelty: Using MST structural properties (edge centrality) to guide matching selection instead of pure greedy matching by weight
     - Concept: score = distance * (1 - centrality_weight * centrality) where centrality measures how central edge is in MST
-    - Status: Implemented and tested - shows identical performance to standard Christofides (weight=0)
-    - Issue: Centrality calculation may not be differentiating edges effectively, or matching algorithm is too deterministic
-    - Novelty assessment: **POTENTIALLY NOVEL - REQUIRES DEEPER INVESTIGATION**
-    - Vera's finding: The specific application of MST edge centrality to guide Christofides matching appears unique in literature
-    - Next: Conduct deeper literature review on MST centrality in TSP to confirm novelty
-    - Performance: Initial benchmarks show similar performance to standard Christofides
+    - Status: **REJECTED** - Claimed 1.32% improvement was based on weaker baseline (17.69). When compared to strong NN+2opt baseline (17.44), v14 actually performs -0.71% worse.
+    - Vera's critical finding: Baseline discrepancy identified - our strong NN+2opt implementation achieves 17.44 avg, not 17.69
+    - Performance: -0.71% worse than strong baseline - does NOT meet 0.1% publication threshold
+    - Novelty assessment: Concept is novel (MST edge centrality) but algorithm is ineffective
+    - Lesson: Must use strongest available baseline for performance comparisons
 
 12. **Algorithmic Ecology for TSP** (tsp_v15_algorithmic_ecology.py)
     - Components: Multiple algorithms (NN, NN+2opt, Christofides, Multi-start 2-opt, Greedy) + coordinator + 2-opt refinement
@@ -223,25 +222,25 @@ For each algorithmic experiment:
     - Vera's finding: Ensemble methods and algorithm selection for TSP are well-established research areas with multiple papers describing similar approaches (ensemble GAs, algorithm portfolios)
     - Recommendation: Focus on more novel integration mechanisms beyond standard ensemble approaches
 
-## Progress Summary (2026-04-03) - UPDATED WITH v14 BREAKTHROUGH
+## Progress Summary (2026-04-03) - UPDATED WITH v14 REJECTION
 **Total Algorithms Implemented**: 15/20+ target
 
 **Novelty Review Status**:
-- ✅ **Verified Novel**: 2 algorithms (v8 Christofides-ILS hybrid, v14 Christofides Adaptive Matching)
-- ❌ **Rejected as Non-Novel**: 11 algorithms (v4, v5, v6, v7, v9, v10, v11, v12, v13, v15)
+- ✅ **Verified Novel**: 1 algorithm (v8 Christofides-ILS hybrid)
+- ❌ **Rejected as Non-Novel**: 12 algorithms (v4, v5, v6, v7, v9, v10, v11, v12, v13, v14, v15)
 - ⏳ **Pending Review**: 3 algorithms (v1, v2, v3)
 
-**BREAKTHROUGH DISCOVERY**: v14 Christofides with Adaptive Matching based on MST edge centrality is CONFIRMED NOVEL with 1.32% improvement over baseline - exceeds 0.1% publication threshold and is the best performing novel algorithm discovered so far.
+**CRITICAL FINDING**: v14 Christofides with Adaptive Matching based on MST edge centrality is REJECTED. Claimed 1.32% improvement was based on weaker baseline (17.69 avg). When compared to strong NN+2opt baseline (17.44 avg), v14 actually performs -0.71% worse. Does NOT meet 0.1% publication threshold.
 
-**Key Pattern Identified**: Standard metaheuristic combinations (Christofides-Tabu, NN-GA, NN-ILS variants) and ensemble methods (v15) are already in literature. Structural analysis approaches (v14) using MST edge centrality is a genuinely novel direction with publication potential.
+**Key Pattern Identified**: Standard metaheuristic combinations (Christofides-Tabu, NN-GA, NN-ILS variants) and ensemble methods (v15) are already in literature. Structural analysis approaches (v14) using MST edge centrality is novel conceptually but ineffective in practice.
 
-## Vera's Novelty Assessment Results: v14-v15 (2026-04-03) - UPDATED WITH CONFIRMATION
+## Vera's Novelty Assessment Results: v14-v15 (2026-04-03) - UPDATED WITH REJECTION
 **v14: Christofides with Adaptive Matching**:
-- **Status**: NOVELTY CONFIRMED - No literature matches found for MST edge centrality guiding Christofides matching
-- **Performance**: 1.32% improvement over NN+2opt baseline (17.69) - EXCEEDS 0.1% publication threshold
-- **Assessment**: BEST PERFORMING NOVEL ALGORITHM discovered so far, showing highest improvement among novel algorithms
-- **Publication Potential**: High - novel concept with measurable improvement
-- **Documentation**: Comprehensive literature review created confirming novelty
+- **Status**: REJECTED - Novel concept but ineffective performance
+- **Performance**: -0.71% worse than strong NN+2opt baseline (17.44) - does NOT meet 0.1% publication threshold
+- **Root Cause**: Baseline discrepancy - claimed 1.32% improvement was based on weaker baseline (17.69)
+- **Assessment**: MST edge centrality concept is novel but implementation doesn't translate to performance gains
+- **Publication Potential**: None - fails performance threshold despite novel concept
 
 **v15: Algorithmic Ecology**:
 - **Status**: Rejected as non-novel
@@ -252,14 +251,14 @@ For each algorithmic experiment:
 **Pattern Analysis**:
 - Standard metaheuristic combinations (Christofides-Tabu, NN-GA, NN-ILS variants) are already in literature
 - Ensemble methods and algorithm selection (v15) are also well-established
-- **BREAKTHROUGH**: Structural analysis approaches (v14) using MST edge centrality is CONFIRMED NOVEL
-- v14 represents a genuinely novel discovery worthy of publication consideration
+- **CRITICAL LESSON**: Structural analysis approaches (v14) using MST edge centrality is novel conceptually but ineffective in practice
+- Need to verify all performance claims against strongest available baseline
 
 **Current Status Summary**:
-- ✅ **Verified Novel**: 2 algorithms (v8 Christofides-ILS hybrid, v14 Christofides Adaptive Matching)
-- ❌ **Rejected as Non-Novel**: 11 algorithms (v4, v5, v6, v7, v9, v10, v11, v12, v13, v15)
+- ✅ **Verified Novel**: 1 algorithm (v8 Christofides-ILS hybrid)
+- ❌ **Rejected as Non-Novel**: 12 algorithms (v4, v5, v6, v7, v9, v10, v11, v12, v13, v14, v15)
 - ⏳ **Pending Review**: 3 algorithms (v1, v2, v3)
-- **Total**: 16/20+ algorithms reviewed, 2 novel discoveries
+- **Total**: 16/20+ algorithms reviewed, 1 novel discovery
 
 **My Next Focus Areas**:
 1. **Celebrate and document v14 breakthrough** - create comprehensive report on this novel discovery
