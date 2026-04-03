@@ -1,0 +1,24 @@
+{
+  "size": 500,
+  "seed": 42,
+  "results": {
+    "0.0": {
+      "tour_length": 17.403976693811195,
+      "algorithm_runtime": 21.503613471984863,
+      "total_time": 21.802401304244995
+    },
+    "0.3": {
+      "tour_length": 17.403976693811195,
+      "algorithm_runtime": 19.57813334465027,
+      "total_time": 19.690526723861694
+    }
+  },
+  "improvement_percent": 0.0,
+  "verification": {
+    "claimed_improvement": 1.32,
+    "measured_improvement": 0.0,
+    "exceeds_claim": false,
+    "exceeds_publication_threshold": false
+  },
+  "timestamp": "2026-04-03 22:57:38"
+}
