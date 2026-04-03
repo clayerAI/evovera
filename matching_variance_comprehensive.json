@@ -1,0 +1,172 @@
+[
+  {
+    "seed": 0,
+    "original_matching_distance": 3.1596976482233887,
+    "shuffle_distances": [
+      3.0858643274964694,
+      3.2162185225492834,
+      3.0468953432993455,
+      2.768090335331266,
+      3.2641815042017495
+    ],
+    "shuffle_avg": 3.0762500065756226,
+    "shuffle_std": 0.17368128722929857,
+    "shuffle_range": 0.49609116887048366,
+    "christofides_original": 8.457462006563505,
+    "christofides_best_shuffle": 8.50101941615584,
+    "improvement_percent": -0.515017502396485
+  },
+  {
+    "seed": 1,
+    "original_matching_distance": 2.0357354758765194,
+    "shuffle_distances": [
+      3.262676487194203,
+      2.0518495956221727,
+      2.547542737164635,
+      2.269930634615786,
+      2.2131916169694716
+    ],
+    "shuffle_avg": 2.4690382143132537,
+    "shuffle_std": 0.42782527310114027,
+    "shuffle_range": 1.2108268915720304,
+    "christofides_original": 8.297774668575013,
+    "christofides_best_shuffle": 8.077476699693339,
+    "improvement_percent": 2.6549042084256307
+  },
+  {
+    "seed": 2,
+    "original_matching_distance": 3.0767141204152764,
+    "shuffle_distances": [
+      3.808290008523567,
+      3.438904932185782,
+      2.833004380394882,
+      3.2284904832343373,
+      2.9995179049974734
+    ],
+    "shuffle_avg": 3.2616415418672084,
+    "shuffle_std": 0.34169707798994503,
+    "shuffle_range": 0.975285628128685,
+    "christofides_original": 8.579567533349115,
+    "christofides_best_shuffle": 8.43883575232839,
+    "improvement_percent": 1.6403132264382128
+  },
+  {
+    "seed": 3,
+    "original_matching_distance": 3.1979611028061483,
+    "shuffle_distances": [
+      3.2611748290701605,
+      3.2871713295012928,
+      2.900647543329919,
+      2.9582504663776845,
+      3.097273923060701
+    ],
+    "shuffle_avg": 3.1009036182679517,
+    "shuffle_std": 0.15546582469547804,
+    "shuffle_range": 0.38652378617137373,
+    "christofides_original": 8.173658908703027,
+    "christofides_best_shuffle": 8.122483422437048,
+    "improvement_percent": 0.6261025427852067
+  },
+  {
+    "seed": 4,
+    "original_matching_distance": 3.048013212025034,
+    "shuffle_distances": [
+      2.7242997060112586,
+      2.547466744433959,
+      3.0498871852674974,
+      2.8460594944000204,
+      2.598167871726339
+    ],
+    "shuffle_avg": 2.7531762003678146,
+    "shuffle_std": 0.18102073306975855,
+    "shuffle_range": 0.5024204408335384,
+    "christofides_original": 8.47355014521649,
+    "christofides_best_shuffle": 7.958688654151482,
+    "improvement_percent": 6.076101306317987
+  },
+  {
+    "seed": 5,
+    "original_matching_distance": 2.733093926338746,
+    "shuffle_distances": [
+      3.3683849568805164,
+      3.3831949129670162,
+      2.760164806762058,
+      2.897555834606608,
+      3.1195532626731093
+    ],
+    "shuffle_avg": 3.1057707547778617,
+    "shuffle_std": 0.24856277456718312,
+    "shuffle_range": 0.6230301062049581,
+    "christofides_original": 8.140119174199963,
+    "christofides_best_shuffle": 8.167015144034124,
+    "improvement_percent": -0.33041248240452836
+  },
+  {
+    "seed": 6,
+    "original_matching_distance": 2.9344155569991566,
+    "shuffle_distances": [
+      2.4784883206106834,
+      2.625478504089784,
+      2.4170180788292264,
+      2.9954071988282474,
+      2.546776925139891
+    ],
+    "shuffle_avg": 2.6126338054995664,
+    "shuffle_std": 0.20360653685467664,
+    "shuffle_range": 0.578389119999021,
+    "christofides_original": 8.714526687862248,
+    "christofides_best_shuffle": 8.304019859752023,
+    "improvement_percent": 4.710603832127647
+  },
+  {
+    "seed": 7,
+    "original_matching_distance": 3.922625072993795,
+    "shuffle_distances": [
+      3.0337289445227253,
+      3.3630902542471794,
+      3.0562201152081654,
+      3.121756146220407,
+      3.7653620029432915
+    ],
+    "shuffle_avg": 3.268031492628354,
+    "shuffle_std": 0.2747842882228945,
+    "shuffle_range": 0.7316330584205661,
+    "christofides_original": 8.317671744005613,
+    "christofides_best_shuffle": 8.12796065099816,
+    "improvement_percent": 2.280819667404817
+  },
+  {
+    "seed": 8,
+    "original_matching_distance": 3.3342766167304267,
+    "shuffle_distances": [
+      3.4246110482575975,
+      4.162958084444365,
+      3.4447547963519303,
+      3.1516666019934174,
+      3.7379674866638544
+    ],
+    "shuffle_avg": 3.584391603542233,
+    "shuffle_std": 0.34368704236117303,
+    "shuffle_range": 1.0112914824509476,
+    "christofides_original": 9.136846798898317,
+    "christofides_best_shuffle": 8.927037919583729,
+    "improvement_percent": 2.2962941585042875
+  },
+  {
+    "seed": 9,
+    "original_matching_distance": 3.2171134151223657,
+    "shuffle_distances": [
+      3.4266970532219254,
+      2.8892696658894517,
+      2.8319821918439954,
+      3.444269470613606,
+      2.778041345085909
+    ],
+    "shuffle_avg": 3.074051945330978,
+    "shuffle_std": 0.29724875776094073,
+    "shuffle_range": 0.666228125527697,
+    "christofides_original": 7.937110253746784,
+    "christofides_best_shuffle": 8.427111504857347,
+    "improvement_percent": -6.173547241318129
+  }
+]
