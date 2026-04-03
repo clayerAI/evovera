@@ -145,7 +145,7 @@ For each algorithmic experiment:
 - **Success Metric**: Any novel approach beating baseline by 0.1%+ is potential publication
 - **Collaboration**: Vera in "novelty review mode" - reviews for novelty, not correctness
 
-### Progress: 9/20+ Novel Hybrid Algorithms Implemented (1 verified novel, 1 rejected, 7 pending review)
+### Progress: 9/20+ Novel Hybrid Algorithms Implemented (1 verified novel, 2 rejected, 6 pending review)
 1. **NN-ILS with Adaptive Restart** (tsp_v5_nn_ils_hybrid.py)
    - Components: Nearest Neighbor + Iterative Local Search + 2-opt + Adaptive Restart
    - Novelty: Adaptive restart based on stagnation detection, quality-based perturbation adjustment
@@ -176,11 +176,11 @@ For each algorithmic experiment:
    - Novelty: Adaptive matching strategy selection based on ILS improvement rate
    - Status: Implementation has bugs, but concept validated by fixed version
 
-6. **NN-GA with Christofides-Inspired Crossover Hybrid** (tsp_v9_nn_ga_christofides_crossover.py)
+6. **NN-GA with Christofides-Inspired Crossover Hybrid** (tsp_v9_nn_ga_christofides_crossover.py) - REJECTED AS NON-NOVEL
    - Components: Nearest Neighbor + Genetic Algorithm + Christofides-inspired crossover + 2-opt
-   - Novelty: Using Christofides' Eulerian circuit construction as a crossover operator in GA
-   - Performance: n=20: 1.15% improvement over NN+2opt, n=50: 1.30% improvement
-   - Status: Implemented and benchmarked, shows consistent improvement
+   - Novelty: REJECTED - Edge Assembly Crossover (EAX) by Nagata (2006) represents similar edge recombination approach
+   - Performance: n=20: 1.15% improvement over NN+2opt, n=50: 1.30% improvement, but 8.6x slower runtime
+   - Status: Vera's literature review found Edge Assembly Crossover (EAX) as existing literature with similar edge recombination principles. Not novel.
 
 7. **Christofides MST with ILS Memory** (tsp_v10_christofides_mst_ils_memory.py)
    - Components: Christofides MST structure + ILS with memory for perturbation guidance
