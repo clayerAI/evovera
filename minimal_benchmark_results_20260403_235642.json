@@ -1,0 +1,45 @@
+{
+  "parameters": {
+    "n": 50,
+    "trials": 3
+  },
+  "baseline": 598.3413528726022,
+  "results": {
+    "NN+2opt": {
+      "avg_length": 598.3413528726022,
+      "avg_runtime": 0.013378620147705078,
+      "std_length": 26.250798155073028,
+      "trials": 3
+    },
+    "Christofides": {
+      "avg_length": 647.0022958959657,
+      "avg_runtime": 0.018259445826212566,
+      "std_length": 29.89426749186811,
+      "trials": 3
+    },
+    "Christofides-ILS Fixed": {
+      "avg_length": 567.8937031929921,
+      "avg_runtime": 30.012357155481975,
+      "std_length": 8.340241384394893,
+      "trials": 3
+    },
+    "Christofides Adaptive Matching": {
+      "avg_length": 606.5797050844657,
+      "avg_runtime": 0.003124713897705078,
+      "std_length": 9.913741561788934,
+      "trials": 3
+    },
+    "NN-GA Christofides Crossover": {
+      "avg_length": 567.8937031929923,
+      "avg_runtime": 3.8809685707092285,
+      "std_length": 8.340241384394805,
+      "trials": 3
+    },
+    "Christofides-Tabu Hybrid": {
+      "avg_length": 590.1546696784964,
+      "avg_runtime": 0.7155576546986898,
+      "std_length": 16.834902184224603,
+      "trials": 3
+    }
+  }
+}

@@ -308,10 +308,26 @@ For each algorithmic experiment:
 - Identifies algorithms beating 0.1% threshold
 - Saves results to JSON for analysis
 
+### Benchmark Results (April 3, 2026 - Minimal Benchmark n=50):
+**Key Findings from Minimal Benchmark:**
+1. **Performance ≠ Novelty**: Several algorithms beat the 0.1% threshold but were rejected as non-novel
+2. **v14 Confirmed Worse**: Christofides Adaptive Matching performs -1.38% worse than baseline
+3. **Multiple Algorithms Beat Threshold**:
+   - v8 Christofides-ILS Fixed: 5.09% improvement ✅ (Verified Novel)
+   - v9 NN-GA Christofides Crossover: 5.09% improvement ✅ (Rejected as Non-Novel)
+   - v7 Christofides-Tabu Hybrid: 1.37% improvement ✅ (Rejected as Non-Novel)
+   - v14 Christofides Adaptive Matching: -1.38% improvement ❌ (Rejected - Worse than baseline)
+
+**Critical Insight**: Novelty review and performance benchmarking are separate evaluations. An algorithm can:
+- Be novel AND perform well (v8 - ideal case)
+- Be non-novel BUT perform well (v7, v9 - already in literature)
+- Be novel BUT perform poorly (v14 - novel concept, ineffective implementation)
+- Be non-novel AND perform poorly (many standard approaches)
+
 ### Next Steps for Benchmarking:
 1. ~~Fix algorithm compatibility issues~~ ✅ COMPLETED
 2. ~~Standardize all algorithm interfaces~~ ✅ COMPLETED
-3. Run full benchmark on standardized algorithms
+3. ~~Run benchmark on standardized algorithms~~ ✅ PARTIALLY COMPLETED (minimal benchmark)
 4. Document comprehensive performance comparison
 5. Identify which algorithms truly beat the 0.1% threshold
 

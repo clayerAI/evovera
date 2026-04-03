@@ -1,0 +1,245 @@
+{
+  "parameters": {
+    "n": 100,
+    "trials": 2
+  },
+  "results": {
+    "trial_1": {
+      "NN+2opt": {
+        "length": 835.0459363856462,
+        "runtime": 0.09385418891906738,
+        "improvement": 0.0
+      },
+      "Christofides": {
+        "length": 1154.2137183701143,
+        "runtime": 0.07120919227600098,
+        "improvement": -38.22158375692856
+      },
+      "ILS": {
+        "length": 809.8646098952817,
+        "runtime": 0.1014091968536377,
+        "improvement": 3.0155618263777937
+      },
+      "NN-ILS Hybrid": {
+        "length": Infinity,
+        "runtime": Infinity,
+        "improvement": 0.0
+      },
+      "Christofides-ILS Hybrid": {
+        "length": Infinity,
+        "runtime": Infinity,
+        "improvement": 0.0
+      },
+      "Multi-start Adaptive 2-opt": {
+        "length": Infinity,
+        "runtime": Infinity,
+        "improvement": 0.0
+      },
+      "Christofides-Tabu Hybrid": {
+        "length": 797.0644782001697,
+        "runtime": 3.1694695949554443,
+        "improvement": 4.548427401475993
+      },
+      "Christofides-ILS Fixed": {
+        "length": 779.1847302118481,
+        "runtime": 30.11070704460144,
+        "improvement": 6.68959679219371
+      },
+      "NN-GA Christofides Crossover": {
+        "length": 783.9899521941961,
+        "runtime": 25.62773871421814,
+        "improvement": 6.114152762953041
+      },
+      "Christofides MST ILS Memory": {
+        "length": 794.8519423005182,
+        "runtime": 2.408890962600708,
+        "improvement": 4.813387184314774
+      },
+      "NN ILS Adaptive Memory": {
+        "length": Infinity,
+        "runtime": Infinity,
+        "improvement": 0.0
+      },
+      "NN Fast ILS": {
+        "length": Infinity,
+        "runtime": Infinity,
+        "improvement": 0.0
+      },
+      "NN Efficient ILS": {
+        "length": Infinity,
+        "runtime": Infinity,
+        "improvement": 0.0
+      },
+      "Christofides Adaptive Matching": {
+        "length": 807.1347187129662,
+        "runtime": 0.02136373519897461,
+        "improvement": 3.34247691731654
+      },
+      "Algorithmic Ecology": {
+        "length": 839.4801551544457,
+        "runtime": 0.6473288536071777,
+        "improvement": -0.5310149508651292
+      }
+    },
+    "trial_2": {
+      "NN+2opt": {
+        "length": 848.9860447493585,
+        "runtime": 0.10854744911193848,
+        "improvement": 0.0
+      },
+      "Christofides": {
+        "length": 1076.2827099583321,
+        "runtime": 0.05666947364807129,
+        "improvement": -26.772721014051204
+      },
+      "ILS": {
+        "length": 861.036698653525,
+        "runtime": 0.14624285697937012,
+        "improvement": -1.4194171952171724
+      },
+      "NN-ILS Hybrid": {
+        "length": Infinity,
+        "runtime": Infinity,
+        "improvement": 0.0
+      },
+      "Christofides-ILS Hybrid": {
+        "length": Infinity,
+        "runtime": Infinity,
+        "improvement": 0.0
+      },
+      "Multi-start Adaptive 2-opt": {
+        "length": Infinity,
+        "runtime": Infinity,
+        "improvement": 0.0
+      },
+      "Christofides-Tabu Hybrid": {
+        "length": 837.555754878861,
+        "runtime": 3.370748519897461,
+        "improvement": 1.346346025495863
+      },
+      "Christofides-ILS Fixed": {
+        "length": 820.5176611732066,
+        "runtime": 30.057521104812622,
+        "improvement": 3.3532216168001208
+      },
+      "NN-GA Christofides Crossover": {
+        "length": 816.8058242890414,
+        "runtime": 26.086071968078613,
+        "improvement": 3.7904298497412228
+      },
+      "Christofides MST ILS Memory": {
+        "length": 862.2002476443721,
+        "runtime": 2.486292600631714,
+        "improvement": -1.5564687990736963
+      },
+      "NN ILS Adaptive Memory": {
+        "length": Infinity,
+        "runtime": Infinity,
+        "improvement": 0.0
+      },
+      "NN Fast ILS": {
+        "length": Infinity,
+        "runtime": Infinity,
+        "improvement": 0.0
+      },
+      "NN Efficient ILS": {
+        "length": Infinity,
+        "runtime": Infinity,
+        "improvement": 0.0
+      },
+      "Christofides Adaptive Matching": {
+        "length": 875.823900757775,
+        "runtime": 0.04198431968688965,
+        "improvement": -3.1611657428762285
+      },
+      "Algorithmic Ecology": {
+        "length": 921.9846592438168,
+        "runtime": 0.5949327945709229,
+        "improvement": -8.598329141677393
+      }
+    }
+  },
+  "summary": {
+    "NN+2opt": {
+      "avg_length": 842.0159905675023,
+      "std_length": 6.970054181856142,
+      "avg_runtime": 0.10120081901550293,
+      "std_runtime": 0.007346630096435547,
+      "avg_improvement": 0.0,
+      "std_improvement": 0.0,
+      "success_rate": 1.0
+    },
+    "Christofides": {
+      "avg_length": 1115.248214164223,
+      "std_length": 38.96550420589108,
+      "avg_runtime": 0.06393933296203613,
+      "std_runtime": 0.007269859313964844,
+      "avg_improvement": -32.49715238548988,
+      "std_improvement": 5.724431371438678,
+      "success_rate": 1.0
+    },
+    "ILS": {
+      "avg_length": 835.4506542744034,
+      "std_length": 25.586044379121688,
+      "avg_runtime": 0.1238260269165039,
+      "std_runtime": 0.02241683006286621,
+      "avg_improvement": 0.7980723155803107,
+      "std_improvement": 2.217489510797483,
+      "success_rate": 1.0
+    },
+    "Christofides-Tabu Hybrid": {
+      "avg_length": 817.3101165395153,
+      "std_length": 20.245638339345646,
+      "avg_runtime": 3.2701090574264526,
+      "std_runtime": 0.1006394624710083,
+      "avg_improvement": 2.947386713485928,
+      "std_improvement": 1.6010406879900652,
+      "success_rate": 1.0
+    },
+    "Christofides-ILS Fixed": {
+      "avg_length": 799.8511956925274,
+      "std_length": 20.66646548067928,
+      "avg_runtime": 30.08411407470703,
+      "std_runtime": 0.02659296989440918,
+      "avg_improvement": 5.021409204496916,
+      "std_improvement": 1.6681875876967944,
+      "success_rate": 1.0
+    },
+    "NN-GA Christofides Crossover": {
+      "avg_length": 800.3978882416188,
+      "std_length": 16.407936047422652,
+      "avg_runtime": 25.856905341148376,
+      "std_runtime": 0.22916662693023682,
+      "avg_improvement": 4.952291306347131,
+      "std_improvement": 1.1618614566059091,
+      "success_rate": 1.0
+    },
+    "Christofides MST ILS Memory": {
+      "avg_length": 828.5260949724452,
+      "std_length": 33.67415267192695,
+      "avg_runtime": 2.447591781616211,
+      "std_runtime": 0.03870081901550293,
+      "avg_improvement": 1.6284591926205387,
+      "std_improvement": 3.1849279916942352,
+      "success_rate": 1.0
+    },
+    "Christofides Adaptive Matching": {
+      "avg_length": 841.4793097353706,
+      "std_length": 34.344591022404416,
+      "avg_runtime": 0.03167402744293213,
+      "std_runtime": 0.01031029224395752,
+      "avg_improvement": 0.09065558722015576,
+      "std_improvement": 3.2518213300963845,
+      "success_rate": 1.0
+    },
+    "Algorithmic Ecology": {
+      "avg_length": 880.7324071991313,
+      "std_length": 41.25225204468558,
+      "avg_runtime": 0.6211308240890503,
+      "std_runtime": 0.02619802951812744,
+      "avg_improvement": -4.564672046271261,
+      "std_improvement": 4.033657095406133,
+      "success_rate": 1.0
+    }
+  }
+}
