@@ -145,7 +145,7 @@ For each algorithmic experiment:
 - **Success Metric**: Any novel approach beating baseline by 0.1%+ is potential publication
 - **Collaboration**: Vera in "novelty review mode" - reviews for novelty, not correctness
 
-### Progress: 9/20+ Novel Hybrid Algorithms Implemented (1 verified novel, 2 rejected, 6 pending review)
+### Progress: 10/20+ Novel Hybrid Algorithms Implemented (1 verified novel, 2 rejected, 7 pending review)
 1. **NN-ILS with Adaptive Restart** (tsp_v5_nn_ils_hybrid.py)
    - Components: Nearest Neighbor + Iterative Local Search + 2-opt + Adaptive Restart
    - Novelty: Adaptive restart based on stagnation detection, quality-based perturbation adjustment
@@ -198,6 +198,12 @@ For each algorithmic experiment:
    - Status: Implemented, shows 16.01% improvement on n=50 (very promising!)
 
 10. **NN with Efficient ILS using incremental updates** (tsp_v13_nn_efficient_ils.py)
+
+11. **Christofides with Adaptive Matching based on Edge Centrality** (tsp_v14_christofides_adaptive_matching.py)
+   - Components: Christofides MST + adaptive matching using edge centrality + 2-opt
+   - Novelty: Using MST structural properties (edge centrality) to guide matching selection instead of pure greedy matching by weight
+   - Concept: score = distance * (1 - centrality_weight * centrality) where centrality measures how central edge is in MST
+   - Status: Designed and conceptually implemented, needs full implementation and benchmarking
     - Components: NN + Efficient ILS with incremental distance updates
     - Novelty: O(1) incremental updates for 2-opt moves instead of O(n) recomputation
     - Status: Implemented, shows 16.86% improvement on n=20, needs tuning for larger n
