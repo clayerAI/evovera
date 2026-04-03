@@ -1,0 +1,71 @@
+{
+  "algorithm": "christofides_ils_hybrid",
+  "n": 500,
+  "num_instances": 5,
+  "average_tour_length": 17.559241301021796,
+  "std_tour_length": 0.1393586628251499,
+  "average_time": 34.16947741508484,
+  "baseline_comparison": {
+    "baseline_algorithm": "nearest_neighbor_with_2opt",
+    "baseline_length": 17.69,
+    "improvement_ratio": 1.007446716901749,
+    "improvement_percentage": 0.7446716901748918
+  },
+  "results": [
+    {
+      "instance": 0,
+      "seed": 0,
+      "tour_length": 17.5585508352564,
+      "time": 31.443116903305054,
+      "initial_length": 18.498604331452594,
+      "improvement_percentage": 5.081753625044291,
+      "iterations": 46,
+      "improvements": 12,
+      "perturbations": 11
+    },
+    {
+      "instance": 1,
+      "seed": 1,
+      "tour_length": 17.518703333178408,
+      "time": 32.00633668899536,
+      "initial_length": 18.246168223458376,
+      "improvement_percentage": 3.9869460884652783,
+      "iterations": 49,
+      "improvements": 13,
+      "perturbations": 12
+    },
+    {
+      "instance": 2,
+      "seed": 2,
+      "tour_length": 17.495687970989014,
+      "time": 38.01889610290527,
+      "initial_length": 18.270039229428143,
+      "improvement_percentage": 4.238366698150578,
+      "iterations": 45,
+      "improvements": 12,
+      "perturbations": 11
+    },
+    {
+      "instance": 3,
+      "seed": 3,
+      "tour_length": 17.818914292765328,
+      "time": 33.85837388038635,
+      "initial_length": 18.522610661058742,
+      "improvement_percentage": 3.7991208754003547,
+      "iterations": 35,
+      "improvements": 9,
+      "perturbations": 8
+    },
+    {
+      "instance": 4,
+      "seed": 4,
+      "tour_length": 17.40435007291984,
+      "time": 35.52066349983215,
+      "initial_length": 17.857148067769216,
+      "improvement_percentage": 2.5356680312610624,
+      "iterations": 17,
+      "improvements": 5,
+      "perturbations": 4
+    }
+  ]
+}

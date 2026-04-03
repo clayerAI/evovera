@@ -1,0 +1,49 @@
+{
+  "algorithm": "christofides_ils_hybrid",
+  "n": 500,
+  "num_instances": 3,
+  "average_tour_length": 17.602703464965156,
+  "std_tour_length": 0.08525335244025661,
+  "average_time": 25.26804773012797,
+  "baseline_comparison": {
+    "baseline_algorithm": "nearest_neighbor_with_2opt",
+    "baseline_length": 17.69,
+    "improvement_ratio": 1.0049592686264694,
+    "improvement_percentage": 0.49592686264694485
+  },
+  "results": [
+    {
+      "instance": 0,
+      "seed": 0,
+      "tour_length": 17.558550835256423,
+      "time": 26.893459796905518,
+      "initial_length": 18.498604331452594,
+      "improvement_percentage": 5.0817536250441755,
+      "iterations": 13,
+      "improvements": 4,
+      "perturbations": 3
+    },
+    {
+      "instance": 1,
+      "seed": 1,
+      "tour_length": 17.527619550709012,
+      "time": 23.220013856887817,
+      "initial_length": 18.246168223458376,
+      "improvement_percentage": 3.938079842021594,
+      "iterations": 9,
+      "improvements": 3,
+      "perturbations": 2
+    },
+    {
+      "instance": 2,
+      "seed": 2,
+      "tour_length": 17.72194000893003,
+      "time": 25.690669536590576,
+      "initial_length": 18.270039229428143,
+      "improvement_percentage": 2.999989291841649,
+      "iterations": 17,
+      "improvements": 5,
+      "perturbations": 4
+    }
+  ]
+}
