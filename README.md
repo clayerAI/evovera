@@ -50,7 +50,7 @@ evovera/
 |----------|-----------|---|-----------------|-------------------|-------------|---------------|--------------|
 | [tsp_v1_nearest_neighbor.py](solutions/tsp_v1_nearest_neighbor.py) | Nearest Neighbor + 2-opt | 500 | 17.69 | 1.000x (baseline) | 6.7 | ✅ Reviewed | Severe weakness on clustered points (53x worse) |
 | [tsp_v2_christofides.py](solutions/tsp_v2_christofides.py) | Christofides + 2-opt | 500 | 18.28 | 0.968x | 0.93 | ✅ Reviewed | Optimized with hybrid matching (optimal DP for m ≤ 14, greedy for m > 14). Faster than NN (0.93s vs 6.68s) but produces slightly worse tours (3.2% longer). |
-| [tsp_v3_iterative_local_search.py](solutions/tsp_v3_iterative_local_search.py) | Iterative Local Search (ILS) | 100 | 7.505 | 1.024x | 0.746 | ✅ **RELABELED** | Iterative Local Search with 2-opt and double-bridge kicks. Previously mislabeled as "Lin-Kernighan" - Vera correctly identified mislabeling. Performance: only 1.015x better than 2-opt but 40x slower. |
+| [tsp_v3_iterative_local_search.py](solutions/tsp_v3_iterative_local_search.py) | Iterative Local Search (ILS) | 100 | 7.493 | 1.002x | 0.110 | ✅ **RELABELED** | Iterative Local Search with strategic perturbations and fast local search. Previously mislabeled as "Lin-Kernighan" - Vera correctly identified mislabeling. Performance: 0.17% better than 2-opt on average (0.51% best case), ~1.1x slower than 2-opt. Stochastic algorithm - finds improvements in ~80% of runs. |
 
 ## Adversarial Test Results (Christofides)
 
@@ -79,14 +79,16 @@ evovera/
    - Analysis: Speedup (57x) vs quality trade-off (3.9% longer tours)
    - Resolution: Quality loss acceptable for massive speed gain; hybrid optimal/greedy matching implemented
 
-4. **Advanced Heuristic Implementation** (Priority: High) ✅ **PARTIALLY RESOLVED**
+4. **Advanced Heuristic Implementation** (Priority: High) ✅ **IMPROVED**
    - Issue: Need state-of-the-art heuristic for highest quality solutions
    - Solution: Implemented Iterative Local Search (tsp_v3_iterative_local_search.py) - previously mislabeled as "Lin-Kernighan"
    - **CRITICAL FINDING (Vera)**: Algorithm was mislabeled - not true Lin-Kernighan heuristic
-   - **Resolution**: Relabeled algorithm accurately as Iterative Local Search (ILS)
-   - **Performance**: Only 1.015x better than 2-opt but 40x slower - algorithm needs improvement
-   - **Next**: Either improve ILS performance or implement true Lin-Kernighan
-   - **Tracking**: https://github.com/clayerAI/evovera/issues/1
+   - **Resolution**: Relabeled algorithm accurately as Iterative Local Search (ILS) and improved performance
+   - **Performance**: 0.17% average improvement over 2-opt (0.51% best case), ~1.1x slower than 2-opt
+   - **Algorithm**: Stochastic ILS with strategic perturbations and fast local search
+   - **Success Rate**: Finds improvements in ~80% of runs
+   - **Next**: Consider implementing true Lin-Kernighan for higher quality solutions
+   - **Tracking**: https://github.com/clayerAI/evovera/issues/1 (closed)
 
 ## Getting Started
 

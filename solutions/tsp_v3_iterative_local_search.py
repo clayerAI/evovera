@@ -563,22 +563,22 @@ def solve_tsp(points: np.ndarray) -> Tuple[List[int], float]:
         Tuple of (tour, tour_length)
     """
     n = len(points)
-    solver = EuclideanTSPLinKernighan(n=n, seed=42)
+    solver = EuclideanTSPIterativeLocalSearch(n=n, seed=42)
     solver.points = points  # Use provided points
     solver.dist_matrix = solver._compute_distance_matrix()  # Recompute distances
     solver.nearest_neighbors = solver._compute_nearest_neighbors(k=50)
     
-    # Use LK algorithm
+    # Use ILS algorithm
     tour, length, _ = solver.solve_tsp("iterative_local_search", max_iterations=50)
     return tour, length
 
 
 if __name__ == "__main__":
     # Example usage and self-test
-    print("=== TSP Solver v3: Lin-Kernighan Heuristic ===")
+    print("=== TSP Solver v3: Iterative Local Search (ILS) ===")
     
     # Create instance
-    solver = EuclideanTSPLinKernighan(n=100, seed=42)  # Smaller for quick test
+    solver = EuclideanTSPIterativeLocalSearch(n=100, seed=42)  # Smaller for quick test
     
     # Test algorithms
     print("\nTesting algorithms on 100-city instance:")
@@ -592,7 +592,7 @@ if __name__ == "__main__":
     print(f"2-opt: {two_opt_length:.4f} ({two_opt_time:.3f}s)")
     print(f"  Improvement: {((nn_length - two_opt_length) / nn_length * 100):.2f}%")
     
-    # Lin-Kernighan
+    # Iterative Local Search
     ils_tour, ils_length, ils_time = solver.solve_tsp("iterative_local_search", max_iterations=20)
     print(f"Iterative Local Search: {ils_length:.4f} ({ils_time:.3f}s)")
     print(f"  Improvement over 2-opt: {((two_opt_length - ils_length) / two_opt_length * 100):.2f}%")
