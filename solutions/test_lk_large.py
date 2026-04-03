@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Test Lin-Kernighan on larger instance"""
+"""Test Iterative Local Search on larger instance (formerly mislabeled as Lin-Kernighan)"""
 
 import numpy as np
 import math

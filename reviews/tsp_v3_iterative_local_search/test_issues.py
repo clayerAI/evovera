@@ -1,31 +1,35 @@
 #!/usr/bin/env python3
 """
-Test script to demonstrate issues with the Lin-Kernighan implementation.
+Test script to demonstrate issues with the Iterative Local Search implementation.
 Vera - Critical Reviewer
+
+NOTE: This algorithm was previously mislabeled as "Lin-Kernighan" but has been
+accurately relabeled as Iterative Local Search (ILS).
 """
 
 import sys
 sys.path.insert(0, 'solutions')
-from tsp_v3_lin_kernighan import EuclideanTSPLinKernighan
+from tsp_v3_iterative_local_search import EuclideanTSPIterativeLocalSearch
 import numpy as np
 import math
 import random
 import time
 import json
 
-def test_mislabeled_algorithm():
-    """Test 1: Verify the algorithm is mislabeled as Lin-Kernighan."""
+def test_algorithm_labeling():
+    """Test 1: Verify algorithm labeling (was mislabeled as Lin-Kernighan, now correctly labeled as ILS)."""
     print("=" * 70)
     print("TEST 1: Algorithm Label Verification")
     print("=" * 70)
     
     # Check the algorithm description
-    print("Algorithm claims: 'Lin-Kernighan heuristic for high-quality TSP solutions'")
+    print("Original claim: 'Lin-Kernighan heuristic for high-quality TSP solutions'")
+    print("Current label: 'Iterative Local Search (ILS) with 2-opt and double-bridge kicks'")
     print()
     
     # Analyze the actual implementation
     print("Actual implementation analysis:")
-    print("1. Method: lin_kernighan_improvement()")
+    print("1. Method: iterative_local_search() (formerly lin_kernighan_improvement())")
     print("2. What it actually does:")
     print("   - Iterative local search with 100 iterations")
     print("   - Uses aggressive 2-opt with limited neighborhood (50 neighbors)")
@@ -34,7 +38,7 @@ def test_mislabeled_algorithm():
     print("   - No gain criterion or backtracking")
     print("   - No sequential edge exchanges")
     print()
-    print("Conclusion: This is NOT a true Lin-Kernighan heuristic.")
+    print("Conclusion: This was NOT a true Lin-Kernighan heuristic (now correctly labeled as ILS).")
     print("It's an iterative local search with 2-opt and kicks.")
     print()
 
@@ -49,14 +53,15 @@ def test_performance_tradeoff():
     
     lk_improvements = []
     two_opt_improvements = []
-    lk_times = []
+    ils_improvements = []
     two_opt_times = []
+    ils_times = []
     two_opt_lengths = []
-    lk_lengths = []
+    ils_lengths = []
     
     for test in range(n_tests):
         seed = test * 100
-        tsp = EuclideanTSPLinKernighan(n=n, seed=seed)
+        tsp = EuclideanTSPIterativeLocalSearch(n=n, seed=seed)
         
         # Get initial tour
         initial_tour = tsp.nearest_neighbor_tour()
@@ -68,56 +73,56 @@ def test_performance_tradeoff():
         two_opt_time = time.time() - start
         two_opt_length = tsp.tour_length(two_opt_tour)
         
-        # Time Lin-Kernighan
+        # Time Iterative Local Search
         start = time.time()
-        lk_tour = tsp.lin_kernighan_improvement(initial_tour.copy(), max_iterations=100)
-        lk_time = time.time() - start
-        lk_length = tsp.tour_length(lk_tour)
+        ils_tour = tsp.iterative_local_search(initial_tour.copy(), max_iterations=100)
+        ils_time = time.time() - start
+        ils_length = tsp.tour_length(ils_tour)
         
         # Store results
         two_opt_improvements.append(initial_length / two_opt_length)
-        lk_improvements.append(initial_length / lk_length)
+        ils_improvements.append(initial_length / ils_length)
         two_opt_times.append(two_opt_time)
-        lk_times.append(lk_time)
+        ils_times.append(ils_time)
         two_opt_lengths.append(two_opt_length)
-        lk_lengths.append(lk_length)
+        ils_lengths.append(ils_length)
     
     # Calculate statistics
     avg_two_opt_improvement = np.mean(two_opt_improvements)
-    avg_lk_improvement = np.mean(lk_improvements)
-    avg_lk_vs_two_opt = np.mean([t/l for t,l in zip(two_opt_lengths, lk_lengths)])
+    avg_ils_improvement = np.mean(ils_improvements)
+    avg_ils_vs_two_opt = np.mean([t/l for t,l in zip(two_opt_lengths, ils_lengths)])
     avg_two_opt_time = np.mean(two_opt_times)
-    avg_lk_time = np.mean(lk_times)
-    time_ratio = avg_lk_time / avg_two_opt_time
-    lk_better_count = sum(1 for t,l in zip(two_opt_lengths, lk_lengths) if l < t)
+    avg_ils_time = np.mean(ils_times)
+    time_ratio = avg_ils_time / avg_two_opt_time
+    ils_better_count = sum(1 for t,l in zip(two_opt_lengths, ils_lengths) if l < t)
     
     print(f"Average 2-opt improvement over NN: {avg_two_opt_improvement:.3f}x")
-    print(f"Average LK improvement over NN: {avg_lk_improvement:.3f}x")
-    print(f"Average LK vs 2-opt: {avg_lk_vs_two_opt:.3f}x")
+    print(f"Average ILS improvement over NN: {avg_ils_improvement:.3f}x")
+    print(f"Average ILS vs 2-opt: {avg_ils_vs_two_opt:.3f}x")
     print()
     print(f"Average 2-opt time: {avg_two_opt_time:.3f}s")
-    print(f"Average LK time: {avg_lk_time:.3f}s")
-    print(f"Time ratio (LK/2-opt): {time_ratio:.1f}x")
+    print(f"Average ILS time: {avg_ils_time:.3f}s")
+    print(f"Time ratio (ILS/2-opt): {time_ratio:.1f}x")
     print()
-    print(f"LK better than 2-opt: {lk_better_count}/{n_tests} times")
+    print(f"ILS better than 2-opt: {ils_better_count}/{n_tests} times")
     print()
     
     # Performance assessment
     print("Performance Assessment:")
-    if avg_lk_vs_two_opt < 1.02:
-        print("❌ POOR: LK provides < 2% improvement over 2-opt")
+    if avg_ils_vs_two_opt < 1.02:
+        print("❌ POOR: ILS provides < 2% improvement over 2-opt")
     else:
-        print("✅ ACCEPTABLE: LK provides ≥ 2% improvement")
+        print("✅ ACCEPTABLE: ILS provides ≥ 2% improvement")
     
     if time_ratio > 10:
-        print("❌ POOR: LK is > 10x slower than 2-opt")
+        print("❌ POOR: ILS is > 10x slower than 2-opt")
     else:
-        print("✅ ACCEPTABLE: LK speed penalty is reasonable")
+        print("✅ ACCEPTABLE: ILS speed penalty is reasonable")
     
-    if lk_better_count / n_tests < 0.5:
-        print("❌ POOR: LK beats 2-opt in < 50% of cases")
+    if ils_better_count / n_tests < 0.5:
+        print("❌ POOR: ILS beats 2-opt in < 50% of cases")
     else:
-        print("✅ ACCEPTABLE: LK consistently beats 2-opt")
+        print("✅ ACCEPTABLE: ILS consistently beats 2-opt")
     print()
 
 def test_clustered_instance():
@@ -156,7 +161,7 @@ def test_clustered_instance():
         return points
     
     # Create custom TSP class
-    class CustomTSP(EuclideanTSPLinKernighan):
+    class CustomTSP(EuclideanTSPIterativeLocalSearch):
         def __init__(self, points):
             self.n = len(points)
             self.points = points
@@ -185,15 +190,15 @@ def test_clustered_instance():
     two_opt_tour = tsp.two_opt_improvement(initial_tour.copy(), max_iterations=1000)
     two_opt_length = tsp.tour_length(two_opt_tour)
     
-    # Apply Lin-Kernighan
-    lk_tour = tsp.lin_kernighan_improvement(initial_tour.copy(), max_iterations=100)
-    lk_length = tsp.tour_length(lk_tour)
+    # Apply Iterative Local Search
+    ils_tour = tsp.iterative_local_search(initial_tour.copy(), max_iterations=100)
+    ils_length = tsp.tour_length(ils_tour)
     
     print(f"Instance: Two clusters (n={n})")
     print(f"Initial NN tour length: {initial_length:.4f}")
     print(f"2-opt tour length: {two_opt_length:.4f} ({initial_length/two_opt_length:.3f}x improvement)")
-    print(f"LK tour length: {lk_length:.4f} ({initial_length/lk_length:.3f}x improvement)")
-    print(f"LK vs 2-opt: {two_opt_length/lk_length:.3f}x improvement")
+    print(f"ILS tour length: {ils_length:.4f} ({initial_length/ils_length:.3f}x improvement)")
+    print(f"ILS vs 2-opt: {two_opt_length/ils_length:.3f}x improvement")
     print()
     
     # Analysis
@@ -201,32 +206,33 @@ def test_clustered_instance():
     print("1. Structure: Two clusters far apart creates challenging topology")
     print("2. Limitation: Limited neighborhood search (50 neighbors) prevents")
     print("   discovery of beneficial moves between clusters")
-    print("3. True LK should: Use gain criterion to explore non-local moves")
+    print("3. True Lin-Kernighan would: Use gain criterion to explore non-local moves")
     print("4. Current implementation: Stuck in similar local optimum as 2-opt")
     print()
 
 def main():
     """Run all tests."""
     print("\n" + "=" * 70)
-    print("ADVERSARIAL REVIEW: Lin-Kernighan Implementation Issues")
+    print("ADVERSARIAL REVIEW: Iterative Local Search Implementation")
+    print("(formerly mislabeled as Lin-Kernighan)")
     print("=" * 70 + "\n")
     
-    test_mislabeled_algorithm()
+    test_algorithm_labeling()
     test_performance_tradeoff()
     test_clustered_instance()
     
     print("=" * 70)
     print("SUMMARY OF FINDINGS")
     print("=" * 70)
-    print("1. ❌ MISLABELED: Not a true Lin-Kernighan heuristic")
+    print("1. ✅ MISLABELING RESOLVED: Algorithm now correctly labeled as Iterative Local Search")
     print("2. ❌ POOR PERFORMANCE: Only 1.015x better than 2-opt, 40x slower")
     print("3. ❌ INCONSISTENT: Only beats 2-opt in 40% of cases")
     print("4. ❌ LIMITED: Neighborhood search prevents discovery of good moves")
     print()
     print("RECOMMENDATIONS:")
-    print("1. Relabel algorithm to accurately describe what it does")
-    print("2. Either implement true Lin-Kernighan or improve current algorithm")
-    print("3. Update benchmarks to reflect actual performance")
+    print("1. ✅ COMPLETED: Algorithm has been accurately relabeled")
+    print("2. Improve ILS algorithm performance or implement true Lin-Kernighan")
+    print("3. Ensure all references (benchmarks, tests) are updated")
     print("=" * 70)
 
 if __name__ == "__main__":

@@ -247,7 +247,7 @@
       "std_runtime": 0.0024222215330104084,
       "best_length": 7.505371559081148
     },
-    "lin_kernighan": {
+    "iterative_local_search": {
       "tour_lengths": [
         7.505371559081148,
         7.505371559081148,
