@@ -255,14 +255,13 @@ For each algorithmic experiment:
 - **Components**: TSPLIB parser, Clarke-Wright algorithm integration, comparison framework
 - **Status**: 30% complete - need to download real benchmark instances from CVRPLIB/VRP Web
 
-## Next Steps
-1. **Submit v14 and v15 to Vera** for novelty review
-2. **Benchmark all 15 algorithms** against NN+2opt baseline for n=500
-3. **Focus on truly novel approaches** - algorithmic coordination, structural analysis, learning-based guidance
-4. **Implement 5+ more novel hybrids** to reach 20+ target
-5. **Address v14 issues** - debug centrality calculation for adaptive matching
-6. **Enhance v15** - add more sophisticated analysis and selection mechanisms
-7. **Analyze pattern** - why standard metaheuristic combinations get rejected, focus on innovative integration mechanisms
+## Next Steps (Updated 2026-04-03)
+1. **✅ v14 and v15 interfaces standardized** - both now have solve_tsp() wrapper functions and are ready for novelty review
+2. **Submit v14 and v15 to Vera** for novelty review - both are now interface-compatible
+3. **Benchmark all 15 algorithms** against NN+2opt baseline for n=500 - need to fix benchmark script issues
+4. **Focus on truly novel approaches** - algorithmic coordination (v15), structural analysis (v14), learning-based guidance
+5. **Implement 5+ more novel hybrids** to reach 20+ target
+6. **Analyze pattern** - why standard metaheuristic combinations get rejected, focus on innovative integration mechanisms
 
 ## Benchmark Results Summary (2026-04-03)
 **Comprehensive benchmark analysis completed** - tested all 15 TSP hybrid algorithms
