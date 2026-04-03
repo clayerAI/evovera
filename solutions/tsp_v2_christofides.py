@@ -155,6 +155,105 @@ class EuclideanTSPChristofides:
         
         return matching_edges
     
+    def optimal_minimum_matching_dp(self, odd_vertices: List[int]) -> List[Tuple[int, int, float]]:
+        """
+        Dynamic programming optimal minimum-weight perfect matching.
+        Time complexity: O(2^m * m^2) where m = len(odd_vertices).
+        Only feasible for m ≤ 14 (2^14 * 14^2 ≈ 3.2M operations).
+        
+        Args:
+            odd_vertices: List of odd-degree vertices
+            
+        Returns:
+            Optimal matching edges
+        """
+        m = len(odd_vertices)
+        if m % 2 != 0:
+            raise ValueError("Number of odd vertices must be even")
+        
+        if m > 14:
+            raise ValueError(f"DP optimal matching not feasible for m={m} > 14")
+        
+        # Map odd vertices to indices 0..m-1 for DP
+        idx_to_vertex = odd_vertices.copy()
+        vertex_to_idx = {v: i for i, v in enumerate(idx_to_vertex)}
+        
+        # Precompute distances between all odd vertices
+        dist = [[0.0] * m for _ in range(m)]
+        for i in range(m):
+            for j in range(i + 1, m):
+                d = self.distance(idx_to_vertex[i], idx_to_vertex[j])
+                dist[i][j] = d
+                dist[j][i] = d
+        
+        # DP[mask] = minimum cost to match vertices in mask
+        # mask is bitmask of unmatched vertices
+        dp = [float('inf')] * (1 << m)
+        parent = [-1] * (1 << m)  # For reconstruction
+        
+        dp[0] = 0.0  # All vertices matched
+        
+        # Iterate over all masks
+        for mask in range(1 << m):
+            if dp[mask] == float('inf'):
+                continue
+            
+            # Find first unmatched vertex
+            i = 0
+            while i < m and (mask >> i) & 1:
+                i += 1
+            
+            if i == m:
+                continue  # All vertices matched
+            
+            # Try matching i with each unmatched vertex j > i
+            for j in range(i + 1, m):
+                if not (mask >> j) & 1:
+                    new_mask = mask | (1 << i) | (1 << j)
+                    new_cost = dp[mask] + dist[i][j]
+                    
+                    if new_cost < dp[new_mask]:
+                        dp[new_mask] = new_cost
+                        parent[new_mask] = (mask, i, j)
+        
+        # Reconstruct matching from DP
+        mask = (1 << m) - 1  # All vertices unmatched initially
+        matching_edges = []
+        
+        while mask != 0:
+            prev_mask, i, j = parent[mask]
+            u = idx_to_vertex[i]
+            v = idx_to_vertex[j]
+            weight = dist[i][j]
+            matching_edges.append((u, v, weight))
+            mask = prev_mask
+        
+        return matching_edges
+    
+    def hybrid_minimum_matching(self, odd_vertices: List[int]) -> List[Tuple[int, int, float]]:
+        """
+        Hybrid matching: optimal DP for m ≤ 14, greedy for m > 14.
+        
+        Args:
+            odd_vertices: List of odd-degree vertices
+            
+        Returns:
+            List of matching edges
+        """
+        m = len(odd_vertices)
+        
+        if m == 0:
+            return []
+        
+        if m <= 14:
+            try:
+                return self.optimal_minimum_matching_dp(odd_vertices)
+            except (ValueError, MemoryError) as e:
+                print(f"DP optimal matching failed for m={m}: {e}. Falling back to greedy.")
+                return self.greedy_minimum_matching(odd_vertices)
+        else:
+            return self.greedy_minimum_matching(odd_vertices)
+    
     def combine_mst_and_matching(self, mst_edges: List[Tuple[int, int, float]], 
                                 matching_edges: List[Tuple[int, int, float]]) -> Dict[int, List[int]]:
         """
@@ -357,7 +456,8 @@ class EuclideanTSPChristofides:
         odd_vertices = self.find_odd_degree_vertices(mst_edges)
         
         # Step 3: Minimum-weight perfect matching on odd vertices
-        matching_edges = self.greedy_minimum_matching(odd_vertices)
+        # Use hybrid matching: optimal DP for m ≤ 14, greedy for m > 14
+        matching_edges = self.hybrid_minimum_matching(odd_vertices)
         
         # Step 4: Combine MST and matching to create Eulerian multigraph
         eulerian_graph = self.combine_mst_and_matching(mst_edges, matching_edges)
@@ -488,6 +588,91 @@ def solve_tsp(coordinates: List[Tuple[float, float]]) -> List[int]:
                     odd_list.remove(best_v)
             
             return matching_edges
+        
+        def optimal_minimum_matching_dp(self, odd_vertices):
+            """
+            Dynamic programming optimal minimum-weight perfect matching.
+            Only feasible for m ≤ 14 (2^14 * 14^2 ≈ 3.2M operations).
+            """
+            m = len(odd_vertices)
+            if m % 2 != 0:
+                raise ValueError("Number of odd vertices must be even")
+            
+            if m > 14:
+                raise ValueError(f"DP optimal matching not feasible for m={m} > 14")
+            
+            # Map odd vertices to indices 0..m-1 for DP
+            idx_to_vertex = odd_vertices.copy()
+            vertex_to_idx = {v: i for i, v in enumerate(idx_to_vertex)}
+            
+            # Precompute distances between all odd vertices
+            dist = [[0.0] * m for _ in range(m)]
+            for i in range(m):
+                for j in range(i + 1, m):
+                    d = self.distance(idx_to_vertex[i], idx_to_vertex[j])
+                    dist[i][j] = d
+                    dist[j][i] = d
+            
+            # DP[mask] = minimum cost to match vertices in mask
+            dp = [float('inf')] * (1 << m)
+            parent = [-1] * (1 << m)  # For reconstruction
+            
+            dp[0] = 0.0  # All vertices matched
+            
+            # Iterate over all masks
+            for mask in range(1 << m):
+                if dp[mask] == float('inf'):
+                    continue
+                
+                # Find first unmatched vertex
+                i = 0
+                while i < m and (mask >> i) & 1:
+                    i += 1
+                
+                if i == m:
+                    continue  # All vertices matched
+                
+                # Try matching i with each unmatched vertex j > i
+                for j in range(i + 1, m):
+                    if not (mask >> j) & 1:
+                        new_mask = mask | (1 << i) | (1 << j)
+                        new_cost = dp[mask] + dist[i][j]
+                        
+                        if new_cost < dp[new_mask]:
+                            dp[new_mask] = new_cost
+                            parent[new_mask] = (mask, i, j)
+            
+            # Reconstruct matching from DP
+            mask = (1 << m) - 1  # All vertices unmatched initially
+            matching_edges = []
+            
+            while mask != 0:
+                prev_mask, i, j = parent[mask]
+                u = idx_to_vertex[i]
+                v = idx_to_vertex[j]
+                weight = dist[i][j]
+                matching_edges.append((u, v))
+                mask = prev_mask
+            
+            return matching_edges
+        
+        def hybrid_minimum_matching(self, odd_vertices):
+            """
+            Hybrid matching: optimal DP for m ≤ 14, greedy for m > 14.
+            """
+            m = len(odd_vertices)
+            
+            if m == 0:
+                return []
+            
+            if m <= 14:
+                try:
+                    return self.optimal_minimum_matching_dp(odd_vertices)
+                except (ValueError, MemoryError) as e:
+                    print(f"DP optimal matching failed for m={m}: {e}. Falling back to greedy.")
+                    return self.greedy_minimum_matching(odd_vertices)
+            else:
+                return self.greedy_minimum_matching(odd_vertices)
         
         def combine_mst_and_matching(self, mst_edges, matching_edges):
             """Combine MST and matching edges to create Eulerian multigraph."""
@@ -623,7 +808,8 @@ def solve_tsp(coordinates: List[Tuple[float, float]]) -> List[int]:
             odd_vertices = self.find_odd_degree_vertices(mst_edges)
             
             # Step 3: Minimum-weight perfect matching on odd vertices
-            matching_edges = self.greedy_minimum_matching(odd_vertices)
+            # Use hybrid matching: optimal DP for m ≤ 14, greedy for m > 14
+            matching_edges = self.hybrid_minimum_matching(odd_vertices)
             
             # Step 4: Combine MST and matching to create Eulerian multigraph
             eulerian_graph = self.combine_mst_and_matching(mst_edges, matching_edges)
