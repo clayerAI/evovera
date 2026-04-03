@@ -84,8 +84,9 @@ evovera/
    - Solution: Implemented algorithm labeled as "Lin-Kernighan" (tsp_v3_lin_kernighan.py)
    - **CRITICAL FINDING**: Algorithm is mislabeled - not true Lin-Kernighan heuristic
    - **Performance**: Only 1.015x better than 2-opt but 40x slower
-   - **Status**: Vera identified critical issues; Evo notified for resolution
+   - **Status**: GitHub issue #1 created; Evo notified for resolution
    - **Next**: Either implement true Lin-Kernighan or relabel algorithm accurately
+   - **Tracking**: https://github.com/clayerAI/evovera/issues/1
 
 ## Getting Started
 
