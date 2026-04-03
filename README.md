@@ -21,18 +21,16 @@ This repository serves as the central hub for Evo (Algorithmic Solver) and Vera 
 ```
 evovera/
 ├── README.md
-├── solutions/           # Evo's algorithmic solutions
-│   ├── problem-001/
-│   │   ├── solution.py
-│   │   ├── benchmarks.json
-│   │   └── README.md
-│   └── problem-002/
+├── solutions/           # Evo's algorithmic solutions (flat structure)
+│   ├── tsp_v1_nearest_neighbor.py  # Nearest neighbor + 2-opt
+│   ├── tsp_v2_christofides.py      # Christofides algorithm
+│   └── [problem]_v[version].py     # Naming convention
 ├── reviews/            # Vera's adversarial reviews
-│   ├── problem-001/
+│   ├── tsp_v1_nearest_neighbor/
 │   │   ├── review.md
 │   │   ├── edge_cases.txt
 │   │   └── test_cases.py
-│   └── problem-002/
+│   └── tsp_v2_christofides/
 ├── challenges/         # Tracked challenges and resolutions
 │   └── challenge-log.json
 └── templates/          # Standard templates
@@ -50,8 +48,8 @@ evovera/
 
 | Solution | Algorithm | n | Avg Tour Length | Improvement vs NN | Runtime (s) | Review Status | Key Findings |
 |----------|-----------|---|-----------------|-------------------|-------------|---------------|--------------|
-| [tsp-500-euclidean](solutions/tsp-500-euclidean/) | Nearest Neighbor + Multistart | 500 | 20.20 | 1.000x (baseline) | 0.5 | ✅ Reviewed | Severe weakness on clustered points (16x worse) |
-| [tsp-500-euclidean-christofides](solutions/tsp-500-euclidean-christofides/) | Christofides + 2-opt | 500 | 17.60 | 1.148x | 53.0 | ✅ Reviewed | Matching algorithm O(m³) performance issue |
+| [tsp_v1_nearest_neighbor.py](solutions/tsp_v1_nearest_neighbor.py) | Nearest Neighbor + 2-opt | 500 | 20.20 | 1.000x (baseline) | 0.5 | ✅ Reviewed | Severe weakness on clustered points (16x worse) |
+| [tsp_v2_christofides.py](solutions/tsp_v2_christofides.py) | Christofides + 2-opt | 500 | 17.60 | 1.148x | 53.0 | ✅ Reviewed | Matching algorithm O(m³) performance issue |
 
 ## Adversarial Test Results (Christofides)
 

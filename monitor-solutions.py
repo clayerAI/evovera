@@ -45,23 +45,39 @@ class SolutionMonitor:
             json.dump(self.state, f, indent=2)
     
     def get_solution_hash(self, solution_path):
-        """Calculate hash of solution directory contents."""
+        """Calculate hash of solution directory or file contents."""
         hash_obj = hashlib.md5()
         
-        for root, dirs, files in os.walk(solution_path):
-            # Sort for consistent hashing
-            dirs.sort()
-            files.sort()
-            
-            for file in files:
-                file_path = Path(root) / file
-                try:
-                    with open(file_path, 'rb') as f:
-                        while chunk := f.read(8192):
-                            hash_obj.update(chunk)
-                except (IOError, OSError):
-                    # Skip files we can't read
-                    pass
+        # Handle both directories and files
+        if solution_path.is_dir():
+            for root, dirs, files in os.walk(solution_path):
+                # Exclude __pycache__ directories
+                dirs[:] = [d for d in dirs if d != '__pycache__']
+                # Sort for consistent hashing
+                dirs.sort()
+                files.sort()
+                
+                for file in files:
+                    # Skip .pyc files and other cache files
+                    if file.endswith('.pyc') or file == '.DS_Store':
+                        continue
+                        
+                    file_path = Path(root) / file
+                    try:
+                        with open(file_path, 'rb') as f:
+                            while chunk := f.read(8192):
+                                hash_obj.update(chunk)
+                    except (IOError, OSError):
+                        # Skip files we can't read
+                        pass
+        else:
+            # It's a file
+            try:
+                with open(solution_path, 'rb') as f:
+                    while chunk := f.read(8192):
+                        hash_obj.update(chunk)
+            except (IOError, OSError):
+                pass
         
         return hash_obj.hexdigest()
     
@@ -72,33 +88,51 @@ class SolutionMonitor:
         new_solutions = []
         updated_solutions = []
         
-        # Find all solution directories
+        # Find all solution items (both directories and files)
         for item in self.solutions_dir.iterdir():
-            if item.is_dir():
-                solution_name = item.name
-                solution_hash = self.get_solution_hash(item)
+            # Skip __pycache__ directories and .pyc files
+            if item.name == '__pycache__' or item.name.endswith('.pyc') or item.name == '.DS_Store':
+                continue
                 
-                if solution_name not in self.state["known_solutions"]:
-                    # New solution
-                    print(f"  Found NEW solution: {solution_name}")
-                    new_solutions.append(solution_name)
-                    self.state["known_solutions"][solution_name] = {
-                        "hash": solution_hash,
-                        "first_seen": datetime.now().isoformat(),
-                        "last_updated": datetime.now().isoformat(),
-                        "review_status": "pending"
-                    }
+            # Check if it's a solution (directory or .py file)
+            is_solution = False
+            if item.is_dir():
+                # Directory solution (legacy format)
+                is_solution = True
+            elif item.is_file() and item.suffix == '.py':
+                # Flat file solution (new format)
+                # Check if it's a solution file (starts with problem identifier)
+                if item.name.startswith(('tsp_', 'problem_', 'solution_')):
+                    is_solution = True
+            
+            if not is_solution:
+                continue
+                
+            solution_name = item.name
+            solution_hash = self.get_solution_hash(item)
+            
+            if solution_name not in self.state["known_solutions"]:
+                # New solution
+                print(f"  Found NEW solution: {solution_name}")
+                new_solutions.append(solution_name)
+                self.state["known_solutions"][solution_name] = {
+                    "hash": solution_hash,
+                    "first_seen": datetime.now().isoformat(),
+                    "last_updated": datetime.now().isoformat(),
+                    "review_status": "pending",
+                    "type": "directory" if item.is_dir() else "file"
+                }
+                self.state["pending_reviews"].append(solution_name)
+                
+            elif self.state["known_solutions"][solution_name]["hash"] != solution_hash:
+                # Updated solution
+                print(f"  Found UPDATED solution: {solution_name}")
+                updated_solutions.append(solution_name)
+                self.state["known_solutions"][solution_name]["hash"] = solution_hash
+                self.state["known_solutions"][solution_name]["last_updated"] = datetime.now().isoformat()
+                self.state["known_solutions"][solution_name]["review_status"] = "needs_review"
+                if solution_name not in self.state["pending_reviews"]:
                     self.state["pending_reviews"].append(solution_name)
-                    
-                elif self.state["known_solutions"][solution_name]["hash"] != solution_hash:
-                    # Updated solution
-                    print(f"  Found UPDATED solution: {solution_name}")
-                    updated_solutions.append(solution_name)
-                    self.state["known_solutions"][solution_name]["hash"] = solution_hash
-                    self.state["known_solutions"][solution_name]["last_updated"] = datetime.now().isoformat()
-                    self.state["known_solutions"][solution_name]["review_status"] = "needs_review"
-                    if solution_name not in self.state["pending_reviews"]:
-                        self.state["pending_reviews"].append(solution_name)
         
         return new_solutions, updated_solutions
     

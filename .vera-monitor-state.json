@@ -1,22 +1,54 @@
 {
-  "last_check": "2026-04-03T11:09:29.533863",
+  "last_check": "2026-04-03T11:34:33.363161",
   "known_solutions": {
     "sample-problem-001": {
-      "hash": "410c29c10ef88683a8004dd4b3661d91",
+      "hash": "b8c645add7804110db7bf34ca10bc297",
       "first_seen": "2026-04-03T10:52:45.841018",
-      "last_updated": "2026-04-03T11:09:29.532982",
-      "review_status": "needs_review",
-      "last_reviewed": "2026-04-03T10:53:00"
+      "last_updated": "2026-04-03T11:33:43.871711",
+      "review_status": "reviewed",
+      "last_reviewed": "2026-04-03T11:30:00"
     },
-    "__pycache__": {
-      "hash": "be58881cdcf39c94d0cd462a7c0d2224",
-      "first_seen": "2026-04-03T11:09:29.533832",
-      "last_updated": "2026-04-03T11:09:29.533838",
-      "review_status": "pending"
+    "tsp_v1_nearest_neighbor.py": {
+      "hash": "a93f13f6fbb7f48ed97483843f26f40e",
+      "first_seen": "2026-04-03T11:33:43.864846",
+      "last_updated": "2026-04-03T11:33:43.864852",
+      "review_status": "reviewed",
+      "type": "file",
+      "last_reviewed": "2026-04-03T11:30:00"
+    },
+    "tsp_sample_nearest_neighbor.py": {
+      "hash": "c1c2ab89f967a2aad347f35b62b75ff7",
+      "first_seen": "2026-04-03T11:33:43.865627",
+      "last_updated": "2026-04-03T11:33:43.865632",
+      "review_status": "pending",
+      "type": "file"
+    },
+    "tsp-500-euclidean": {
+      "hash": "9949f13091273f5bf766b421bd9c9dcf",
+      "first_seen": "2026-04-03T11:33:43.867706",
+      "last_updated": "2026-04-03T11:33:43.867712",
+      "review_status": "reviewed",
+      "type": "directory",
+      "last_reviewed": "2026-04-03T11:30:00"
+    },
+    "tsp_v2_christofides.py": {
+      "hash": "19abb88173fa80bc3f70b2b991caa63e",
+      "first_seen": "2026-04-03T11:33:43.868712",
+      "last_updated": "2026-04-03T11:33:43.868716",
+      "review_status": "reviewed",
+      "type": "file",
+      "last_reviewed": "2026-04-03T11:30:00"
+    },
+    "tsp-500-euclidean-christofides": {
+      "hash": "dae4f9c634d09cb8e6ac2de5146166de",
+      "first_seen": "2026-04-03T11:33:43.870453",
+      "last_updated": "2026-04-03T11:33:43.870458",
+      "review_status": "reviewed",
+      "type": "directory",
+      "last_reviewed": "2026-04-03T11:30:00"
     }
   },
   "pending_reviews": [
-    "sample-problem-001",
-    "__pycache__"
+    "tsp_sample_nearest_neighbor.py"
   ]
 }
