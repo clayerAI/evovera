@@ -197,21 +197,17 @@ class EuclideanTSP:
         return tour, distance
 
 
-def solve_tsp(coordinates: List[Tuple[float, float]]) -> List[int]:
+def solve_tsp(points):
     """
-    Solve TSP using nearest neighbor heuristic with 2-opt (Evo's algorithm).
-    Wrapper for adversarial testing framework.
+    Standard interface for TSP algorithms.
     
     Args:
-        coordinates: List of (x, y) coordinates for each city
-    
+        points: numpy array of shape (n, 2) with (x, y) coordinates
+        
     Returns:
-        List of city indices in visitation order (0-based)
+        tuple: (tour, length) where tour is list of indices, length is float
     """
-    n = len(coordinates)
-    
-    # Convert coordinates to numpy array
-    points = np.array(coordinates)
+    n = len(points)
     
     # Create a custom TSP instance with these points
     class CustomTSP:
@@ -224,7 +220,7 @@ def solve_tsp(coordinates: List[Tuple[float, float]]) -> List[int]:
             dist = np.zeros((self.n, self.n))
             for i in range(self.n):
                 for j in range(i + 1, self.n):
-                    d = math.sqrt(((self.points[i] - self.points[j]) ** 2).sum())
+                    d = np.linalg.norm(self.points[i] - self.points[j])
                     dist[i, j] = d
                     dist[j, i] = d
             return dist
@@ -232,10 +228,7 @@ def solve_tsp(coordinates: List[Tuple[float, float]]) -> List[int]:
         def distance(self, i, j):
             return self.dist_matrix[i, j]
         
-        def nearest_neighbor(self, start_city=None):
-            if start_city is None:
-                start_city = random.randint(0, self.n - 1)
-            
+        def nearest_neighbor(self, start_city=0):
             unvisited = set(range(self.n))
             tour = [start_city]
             unvisited.remove(start_city)
@@ -258,6 +251,46 @@ def solve_tsp(coordinates: List[Tuple[float, float]]) -> List[int]:
                 distance += self.distance(tour[i], tour[i + 1])
             return distance
         
+        def two_opt(self, tour, max_iterations=1000):
+            if len(tour) < 4 or tour[0] != tour[-1]:
+                return tour
+            
+            tour = tour[:-1]
+            n = len(tour)
+            improved = True
+            iteration = 0
+            
+            while improved and iteration < max_iterations:
+                improved = False
+                for i in range(n - 1):
+                    for j in range(i + 2, n):
+                        # Calculate current distance for edges (i, i+1) and (j, j+1)
+                        current = (self.distance(tour[i], tour[(i + 1) % n]) +
+                                  self.distance(tour[j], tour[(j + 1) % n]))
+                        # Calculate new distance if we reverse segment between i+1 and j
+                        new = (self.distance(tour[i], tour[j]) +
+                              self.distance(tour[(i + 1) % n], tour[(j + 1) % n]))
+                        
+                        if new < current:
+                            # Reverse the segment
+                            tour[i + 1:j + 1] = reversed(tour[i + 1:j + 1])
+                            improved = True
+                            break
+                    if improved:
+                        break
+                iteration += 1
+            
+            # Add back the starting city
+            tour.append(tour[0])
+            return tour
+    
+    # Create TSP instance and solve
+    tsp = CustomTSP(points)
+    tour = tsp.nearest_neighbor(start_city=0)
+    tour = tsp.two_opt(tour, max_iterations=1000)
+    length = tsp.tour_distance(tour)
+    
+    return tour, length
         def two_opt(self, tour, max_iterations=1000):
             if len(tour) < 4 or tour[0] != tour[-1]:
                 return tour

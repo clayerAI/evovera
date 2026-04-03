@@ -1,0 +1,13 @@
+Test completed: 6/15 algorithms working
+Broken algorithms: 9
+
+Algorithms needing fixes:
+  - v1_nearest_neighbor (tsp_v1_nearest_neighbor.py): Unexpected error: unexpected indent (tsp_v1_nearest_neighbor.py, line 295)
+  - v3_iterative_local_search (tsp_v3_iterative_local_search.py): Returns <class 'list'> instead of tuple
+  - v4_nn_ils_hybrid (tsp_v4_nn_ils_hybrid.py): Returns <class 'tuple'> instead of tuple
+  - v5_christofides_ils_hybrid (tsp_v5_christofides_ils_hybrid.py): Runtime error: name 'minimum_spanning_tree_prim' is not defined
+  - v11_nn_ils_adaptive_memory (tsp_v11_nn_ils_adaptive_memory.py): No solve_tsp function
+  - v12_nn_fast_ils (tsp_v12_nn_fast_ils.py): No solve_tsp function
+  - v13_nn_efficient_ils (tsp_v13_nn_efficient_ils.py): No solve_tsp function
+  - v14_christofides_adaptive_matching (tsp_v14_christofides_adaptive_matching.py): Returns <class 'list'> instead of tuple
+  - v15_algorithmic_ecology (tsp_v15_algorithmic_ecology.py): Returns <class 'list'> instead of tuple

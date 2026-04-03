@@ -532,5 +532,21 @@ def test_algorithm():
     return results
 
 
+def solve_tsp(points: List[Tuple[float, float]], seed: int = 42) -> List[int]:
+    """
+    Standard interface function for TSP algorithms.
+    
+    Args:
+        points: List of (x, y) coordinates
+        seed: Random seed for reproducibility
+        
+    Returns:
+        List of node indices representing the tour
+    """
+    solver = TSPAlgorithmEcology(points, seed=seed)
+    tour, length, runtime, metadata = solver.solve(use_parallel=True)
+    return tour
+
+
 if __name__ == "__main__":
     test_algorithm()

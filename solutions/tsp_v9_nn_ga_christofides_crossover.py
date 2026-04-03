@@ -324,6 +324,35 @@ def nn_ga_christofides_crossover_hybrid(coords: List[Tuple[float, float]],
     
     return best_tour
 
+def solve_tsp(points):
+    """
+    Standard interface for TSP algorithms.
+    
+    Args:
+        points: numpy array of shape (n, 2) with (x, y) coordinates
+        
+    Returns:
+        tuple: (tour, length) where tour is list of indices, length is float
+    """
+    # Convert numpy array to list of tuples
+    coords = [(float(p[0]), float(p[1])) for p in points]
+    
+    # Run the hybrid algorithm with default parameters
+    tour = nn_ga_christofides_crossover_hybrid(
+        coords, 
+        generations=100,
+        population_size=50,
+        crossover_rate=0.8,
+        mutation_rate=0.1,
+        elitism=2
+    )
+    
+    # Calculate tour length
+    dist = distance_matrix(coords)
+    length = tour_length(tour, dist)
+    
+    return tour, length
+
 def test_algorithm():
     """Test the algorithm on a small instance."""
     # Create a small test instance
