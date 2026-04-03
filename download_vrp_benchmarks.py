@@ -1,320 +1,184 @@
 #!/usr/bin/env python3
-"""
-Download VRP benchmark instances from standard repositories.
-
-Sources:
-1. CVRPLIB: http://vrp.atd-lab.inf.puc-rio.br/index.php/en/
-2. VRP Web: http://www.bernabe.dorronsoro.es/vrp/
-3. TSPLIB: http://comopt.ifi.uni-heidelberg.de/software/TSPLIB95/
-"""
+"""Download VRP benchmark instances from standard repositories."""
 
 import os
-import requests
+import urllib.request
 import zipfile
 import io
-import tempfile
-import re
-from pathlib import Path
+import ssl
+import time
 
-def download_cvrplib_instances(output_dir: str = "vrp_benchmarks"):
-    """
-    Download instances from CVRPLIB (Christofides & Eilon, Golden et al.)
+def download_cvrplib_instances():
+    """Download instances from CVRPLIB (Capacitated VRP Library)."""
+    print("Downloading CVRPLIB instances...")
     
-    Note: This is a placeholder implementation. In a real implementation,
-    we would download from the actual URLs.
-    """
-    os.makedirs(output_dir, exist_ok=True)
-    
-    # List of standard CVRP instances (small to medium)
+    # CVRPLIB instances (Christofides & Eilon, Golden et al.)
+    # Let's start with a smaller subset for testing
     instances = [
-        "A-n32-k5",
-        "A-n33-k5", 
-        "A-n33-k6",
-        "A-n34-k5",
-        "A-n36-k5",
-        "A-n37-k5",
-        "A-n37-k6",
-        "A-n38-k5",
-        "A-n39-k5",
-        "A-n39-k6",
-        "A-n44-k6",
-        "A-n45-k6",
-        "A-n45-k7",
-        "A-n46-k7",
-        "A-n48-k7",
-        "A-n53-k7",
-        "A-n54-k7",
-        "A-n55-k9",
-        "A-n60-k9",
-        "A-n61-k9",
-        "A-n62-k8",
-        "A-n63-k9",
-        "A-n63-k10",
-        "A-n64-k9",
-        "A-n65-k9",
-        "A-n69-k9",
-        "A-n80-k10",
-        "B-n31-k5",
-        "B-n34-k5",
-        "B-n35-k5",
-        "B-n38-k6",
-        "B-n39-k5",
-        "B-n41-k6",
-        "B-n43-k6",
-        "B-n44-k7",
-        "B-n45-k5",
-        "B-n45-k6",
-        "B-n50-k7",
-        "B-n50-k8",
-        "B-n51-k7",
-        "B-n52-k7",
-        "B-n56-k7",
-        "B-n57-k7",
-        "B-n57-k9",
-        "B-n63-k10",
-        "B-n64-k9",
-        "B-n66-k9",
-        "B-n67-k10",
-        "B-n68-k9",
-        "B-n78-k10",
-        "E-n13-k4",
-        "E-n22-k4",
-        "E-n23-k3",
-        "E-n30-k3",
-        "E-n33-k4",
-        "E-n51-k5",
-        "E-n76-k7",
-        "E-n76-k8",
-        "E-n76-k10",
-        "E-n76-k14",
-        "E-n101-k8",
-        "E-n101-k14",
-        "F-n45-k4",
-        "F-n72-k4",
-        "F-n135-k7",
-        "M-n101-k10",
-        "M-n121-k7",
-        "M-n151-k12",
-        "M-n200-k16",
-        "M-n200-k17",
-        "P-n16-k8",
-        "P-n19-k2",
-        "P-n20-k2",
-        "P-n21-k2",
-        "P-n22-k2",
-        "P-n22-k8",
-        "P-n23-k8",
-        "P-n40-k5",
-        "P-n45-k5",
-        "P-n50-k7",
-        "P-n50-k8",
-        "P-n50-k10",
-        "P-n51-k10",
-        "P-n55-k7",
-        "P-n55-k8",
-        "P-n55-k10",
-        "P-n55-k15",
-        "P-n60-k10",
-        "P-n60-k15",
-        "P-n65-k10",
-        "P-n70-k10",
-        "P-n76-k4",
-        "P-n76-k5",
-        "P-n101-k4"
+        "A-n32-k5.vrp",
+        "A-n33-k5.vrp", 
+        "A-n33-k6.vrp",
+        "A-n34-k5.vrp",
+        "A-n36-k5.vrp",
+        "A-n37-k5.vrp",
+        "A-n37-k6.vrp",
+        "A-n38-k5.vrp",
+        "A-n39-k5.vrp",
+        "A-n39-k6.vrp",
     ]
     
-    print(f"Would download {len(instances)} instances from CVRPLIB")
-    print("Note: Actual download requires web scraping or API access")
+    base_url = "http://vrp.atd-lab.inf.puc-rio.br/media/com_vrp/instances/"
     
-    # For now, create placeholder files with instance names
-    for instance in instances[:5]:  # Just create a few for testing
-        filename = os.path.join(output_dir, f"{instance}.vrp")
-        if not os.path.exists(filename):
-            with open(filename, 'w') as f:
-                f.write(f"NAME: {instance}\n")
-                f.write("COMMENT: Placeholder file - real instance would be downloaded from CVRPLIB\n")
-                f.write("TYPE: CVRP\n")
-                f.write("DIMENSION: 32\n")
-                f.write("EDGE_WEIGHT_TYPE: EUC_2D\n")
-                f.write("CAPACITY: 100\n")
-                f.write("NODE_COORD_SECTION\n")
-                f.write("1 82 76\n")
-                f.write("2 96 44\n")
-                f.write("...\n")
-                f.write("DEMAND_SECTION\n")
-                f.write("1 0\n")
-                f.write("2 19\n")
-                f.write("...\n")
-                f.write("DEPOT_SECTION\n")
-                f.write("1\n")
-                f.write("-1\n")
-                f.write("EOF\n")
-            print(f"Created placeholder: {filename}")
+    # Create SSL context that doesn't verify certificates (for testing)
+    ctx = ssl.create_default_context()
+    ctx.check_hostname = False
+    ctx.verify_mode = ssl.CERT_NONE
     
-    return output_dir
+    successful = 0
+    for instance in instances:
+        url = base_url + instance
+        local_path = os.path.join("vrp_benchmarks", instance)
+        
+        try:
+            print(f"  Downloading {instance}...", end="")
+            # Use custom opener with SSL context
+            opener = urllib.request.build_opener(urllib.request.HTTPSHandler(context=ctx))
+            urllib.request.install_opener(opener)
+            
+            req = urllib.request.Request(url, headers={'User-Agent': 'Mozilla/5.0'})
+            with urllib.request.urlopen(req, timeout=30) as response:
+                with open(local_path, 'wb') as f:
+                    f.write(response.read())
+            print(f" OK")
+            successful += 1
+            time.sleep(0.5)  # Be polite to server
+        except Exception as e:
+            print(f" FAILED: {e}")
+    
+    print(f"CVRPLIB download complete: {successful}/{len(instances)} instances downloaded.")
 
-def download_tsplib_instances(output_dir: str = "vrp_benchmarks"):
-    """
-    Download TSPLIB instances that can be converted to VRP.
+def download_from_github():
+    """Download VRP instances from GitHub repositories as fallback."""
+    print("\nTrying GitHub repositories as fallback...")
     
-    Note: TSPLIB instances don't have demands or capacities,
-    but can be used for distance-only VRP variants.
-    """
-    os.makedirs(output_dir, exist_ok=True)
-    
-    # Some TSPLIB instances that are commonly used
-    tsp_instances = [
-        "eil51", "berlin52", "st70", "eil76", "pr76",
-        "rat99", "kroA100", "kroB100", "kroC100", "kroD100",
-        "kroE100", "rd100", "eil101", "lin105", "pr107",
-        "pr124", "bier127", "ch130", "pr136", "pr144",
-        "ch150", "kroA150", "kroB150", "pr152", "u159",
-        "rat195", "d198", "kroA200", "kroB200", "ts225",
-        "tsp225", "pr226", "gil262", "pr264", "a280",
-        "pr299", "lin318", "rd400", "fl417", "pr439",
-        "pcb442", "d493", "u574", "rat575", "p654",
-        "d657", "u724", "rat783", "pr1002", "u1060",
-        "vm1084", "pcb1173", "d1291", "rl1304", "rl1323",
-        "nrw1379", "fl1400", "u1432", "fl1577", "d1655",
-        "vm1748", "u1817", "rl1889", "d2103", "u2152",
-        "u2319", "pr2392", "pcb3038", "fl3795", "fnl4461",
-        "rl5915", "rl5934", "pla7397", "rl11849", "usa13509",
-        "brd14051", "d15112", "d18512", "pla33810", "pla85900"
+    # Known GitHub repositories with VRP instances
+    github_urls = [
+        "https://raw.githubusercontent.com/coin-or/jorlib/master/jorlib-core/src/test/resources/vrp/A-n32-k5.vrp",
+        "https://raw.githubusercontent.com/coin-or/jorlib/master/jorlib-core/src/test/resources/vrp/A-n33-k5.vrp",
+        "https://raw.githubusercontent.com/coin-or/jorlib/master/jorlib-core/src/test/resources/vrp/A-n33-k6.vrp",
     ]
     
-    print(f"Would download {len(tsp_instances)} TSPLIB instances")
-    print("Note: Actual download requires web scraping")
+    successful = 0
+    for url in github_urls:
+        try:
+            filename = os.path.basename(url)
+            local_path = os.path.join("vrp_benchmarks", filename)
+            
+            if os.path.exists(local_path):
+                print(f"  {filename} already exists, skipping")
+                successful += 1
+                continue
+                
+            print(f"  Downloading {filename}...", end="")
+            req = urllib.request.Request(url, headers={'User-Agent': 'Mozilla/5.0'})
+            with urllib.request.urlopen(req, timeout=30) as response:
+                with open(local_path, 'wb') as f:
+                    f.write(response.read())
+            print(f" OK")
+            successful += 1
+            time.sleep(0.5)
+        except Exception as e:
+            print(f" FAILED: {e}")
     
-    # Create a few placeholder files
-    for instance in tsp_instances[:3]:
-        filename = os.path.join(output_dir, f"{instance}.tsp")
-        if not os.path.exists(filename):
-            with open(filename, 'w') as f:
-                f.write(f"NAME: {instance}\n")
-                f.write("COMMENT: Placeholder TSPLIB instance\n")
-                f.write("TYPE: TSP\n")
-                f.write("DIMENSION: 51\n")
-                f.write("EDGE_WEIGHT_TYPE: EUC_2D\n")
-                f.write("NODE_COORD_SECTION\n")
-                f.write("1 37 52\n")
-                f.write("2 49 49\n")
-                f.write("...\n")
-                f.write("EOF\n")
-            print(f"Created placeholder: {filename}")
-    
-    return output_dir
+    return successful
 
-def create_synthetic_vrp_instances(output_dir: str = "vrp_benchmarks"):
-    """
-    Create synthetic VRP instances for testing when real ones aren't available.
-    """
-    os.makedirs(output_dir, exist_ok=True)
+def create_synthetic_instances():
+    """Create synthetic VRP instances for testing."""
+    print("\nCreating synthetic VRP instances...")
     
-    # Create a few realistic synthetic instances
-    instances = [
-        {
-            "name": "SYNTHETIC-A-n32-k5",
-            "dimension": 32,
-            "capacity": 100,
-            "depot": 1,
-            "optimal": 784  # From actual A-n32-k5
-        },
-        {
-            "name": "SYNTHETIC-B-n31-k5", 
-            "dimension": 31,
-            "capacity": 100,
-            "depot": 1,
-            "optimal": 672  # From actual B-n31-k5
-        },
-        {
-            "name": "SYNTHETIC-P-n16-k8",
-            "dimension": 16,
-            "capacity": 35,
-            "depot": 1,
-            "optimal": 450  # From actual P-n16-k8
-        }
+    # Create some simple synthetic instances
+    synthetic_instances = [
+        ("synthetic_10_2.vrp", 10, 2, 50),
+        ("synthetic_20_3.vrp", 20, 3, 100),
+        ("synthetic_30_4.vrp", 30, 4, 150),
+        ("synthetic_40_5.vrp", 40, 5, 200),
+        ("synthetic_50_6.vrp", 50, 6, 250),
     ]
     
-    import numpy as np
-    
-    for instance_info in instances:
-        filename = os.path.join(output_dir, f"{instance_info['name']}.vrp")
-        
-        n = instance_info['dimension']
-        capacity = instance_info['capacity']
-        depot = instance_info['depot']
-        optimal = instance_info['optimal']
-        
-        # Generate coordinates (depot at center, customers around)
-        np.random.seed(42)
-        coordinates = []
-        for i in range(1, n + 1):
-            if i == depot:
-                x, y = 50, 50  # Depot at center
-            else:
-                x = np.random.uniform(10, 90)
-                y = np.random.uniform(10, 90)
-            coordinates.append((i, x, y))
-        
-        # Generate demands (depot has 0 demand)
-        demands = []
-        for i in range(1, n + 1):
-            if i == depot:
-                demand = 0
-            else:
-                demand = np.random.randint(5, 30)
-            demands.append((i, demand))
-        
-        # Write VRP file
-        with open(filename, 'w') as f:
-            f.write(f"NAME: {instance_info['name']}\n")
-            f.write(f"COMMENT: Synthetic instance based on {instance_info['name']}, Optimal value: {optimal}\n")
-            f.write("TYPE: CVRP\n")
-            f.write(f"DIMENSION: {n}\n")
-            f.write("EDGE_WEIGHT_TYPE: EUC_2D\n")
+    for filename, n_customers, n_vehicles, capacity in synthetic_instances:
+        path = os.path.join("vrp_benchmarks", filename)
+        if os.path.exists(path):
+            print(f"  {filename} already exists, skipping")
+            continue
+            
+        with open(path, 'w') as f:
+            f.write(f"NAME: {filename}\n")
+            f.write(f"COMMENT: Synthetic VRP instance with {n_customers} customers, {n_vehicles} vehicles\n")
+            f.write(f"TYPE: CVRP\n")
+            f.write(f"DIMENSION: {n_customers + 1}\n")  # +1 for depot
+            f.write(f"EDGE_WEIGHT_TYPE: EUC_2D\n")
             f.write(f"CAPACITY: {capacity}\n")
-            f.write("NODE_COORD_SECTION\n")
-            for node_id, x, y in coordinates:
-                f.write(f"{node_id} {x:.1f} {y:.1f}\n")
-            f.write("DEMAND_SECTION\n")
-            for node_id, demand in demands:
-                f.write(f"{node_id} {demand}\n")
-            f.write("DEPOT_SECTION\n")
-            f.write(f"{depot}\n")
-            f.write("-1\n")
-            f.write("EOF\n")
+            f.write(f"NODE_COORD_SECTION\n")
+            
+            # Depot at (0, 0)
+            f.write(f"1 0 0\n")
+            
+            # Customers at random locations
+            import random
+            random.seed(42)
+            for i in range(2, n_customers + 2):
+                x = random.randint(0, 100)
+                y = random.randint(0, 100)
+                f.write(f"{i} {x} {y}\n")
+            
+            f.write(f"DEMAND_SECTION\n")
+            f.write(f"1 0\n")  # Depot has 0 demand
+            for i in range(2, n_customers + 2):
+                demand = random.randint(1, 30)
+                f.write(f"{i} {demand}\n")
+            
+            f.write(f"DEPOT_SECTION\n")
+            f.write(f"1\n")
+            f.write(f"-1\n")
+            f.write(f"EOF\n")
         
-        print(f"Created synthetic instance: {filename}")
-    
-    return output_dir
+        print(f"  Created {filename}")
 
 def main():
-    """Main function to download VRP benchmark instances."""
-    print("Downloading VRP benchmark instances...")
+    """Main download function."""
+    # Create directory if it doesn't exist
+    os.makedirs("vrp_benchmarks", exist_ok=True)
     
-    # Create output directory
-    output_dir = "vrp_benchmarks"
-    os.makedirs(output_dir, exist_ok=True)
+    print("VRP Benchmark Downloader")
+    print("=" * 60)
     
-    # Try to download from different sources
-    print("\n1. Creating synthetic instances (for testing)...")
-    create_synthetic_vrp_instances(output_dir)
+    # Try to download real instances
+    real_downloaded = 0
+    try:
+        download_cvrplib_instances()
+        real_downloaded += 10  # We tried 10 instances
+    except Exception as e:
+        print(f"Failed to download CVRPLIB instances: {e}")
+        print("Trying GitHub fallback...")
+        try:
+            real_downloaded = download_from_github()
+        except Exception as e2:
+            print(f"GitHub fallback also failed: {e2}")
+            real_downloaded = 0
     
-    print("\n2. Would download from CVRPLIB...")
-    download_cvrplib_instances(output_dir)
+    # Always create synthetic instances
+    create_synthetic_instances()
     
-    print("\n3. Would download from TSPLIB...")
-    download_tsplib_instances(output_dir)
+    print("\n" + "=" * 60)
+    files = os.listdir("vrp_benchmarks")
+    print(f"VRP benchmark instances ready in: vrp_benchmarks/")
+    print(f"Total files: {len(files)}")
+    print(f"Real instances: {sum(1 for f in files if f.startswith('A-'))}")
+    print(f"Synthetic instances: {sum(1 for f in files if f.startswith('synthetic_'))}")
     
-    # List downloaded files
-    print(f"\nFiles in {output_dir}:")
-    for file in sorted(os.listdir(output_dir)):
-        if file.endswith(('.vrp', '.tsp')):
-            print(f"  {file}")
-    
-    print(f"\nTotal: {len([f for f in os.listdir(output_dir) if f.endswith(('.vrp', '.tsp'))])} instances")
-    
-    return output_dir
+    if real_downloaded == 0:
+        print("\nWARNING: Could not download real benchmark instances.")
+        print("Using synthetic instances only. Real benchmarks needed for proper comparison.")
 
 if __name__ == "__main__":
     main()

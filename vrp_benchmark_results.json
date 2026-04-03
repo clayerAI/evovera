@@ -8,6 +8,14 @@
     "num_vehicles": 1
   },
   {
+    "instance": "synthetic_50_6.vrp",
+    "dimension": 51,
+    "clarke_wright_distance": 970.5931774531867,
+    "optimal_distance": null,
+    "gap_percent": null,
+    "num_vehicles": 4
+  },
+  {
     "instance": "SYNTHETIC-P-n16-k8",
     "dimension": 16,
     "clarke_wright_distance": 661.8110541551581,
@@ -32,6 +40,14 @@
     "num_vehicles": 1
   },
   {
+    "instance": "synthetic_40_5.vrp",
+    "dimension": 41,
+    "clarke_wright_distance": 933.7244699163446,
+    "optimal_distance": null,
+    "gap_percent": null,
+    "num_vehicles": 4
+  },
+  {
     "instance": "SYNTHETIC-A-n32-k5",
     "dimension": 32,
     "clarke_wright_distance": 554.4876707516552,
@@ -46,6 +62,30 @@
     "optimal_distance": null,
     "gap_percent": null,
     "num_vehicles": 1
+  },
+  {
+    "instance": "synthetic_10_2.vrp",
+    "dimension": 11,
+    "clarke_wright_distance": 611.5200605361001,
+    "optimal_distance": null,
+    "gap_percent": null,
+    "num_vehicles": 4
+  },
+  {
+    "instance": "synthetic_20_3.vrp",
+    "dimension": 21,
+    "clarke_wright_distance": 693.3388962468316,
+    "optimal_distance": null,
+    "gap_percent": null,
+    "num_vehicles": 3
+  },
+  {
+    "instance": "synthetic_30_4.vrp",
+    "dimension": 31,
+    "clarke_wright_distance": 855.0737490589145,
+    "optimal_distance": null,
+    "gap_percent": null,
+    "num_vehicles": 4
   },
   {
     "instance": "A-n33-k5",
