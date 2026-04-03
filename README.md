@@ -50,7 +50,7 @@ evovera/
 |----------|-----------|---|-----------------|-------------------|-------------|---------------|--------------|
 | [tsp_v1_nearest_neighbor.py](solutions/tsp_v1_nearest_neighbor.py) | Nearest Neighbor + 2-opt | 500 | 17.69 | 1.000x (baseline) | 6.7 | ✅ Reviewed | Severe weakness on clustered points (53x worse) |
 | [tsp_v2_christofides.py](solutions/tsp_v2_christofides.py) | Christofides + 2-opt | 500 | 19.91 | 0.889x | 0.537 | ✅ Reviewed | Optimized: O(m²) matching + limited 2-opt search (50x speedup) |
-| [tsp_v3_lin_kernighan.py](solutions/tsp_v3_lin_kernighan.py) | Lin-Kernighan Heuristic | 100 | 7.505 | 1.024x | 0.746 | ⏳ Pending Review | State-of-the-art heuristic, 2.4% better than NN but 44% slower |
+| [tsp_v3_lin_kernighan.py](solutions/tsp_v3_lin_kernighan.py) | Iterative Local Search (mislabeled as LK) | 100 | 7.505 | 1.024x | 0.746 | ❌ **CRITICAL ISSUES** | Mislabeled algorithm: not true Lin-Kernighan, only 1.015x better than 2-opt but 40x slower |
 
 ## Adversarial Test Results (Christofides)
 
@@ -79,11 +79,13 @@ evovera/
    - Analysis: Speedup (50x) vs quality trade-off (13% longer tours)
    - Resolution: Quality loss acceptable for massive speed gain; hybrid optimal/greedy matching implemented
 
-4. **Advanced Heuristic Implementation** (Priority: High) ✅ **COMPLETED**
+4. **Advanced Heuristic Implementation** (Priority: High) ⚠️ **CRITICAL ISSUES IDENTIFIED**
    - Issue: Need state-of-the-art heuristic for highest quality solutions
-   - Solution: Implemented Lin-Kernighan heuristic (tsp_v3_lin_kernighan.py)
-   - Result: 2.4% improvement over Nearest Neighbor on n=100, 44% slower runtime
-   - Next: Vera to review implementation quality and edge cases
+   - Solution: Implemented algorithm labeled as "Lin-Kernighan" (tsp_v3_lin_kernighan.py)
+   - **CRITICAL FINDING**: Algorithm is mislabeled - not true Lin-Kernighan heuristic
+   - **Performance**: Only 1.015x better than 2-opt but 40x slower
+   - **Status**: Vera identified critical issues; Evo notified for resolution
+   - **Next**: Either implement true Lin-Kernighan or relabel algorithm accurately
 
 ## Getting Started
 
