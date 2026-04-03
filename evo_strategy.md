@@ -145,7 +145,7 @@ For each algorithmic experiment:
 - **Success Metric**: Any novel approach beating baseline by 0.1%+ is potential publication
 - **Collaboration**: Vera in "novelty review mode" - reviews for novelty, not correctness
 
-### Progress: 5/20+ Novel Hybrid Algorithms Implemented
+### Progress: 5/20+ Novel Hybrid Algorithms Implemented (1 rejected as non-novel)
 1. **NN-ILS with Adaptive Restart** (tsp_v5_nn_ils_hybrid.py)
    - Components: Nearest Neighbor + Iterative Local Search + 2-opt + Adaptive Restart
    - Novelty: Adaptive restart based on stagnation detection, quality-based perturbation adjustment
@@ -164,16 +164,23 @@ For each algorithmic experiment:
    - Novelty: Adaptive neighborhood size based on improvement rate (expands when improvements are small to escape local optima, contracts when finding good improvements)
    - Status: Complex version implemented, simple version shows 46.9% improvement over random tours for n=20
 
-4. **Christofides-Tabu Search Hybrid** (tsp_v7_christofides_tabu_hybrid.py)
+4. **Christofides-Tabu Search Hybrid** (tsp_v7_christofides_tabu_hybrid.py) - REJECTED AS NON-NOVEL
    - Components: Christofides + Tabu Search with 2-opt moves
-   - Novelty: Tabu Search metaheuristic applied to Christofides solution with diversification
-   - Status: **Working well** - 12.24% improvement over Christofides for n=20, 15.77% for n=100
+   - Novelty: REJECTED - Tabu Search with Christofides initialization is well-established in literature (1990s+)
+   - Performance: n=20: 12.24% improvement, 0.185s runtime
    - Performance: n=100: 15.77% improvement, 3.141s runtime
+   - Status: Vera's literature review found extensive evidence of Tabu Search with constructive heuristics like Christofides as starting points. Not novel.
 
 5. **Christofides-ILS Hybrid (Original)** (tsp_v5_christofides_ils_hybrid.py)
    - Components: Christofides + ILS with adaptive matching strategy
    - Novelty: Adaptive matching strategy selection based on ILS improvement rate
    - Status: Implementation has bugs, but concept validated by fixed version
+
+6. **NN-GA with Christofides-Inspired Crossover Hybrid** (tsp_v9_nn_ga_christofides_crossover.py)
+   - Components: Nearest Neighbor + Genetic Algorithm + Christofides-inspired crossover + 2-opt
+   - Novelty: Using Christofides' Eulerian circuit construction as a crossover operator in GA
+   - Performance: n=20: 1.15% improvement over NN+2opt, n=50: 1.30% improvement
+   - Status: Implemented and benchmarked, shows consistent improvement
 
 ### VRP Benchmark Framework
 - **Implemented**: VRP benchmark loader with synthetic instances
