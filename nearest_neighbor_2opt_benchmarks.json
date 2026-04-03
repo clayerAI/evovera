@@ -1,0 +1,80 @@
+{
+  "algorithm": "nearest_neighbor_with_2opt",
+  "n": 500,
+  "num_instances": 10,
+  "average_tour_length": 17.689749127194222,
+  "std_tour_length": 0.32994369077050706,
+  "average_time": 6.7366098165512085,
+  "results": [
+    {
+      "instance": 0,
+      "seed": 0,
+      "tour_length": 17.653562633530296,
+      "time": 10.671449899673462,
+      "algorithm": "nearest_neighbor_2opt"
+    },
+    {
+      "instance": 1,
+      "seed": 1,
+      "tour_length": 17.497277585981134,
+      "time": 4.656733989715576,
+      "algorithm": "nearest_neighbor_2opt"
+    },
+    {
+      "instance": 2,
+      "seed": 2,
+      "tour_length": 17.443280605585542,
+      "time": 5.759539365768433,
+      "algorithm": "nearest_neighbor_2opt"
+    },
+    {
+      "instance": 3,
+      "seed": 3,
+      "tour_length": 17.39817094294213,
+      "time": 6.451054096221924,
+      "algorithm": "nearest_neighbor_2opt"
+    },
+    {
+      "instance": 4,
+      "seed": 4,
+      "tour_length": 17.214312200549948,
+      "time": 7.072096824645996,
+      "algorithm": "nearest_neighbor_2opt"
+    },
+    {
+      "instance": 5,
+      "seed": 5,
+      "tour_length": 17.617571272712265,
+      "time": 7.345377445220947,
+      "algorithm": "nearest_neighbor_2opt"
+    },
+    {
+      "instance": 6,
+      "seed": 6,
+      "tour_length": 17.830692283068302,
+      "time": 6.749889135360718,
+      "algorithm": "nearest_neighbor_2opt"
+    },
+    {
+      "instance": 7,
+      "seed": 7,
+      "tour_length": 18.430581557343043,
+      "time": 4.979307413101196,
+      "algorithm": "nearest_neighbor_2opt"
+    },
+    {
+      "instance": 8,
+      "seed": 8,
+      "tour_length": 17.98023147093012,
+      "time": 7.086575746536255,
+      "algorithm": "nearest_neighbor_2opt"
+    },
+    {
+      "instance": 9,
+      "seed": 9,
+      "tour_length": 17.831810719299437,
+      "time": 6.594074249267578,
+      "algorithm": "nearest_neighbor_2opt"
+    }
+  ]
+}

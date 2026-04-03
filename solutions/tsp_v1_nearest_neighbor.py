@@ -1,16 +1,206 @@
+#!/usr/bin/env python3
 """
-TSP v1: Nearest Neighbor Implementation (Evo's solution)
-Wrapper to adapt Evo's implementation for adversarial testing framework.
+Traveling Salesman Problem (TSP) Solver - Version 1: Nearest Neighbor with 2-opt
+Evo - Algorithmic Solver
+Baseline: Nearest Neighbor heuristic for Euclidean TSP with 2-opt local search
+
+Includes solve_tsp() wrapper for adversarial testing framework.
 """
 
-import random
-import math
-from typing import List, Tuple
 import numpy as np
+import math
+import random
+import time
+from typing import List, Tuple, Dict
+import json
+
+
+class EuclideanTSP:
+    """Euclidean TSP with points in unit square [0,1] x [0,1]"""
+    
+    def __init__(self, n: int = 500, seed: int = None):
+        """
+        Initialize random Euclidean TSP instance.
+        
+        Args:
+            n: Number of cities
+            seed: Random seed for reproducibility
+        """
+        self.n = n
+        self.seed = seed
+        
+        if seed is not None:
+            np.random.seed(seed)
+            random.seed(seed)
+        
+        # Generate random points in unit square
+        self.points = np.random.rand(n, 2)
+        
+        # Precompute distance matrix
+        self.dist_matrix = self._compute_distance_matrix()
+    
+    def _compute_distance_matrix(self) -> np.ndarray:
+        """Compute Euclidean distance matrix between all points."""
+        dist = np.zeros((self.n, self.n))
+        for i in range(self.n):
+            for j in range(i + 1, self.n):
+                d = math.sqrt(((self.points[i] - self.points[j]) ** 2).sum())
+                dist[i, j] = d
+                dist[j, i] = d
+        return dist
+    
+    def distance(self, i: int, j: int) -> float:
+        """Get distance between cities i and j."""
+        return self.dist_matrix[i, j]
+    
+    def nearest_neighbor(self, start_city: int = None) -> Tuple[List[int], float]:
+        """
+        Nearest neighbor heuristic for TSP.
+        
+        Args:
+            start_city: Starting city index (None for random)
+            
+        Returns:
+            tour: List of city indices in visitation order
+            total_distance: Total tour length
+        """
+        if start_city is None:
+            start_city = random.randint(0, self.n - 1)
+        
+        unvisited = set(range(self.n))
+        tour = [start_city]
+        unvisited.remove(start_city)
+        
+        current = start_city
+        total_distance = 0.0
+        
+        while unvisited:
+            # Find nearest unvisited city
+            nearest = min(unvisited, key=lambda city: self.distance(current, city))
+            total_distance += self.distance(current, nearest)
+            
+            tour.append(nearest)
+            unvisited.remove(nearest)
+            current = nearest
+        
+        # Return to starting city
+        total_distance += self.distance(current, start_city)
+        tour.append(start_city)
+        
+        return tour, total_distance
+    
+    def nearest_neighbor_multistart(self, num_starts: int = 10) -> Tuple[List[int], float]:
+        """
+        Run nearest neighbor from multiple starting cities and return best tour.
+        
+        Args:
+            num_starts: Number of random starting cities to try
+            
+        Returns:
+            best_tour: Best tour found
+            best_distance: Distance of best tour
+        """
+        best_tour = None
+        best_distance = float('inf')
+        
+        for _ in range(num_starts):
+            tour, distance = self.nearest_neighbor()
+            if distance < best_distance:
+                best_tour = tour
+                best_distance = distance
+        
+        return best_tour, best_distance
+    
+    def tour_distance(self, tour: List[int]) -> float:
+        """Calculate total distance of a tour."""
+        distance = 0.0
+        for i in range(len(tour) - 1):
+            distance += self.distance(tour[i], tour[i + 1])
+        return distance
+    
+    def two_opt(self, tour: List[int], max_iterations: int = 1000) -> Tuple[List[int], float]:
+        """
+        Improve tour using 2-opt local search.
+        
+        Args:
+            tour: Initial tour (must start and end at same vertex)
+            max_iterations: Maximum number of iterations
+            
+        Returns:
+            Improved tour and its distance
+        """
+        if len(tour) < 4 or tour[0] != tour[-1]:
+            return tour, self.tour_distance(tour)
+        
+        # Remove duplicate start/end for processing
+        tour = tour[:-1]
+        n = len(tour)
+        best_tour = tour[:]
+        best_distance = self.tour_distance(tour + [tour[0]])
+        
+        improved = True
+        iterations = 0
+        
+        while improved and iterations < max_iterations:
+            improved = False
+            iterations += 1
+            
+            for i in range(n):
+                for j in range(i + 2, n):
+                    if j == n - 1 and i == 0:
+                        continue  # Don't swap first and last
+                    
+                    # Calculate gain from 2-opt swap
+                    a, b = tour[i], tour[(i + 1) % n]
+                    c, d = tour[j], tour[(j + 1) % n]
+                    
+                    old_distance = self.distance(a, b) + self.distance(c, d)
+                    new_distance = self.distance(a, c) + self.distance(b, d)
+                    
+                    if new_distance < old_distance:
+                        # Perform 2-opt swap
+                        new_tour = tour[:i+1] + tour[i+1:j+1][::-1] + tour[j+1:]
+                        new_tour_distance = self.tour_distance(new_tour + [new_tour[0]])
+                        
+                        if new_tour_distance < best_distance:
+                            best_tour = new_tour[:]
+                            best_distance = new_tour_distance
+                            tour = new_tour[:]
+                            improved = True
+                            break  # Restart search after improvement
+                
+                if improved:
+                    break
+        
+        # Add closing vertex
+        best_tour.append(best_tour[0])
+        return best_tour, best_distance
+    
+    def nearest_neighbor_with_2opt(self, num_starts: int = 10, two_opt_iterations: int = 500) -> Tuple[List[int], float]:
+        """
+        Nearest neighbor with 2-opt local search improvement.
+        
+        Args:
+            num_starts: Number of random starts for nearest neighbor
+            two_opt_iterations: Maximum iterations for 2-opt
+            
+        Returns:
+            tour: Improved tour
+            distance: Total tour length
+        """
+        # Get initial tour from nearest neighbor
+        tour, distance = self.nearest_neighbor_multistart(num_starts)
+        
+        # Apply 2-opt improvement
+        tour, distance = self.two_opt(tour, max_iterations=two_opt_iterations)
+        
+        return tour, distance
+
 
 def solve_tsp(coordinates: List[Tuple[float, float]]) -> List[int]:
     """
-    Solve TSP using nearest neighbor heuristic (Evo's algorithm).
+    Solve TSP using nearest neighbor heuristic with 2-opt (Evo's algorithm).
+    Wrapper for adversarial testing framework.
     
     Args:
         coordinates: List of (x, y) coordinates for each city
@@ -31,7 +221,6 @@ def solve_tsp(coordinates: List[Tuple[float, float]]) -> List[int]:
             self.dist_matrix = self._compute_distance_matrix()
         
         def _compute_distance_matrix(self):
-            import math
             dist = np.zeros((self.n, self.n))
             for i in range(self.n):
                 for j in range(i + 1, self.n):
@@ -44,7 +233,6 @@ def solve_tsp(coordinates: List[Tuple[float, float]]) -> List[int]:
             return self.dist_matrix[i, j]
         
         def nearest_neighbor(self, start_city=None):
-            import random
             if start_city is None:
                 start_city = random.randint(0, self.n - 1)
             
@@ -53,68 +241,148 @@ def solve_tsp(coordinates: List[Tuple[float, float]]) -> List[int]:
             unvisited.remove(start_city)
             
             current = start_city
-            total_distance = 0.0
             
             while unvisited:
-                # Find nearest unvisited city
                 nearest = min(unvisited, key=lambda city: self.distance(current, city))
-                total_distance += self.distance(current, nearest)
-                
                 tour.append(nearest)
                 unvisited.remove(nearest)
                 current = nearest
             
             # Return to starting city
-            total_distance += self.distance(current, start_city)
             tour.append(start_city)
-            
-            return tour, total_distance
+            return tour
         
-        def nearest_neighbor_multistart(self, num_starts=10):
-            best_tour = None
-            best_distance = float('inf')
+        def tour_distance(self, tour):
+            distance = 0.0
+            for i in range(len(tour) - 1):
+                distance += self.distance(tour[i], tour[i + 1])
+            return distance
+        
+        def two_opt(self, tour, max_iterations=1000):
+            if len(tour) < 4 or tour[0] != tour[-1]:
+                return tour
             
-            # Try random starting cities
-            starts = random.sample(range(self.n), min(num_starts, self.n))
+            tour = tour[:-1]
+            n = len(tour)
+            best_tour = tour[:]
+            best_distance = self.tour_distance(tour + [tour[0]])
             
-            for start in starts:
-                tour, distance = self.nearest_neighbor(start)
-                if distance < best_distance:
-                    best_tour = tour
-                    best_distance = distance
+            improved = True
+            iterations = 0
             
-            return best_tour, best_distance
+            while improved and iterations < max_iterations:
+                improved = False
+                iterations += 1
+                
+                for i in range(n):
+                    for j in range(i + 2, n):
+                        if j == n - 1 and i == 0:
+                            continue
+                        
+                        a, b = tour[i], tour[(i + 1) % n]
+                        c, d = tour[j], tour[(j + 1) % n]
+                        
+                        old_distance = self.distance(a, b) + self.distance(c, d)
+                        new_distance = self.distance(a, c) + self.distance(b, d)
+                        
+                        if new_distance < old_distance:
+                            new_tour = tour[:i+1] + tour[i+1:j+1][::-1] + tour[j+1:]
+                            new_tour_distance = self.tour_distance(new_tour + [new_tour[0]])
+                            
+                            if new_tour_distance < best_distance:
+                                best_tour = new_tour[:]
+                                tour = new_tour[:]
+                                improved = True
+                                break
+                    
+                    if improved:
+                        break
+            
+            best_tour.append(best_tour[0])
+            return best_tour
     
-    # Create instance and solve
     tsp = CustomTSP(points)
-    tour, _ = tsp.nearest_neighbor_multistart(num_starts=min(10, n))
     
-    # Remove the duplicate starting city at the end for our test framework
-    if tour and tour[0] == tour[-1]:
-        tour = tour[:-1]
+    # Run nearest neighbor from multiple starts
+    best_tour = None
+    best_distance = float('inf')
     
-    return tour
+    for _ in range(10):  # Try 10 random starts
+        tour = tsp.nearest_neighbor()
+        tour = tsp.two_opt(tour, max_iterations=500)  # Apply 2-opt
+        distance = tsp.tour_distance(tour)
+        
+        if distance < best_distance:
+            best_tour = tour
+            best_distance = distance
+    
+    # Remove the duplicate end city (TSP convention returns open tour)
+    return best_tour[:-1]
 
-# Alias for compatibility
-def solve(coordinates: List[Tuple[float, float]]) -> List[int]:
-    return solve_tsp(coordinates)
+
+def benchmark_nearest_neighbor():
+    """Benchmark nearest neighbor algorithm with 2-opt."""
+    print("Benchmarking Nearest Neighbor with 2-opt for Euclidean TSP (n=500)")
+    print("=" * 70)
+    
+    results = []
+    num_instances = 10
+    total_time = 0.0
+    
+    for i in range(num_instances):
+        print(f"\nInstance {i+1}/{num_instances}:")
+        
+        # Create TSP instance
+        tsp = EuclideanTSP(n=500, seed=i)
+        
+        # Time the algorithm
+        start_time = time.time()
+        tour, distance = tsp.nearest_neighbor_with_2opt(num_starts=10, two_opt_iterations=500)
+        end_time = time.time()
+        
+        instance_time = end_time - start_time
+        total_time += instance_time
+        
+        print(f"  Tour length: {distance:.4f}")
+        print(f"  Time: {instance_time:.3f} seconds")
+        
+        results.append({
+            "instance": i,
+            "seed": i,
+            "tour_length": distance,
+            "time": instance_time,
+            "algorithm": "nearest_neighbor_2opt"
+        })
+    
+    # Calculate statistics
+    tour_lengths = [r["tour_length"] for r in results]
+    avg_length = np.mean(tour_lengths)
+    std_length = np.std(tour_lengths)
+    avg_time = total_time / num_instances
+    
+    print("\n" + "=" * 70)
+    print("SUMMARY:")
+    print(f"  Number of instances: {num_instances}")
+    print(f"  Average tour length: {avg_length:.4f}")
+    print(f"  Standard deviation: {std_length:.4f}")
+    print(f"  Average time per instance: {avg_time:.3f} seconds")
+    
+    # Save results
+    output = {
+        "algorithm": "nearest_neighbor_with_2opt",
+        "n": 500,
+        "num_instances": num_instances,
+        "average_tour_length": avg_length,
+        "std_tour_length": std_length,
+        "average_time": avg_time,
+        "results": results
+    }
+    
+    with open("nearest_neighbor_2opt_benchmarks.json", "w") as f:
+        json.dump(output, f, indent=2)
+    
+    print("\nResults saved to 'nearest_neighbor_2opt_benchmarks.json'")
+
 
 if __name__ == "__main__":
-    # Test with simple square
-    test_coords = [(0, 0), (10, 0), (10, 10), (0, 10)]
-    tour = solve_tsp(test_coords)
-    print(f"Test coordinates: {test_coords}")
-    print(f"Tour: {tour}")
-    
-    # Calculate length
-    import math
-    length = 0.0
-    for i in range(len(tour)):
-        city1 = tour[i]
-        city2 = tour[(i + 1) % len(tour)]
-        x1, y1 = test_coords[city1]
-        x2, y2 = test_coords[city2]
-        length += math.sqrt((x1 - x2)**2 + (y1 - y2)**2)
-    print(f"Tour length: {length}")
-    print(f"Expected optimal: 40.0 (square perimeter)")
-    print(f"Ratio: {length/40.0:.3f}")
+    benchmark_nearest_neighbor()
