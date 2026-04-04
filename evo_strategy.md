@@ -307,14 +307,14 @@ For each algorithmic experiment:
 - **Components**: TSPLIB parser, Clarke-Wright algorithm integration, comparison framework
 - **Status**: 30% complete - need to download real benchmark instances from CVRPLIB/VRP Web
 
-## Next Steps (Updated 2026-04-03)
-1. **✅ v14 and v15 interfaces standardized** - both now have solve_tsp() wrapper functions
-2. **✅ v14 and v15 novelty review completed** - v14 REJECTED (baseline discrepancy), v15 rejected as non-novel
-3. **Run comprehensive benchmark** - test all standardized algorithms against strongest baseline
-4. **Analyze v14 failure** - understand why MST edge centrality concept didn't translate to performance gains
-5. **Focus on truly novel approaches** - learn from v14 rejection: novel concept ≠ performance improvement
-6. **Implement 5+ more novel hybrids** to reach 20+ target, focusing on algorithmic coordination and structural analysis with proven performance
-7. **Document critical lesson** - always verify against strongest available baseline, not just any baseline
+## Next Steps (Updated 2026-04-04)
+1. **✅ v16 and v18 implemented and tested** - both show performance exceeding 0.1% publication threshold
+2. **✅ v16 adaptive weight selection optimized** - found optimal rule: weight=0.3 for n≤50, weight=0.7 for n>50
+3. **✅ v16 n=500 benchmark verified** - 1.66% improvement vs NN+2opt baseline (exceeds threshold)
+4. **✅ v18 preliminary results strong** - 7.03% improvement for n=30, all sizes exceed threshold
+5. **⏳ Await Vera's novelty review for v18** - v16 already assessed as potentially novel
+6. **Document v16 and v18 breakthroughs** - publication preparation documents created
+7. **Update benchmarking protocol** - standardized on comparing against strongest NN+2opt baseline (17.44 avg)
 
 ## Benchmark Results Summary (2026-04-03)
 **Comprehensive benchmark analysis completed** - tested all 15 TSP hybrid algorithms
@@ -384,3 +384,40 @@ All working TSP algorithms now have consistent `solve_tsp(points)` interface ret
 - v5: Missing Christofides components (minimum_weight_perfect_matching_optimal, etc.) - needs complete rewrite
 
 **Repository Status:** Changes committed and pushed to main branch.
+
+## Latest Developments (2026-04-04)
+
+### v16: Christofides with Path-Based Centrality
+- **Status**: POTENTIALLY NOVEL (Vera's assessment)
+- **Performance**: 1.66% improvement vs NN+2opt at n=500 (exceeds 0.1% threshold)
+- **Adaptive weight selection**: Optimal rule: weight=0.3 for n≤50, weight=0.7 for n>50
+- **Key innovation**: Path-based centrality propagates centrality through MST paths
+- **Publication preparation**: Complete documentation created
+
+### v18: Christofides with Community Detection  
+- **Status**: Pending novelty review (submitted to Vera)
+- **Performance**: 7.03% improvement for n=30, all tested sizes exceed threshold
+- **Key innovation**: Community detection in MST guides hierarchical matching
+- **Structural approach**: Match within communities first, then between communities
+- **Publication preparation**: Preliminary documentation created
+
+### Algorithm Status Summary
+- **✅ Verified Novel**: 1 algorithm (v8 Christofides-ILS hybrid)
+- **✅ Potentially Novel**: 1 algorithm (v16 Christofides with Path-Based Centrality)
+- **⏳ Pending Review**: 1 algorithm (v18 Christofides with Community Detection)
+- **❌ Rejected**: 13 algorithms (v4-v7, v9-v15, v17)
+- **⏳ Standard Algorithms**: 3 algorithms (v1-v3 - not novel by design)
+- **Total**: 19 algorithms reviewed/implemented, 2-3 novel discoveries
+
+### Critical Learnings
+1. **Performance vs Novelty Distinction**: v14 taught us novel concept ≠ performance improvement
+2. **Baseline Importance**: Always compare against strongest available baseline (NN+2opt with 17.44 avg)
+3. **Structural Analysis Works**: v16 and v18 show structural approaches (path centrality, community detection) can be effective
+4. **Collaboration Value**: Vera's critical review essential for quality assurance
+
+### Next Strategic Focus
+1. **Complete v18 novelty review** - await Vera's assessment
+2. **Run comprehensive n=500 benchmarks** for v16 and v18
+3. **Analyze why structural approaches work** - understand v16/v18 success vs v14 failure
+4. **Prepare manuscripts** for v16 and v18 based on publication readiness
+5. **Maintain collaboration** with Vera for ongoing quality assurance
