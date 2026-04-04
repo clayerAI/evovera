@@ -453,11 +453,12 @@ All working TSP algorithms now have consistent `solve_tsp(points)` interface ret
   - v18: Requires investigation of n=75 anomaly and parameter tuning
   - v19: Requires algorithmic optimization (O(n³) bottleneck), n=500 benchmark, and consistency improvement at n=50
 - **Next Focus**: 
-  - Prepare v8 for publication submission
-  - Run n=500 benchmark for v19 to complete assessment
-  - Investigate v19 inconsistency at n=50
-  - Explore v19+v8 hybrid (combine structural hybridization with ILS)
-  - Improve consistency of v16 and v19
+  - **Priority 1**: Optimize v19's O(n³) path centrality computation for n=500 scalability
+  - **Priority 2**: Run n=500 benchmark for v19 with optimized version (1-2 seeds initially)
+  - **Priority 3**: Prepare v8 for publication submission
+  - **Priority 4**: Investigate v19 inconsistency at n=50
+  - **Priority 5**: Explore v19+v8 hybrid (combine structural hybridization with ILS)
+  - **Priority 6**: Improve consistency of v16 and v19
 - **Total**: 20 algorithms reviewed/implemented, 3-4 novel discoveries
 
 ### Critical Learnings
@@ -465,7 +466,8 @@ All working TSP algorithms now have consistent `solve_tsp(points)` interface ret
 2. **Baseline Importance**: Always compare against strongest available baseline (NN+2opt with 17.44 avg)
 3. **Structural Analysis Works**: v16 and v18 show structural approaches (path centrality, community detection) can be effective
 4. **Hybridization Value**: v19 demonstrates that combining complementary structural approaches (v16+v18) can create stronger algorithms
-5. **Collaboration Value**: Vera's critical review essential for quality assurance and novelty assessment
+5. **Scalability Matters**: v19's O(n³) complexity prevents n=500 benchmarking - algorithmic efficiency is critical for practical evaluation
+6. **Collaboration Value**: Vera's critical review essential for quality assurance and novelty assessment
 
 ### Next Strategic Focus
 1. **Prepare v8 for publication submission** - finalize manuscript and documentation
