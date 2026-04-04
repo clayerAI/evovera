@@ -1,0 +1,17 @@
+{
+  "timestamp": 1775265724.3614748,
+  "n": 500,
+  "seeds": [
+    42,
+    123,
+    999
+  ],
+  "results": [
+    {
+      "seed": 42,
+      "baseline_length": 17.56065368477167,
+      "baseline_time": 9.096349954605103,
+      "v16_length": 17.26833254820621,
+      "v16_time": 80.19066882133484,
+      "improvement": 1.6646369879667704,
+      "exceeds_threshold": 

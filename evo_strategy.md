@@ -395,18 +395,39 @@ All working TSP algorithms now have consistent `solve_tsp(points)` interface ret
 - **Publication preparation**: Complete documentation created
 
 ### v18: Christofides with Community Detection  
-- **Status**: Pending novelty review (submitted to Vera)
-- **Performance**: 7.03% improvement for n=30, all tested sizes exceed threshold
+- **Status**: POTENTIALLY NOVEL BUT INCONSISTENT (Vera's assessment)
+- **Performance**: +0.38% avg improvement, 55.6% of tests above 0.1% threshold
+- **Key findings**: 
+  - n=30: +1.17% improvement (3/5 seeds positive)
+  - n=50: +1.27% improvement (3/5 seeds positive)  
+  - n=75: -1.42% improvement (2/5 seeds positive) - ANOMALY
+  - n=100: +0.58% improvement (2/3 seeds positive)
+  - n=500: -0.16% improvement (1/3 seeds positive)
+- **Literature**: No direct conflicts found, community detection application to MST appears novel
+- **Assessment**: Not ready for publication - fails consistency requirement
+- **Recommendations**: 
+  1. Investigate n=75 anomaly
+  2. Parameter tuning for community detection
+  3. Combine with v16's path-based centrality
+  4. Theoretical analysis of why community structure should help matching
 - **Key innovation**: Community detection in MST guides hierarchical matching
 - **Structural approach**: Match within communities first, then between communities
 - **Publication preparation**: Preliminary documentation created
 
-### Algorithm Status Summary
-- **✅ Verified Novel**: 1 algorithm (v8 Christofides-ILS hybrid)
-- **✅ Potentially Novel**: 1 algorithm (v16 Christofides with Path-Based Centrality)
-- **⏳ Pending Review**: 1 algorithm (v18 Christofides with Community Detection)
+### Algorithm Status Summary (Updated: 2026-04-04)
+- **✅ Verified Novel**: 1 algorithm (v8 Christofides-ILS hybrid) - READY FOR PUBLICATION
+- **⚠️ Potentially Novel (Inconsistent)**: 2 algorithms 
+  - v16 Christofides with Path-Based Centrality (+1.56% at n=500, inconsistent)
+  - v18 Christofides with Community Detection (+0.38% avg, 55.6% above threshold)
 - **❌ Rejected**: 13 algorithms (v4-v7, v9-v15, v17)
 - **⏳ Standard Algorithms**: 3 algorithms (v1-v3 - not novel by design)
+
+### Publication Readiness
+- **Ready**: v8 (Christofides-ILS hybrid) - meets all criteria
+- **Needs Improvement**: 
+  - v16: Requires consistency improvement across seeds
+  - v18: Requires investigation of n=75 anomaly and parameter tuning
+- **Next Focus**: Investigate v18 anomaly, combine v16+v18 approaches, prepare v8 for submission
 - **Total**: 19 algorithms reviewed/implemented, 2-3 novel discoveries
 
 ### Critical Learnings
