@@ -1,0 +1,104 @@
+{
+  "tsp_v1_nearest_neighbor": {
+    "eil51": {
+      "optimal": 426,
+      "our_length": 440.0,
+      "gap_percent": 3.286384976525822,
+      "runtime": 0.03264164924621582,
+      "points": 51,
+      "tour_length": 51
+    },
+    "kroA100": {
+      "optimal": 21282,
+      "our_length": 22493.0,
+      "gap_percent": 5.69025467531247,
+      "runtime": 0.085662841796875,
+      "points": 100,
+      "tour_length": 100
+    },
+    "a280": {
+      "optimal": 2579,
+      "our_length": 2794.0,
+      "gap_percent": 8.336564559906941,
+      "runtime": 0.7677958011627197,
+      "points": 280,
+      "tour_length": 280
+    },
+    "att532": {
+      "optimal": 27686,
+      "our_length": 29279.0,
+      "gap_percent": 5.753810590189988,
+      "runtime": 12.136552333831787,
+      "points": 532,
+      "tour_length": 532
+    }
+  },
+  "tsp_v2_christofides_improved": {
+    "eil51": {
+      "optimal": 426,
+      "our_length": 453.0,
+      "gap_percent": 6.338028169014084,
+      "runtime": 0.01799321174621582,
+      "points": 51,
+      "tour_length": 52
+    },
+    "kroA100": {
+      "optimal": 21282,
+      "our_length": 22813.0,
+      "gap_percent": 7.193872756319895,
+      "runtime": 0.09379410743713379,
+      "points": 100,
+      "tour_length": 101
+    },
+    "a280": {
+      "optimal": 2579,
+      "our_length": 2826.0,
+      "gap_percent": 9.57735556417216,
+      "runtime": 2.0664501190185547,
+      "points": 280,
+      "tour_length": 281
+    },
+    "att532": {
+      "optimal": 27686,
+      "our_length": 29276.0,
+      "gap_percent": 5.742974788701871,
+      "runtime": 20.050353527069092,
+      "points": 532,
+      "tour_length": 533
+    }
+  },
+  "tsp_v19_christofides_hybrid_structural": {
+    "eil51": {
+      "optimal": 426,
+      "our_length": 446.0,
+      "gap_percent": 4.694835680751173,
+      "runtime": 0.0486598014831543,
+      "points": 51,
+      "tour_length": 52
+    },
+    "kroA100": {
+      "optimal": 21282,
+      "our_length": 22023.0,
+      "gap_percent": 3.481815618832816,
+      "runtime": 0.17728829383850098,
+      "points": 100,
+      "tour_length": 101
+    },
+    "a280": {
+      "optimal": 2579,
+      "our_length": 2682.0,
+      "gap_percent": 3.993796044978674,
+      "runtime": 10.799589157104492,
+      "points": 280,
+      "tour_length": 281
+    },
+    "att532": {
+      "optimal": 27686,
+      "our_length": 29101.0,
+      "gap_percent": 5.1108863685617285,
+      "runtime": 185.70932030677795,
+      "points": 532,
+      "tour_length": 533
+    }
+  }
+}

@@ -93,7 +93,7 @@ class TSPLIBParser:
             print(f"⚠️ Warning: Parsed {len(self.node_coords)} nodes but dimension is {self.dimension}")
     
     def get_distance_matrix(self) -> np.ndarray:
-        """Calculate Euclidean distance matrix."""
+        """Calculate distance matrix based on edge weight type."""
         if not self.node_coords:
             return np.array([])
         
@@ -104,7 +104,20 @@ class TSPLIBParser:
             for j in range(i + 1, n):
                 x1, y1 = self.node_coords[i]
                 x2, y2 = self.node_coords[j]
-                dist = np.sqrt((x1 - x2) ** 2 + (y1 - y2) ** 2)
+                
+                if self.edge_weight_type == "ATT":
+                    # ATT distance: ceil(sqrt(((x1 - x2)^2 + (y1 - y2)^2) / 10.0))
+                    dx = x1 - x2
+                    dy = y1 - y2
+                    dist = np.ceil(np.sqrt((dx * dx + dy * dy) / 10.0))
+                elif self.edge_weight_type == "EUC_2D":
+                    # Euclidean distance rounded to nearest integer
+                    dist = np.sqrt((x1 - x2) ** 2 + (y1 - y2) ** 2)
+                    dist = np.round(dist)
+                else:
+                    # Default: Euclidean distance
+                    dist = np.sqrt((x1 - x2) ** 2 + (y1 - y2) ** 2)
+                
                 dist_matrix[i, j] = dist
                 dist_matrix[j, i] = dist
         

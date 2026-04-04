@@ -98,13 +98,32 @@ def run_tsplib_evaluation(algorithm_dict, instance_names):
                 print(f"  ❌ Failed to parse {instance_name}")
                 continue
             
-            # Get points
+            # Get points and distance matrix
             points = parser.get_points_array()
+            dist_matrix = parser.get_distance_matrix()
+            
+            # Create wrapper function that uses correct distance calculation
+            def wrapped_algo(points_array):
+                # For TSPLIB, we need to use the precomputed distance matrix
+                # But algorithms expect to calculate distances from points
+                # We'll create a custom distance function that uses our matrix
+                n = len(points_array)
+                
+                # Calculate tour using the algorithm
+                tour, _ = algo_func(points_array)
+                
+                # Calculate actual length using correct distance matrix
+                total_length = 0.0
+                for i in range(n):
+                    j = (i + 1) % n
+                    total_length += dist_matrix[tour[i], tour[j]]
+                
+                return tour, total_length
             
             # Run algorithm with timing
             start_time = time.time()
             try:
-                tour, length = algo_func(points)
+                tour, length = wrapped_algo(points)
                 runtime = time.time() - start_time
                 
                 # Calculate gap
