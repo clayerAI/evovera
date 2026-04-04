@@ -568,7 +568,7 @@ def solve_tsp(points):
                             min_j = j
                 
                 if min_j != -1:
-                    matching_edges.append((odd_vertices[i], odd_vertices[j], min_dist))
+                    matching_edges.append((odd_vertices[i], odd_vertices[min_j], min_dist))
                     matched[i] = True
                     matched[min_j] = True
             
