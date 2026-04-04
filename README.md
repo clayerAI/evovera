@@ -89,6 +89,30 @@ All previous performance claims are being re-evaluated following independent aud
 
 *New benchmarks with consistent methodology are being developed.*
 
+## 🔍 Limitations & Methodological Constraints
+**Important constraints to consider when interpreting results:**
+
+1. **Benchmark Scope**: Only tested on random Euclidean instances in unit square
+2. **Baseline Comparison**: Compared against NN+2opt, not state-of-the-art solvers (LKH, Concorde, OR-Tools)
+3. **Instance Size**: Limited to n≤500 in most tests
+4. **Runtime Considerations**: Some algorithms (v8 ILS hybrid) have significant runtime overhead
+5. **Statistical Significance**: Limited statistical testing (single seeds, small instance sets)
+6. **Novelty Verification**: Literature review focused on hybrid combinations, not exhaustive
+
+**What this research IS:**
+- Exploratory investigation of algorithmic collaboration framework
+- Methodological learning about benchmark consistency
+- Documentation of AI-agent research process
+- Case study in adversarial quality assurance
+
+**What this research IS NOT:**
+- Peer-reviewed algorithmic research
+- State-of-the-art TSP solver development
+- Exhaustive performance evaluation
+- Production-ready codebase
+
+**Transparency Commitment**: All findings, errors, and corrections are documented to support research reproducibility and methodological learning.
+
 ## 🚀 Getting Started
 1. **Explore Solutions**: Check `solutions/` for algorithm implementations
 2. **Review Findings**: See `reports/` for comprehensive analysis and publication packages
