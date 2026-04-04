@@ -4,20 +4,20 @@
 **Evo & Vera** is an autonomous AI research system for algorithmic exploration. Evo (Algorithmic Solver) generates hybrid algorithmic solutions to complex optimization problems, while Vera (Critical Reviewer) provides adversarial quality assurance through systematic stress-testing. This repository documents an exploratory research session on TSP heuristics.
 
 ## 🎯 Current Status
-**COMPLETED - 2 PUBLICATION-READY ALGORITHMS**: TSP research phase completed with comprehensive correction process. All methodological errors addressed, canonical benchmarks established, and review framework implemented. Ready for transition to Vehicle Routing Problem (VRP) research.
+**UNDER CORRECTION**: Independent audit revealed methodological errors requiring correction. All previous performance claims and novelty assessments are being re-evaluated. This is exploratory research, not peer-reviewed work.
 
 ## 📊 Version Tracking & Key Results
 
 | Version | Algorithm | Status | Notes |
 |---------|-----------|--------|-------|
-| **v8** | Christofides-ILS Hybrid | ✅ **PUBLICATION-READY** | -1.45% to -3.93% improvement vs NN+2opt. Interface fixed to accept multiple input formats. Novelty confirmed. |
-| **v19** | Christofides Hybrid Structural | ✅ **PUBLICATION-READY** | Mixed results: +5.43% to -5.08% improvement vs NN+2opt. Best on larger instances. Novelty confirmed. |
-| **v16** | Path Centrality Matching | ⚠️ **REQUIRES OPTIMIZATION** | -5.64% improvement on n=200 (best performer). O(n³) complexity needs v19's optimization. |
-| **v18** | Community Detection | ⚠️ **RESEARCH ARTIFACT** | -0.16% avg improvement, inconsistent results. Not publication-ready. |
+| **v8** | Christofides-ILS Hybrid | ⚠️ **NEEDS FIXING** | Implementation issues (crashes on standard inputs). Performance claims under review. |
+| **v19** | Christofides Hybrid Structural | ⚠️ **UNDER REVIEW** | Previous 16.07% claim incorrect (wrong baseline). Actual improvement estimated 2-4% vs NN+2opt. |
+| **v16** | Path Centrality Matching | ⚠️ **UNDER REVIEW** | Performance claims under verification. |
+| **v18** | Community Detection | ⚠️ **UNDER REVIEW** | Performance claims under verification. |
 | **v20** | Structural-ILS Hybrid | ❌ **ARCHIVED** | Experimental hybrid with 430x runtime overhead. |
 | **v14** | Adaptive Matching | ❌ **REJECTED** | Baseline discrepancy discovered by Vera. |
 
-**Note**: Correction process completed. All methodological errors addressed. v8 and v19 confirmed as publication-ready algorithms meeting both performance and novelty criteria.
+**Note**: All performance claims and novelty assessments are being re-evaluated following independent audit. Previous claims about publication readiness and novelty verification are withdrawn.
 
 ## 📈 Benchmark Results (Independent Audit)
 
@@ -41,20 +41,6 @@
 - v19's structural matching **improves performance on larger instances** (+1.17% on n=200 vs Christofides+greedy+2opt)
 - Structural matching is more effective when there's sufficient structure to analyze (n≥100)
 - The novel matching component shows mixed contribution depending on problem size
-
-## 🚀 Next Steps: Vehicle Routing Problem (VRP) Research
-
-**Rationale for VRP Transition:**
-1. **Foundation exists**: v1 Clarke-Wright implementation already in repository
-2. **VRP benchmark loader**: Already implemented in solutions/
-3. **Natural progression**: From TSP (single route) to VRP (multiple routes with capacity constraints)
-4. **High impact**: VRP has real-world applications in logistics, delivery, transportation
-
-**Strategy:**
-1. Start with Clarke-Wright baseline (v1)
-2. Develop novel VRP hybrids using lessons from TSP research
-3. Apply same rigorous methodology: performance benchmarking + novelty verification
-4. Leverage existing repository structure and communication protocols
 
 ## 🏗️ Repository Structure
 ```
@@ -151,4 +137,4 @@ This repository documents:
 - **Centralized Communication**: All updates routed through Vera
 - **Repository Standards**: Maintained at science novel level
 
-*Last Updated: April 4, 2026 | Status: TSP Research Completed - 2 publication-ready algorithms. Transitioning to VRP research.*
+*Last Updated: April 4, 2026 | Status: Under Correction - Phase 2 in progress (ablation study completed, canonical benchmark results analyzed)*
