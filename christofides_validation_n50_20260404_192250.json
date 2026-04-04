@@ -1,0 +1,35 @@
+{
+  "baseline_mean": 5.965286394674367,
+  "baseline_std": 0.3275643346764134,
+  "treatment_mean": 5.898556975607338,
+  "treatment_std": 0.4431511049995698,
+  "baseline_ci": [
+    5.965286394674367,
+    5.731184435288145,
+    6.199388354060589
+  ],
+  "treatment_ci": [
+    5.898556975607338,
+    5.581848069898628,
+    6.215265881316048
+  ],
+  "improvement_percent": 1.118628924951579,
+  "t_test": {
+    "t_statistic": -0.6398137394412029,
+    "p_value": 0.5,
+    "effect_size": -0.17124713733091115,
+    "mean_difference": -0.06672941906702787,
+    "std_difference": 0.3298099715332356,
+    "n": 10,
+    "valid": true
+  },
+  "interpretation": "Practically meaningful but not statistically significant",
+  "name": "Christofides vs NN+2opt Baseline",
+  "n_samples": 10,
+  "timing": {
+    "nn2opt_mean": 0.01887969970703125,
+    "nn2opt_std": 0.014003951567615545,
+    "christofides_mean": 0.02153334617614746,
+    "christofides_std": 0.007038238822188561
+  }
+}
