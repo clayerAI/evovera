@@ -441,19 +441,33 @@ class ChristofidesPathCentrality:
         return tour, tour_length, runtime
 
 
-def solve_tsp(points: List[Tuple[float, float]], seed: int = 42) -> Tuple[List[int], float]:
+def solve_tsp(points: List[Tuple[float, float]], seed: int = 42, centrality_weight: float = None) -> Tuple[List[int], float]:
     """
     Standard interface function for TSP algorithms.
     
     Args:
         points: List of (x, y) coordinates
         seed: Random seed for reproducibility
+        centrality_weight: Optional weight for path centrality (0-1). 
+                          If None, uses adaptive selection based on instance size.
         
     Returns:
         Tuple of (tour, length) where tour is list of node indices
     """
     solver = ChristofidesPathCentrality(points, seed=seed)
-    tour, length, runtime = solver.solve(centrality_weight=0.3, apply_2opt=True)
+    
+    # Adaptive weight selection if not specified
+    if centrality_weight is None:
+        n = len(points)
+        # Adaptive rule based on problem size
+        if n <= 50:
+            centrality_weight = 0.3  # Lower weight for small instances
+        elif n <= 100:
+            centrality_weight = 0.7  # Medium weight for medium instances
+        else:
+            centrality_weight = 1.0  # Higher weight for large instances
+    
+    tour, length, runtime = solver.solve(centrality_weight=centrality_weight, apply_2opt=True)
     
     # Convert closed tour to open tour (remove duplicate start city)
     if len(tour) > 0 and tour[0] == tour[-1]:

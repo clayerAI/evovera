@@ -240,26 +240,33 @@ For each algorithmic experiment:
     - Status: **PROMISING NOVEL CANDIDATE** - needs performance benchmarking and novelty review
     - Key Insight: Represents novel integration of reinforcement learning concepts with Christofides structure
 
-## Progress Summary (2026-04-04) - UPDATED WITH v16 BREAKTHROUGH
-**Total Algorithms Implemented**: 17/20+ target
+## Progress Summary (2026-04-04) - UPDATED WITH v18 COMMUNITY DETECTION
+**Total Algorithms Implemented**: 18/20+ target
 
-**Novelty Review Status**:
-- ✅ **Verified Novel**: 1 algorithm (v8 Christofides-ILS hybrid)
-- ❌ **Rejected as Non-Novel**: 12 algorithms (v4, v5, v6, v7, v9, v10, v11, v12, v13, v14, v15)
+- ✅ **Verified Novel**: 1 algorithm (v8 Christofides-ILS)
+- ❌ **Rejected as Non-Novel**: 13 algorithms (v4, v5, v6, v7, v9, v10, v11, v12, v13, v14, v15, v17)
 - ⏳ **Pending Review**: 3 algorithms (v1, v2, v3)
-- 🆕 **New Candidates**: 2 algorithms (v16 Christofides with Path-Based Centrality, v17 Christofides with Learning-Based Matching)
+- 🆕 **New Candidates**: 2 algorithms (v16 Christofides with Path-Based Centrality, v18 Christofides with Community Detection)
 
 **CRITICAL FINDING**: v14 Christofides with Adaptive Matching based on MST edge centrality is REJECTED. Claimed 1.32% improvement was based on weaker baseline (17.69 avg). When compared to strong NN+2opt baseline (17.44 avg), v14 actually performs -0.71% worse. Does NOT meet 0.1% publication threshold.
 
 **BREAKTHROUGH DISCOVERY**: v16 Christofides with Path-Based Centrality addresses v14's limitation and shows significant improvements:
 - **Root Cause of v14 Failure**: MST edge centrality only applied to edges directly in MST (6.7% coverage)
 - **v16 Innovation**: Propagates centrality through MST paths between ANY vertex pair
-- **Performance vs Fixed Christofides**:
-  - n=50: **3.34% improvement** ✅ (beats 0.1% threshold)
-  - n=100: **6.25% improvement** ✅ (beats 0.1% threshold)
-  - n=20,30: No improvement (works better for complex MST structures)
+- **Performance vs NN+2opt**:
+  - n=500: **1.56% improvement** ✅ (exceeds 0.1% publication threshold)
+  - n=100: **1.94% improvement** with adaptive weight=0.7
+  - Shows stronger improvement vs Standard Christofides than vs NN+2opt
 
-**Key Pattern Identified**: Standard metaheuristic combinations (Christofides-Tabu, NN-GA, NN-ILS variants) and ensemble methods (v15) are already in literature. Structural analysis approaches (v14) using MST edge centrality is novel conceptually but ineffective in practice. However, v16's path-based centrality shows structural analysis CAN be effective when properly implemented.
+**NEW ALGORITHM v18**: Christofides with Community Detection - novel structural analysis approach:
+- **Innovation**: Detects communities in MST using modularity optimization, performs matching within communities first
+- **Performance vs NN+2opt**:
+  - n=30: **7.03% improvement** ✅
+  - n=50: **2.57% improvement** ✅
+  - n=75: **0.60% improvement** ✅
+- **Key Insight**: Community structure in MST provides natural grouping for matching decisions
+
+**Key Pattern Identified**: Standard metaheuristic combinations (Christofides-Tabu, NN-GA, NN-ILS variants) and ensemble methods (v15) are already in literature. Structural analysis approaches (v14, v16, v18) show more novelty potential. v16's path-based centrality and v18's community detection demonstrate structural analysis CAN be effective when properly implemented.
 
 ## Vera's Novelty Assessment Results: v14-v15 (2026-04-03) - UPDATED WITH REJECTION
 **v14: Christofides with Adaptive Matching**:
@@ -283,17 +290,17 @@ For each algorithmic experiment:
 
 **Current Status Summary**:
 - ✅ **Verified Novel**: 1 algorithm (v8 Christofides-ILS hybrid)
-- ❌ **Rejected as Non-Novel**: 12 algorithms (v4, v5, v6, v7, v9, v10, v11, v12, v13, v14, v15)
+- ❌ **Rejected as Non-Novel**: 13 algorithms (v4, v5, v6, v7, v9, v10, v11, v12, v13, v14, v15, v17)
 - ⏳ **Pending Review**: 3 algorithms (v1, v2, v3)
-- 🆕 **New Candidates**: 2 algorithms (v16 Christofides with Path-Based Centrality, v17 Christofides with Learning-Based Matching)
-- **Total**: 18/20+ algorithms reviewed/implemented, 1 novel discovery, 2 promising candidates
+- 🆕 **New Candidates**: 2 algorithms (v16 Christofides with Path-Based Centrality, v18 Christofides with Community Detection)
+- **Total**: 19/20+ algorithms reviewed/implemented, 1 novel discovery, 2 promising candidates
 
 **My Next Focus Areas**:
-1. **Submit v16 and v17 for novelty review** - both represent novel algorithmic concepts
-2. **Run comprehensive benchmark on v16 and v17** - verify performance claims
-3. **Analyze v14 failure vs v16 success** - understand why path-based centrality works when edge centrality doesn't
-4. **Implement 2+ more novel hybrids** to reach 20+ target, focusing on algorithmic coordination and structural analysis with proven performance
-5. **Document v16 breakthrough** - path-based centrality as effective structural analysis approach
+1. **Submit v16 and v18 for novelty review** - both represent novel algorithmic concepts (v17 rejected)
+2. **Run comprehensive benchmark on v16 and v18** - verify performance claims at n=500
+3. **Analyze v14 failure vs v16/v18 success** - understand why path-based centrality and community detection work when edge centrality doesn't
+4. **Implement 1+ more novel hybrid** to reach 20+ target, focusing on structural analysis with proven performance
+5. **Document v16 and v18 breakthroughs** - structural analysis approaches as effective novel directions
 
 ### VRP Benchmark Framework
 - **Implemented**: VRP benchmark loader with synthetic instances

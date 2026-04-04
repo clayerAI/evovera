@@ -1,0 +1,233 @@
+{
+  "small_random": {
+    "instance": {
+      "n": 50,
+      "seed": 42,
+      "name": "small_random"
+    },
+    "characteristics": {
+      "n": 50,
+      "characteristics": "random_uniform"
+    },
+    "sensitivity": {
+      "baseline_length": 6.120082558687288,
+      "results": [
+        {
+          "weight": 0.0,
+          "v16_length": 5.990587996156085,
+          "improvement": 2.1158956809722826
+        },
+        {
+          "weight": 0.1,
+          "v16_length": 5.990587996156085,
+          "improvement": 2.1158956809722826
+        },
+        {
+          "weight": 0.2,
+          "v16_length": 5.990587996156085,
+          "improvement": 2.1158956809722826
+        },
+        {
+          "weight": 0.3,
+          "v16_length": 5.990587996156085,
+          "improvement": 2.1158956809722826
+        },
+        {
+          "weight": 0.4,
+          "v16_length": 5.990587996156085,
+          "improvement": 2.1158956809722826
+        },
+        {
+          "weight": 0.5,
+          "v16_length": 5.990587996156085,
+          "improvement": 2.1158956809722826
+        },
+        {
+          "weight": 0.6,
+          "v16_length": 5.990587996156085,
+          "improvement": 2.1158956809722826
+        },
+        {
+          "weight": 0.7,
+          "v16_length": 5.990587996156085,
+          "improvement": 2.1158956809722826
+        },
+        {
+          "weight": 0.8,
+          "v16_length": 5.990587996156085,
+          "improvement": 2.1158956809722826
+        },
+        {
+          "weight": 0.9,
+          "v16_length": 5.990587996156085,
+          "improvement": 2.1158956809722826
+        },
+        {
+          "weight": 1.0,
+          "v16_length": 5.990587996156085,
+          "improvement": 2.1158956809722826
+        }
+      ],
+      "best_weight": 0.0,
+      "best_improvement": 2.1158956809722826
+    },
+    "adaptive_weight": 0.3,
+    "adaptive_improvement": 2.1158956809722826,
+    "best_weight": 0.0,
+    "best_improvement": 2.1158956809722826
+  },
+  "small_random_alt": {
+    "instance": {
+      "n": 50,
+      "seed": 123,
+      "name": "small_random_alt"
+    },
+    "characteristics": {
+      "n": 50,
+      "characteristics": "random_uniform"
+    },
+    "sensitivity": {
+      "baseline_length": 6.33517020962401,
+      "results": [
+        {
+          "weight": 0.0,
+          "v16_length": 6.297946098619716,
+          "improvement": 0.5875787038483239
+        },
+        {
+          "weight": 0.1,
+          "v16_length": 6.297946098619716,
+          "improvement": 0.5875787038483239
+        },
+        {
+          "weight": 0.2,
+          "v16_length": 6.297946098619716,
+          "improvement": 0.5875787038483239
+        },
+        {
+          "weight": 0.3,
+          "v16_length": 6.297946098619716,
+          "improvement": 0.5875787038483239
+        },
+        {
+          "weight": 0.4,
+          "v16_length": 6.297946098619716,
+          "improvement": 0.5875787038483239
+        },
+        {
+          "weight": 0.5,
+          "v16_length": 6.297946098619716,
+          "improvement": 0.5875787038483239
+        },
+        {
+          "weight": 0.6,
+          "v16_length": 6.297946098619716,
+          "improvement": 0.5875787038483239
+        },
+        {
+          "weight": 0.7,
+          "v16_length": 6.297946098619716,
+          "improvement": 0.5875787038483239
+        },
+        {
+          "weight": 0.8,
+          "v16_length": 6.297946098619716,
+          "improvement": 0.5875787038483239
+        },
+        {
+          "weight": 0.9,
+          "v16_length": 6.297946098619716,
+          "improvement": 0.5875787038483239
+        },
+        {
+          "weight": 1.0,
+          "v16_length": 6.297946098619716,
+          "improvement": 0.5875787038483239
+        }
+      ],
+      "best_weight": 0.0,
+      "best_improvement": 0.5875787038483239
+    },
+    "adaptive_weight": 0.3,
+    "adaptive_improvement": 0.5875787038483239,
+    "best_weight": 0.0,
+    "best_improvement": 0.5875787038483239
+  },
+  "medium_random": {
+    "instance": {
+      "n": 100,
+      "seed": 42,
+      "name": "medium_random"
+    },
+    "characteristics": {
+      "n": 100,
+      "characteristics": "random_uniform"
+    },
+    "sensitivity": {
+      "baseline_length": 8.595775011892146,
+      "results": [
+        {
+          "weight": 0.0,
+          "v16_length": 8.477798783388176,
+          "improvement": 1.372490884658468
+        },
+        {
+          "weight": 0.1,
+          "v16_length": 8.477798783388176,
+          "improvement": 1.372490884658468
+        },
+        {
+          "weight": 0.2,
+          "v16_length": 8.477798783388176,
+          "improvement": 1.372490884658468
+        },
+        {
+          "weight": 0.3,
+          "v16_length": 8.477798783388176,
+          "improvement": 1.372490884658468
+        },
+        {
+          "weight": 0.4,
+          "v16_length": 8.477798783388176,
+          "improvement": 1.372490884658468
+        },
+        {
+          "weight": 0.5,
+          "v16_length": 8.477798783388176,
+          "improvement": 1.372490884658468
+        },
+        {
+          "weight": 0.6,
+          "v16_length": 8.477798783388176,
+          "improvement": 1.372490884658468
+        },
+        {
+          "weight": 0.7,
+          "v16_length": 8.42896004002996,
+          "improvement": 1.940662379266552
+        },
+        {
+          "weight": 0.8,
+          "v16_length": 8.42896004002996,
+          "improvement": 1.940662379266552
+        },
+        {
+          "weight": 0.9,
+          "v16_length": 8.42896004002996,
+          "improvement": 1.940662379266552
+        },
+        {
+          "weight": 1.0,
+          "v16_length": 8.40976816812044,
+          "improvement": 2.1639333685952415
+        }
+      ],
+      "best_weight": 1.0,
+      "best_improvement": 2.1639333685952415
+    },
+    "adaptive_weight": 0.3,
+    "adaptive_improvement": 1.372490884658468,
+    "best_weight": 1.0,
+    "best_improvement": 2.1639333685952415
+  }
+}

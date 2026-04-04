@@ -1,0 +1,74 @@
+[
+  {
+    "name": "very_small",
+    "n": 30,
+    "seed": 42,
+    "baseline_length": 4.584577645301676,
+    "fixed_weight_length": 4.320772509469842,
+    "fixed_improvement": 5.7541862357197635,
+    "adaptive_weight_used": 0.3,
+    "adaptive_length": 4.320772509469842,
+    "adaptive_improvement": 5.7541862357197635,
+    "improvement_delta": 0.0
+  },
+  {
+    "name": "small",
+    "n": 50,
+    "seed": 42,
+    "baseline_length": 6.120082558687288,
+    "fixed_weight_length": 5.990587996156085,
+    "fixed_improvement": 2.1158956809722826,
+    "adaptive_weight_used": 0.3,
+    "adaptive_length": 5.990587996156085,
+    "adaptive_improvement": 2.1158956809722826,
+    "improvement_delta": 0.0
+  },
+  {
+    "name": "medium_small",
+    "n": 75,
+    "seed": 42,
+    "baseline_length": 7.329145052324122,
+    "fixed_weight_length": 7.3045938650649855,
+    "fixed_improvement": 0.33498023417276346,
+    "adaptive_weight_used": 0.7,
+    "adaptive_length": 7.3045938650649855,
+    "adaptive_improvement": 0.33498023417276346,
+    "improvement_delta": 0.0
+  },
+  {
+    "name": "medium",
+    "n": 100,
+    "seed": 42,
+    "baseline_length": 8.595775011892146,
+    "fixed_weight_length": 8.477798783388176,
+    "fixed_improvement": 1.372490884658468,
+    "adaptive_weight_used": 0.7,
+    "adaptive_length": 8.42896004002996,
+    "adaptive_improvement": 1.940662379266552,
+    "improvement_delta": 0.568171494608084
+  },
+  {
+    "name": "medium_large",
+    "n": 150,
+    "seed": 42,
+    "baseline_length": 10.085778088449425,
+    "fixed_weight_length": 9.826331499207557,
+    "fixed_improvement": 2.5724003340802755,
+    "adaptive_weight_used": 1.0,
+    "adaptive_length": 9.826331499207557,
+    "adaptive_improvement": 2.5724003340802755,
+    "improvement_delta": 0.0
+  },
+  {
+    "name": "large",
+    "n": 200,
+    "seed": 42,
+    "baseline_length": 11.347869198431054,
+    "fixed_weight_length": 11.075601143091381,
+    "fixed_improvement": 2.3992879242678997,
+    "adaptive_weight_used": 1.0,
+    "adaptive_length": 11.189679090570921,
+    "adaptive_improvement": 1.3940071487782382,
+    "improvement_delta": -1.0052807754896615
+  }
+]
