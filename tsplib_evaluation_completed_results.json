@@ -1,0 +1,129 @@
+{
+  "timestamp": "2026-04-04T23:39:06.504354",
+  "instances": [
+    "eil51",
+    "kroA100",
+    "a280",
+    "att532"
+  ],
+  "algorithms": [
+    "tsp_v1_nearest_neighbor_fixed",
+    "tsp_v2_christofides_improved_fixed",
+    "tsp_v19_christofides_hybrid_structural_fixed"
+  ],
+  "results": {
+    "eil51": {
+      "instance": "eil51",
+      "dimension": 51,
+      "optimal": 426,
+      "edge_weight_type": "EUC_2D",
+      "results": {
+        "tsp_v1_nearest_neighbor_fixed": {
+          "tour_length": 495.0,
+          "gap_percent": 16.19718309859155,
+          "runtime": 0.07399892807006836,
+          "success": true,
+          "timeout": false
+        },
+        "tsp_v2_christofides_improved_fixed": {
+          "tour_length": 587.0,
+          "gap_percent": 37.79342723004695,
+          "runtime": 0.010116338729858398,
+          "success": true,
+          "timeout": false
+        },
+        "tsp_v19_christofides_hybrid_structural_fixed": {
+          "tour_length": 458.0,
+          "gap_percent": 7.511737089201878,
+          "runtime": 0.12151241302490234,
+          "success": true,
+          "timeout": false
+        }
+      }
+    },
+    "kroA100": {
+      "instance": "kroA100",
+      "dimension": 100,
+      "optimal": 21282,
+      "edge_weight_type": "EUC_2D",
+      "results": {
+        "tsp_v1_nearest_neighbor_fixed": {
+          "tour_length": 25525.0,
+          "gap_percent": 19.937035992857812,
+          "runtime": 0.08626985549926758,
+          "success": true,
+          "timeout": false
+        },
+        "tsp_v2_christofides_improved_fixed": {
+          "tour_length": 25219.0,
+          "gap_percent": 18.499201202894465,
+          "runtime": 0.09672904014587402,
+          "success": true,
+          "timeout": false
+        },
+        "tsp_v19_christofides_hybrid_structural_fixed": {
+          "tour_length": 23634.0,
+          "gap_percent": 11.051592895404568,
+          "runtime": 3.0123648643493652,
+          "success": true,
+          "timeout": false
+        }
+      }
+    },
+    "a280": {
+      "instance": "a280",
+      "dimension": 280,
+      "optimal": 2579,
+      "edge_weight_type": "EUC_2D",
+      "results": {
+        "tsp_v1_nearest_neighbor_fixed": {
+          "tour_length": 2982.0,
+          "gap_percent": 15.626211709965101,
+          "runtime": 0.8950867652893066,
+          "success": true,
+          "timeout": false
+        },
+        "tsp_v2_christofides_improved_fixed": {
+          "tour_length": 3414.0,
+          "gap_percent": 32.37689026754556,
+          "runtime": 0.5874364376068115,
+          "success": true,
+          "timeout": false
+        },
+        "tsp_v19_christofides_hybrid_structural_fixed": {
+          "error": "Skipped - known timeout issue on large instances",
+          "success": false,
+          "timeout": false
+        }
+      }
+    },
+    "att532": {
+      "instance": "att532",
+      "dimension": 532,
+      "optimal": 27686,
+      "edge_weight_type": "ATT",
+      "results": {
+        "tsp_v1_nearest_neighbor_fixed": {
+          "tour_length": 33497.0,
+          "gap_percent": 20.98894748248212,
+          "runtime": 1.7109034061431885,
+          "success": true,
+          "timeout": false
+        },
+        "tsp_v2_christofides_improved_fixed": {
+          "tour_length": 34588.0,
+          "gap_percent": 24.929567290327242,
+          "runtime": 0.7987887859344482,
+          "success": true,
+          "timeout": false
+        },
+        "tsp_v19_christofides_hybrid_structural_fixed": {
+          "error": "Skipped - known timeout issue on large instances",
+          "success": false,
+          "timeout": false
+        }
+      }
+    }
+  },
+  "note": "v19 skipped on a280 and att532 due to timeout issues with O(n\u00b2) MST complexity"
+}

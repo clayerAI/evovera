@@ -1,0 +1,130 @@
+{
+  "timestamp": "2026-04-04T23:35:45.995513",
+  "instances": [
+    "eil51",
+    "kroA100",
+    "a280",
+    "att532"
+  ],
+  "algorithms": [
+    "tsp_v1_nearest_neighbor_fixed",
+    "tsp_v2_christofides_improved_fixed",
+    "tsp_v19_christofides_hybrid_structural_fixed"
+  ],
+  "results": {
+    "eil51": {
+      "instance": "eil51",
+      "dimension": 51,
+      "optimal": 426,
+      "edge_weight_type": "EUC_2D",
+      "results": {
+        "tsp_v1_nearest_neighbor_fixed": {
+          "tour_length": 496.0,
+          "gap_percent": 16.431924882629108,
+          "runtime": 0.08031439781188965,
+          "success": true,
+          "timeout": false
+        },
+        "tsp_v2_christofides_improved_fixed": {
+          "tour_length": 587.0,
+          "gap_percent": 37.79342723004695,
+          "runtime": 0.0007939338684082031,
+          "success": true,
+          "timeout": false
+        },
+        "tsp_v19_christofides_hybrid_structural_fixed": {
+          "tour_length": 458.0,
+          "gap_percent": 7.511737089201878,
+          "runtime": 0.2076106071472168,
+          "success": true,
+          "timeout": false
+        }
+      }
+    },
+    "kroA100": {
+      "instance": "kroA100",
+      "dimension": 100,
+      "optimal": 21282,
+      "edge_weight_type": "EUC_2D",
+      "results": {
+        "tsp_v1_nearest_neighbor_fixed": {
+          "tour_length": 25525.0,
+          "gap_percent": 19.937035992857812,
+          "runtime": 0.09952473640441895,
+          "success": true,
+          "timeout": false
+        },
+        "tsp_v2_christofides_improved_fixed": {
+          "tour_length": 25219.0,
+          "gap_percent": 18.499201202894465,
+          "runtime": 0.004372119903564453,
+          "success": true,
+          "timeout": false
+        },
+        "tsp_v19_christofides_hybrid_structural_fixed": {
+          "tour_length": 23634.0,
+          "gap_percent": 11.051592895404568,
+          "runtime": 4.094325542449951,
+          "success": true,
+          "timeout": false
+        }
+      }
+    },
+    "a280": {
+      "instance": "a280",
+      "dimension": 280,
+      "optimal": 2579,
+      "edge_weight_type": "EUC_2D",
+      "results": {
+        "tsp_v1_nearest_neighbor_fixed": {
+          "tour_length": 2982.0,
+          "gap_percent": 15.626211709965101,
+          "runtime": 0.5050339698791504,
+          "success": true,
+          "timeout": false
+        },
+        "tsp_v2_christofides_improved_fixed": {
+          "tour_length": 3414.0,
+          "gap_percent": 32.37689026754556,
+          "runtime": 0.09027934074401855,
+          "success": true,
+          "timeout": false
+        },
+        "tsp_v19_christofides_hybrid_structural_fixed": {
+          "error": "Timed out after 120 seconds",
+          "runtime": 120.0011694431305,
+          "success": false,
+          "timeout": true
+        }
+      }
+    },
+    "att532": {
+      "instance": "att532",
+      "dimension": 532,
+      "optimal": 27686,
+      "edge_weight_type": "ATT",
+      "results": {
+        "tsp_v1_nearest_neighbor_fixed": {
+          "tour_length": 33497.0,
+          "gap_percent": 20.98894748248212,
+          "runtime": 2.2036380767822266,
+          "success": true,
+          "timeout": false
+        },
+        "tsp_v2_christofides_improved_fixed": {
+          "tour_length": 34588.0,
+          "gap_percent": 24.929567290327242,
+          "runtime": 0.30066370964050293,
+          "success": true,
+          "timeout": false
+        },
+        "tsp_v19_christofides_hybrid_structural_fixed": {
+          "error": "Timed out after 180 seconds",
+          "runtime": 180.00045895576477,
+          "success": false,
+          "timeout": true
+        }
+      }
+    }
+  }
+}
