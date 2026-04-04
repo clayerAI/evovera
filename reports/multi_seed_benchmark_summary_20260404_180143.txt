@@ -1,0 +1,29 @@
+============================================================
+MULTI-SEED TSP BENCHMARK SUMMARY
+============================================================
+
+BENCHMARK PARAMETERS:
+  Date: 2026-04-04T17:59:59.324122
+  Problem sizes: [50, 100, 200]
+  Seeds: 10 (1-10)
+  Repetitions per seed: 3
+  Algorithms: NN+2opt, Christofides, Christofides_v19
+
+KEY FINDINGS:
+
+  n = 50:
+    NN+2opt mean: 5.9783
+    Christofides mean: 6.0119
+    Improvement: -0.6%
+
+  n = 100:
+    NN+2opt mean: 8.2146
+    Christofides mean: 8.2022
+    Improvement: +0.2%
+
+  n = 200:
+    NN+2opt mean: 11.4663
+    Christofides mean: 11.5651
+    Improvement: -0.9%
+
+CONCLUSIONS:
