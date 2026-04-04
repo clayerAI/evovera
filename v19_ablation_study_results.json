@@ -1,0 +1,62 @@
+{
+  "metadata": {
+    "study": "v19_ablation_study",
+    "timestamp": "2026-04-04 08:40:35",
+    "coordinate_scale": "[0, 1]",
+    "seed": 42,
+    "note": "Structural matching uses greedy matching as placeholder - need to extract real function"
+  },
+  "instances": [
+    {
+      "instance": "random_50",
+      "n": 50,
+      "algorithms": {
+        "christofides_greedy_2opt": {
+          "tour_length": null,
+          "time_seconds": null,
+          "success": false,
+          "error": "'EuclideanTSPChristofides' object has no attribute '_prim_mst'"
+        },
+        "v19_full": {
+          "tour_length": 5.989430085999385,
+          "time_seconds": 0.050751447677612305,
+          "success": true
+        }
+      }
+    },
+    {
+      "instance": "random_100",
+      "n": 100,
+      "algorithms": {
+        "christofides_greedy_2opt": {
+          "tour_length": null,
+          "time_seconds": null,
+          "success": false,
+          "error": "'EuclideanTSPChristofides' object has no attribute '_prim_mst'"
+        },
+        "v19_full": {
+          "tour_length": 7.656505230282972,
+          "time_seconds": 0.14996862411499023,
+          "success": true
+        }
+      }
+    },
+    {
+      "instance": "random_200",
+      "n": 200,
+      "algorithms": {
+        "christofides_greedy_2opt": {
+          "tour_length": null,
+          "time_seconds": null,
+          "success": false,
+          "error": "'EuclideanTSPChristofides' object has no attribute '_prim_mst'"
+        },
+        "v19_full": {
+          "tour_length": 10.660794923723087,
+          "time_seconds": 1.260491132736206,
+          "success": true
+        }
+      }
+    }
+  ]
+}

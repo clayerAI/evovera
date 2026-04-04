@@ -1,0 +1,59 @@
+{
+  "metadata": {
+    "study": "v19_ablation_study_fixed",
+    "timestamp": "2026-04-04 09:00:46",
+    "coordinate_scale": "[0, 1]",
+    "seed": 42,
+    "note": "Fixed Christofides method access issues"
+  },
+  "instances": [
+    {
+      "instance": "random_50",
+      "n": 50,
+      "algorithms": {
+        "christofides_greedy_2opt": {
+          "tour_length": 5.824308696891797,
+          "time_seconds": 0.016649961471557617,
+          "success": true
+        },
+        "v19_full": {
+          "tour_length": 5.989430085999385,
+          "time_seconds": 0.06531429290771484,
+          "success": true
+        }
+      }
+    },
+    {
+      "instance": "random_100",
+      "n": 100,
+      "algorithms": {
+        "christofides_greedy_2opt": {
+          "tour_length": 8.0119842956961,
+          "time_seconds": 0.06432294845581055,
+          "success": true
+        },
+        "v19_full": {
+          "tour_length": 7.964686189578248,
+          "time_seconds": 0.19394159317016602,
+          "success": true
+        }
+      }
+    },
+    {
+      "instance": "random_200",
+      "n": 200,
+      "algorithms": {
+        "christofides_greedy_2opt": {
+          "tour_length": 11.05462883312626,
+          "time_seconds": 0.6328587532043457,
+          "success": true
+        },
+        "v19_full": {
+          "tour_length": 10.925361385629765,
+          "time_seconds": 1.3241167068481445,
+          "success": true
+        }
+      }
+    }
+  ]
+}
