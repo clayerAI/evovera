@@ -206,7 +206,13 @@ def solve_tsp(
     Returns:
         (tour, length)
     """
-    tour, length, _ = christofides_ils_hybrid(points, time_limit=time_limit)
+    # Convert to numpy array if needed
+    if not isinstance(points, np.ndarray):
+        points_array = np.array(points)
+    else:
+        points_array = points
+    
+    tour, length, _ = christofides_ils_hybrid(points_array, time_limit=time_limit)
     
     # Convert closed tour to open tour (remove duplicate start city)
     if len(tour) > 0 and tour[0] == tour[-1]:

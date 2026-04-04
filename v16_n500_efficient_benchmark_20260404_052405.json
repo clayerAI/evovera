@@ -1,0 +1,33 @@
+{
+  "timestamp": "2026-04-04T05:24:05.764953",
+  "n": 500,
+  "seeds": [
+    42,
+    123,
+    456
+  ],
+  "results": [
+    {
+      "seed": 42,
+      "status": "timeout",
+      "timeout_seconds": 180
+    },
+    {
+      "seed": 123,
+      "status": "timeout",
+      "timeout_seconds": 180
+    },
+    {
+      "seed": 456,
+      "status": "timeout",
+      "timeout_seconds": 180
+    }
+  ],
+  "summary": {
+    "total_seeds": 3,
+    "completed_seeds": 0,
+    "timeout_seeds": 3,
+    "error_seeds": 0,
+    "total_time_seconds": 547.3750171661377
+  }
+}
