@@ -1,11 +1,21 @@
-# Publication Package: v8 Christofides-ILS Hybrid Algorithm
+# ⚠️ DRAFT - UNVERIFIED: v8 Christofides-ILS Hybrid Algorithm
 
-## Executive Summary
+## ⚠️ IMPORTANT WARNING
+**This document contains unverified claims that require correction following independent audit:**
+
+1. **Implementation issues**: v8 crashes on standard Python tuple inputs
+2. **Performance claims**: Not verified with consistent benchmark methodology
+3. **Novelty claims**: Combining Christofides with ILS may not constitute novelty
+4. **Statistical claims**: No statistical test code exists in repository
+
+**Status**: **Exploratory draft** - NOT publication ready. All claims require independent verification.
+
+## Executive Summary (DRAFT - UNVERIFIED)
 
 **Algorithm**: Christofides with Iterative Local Search (ILS) Hybrid  
-**Novelty**: First combination of Christofides approximation algorithm with ILS metaheuristic framework  
-**Performance**: +1.32% improvement over state-of-the-art NN+2opt baseline (n=500)  
-**Status**: **Verified novel** - ready for publication consideration
+**Novelty**: **CLAIM UNDER REVIEW** - First combination of Christofides approximation algorithm with ILS metaheuristic framework  
+**Performance**: **CLAIM UNDER REVIEW** - +1.32% improvement over state-of-the-art NN+2opt baseline (n=500)  
+**Status**: **Exploratory research** - requires methodological correction
 
 ## 1. Algorithm Description
 

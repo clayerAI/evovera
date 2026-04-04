@@ -30,7 +30,7 @@ import random
 import time
 import sys
 import os
-from typing import List, Tuple
+from typing import List, Tuple, Union
 
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
@@ -103,7 +103,7 @@ def two_opt_improvement_fast(tour: List[int], dist_matrix: np.ndarray, max_itera
     return current_tour, current_length
 
 def christofides_ils_hybrid(
-    points: np.ndarray,
+    points: Union[np.ndarray, List[Tuple[float, float]], List[List[float]]],
     time_limit: float = 30.0,
     initial_perturbation_strength: int = 3,
     stagnation_threshold: int = 10
@@ -112,7 +112,7 @@ def christofides_ils_hybrid(
     Christofides-ILS hybrid algorithm.
     
     Args:
-        points: Array of (x, y) coordinates
+        points: Array of (x, y) coordinates - can be numpy array, list of tuples, or list of lists
         time_limit: Maximum time in seconds
         initial_perturbation_strength: Initial perturbation size
         stagnation_threshold: Number of iterations without improvement before perturbation
@@ -120,6 +120,10 @@ def christofides_ils_hybrid(
     Returns:
         (best_tour, best_length, statistics)
     """
+    # Convert points to numpy array if needed
+    if not isinstance(points, np.ndarray):
+        points = np.array(points, dtype=np.float64)
+    
     dist_matrix = create_distance_matrix(points)
     n = len(points)
     
@@ -189,14 +193,14 @@ def christofides_ils_hybrid(
     return best_tour, best_length, stats
 
 def solve_tsp(
-    points: np.ndarray,
+    points: Union[np.ndarray, List[Tuple[float, float]], List[List[float]]],
     time_limit: float = 30.0
 ) -> Tuple[List[int], float]:
     """
     Solve TSP using Christofides-ILS hybrid algorithm.
     
     Args:
-        points: Array of (x, y) coordinates
+        points: Array of (x, y) coordinates - can be numpy array, list of tuples, or list of lists
         time_limit: Maximum time in seconds
     
     Returns:

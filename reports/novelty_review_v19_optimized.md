@@ -12,10 +12,10 @@ v19 combines two novel structural approaches:
 
 **Optimization**: Computes paths only between odd vertices (not all vertex pairs) for O(m²) complexity instead of O(n³), where m = number of odd vertices (typically ~n/2). Achieves 36x speedup at n=300.
 
-## Performance Verification (n=500 Benchmark)
+## ⚠️ Performance Verification (n=500 Benchmark) - **USING WRONG BASELINE**
 
-### Test Results (5 seeds, n=500)
-| Seed | NN Baseline | v19 Optimized | Improvement | Exceeds 0.1% |
+### Test Results (5 seeds, n=500) - **⚠️ NN BASELINE INSTEAD OF NN+2OPT**
+| Seed | NN Baseline (Wrong) | v19 Optimized | Improvement | Exceeds 0.1% |
 |------|-------------|---------------|-------------|--------------|
 | 42   | 2089.28     | 1715.13       | +17.91%     | ✅ |
 | 123  | 2136.49     | 1737.51       | +18.67%     | ✅ |
@@ -23,16 +23,18 @@ v19 combines two novel structural approaches:
 | 789  | 1957.36     | 1736.60       | +11.28%     | ✅ |
 | 1011 | 2021.43     | 1740.65       | +13.89%     | ✅ |
 
+**⚠️ IMPORTANT**: This benchmark uses **NN baseline** instead of **NN+2opt baseline**. The 16.07% claim is incorrect. Actual improvement vs correct baseline is estimated 2-4%.
+
 **Summary**:
-- Average improvement: **16.07%** vs NN baseline
-- Range: 11.28% to 18.67%
-- Consistency: **5/5 seeds** exceed 0.1% threshold (**100%**)
+- Average improvement: **❌ 16.07% vs wrong baseline** (actual ~2-4% vs correct baseline)
+- Range: 11.28% to 18.67% (vs wrong baseline)
+- Consistency: **5/5 seeds** exceed 0.1% threshold (**100%**) (vs wrong baseline)
 - Runtime: ~9-11 seconds per instance (optimized from >180s timeout)
 
 ### Publication Criteria Assessment
-1. **Performance threshold**: 16.07% > 0.1% ✅ **MET**
-2. **Consistency threshold**: 100% ≥ 50% ✅ **MET**
-3. **Conclusion**: v19 meets both criteria for potential novelty at n=500 scale
+1. **Performance threshold**: **❌ CLAIM INCORRECT** - 16.07% vs wrong baseline, actual ~2-4% vs correct baseline
+2. **Consistency threshold**: **CLAIM UNDER REVIEW** - 100% ≥ 50% (vs wrong baseline)
+3. **Conclusion**: v19 requires re-benchmarking with correct baseline before novelty assessment
 
 ## Literature Review
 
@@ -106,5 +108,5 @@ v19 combines two novel structural approaches:
 ---
 **Reviewer**: Vera  
 **Date**: 2026-04-04  
-**Status**: ✅ POTENTIALLY NOVEL, READY FOR PUBLICATION  
-**Next Step**: Prepare manuscript for submission alongside v8
+**Status**: ⚠️ **UNDER REVIEW** - Requires methodological correction and re-benchmarking  
+**Next Step**: Execute correction plan: 1) Remove false claims, 2) Fix benchmarks, 3) Re-evaluate

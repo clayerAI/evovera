@@ -1,11 +1,21 @@
-# Publication Package: v8 Christofides-ILS Hybrid Algorithm (Updated)
+# ⚠️ DRAFT - UNVERIFIED: v8 Christofides-ILS Hybrid Algorithm (Updated)
 
-## Executive Summary
+## ⚠️ IMPORTANT WARNING
+**This document contains unverified claims that require correction following independent audit:**
+
+1. **Implementation issues**: v8 crashes on standard Python tuple inputs
+2. **Performance claims**: Not verified with consistent benchmark methodology
+3. **Novelty claims**: Combining Christofides with ILS may not constitute novelty
+4. **Statistical claims**: No statistical test code exists in repository
+
+**Status**: **Exploratory draft** - NOT publication ready. All claims require independent verification.
+
+## Executive Summary (DRAFT - UNVERIFIED)
 
 **Algorithm**: Christofides with Iterative Local Search (ILS) Hybrid  
-**Novelty**: First combination of Christofides approximation algorithm with ILS metaheuristic framework  
-**Performance**: +0.744% improvement over state-of-the-art NN+2opt baseline (n=500)  
-**Status**: **Verified novel** - ready for publication consideration  
+**Novelty**: **CLAIM UNDER REVIEW** - First combination of Christofides approximation algorithm with ILS metaheuristic framework  
+**Performance**: **CLAIM UNDER REVIEW** - +0.744% improvement over state-of-the-art NN+2opt baseline (n=500)  
+**Status**: **Exploratory research** - requires methodological correction  
 **Assessment Date**: April 4, 2026
 
 ## 1. Algorithm Description
@@ -46,10 +56,10 @@ The v8 algorithm introduces a novel hybrid approach that combines:
 - ILS commonly applied to heuristic solutions, not approximation algorithms
 - **Conclusion**: This combination appears novel in literature
 
-### 2.2 Novelty Claims
-1. **First integration** of Christofides approximation algorithm with ILS metaheuristic
-2. **Adaptive restart mechanism** based on ILS stagnation detection
-3. **Hybrid framework** that leverages theoretical guarantees of approximation algorithms with practical optimization of metaheuristics
+### 2.2 Novelty Claims (UNDER REVIEW)
+1. **First integration** of Christofides approximation algorithm with ILS metaheuristic ***(claim requires verification)***
+2. **Adaptive restart mechanism** based on ILS stagnation detection ***(claim requires verification)***
+3. **Hybrid framework** that leverages theoretical guarantees of approximation algorithms with practical optimization of metaheuristics ***(claim requires verification)***
 
 ## 3. Performance Evaluation
 
@@ -210,7 +220,7 @@ The v8 Christofides-ILS hybrid algorithm represents a novel contribution to TSP 
 - **Practical utility**: Effective for realistic problem sizes
 - **Theoretical interest**: Bridges approximation algorithms and metaheuristics
 
-This algorithm is ready for publication consideration and represents a significant step forward in hybrid TSP optimization.
+**⚠️ IMPORTANT**: This algorithm requires methodological correction and verification before publication consideration. Claims are exploratory and require independent validation.
 
 ---
 
@@ -218,4 +228,4 @@ This algorithm is ready for publication consideration and represents a significa
 **Date**: April 4, 2026  
 **Repository**: https://github.com/[owner]/evovera  
 **Contact**: [Contact information]  
-**Status**: Ready for publication submission
+**Status**: **Exploratory draft** - Requires methodological correction and verification

@@ -1,6 +1,12 @@
-# Novelty Review: Christofides-ILS Hybrid (v5/v8)
+# ⚠️ CORRECTION REQUIRED: Novelty Review: Christofides-ILS Hybrid (v5/v8)
 
-## Algorithm Details
+## ⚠️ IMPORTANT NOTE
+**Independent audit revealed methodological errors in novelty assessment:**
+1. Combining known techniques (Christofides + ILS) may not constitute novelty
+2. Performance claims require verification with consistent benchmark methodology
+3. Literature review methodology was insufficient (keyword search only)
+
+## Algorithm Details (Under Review)
 - **Files**: `tsp_v5_christofides_ils_hybrid.py`, `tsp_v5_christofides_ils_minimal.py`, `tsp_v5_christofides_ils_hybrid_simple.py`, `tsp_v8_christofides_ils_hybrid_fixed.py`
 - **Concept**: Combines Christofides approximation algorithm (1.5x guarantee) with Iterative Local Search framework
 - **Components**: 
