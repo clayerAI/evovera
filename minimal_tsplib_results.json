@@ -1,0 +1,17 @@
+{
+  "tsp_v1_nearest_neighbor_fixed": {
+    "tour_length": 517.4610027203934,
+    "gap": 21.46971894844915,
+    "time": 0.0025396347045898438,
+    "optimal": 426.0
+  },
+  "tsp_v2_christofides_improved_fixed": {
+    "error": "'list' object has no attribute 'shape'"
+  },
+  "tsp_v19_christofides_hybrid_structural_fixed": {
+    "tour_length": 459.59670056804254,
+    "gap": 7.886549429117966,
+    "time": 0.10628938674926758,
+    "optimal": 426.0
+  }
+}
