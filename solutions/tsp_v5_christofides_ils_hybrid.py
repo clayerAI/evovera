@@ -118,6 +118,202 @@ def find_odd_degree_vertices(mst_edges: List[Tuple[int, int, float]], n: int) ->
     odd_vertices = [i for i in range(n) if degree[i] % 2 == 1]
     return odd_vertices
 
+
+def minimum_weight_perfect_matching_greedy(dist_matrix: np.ndarray, odd_vertices: List[int]) -> List[Tuple[int, int, float]]:
+    """
+    Greedy algorithm for minimum-weight perfect matching on odd vertices.
+    
+    Args:
+        dist_matrix: Distance matrix (n x n)
+        odd_vertices: List of odd-degree vertices
+        
+    Returns:
+        List of (u, v, weight) matching edges
+    """
+    if len(odd_vertices) % 2 != 0:
+        raise ValueError("Number of odd vertices must be even")
+    
+    n = len(dist_matrix)
+    vertices = odd_vertices.copy()
+    matched = [False] * n
+    matching_edges = []
+    
+    # Sort vertices deterministically
+    vertices.sort()
+    
+    while vertices:
+        u = vertices.pop()
+        if matched[u]:
+            continue
+        
+        # Find closest unmatched odd vertex
+        best_v = -1
+        best_dist = float('inf')
+        
+        for v in vertices:
+            if not matched[v]:
+                dist = dist_matrix[u, v]
+                if dist < best_dist:
+                    best_dist = dist
+                    best_v = v
+        
+        if best_v != -1:
+            vertices.remove(best_v)
+            matched[u] = True
+            matched[best_v] = True
+            matching_edges.append((u, best_v, best_dist))
+    
+    return matching_edges
+
+
+def minimum_weight_perfect_matching_optimal(
+    dist_matrix: np.ndarray, 
+    odd_vertices: List[int], 
+    time_limit: float = 1.0
+) -> List[Tuple[int, int, float]]:
+    """
+    Dynamic programming optimal minimum-weight perfect matching.
+    Time complexity: O(2^m * m^2) where m = len(odd_vertices).
+    Only feasible for m ≤ 14 (2^14 * 14^2 ≈ 3.2M operations).
+    
+    Args:
+        dist_matrix: Distance matrix (n x n)
+        odd_vertices: List of odd-degree vertices
+        time_limit: Time limit in seconds
+        
+    Returns:
+        Optimal matching edges
+    """
+    m = len(odd_vertices)
+    if m % 2 != 0:
+        raise ValueError("Number of odd vertices must be even")
+    
+    if m > 14:
+        # Fall back to greedy for large instances
+        return minimum_weight_perfect_matching_greedy(dist_matrix, odd_vertices)
+    
+    # Map odd vertices to indices 0..m-1 for DP
+    vertex_to_idx = {v: i for i, v in enumerate(odd_vertices)}
+    idx_to_vertex = {i: v for i, v in enumerate(odd_vertices)}
+    
+    # Create distance matrix for odd vertices only
+    dist = [[dist_matrix[odd_vertices[i], odd_vertices[j]] for j in range(m)] for i in range(m)]
+    
+    # DP[mask] = minimum cost to match vertices in mask
+    dp = [float('inf')] * (1 << m)
+    parent = [None] * (1 << m)
+    dp[0] = 0.0
+    
+    start_time = time.time()
+    
+    # Iterate over all masks
+    for mask in range(1 << m):
+        if dp[mask] == float('inf'):
+            continue
+        
+        # Check time limit
+        if time.time() - start_time > time_limit:
+            # Timeout - fall back to greedy
+            return minimum_weight_perfect_matching_greedy(dist_matrix, odd_vertices)
+        
+        # Find first unmatched vertex
+        i = 0
+        while i < m and (mask >> i) & 1:
+            i += 1
+        
+        if i == m:
+            continue  # All vertices matched
+        
+        # Try matching i with each unmatched vertex j > i
+        for j in range(i + 1, m):
+            if not (mask >> j) & 1:
+                new_mask = mask | (1 << i) | (1 << j)
+                new_cost = dp[mask] + dist[i][j]
+                
+                if new_cost < dp[new_mask]:
+                    dp[new_mask] = new_cost
+                    parent[new_mask] = (mask, i, j)
+    
+    # Reconstruct matching from DP
+    mask = (1 << m) - 1  # All vertices unmatched initially
+    matching_edges = []
+    
+    while mask != 0:
+        prev_mask, i, j = parent[mask]
+        u = idx_to_vertex[i]
+        v = idx_to_vertex[j]
+        weight = dist[i][j]
+        matching_edges.append((u, v, weight))
+        mask = prev_mask
+    
+    return matching_edges
+
+
+def find_eulerian_tour(edges: List[Tuple[int, int, float]], n: int) -> List[int]:
+    """
+    Find Eulerian tour in multigraph using Hierholzer's algorithm.
+    
+    Args:
+        edges: List of (u, v, weight) edges
+        n: Number of vertices
+        
+    Returns:
+        Eulerian tour as list of vertices
+    """
+    # Build adjacency list with multiple edges
+    adj = [[] for _ in range(n)]
+    for u, v, w in edges:
+        adj[u].append(v)
+        adj[v].append(u)
+    
+    # Check if graph has Eulerian tour (all vertices have even degree)
+    for i in range(n):
+        if len(adj[i]) % 2 != 0 and len(adj[i]) > 0:
+            # This shouldn't happen in Christofides algorithm
+            raise ValueError(f"Vertex {i} has odd degree {len(adj[i])}")
+    
+    # Hierholzer's algorithm
+    stack = [0]
+    tour = []
+    
+    while stack:
+        v = stack[-1]
+        if adj[v]:
+            u = adj[v].pop()
+            # Remove the reverse edge
+            adj[u].remove(v)
+            stack.append(u)
+        else:
+            tour.append(stack.pop())
+    
+    # Reverse to get correct order
+    tour.reverse()
+    return tour
+
+
+def shortcut_eulerian_tour(eulerian_tour: List[int]) -> List[int]:
+    """
+    Convert Eulerian tour to Hamiltonian tour by shortcutting.
+    
+    Args:
+        eulerian_tour: Eulerian tour (may contain repeated vertices)
+        
+    Returns:
+        Hamiltonian tour (no repeated vertices)
+    """
+    visited = set()
+    tour = []
+    
+    for v in eulerian_tour:
+        if v not in visited:
+            visited.add(v)
+            tour.append(v)
+    
+    # Close the tour
+    tour.append(tour[0])
+    return tour
+
+
 def christofides_tour(
     dist_matrix: np.ndarray, 
     use_optimal_matching: bool = True,
