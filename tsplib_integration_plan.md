@@ -28,7 +28,7 @@ This document outlines how TSPLIB instance evaluation (Phase 2) will integrate w
 ```
 TSPLIB Instance Files (.tsp)
         ↓
-TSPLIB Parser (tsplib_parser_template.py)
+TSPLIB Parser (tsplib_parser.py) - ✅ IMPLEMENTED
         ↓
 Parsed Coordinates (numpy array)
         ↓
@@ -36,7 +36,7 @@ Algorithm Solvers (tsp_v1_nearest_neighbor.py, etc.)
         ↓
 Tour Length Results
         ↓
-Gap-to-Optimal Calculator
+Gap-to-Optimal Calculator - ✅ IMPLEMENTED
         ↓
 Statistical Analysis (statistical_tests.py)
         ↓
