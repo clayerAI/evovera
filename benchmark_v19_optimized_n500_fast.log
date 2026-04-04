@@ -1,0 +1,44 @@
+Running n=500 benchmark with 5 seeds...
+============================================================
+
+Seed 1/5: 42
+  NN: 2089.28 (took 0.23s)
+  v19 (OPTIMIZED): 1715.13 (+17.91%) in 8.49s
+
+Seed 2/5: 123
+  NN: 2136.49 (took 0.10s)
+  v19 (OPTIMIZED): 1737.51 (+18.67%) in 9.30s
+
+Seed 3/5: 456
+  NN: 2107.29 (took 0.20s)
+  v19 (OPTIMIZED): 1715.00 (+18.62%) in 11.02s
+
+Seed 4/5: 789
+  NN: 1957.36 (took 0.13s)
+  v19 (OPTIMIZED): 1736.60 (+11.28%) in 9.67s
+
+Seed 5/5: 1011
+  NN: 2021.43 (took 0.04s)
+  v19 (OPTIMIZED): 1740.65 (+13.89%) in 8.49s
+
+Results saved to v19_optimized_n500_fast_benchmark_20260404_044931.json
+
+============================================================
+RESULTS ANALYSIS
+============================================================
+v19 (Hybrid Structural - OPTIMIZED):
+  Average improvement vs NN: 16.073%
+  Range: [11.279%, 18.675%]
+  Above +0.1% threshold: 5/5 (100.0%)
+  Below -0.1% threshold: 0/5
+  Within ±0.1%: 0/5
+  ✓ CONSISTENT: Majority above threshold
+
+============================================================
+PUBLICATION ASSESSMENT (Vera's Criteria)
+============================================================
+1. Performance vs NN: Average improvement = 16.073%
+2. Consistency: 5/5 above +0.1% threshold (100.0%)
+✓ POTENTIALLY NOVEL: Meets both criteria
+  - Average improvement > 0.1%: 16.073% > 0.1%
+  - Consistency ≥ 50%: 100.0% ≥ 50%

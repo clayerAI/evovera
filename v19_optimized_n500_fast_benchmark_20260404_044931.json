@@ -1,0 +1,77 @@
+[
+  {
+    "n": 500,
+    "seed": 42,
+    "algorithms": {
+      "nn": {
+        "length": 2089.283214379936,
+        "time": 0.22506380081176758
+      },
+      "v19_hybrid_structural_optimized": {
+        "length": 1715.1349570642083,
+        "time": 8.490999937057495,
+        "improvement_percent": 17.90797220504012
+      }
+    }
+  },
+  {
+    "n": 500,
+    "seed": 123,
+    "algorithms": {
+      "nn": {
+        "length": 2136.494733761366,
+        "time": 0.09527420997619629
+      },
+      "v19_hybrid_structural_optimized": {
+        "length": 1737.5083296347907,
+        "time": 9.302908182144165,
+        "improvement_percent": 18.674813367040105
+      }
+    }
+  },
+  {
+    "n": 500,
+    "seed": 456,
+    "algorithms": {
+      "nn": {
+        "length": 2107.2923474337867,
+        "time": 0.19760346412658691
+      },
+      "v19_hybrid_structural_optimized": {
+        "length": 1714.9973823070566,
+        "time": 11.018625020980835,
+        "improvement_percent": 18.61606746707253
+      }
+    }
+  },
+  {
+    "n": 500,
+    "seed": 789,
+    "algorithms": {
+      "nn": {
+        "length": 1957.3586267641801,
+        "time": 0.12981200218200684
+      },
+      "v19_hybrid_structural_optimized": {
+        "length": 1736.5960168672393,
+        "time": 9.67195749282837,
+        "improvement_percent": 11.278597947168013
+      }
+    }
+  },
+  {
+    "n": 500,
+    "seed": 1011,
+    "algorithms": {
+      "nn": {
+        "length": 2021.4263415914443,
+        "time": 0.0386815071105957
+      },
+      "v19_hybrid_structural_optimized": {
+        "length": 1740.64978787322,
+        "time": 8.492960453033447,
+        "improvement_percent": 13.890021513085275
+      }
+    }
+  }
+]
