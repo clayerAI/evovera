@@ -1,0 +1,79 @@
+{
+  "metadata": {
+    "timestamp": "2026-04-04T16:36:54.799397",
+    "algorithm": "v16",
+    "n": 50,
+    "seeds": [
+      42,
+      43,
+      44
+    ],
+    "total_seeds": 3,
+    "baseline": "NN+2opt",
+    "improvement_threshold": 0.1,
+    "total_time_seconds": 0.1498887538909912
+  },
+  "results": [
+    {
+      "seed": 42,
+      "baseline_length": 6.120082558687288,
+      "baseline_time": 0.019909381866455078,
+      "algorithm_length": 5.990587996156085,
+      "algorithm_time": 0.04066109657287598,
+      "improvement": 2.1158956809722826,
+      "exceeds_threshold": true
+    },
+    {
+      "seed": 43,
+      "baseline_length": 5.9798735568519685,
+      "baseline_time": 0.018724918365478516,
+      "algorithm_length": 5.8801559272875625,
+      "algorithm_time": 0.04148578643798828,
+      "improvement": 1.6675541483673297,
+      "exceeds_threshold": true
+    },
+    {
+      "seed": 44,
+      "baseline_length": 5.933177507512192,
+      "baseline_time": 0.010543107986450195,
+      "algorithm_length": 6.083661579151723,
+      "algorithm_time": 0.016762495040893555,
+      "improvement": -2.536315009099229,
+      "exceeds_threshold": false
+    }
+  ],
+  "statistics": {
+    "mean_improvement": 0.41571160674679436,
+    "std_improvement": 2.0954074206801465,
+    "sem_improvement": 1.209784038391622,
+    "ci_95_lower": -1.9554651085007848,
+    "ci_95_upper": 2.7868883219943736,
+    "min_improvement": -2.536315009099229,
+    "max_improvement": 2.1158956809722826,
+    "t_test": {
+      "statistic": 0.29559088433868735,
+      "p_value": 0.5,
+      "significant": false
+    },
+    "sign_test": {
+      "positive_differences": 2,
+      "total_differences": 3,
+      "p_value": 0.5,
+      "significant": false
+    },
+    "effect_size": {
+      "cohens_d": 0.17065947664294068,
+      "interpretation": "Negligible"
+    },
+    "success_rate": 0.6666666666666666,
+    "above_threshold_count": 2,
+    "total_seeds": 3
+  },
+  "methodological_assessment": {
+    "meets_seed_requirement": false,
+    "statistically_significant": false,
+    "adequate_effect_size": false,
+    "adequate_consistency": true,
+    "methodologically_sound": false
+  }
+}

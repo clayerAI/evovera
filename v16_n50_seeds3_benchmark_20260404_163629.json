@@ -1,0 +1,24 @@
+{
+  "metadata": {
+    "timestamp": "2026-04-04T16:36:29.870481",
+    "algorithm": "v16",
+    "n": 50,
+    "seeds": [
+      42,
+      43,
+      44
+    ],
+    "total_seeds": 3,
+    "baseline": "NN+2opt",
+    "improvement_threshold": 0.1,
+    "total_time_seconds": 0.15380382537841797
+  },
+  "results": [
+    {
+      "seed": 42,
+      "baseline_length": 6.120082558687288,
+      "baseline_time": 0.043450117111206055,
+      "algorithm_length": 5.990587996156085,
+      "algorithm_time": 0.03230786323547363,
+      "improvement": 2.1158956809722826,
+      "exceeds_threshold": 

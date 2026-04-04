@@ -1,0 +1,378 @@
+{
+  "metadata": {
+    "problem_sizes": [
+      20,
+      30
+    ],
+    "num_seeds": 2,
+    "timestamp": "2026-04-04 16:33:08",
+    "methodology": "Multi-seed with statistical tests (corrected)"
+  },
+  "by_algorithm": {
+    "NN+2opt": {
+      "20": {
+        "raw_results": [
+          {
+            "algorithm": "NN+2opt",
+            "tour_length": 2.9728338167860118,
+            "runtime": 0.0,
+            "success": true,
+            "error": null,
+            "seed": 0,
+            "n": 20
+          },
+          {
+            "algorithm": "NN+2opt",
+            "tour_length": 4.3256186392977245,
+            "runtime": 0.0,
+            "success": true,
+            "error": null,
+            "seed": 1,
+            "n": 20
+          }
+        ],
+        "tour_lengths": [
+          2.9728338167860118,
+          4.3256186392977245
+        ],
+        "runtimes": [
+          0.0,
+          0.0
+        ],
+        "mean_tour_length": 3.649226228041868,
+        "std_tour_length": 0.6763924112558564,
+        "mean_runtime": 0.0,
+        "std_runtime": 0.0,
+        "success_rate": 1.0,
+        "min_tour_length": 2.9728338167860118,
+        "max_tour_length": 4.3256186392977245
+      },
+      "30": {
+        "raw_results": [
+          {
+            "algorithm": "NN+2opt",
+            "tour_length": 4.880990383417237,
+            "runtime": 0.0,
+            "success": true,
+            "error": null,
+            "seed": 0,
+            "n": 30
+          },
+          {
+            "algorithm": "NN+2opt",
+            "tour_length": 5.269222318429924,
+            "runtime": 0.0,
+            "success": true,
+            "error": null,
+            "seed": 1,
+            "n": 30
+          }
+        ],
+        "tour_lengths": [
+          4.880990383417237,
+          5.269222318429924
+        ],
+        "runtimes": [
+          0.0,
+          0.0
+        ],
+        "mean_tour_length": 5.075106350923581,
+        "std_tour_length": 0.19411596750634352,
+        "mean_runtime": 0.0,
+        "std_runtime": 0.0,
+        "success_rate": 1.0,
+        "min_tour_length": 4.880990383417237,
+        "max_tour_length": 5.269222318429924
+      }
+    },
+    "Christofides": {
+      "20": {
+        "raw_results": [
+          {
+            "algorithm": "Christofides",
+            "tour_length": 2.9728338167860118,
+            "runtime": 0.002804279327392578,
+            "success": true,
+            "error": null,
+            "seed": 0,
+            "n": 20
+          },
+          {
+            "algorithm": "Christofides",
+            "tour_length": 4.653659447830229,
+            "runtime": 0.0018842220306396484,
+            "success": true,
+            "error": null,
+            "seed": 1,
+            "n": 20
+          }
+        ],
+        "tour_lengths": [
+          2.9728338167860118,
+          4.653659447830229
+        ],
+        "runtimes": [
+          0.002804279327392578,
+          0.0018842220306396484
+        ],
+        "mean_tour_length": 3.8132466323081204,
+        "std_tour_length": 0.8404128155221087,
+        "mean_runtime": 0.0023442506790161133,
+        "std_runtime": 0.00046002864837646484,
+        "success_rate": 1.0,
+        "min_tour_length": 2.9728338167860118,
+        "max_tour_length": 4.653659447830229
+      },
+      "30": {
+        "raw_results": [
+          {
+            "algorithm": "Christofides",
+            "tour_length": 4.703492086451162,
+            "runtime": 0.0036258697509765625,
+            "success": true,
+            "error": null,
+            "seed": 0,
+            "n": 30
+          },
+          {
+            "algorithm": "Christofides",
+            "tour_length": 5.217287416667006,
+            "runtime": 0.005140781402587891,
+            "success": true,
+            "error": null,
+            "seed": 1,
+            "n": 30
+          }
+        ],
+        "tour_lengths": [
+          4.703492086451162,
+          5.217287416667006
+        ],
+        "runtimes": [
+          0.0036258697509765625,
+          0.005140781402587891
+        ],
+        "mean_tour_length": 4.960389751559084,
+        "std_tour_length": 0.256897665107922,
+        "mean_runtime": 0.0043833255767822266,
+        "std_runtime": 0.0007574558258056641,
+        "success_rate": 1.0,
+        "min_tour_length": 4.703492086451162,
+        "max_tour_length": 5.217287416667006
+      }
+    },
+    "v8 (Christofides-ILS)": {
+      "20": {
+        "raw_results": [
+          {
+            "algorithm": "v8 (Christofides-ILS)",
+            "tour_length": 2.9728338167860118,
+            "runtime": 30.00385308265686,
+            "success": true,
+            "error": null,
+            "seed": 0,
+            "n": 20
+          },
+          {
+            "algorithm": "v8 (Christofides-ILS)",
+            "tour_length": 4.130553213472368,
+            "runtime": 30.004610061645508,
+            "success": true,
+            "error": null,
+            "seed": 1,
+            "n": 20
+          }
+        ],
+        "tour_lengths": [
+          2.9728338167860118,
+          4.130553213472368
+        ],
+        "runtimes": [
+          30.00385308265686,
+          30.004610061645508
+        ],
+        "mean_tour_length": 3.5516935151291897,
+        "std_tour_length": 0.578859698343178,
+        "mean_runtime": 30.004231572151184,
+        "std_runtime": 0.00037848949432373047,
+        "success_rate": 1.0,
+        "min_tour_length": 2.9728338167860118,
+        "max_tour_length": 4.130553213472368
+      },
+      "30": {
+        "raw_results": [
+          {
+            "algorithm": "v8 (Christofides-ILS)",
+            "tour_length": 4.490480128353442,
+            "runtime": 30.003681182861328,
+            "success": true,
+            "error": null,
+            "seed": 0,
+            "n": 30
+          },
+          {
+            "algorithm": "v8 (Christofides-ILS)",
+            "tour_length": 5.000123642242708,
+            "runtime": 30.029405117034912,
+            "success": true,
+            "error": null,
+            "seed": 1,
+            "n": 30
+          }
+        ],
+        "tour_lengths": [
+          4.490480128353442,
+          5.000123642242708
+        ],
+        "runtimes": [
+          30.003681182861328,
+          30.029405117034912
+        ],
+        "mean_tour_length": 4.745301885298075,
+        "std_tour_length": 0.25482175694463294,
+        "mean_runtime": 30.01654314994812,
+        "std_runtime": 0.012861967086791992,
+        "success_rate": 1.0,
+        "min_tour_length": 4.490480128353442,
+        "max_tour_length": 5.000123642242708
+      }
+    },
+    "v19 (Hybrid Structural)": {
+      "20": {
+        "raw_results": [
+          {
+            "algorithm": "v19 (Hybrid Structural)",
+            "tour_length": 2.972833816786012,
+            "runtime": 0.010578155517578125,
+            "success": true,
+            "error": null,
+            "seed": 0,
+            "n": 20
+          },
+          {
+            "algorithm": "v19 (Hybrid Structural)",
+            "tour_length": 4.492995593827231,
+            "runtime": 0.001373291015625,
+            "success": true,
+            "error": null,
+            "seed": 1,
+            "n": 20
+          }
+        ],
+        "tour_lengths": [
+          2.972833816786012,
+          4.492995593827231
+        ],
+        "runtimes": [
+          0.010578155517578125,
+          0.001373291015625
+        ],
+        "mean_tour_length": 3.732914705306621,
+        "std_tour_length": 0.7600808885206092,
+        "mean_runtime": 0.0059757232666015625,
+        "std_runtime": 0.0046024322509765625,
+        "success_rate": 1.0,
+        "min_tour_length": 2.972833816786012,
+        "max_tour_length": 4.492995593827231
+      },
+      "30": {
+        "raw_results": [
+          {
+            "algorithm": "v19 (Hybrid Structural)",
+            "tour_length": 4.550788326568338,
+            "runtime": 0.0043833255767822266,
+            "success": true,
+            "error": null,
+            "seed": 0,
+            "n": 30
+          },
+          {
+            "algorithm": "v19 (Hybrid Structural)",
+            "tour_length": 5.224646491398551,
+            "runtime": 0.003679037094116211,
+            "success": true,
+            "error": null,
+            "seed": 1,
+            "n": 30
+          }
+        ],
+        "tour_lengths": [
+          4.550788326568338,
+          5.224646491398551
+        ],
+        "runtimes": [
+          0.0043833255767822266,
+          0.003679037094116211
+        ],
+        "mean_tour_length": 4.887717408983445,
+        "std_tour_length": 0.33692908241510633,
+        "mean_runtime": 0.004031181335449219,
+        "std_runtime": 0.0003521442413330078,
+        "success_rate": 1.0,
+        "min_tour_length": 4.550788326568338,
+        "max_tour_length": 5.224646491398551
+      }
+    }
+  },
+  "by_problem_size": {
+    "20": {
+      "Christofides": {
+        "improvement_pct": -4.494662539852009,
+        "p_value": 0.5,
+        "statistically_significant": false,
+        "baseline_mean": 3.649226228041868,
+        "algorithm_mean": 3.8132466323081204,
+        "samples_used": 2,
+        "scipy_available": false
+      },
+      "v8 (Christofides-ILS)": {
+        "improvement_pct": 2.672695711852682,
+        "p_value": 0.5,
+        "statistically_significant": false,
+        "baseline_mean": 3.649226228041868,
+        "algorithm_mean": 3.5516935151291897,
+        "samples_used": 2,
+        "scipy_available": false
+      },
+      "v19 (Hybrid Structural)": {
+        "improvement_pct": -2.2933211600218955,
+        "p_value": 0.5,
+        "statistically_significant": false,
+        "baseline_mean": 3.649226228041868,
+        "algorithm_mean": 3.732914705306621,
+        "samples_used": 2,
+        "scipy_available": false
+      }
+    },
+    "30": {
+      "Christofides": {
+        "improvement_pct": 2.260378235100842,
+        "p_value": 0.01,
+        "statistically_significant": true,
+        "baseline_mean": 5.075106350923581,
+        "algorithm_mean": 4.960389751559084,
+        "samples_used": 2,
+        "scipy_available": false
+      },
+      "v8 (Christofides-ILS)": {
+        "improvement_pct": 6.498473979081972,
+        "p_value": 0.01,
+        "statistically_significant": true,
+        "baseline_mean": 5.075106350923581,
+        "algorithm_mean": 4.745301885298075,
+        "samples_used": 2,
+        "scipy_available": false
+      },
+      "v19 (Hybrid Structural)": {
+        "improvement_pct": 3.692315569033041,
+        "p_value": 0.01,
+        "statistically_significant": true,
+        "baseline_mean": 5.075106350923581,
+        "algorithm_mean": 4.887717408983445,
+        "samples_used": 2,
+        "scipy_available": false
+      }
+    }
+  },
+  "statistical_tests": {}
+}

@@ -1,4 +1,4 @@
-# ⚠️ DRAFT - UNVERIFIED: v8 Christofides-ILS Hybrid Algorithm (Updated)
+# Reference Implementation: v8 Christofides-ILS Hybrid Algorithm (NOT NOVEL)
 
 ## ⚠️ IMPORTANT WARNING
 **This document contains unverified claims that require correction following independent audit:**
@@ -13,10 +13,10 @@
 ## Executive Summary (DRAFT - UNVERIFIED)
 
 **Algorithm**: Christofides with Iterative Local Search (ILS) Hybrid  
-**Novelty**: **CLAIM UNDER REVIEW** - First combination of Christofides approximation algorithm with ILS metaheuristic framework  
-**Performance**: **CLAIM UNDER REVIEW** - +0.744% improvement over state-of-the-art NN+2opt baseline (n=500)  
-**Status**: **Exploratory research** - requires methodological correction  
-**Assessment Date**: April 4, 2026
+**Novelty Status**: **NOT NOVEL** - Christofides as initial solution for ILS/local search is published literature  
+**Performance**: +0.744% improvement over state-of-the-art NN+2opt baseline (n=500)  
+**Status**: **KNOWN TECHNIQUE** - reclassify as reference implementation  
+**Assessment Date**: April 4, 2026 (CRITICAL REVISION)
 
 ## 1. Algorithm Description
 
@@ -112,7 +112,7 @@ The v8 algorithm introduces a novel hybrid approach that combines:
 | v8 (Christofides-ILS) | Verified | +0.744% | Good (4/5 seeds) | **Ready** |
 | v16 (Path Centrality) | Potential | +1.56% | Moderate | Needs consistency |
 | v18 (Community Detection) | Potential | -0.16% | Poor | Needs work |
-| v19 (Hybrid Structural) | Potential | +16.07%* | Excellent | Needs verification |
+| v19 (Hybrid Structural) | Under Review | 2-4% vs NN+2opt (not 16.07%)* | Needs multi-seed tests | Needs statistical validation |
 | v20 (Structural-ILS) | Potential | 0% (identical to v8) | N/A | Ineffective |
 
 *Note: v19 improvement measured vs NN baseline, not NN+2opt*
@@ -221,7 +221,7 @@ This research program has produced two distinct novel approaches to Christofides
 |--------|----------------------|-------------------------|
 | **Approach** | Metaheuristic refinement | Structural analysis |
 | **Core Innovation** | First Christofides-ILS hybrid | First path centrality + community detection |
-| **Performance** | +0.744% vs NN+2opt | +16.07% vs NN |
+| **Performance** | +0.744% vs NN+2opt | 2-4% vs NN+2opt (not 16.07% vs NN) |
 | **Consistency** | Good (4/5 seeds) | Excellent (5/5 seeds) |
 | **Theoretical Contribution** | Metaheuristic-approximation bridge | Structural analysis-optimization bridge |
 

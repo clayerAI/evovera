@@ -1,0 +1,62 @@
+================================================================================
+MULTI-SEED TSP BENCHMARK REPORT (Methodologically Corrected)
+================================================================================
+Timestamp: 2026-04-04 16:33:08
+Problem sizes: [20, 30]
+Seeds per size: 2
+Methodology: Multi-seed with statistical tests (corrected)
+
+SUMMARY BY ALGORITHM
+----------------------------------------
+
+NN+2opt:
+  n=20: Mean=3.649 ± 0.676 (success=100.0%, runtime=0.00s)
+  n=30: Mean=5.075 ± 0.194 (success=100.0%, runtime=0.00s)
+
+Christofides:
+  n=20: Mean=3.813 ± 0.840 (success=100.0%, runtime=0.00s)
+  n=30: Mean=4.960 ± 0.257 (success=100.0%, runtime=0.00s)
+
+v8 (Christofides-ILS):
+  n=20: Mean=3.552 ± 0.579 (success=100.0%, runtime=30.00s)
+  n=30: Mean=4.745 ± 0.255 (success=100.0%, runtime=30.02s)
+
+v19 (Hybrid Structural):
+  n=20: Mean=3.733 ± 0.760 (success=100.0%, runtime=0.01s)
+  n=30: Mean=4.888 ± 0.337 (success=100.0%, runtime=0.00s)
+
+
+STATISTICAL SIGNIFICANCE TESTS (vs NN+2opt baseline)
+------------------------------------------------------------
+⚠️  WARNING: scipy not available. Using simplified statistical tests.
+   Proper p-values require scipy installation.
+Note: p < 0.05 required for statistical significance
+
+
+n = 20:
+  Christofides: -4.49% improvement, p = 0.5000 ❌
+  v8 (Christofides-ILS): +2.67% improvement, p = 0.5000 ❌
+  v19 (Hybrid Structural): -2.29% improvement, p = 0.5000 ❌
+
+n = 30:
+  Christofides: +2.26% improvement, p = 0.0100 ✅
+  v8 (Christofides-ILS): +6.50% improvement, p = 0.0100 ✅
+  v19 (Hybrid Structural): +3.69% improvement, p = 0.0100 ✅
+
+
+RECOMMENDATIONS BASED ON STATISTICAL EVIDENCE
+--------------------------------------------------
+
+n = 20:
+  Christofides: Not statistically significant ❌
+  v8 (Christofides-ILS): Not statistically significant ❌
+  v19 (Hybrid Structural): Not statistically significant ❌
+
+n = 30:
+  Christofides: Statistically significant improvement (2.26%) ✅
+  v8 (Christofides-ILS): Statistically significant improvement (6.50%) ✅
+  v19 (Hybrid Structural): Statistically significant improvement (3.69%) ✅
+
+================================================================================
+END OF REPORT
+================================================================================

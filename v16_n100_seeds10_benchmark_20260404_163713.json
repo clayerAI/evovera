@@ -1,0 +1,149 @@
+{
+  "metadata": {
+    "timestamp": "2026-04-04T16:37:13.216578",
+    "algorithm": "v16",
+    "n": 100,
+    "seeds": [
+      42,
+      43,
+      44,
+      45,
+      46,
+      47,
+      48,
+      49,
+      50,
+      51
+    ],
+    "total_seeds": 10,
+    "baseline": "NN+2opt",
+    "improvement_threshold": 0.1,
+    "total_time_seconds": 2.364431619644165
+  },
+  "results": [
+    {
+      "seed": 42,
+      "baseline_length": 8.595775011892146,
+      "baseline_time": 0.10712599754333496,
+      "algorithm_length": 8.42896004002996,
+      "algorithm_time": 0.2523941993713379,
+      "improvement": 1.940662379266552,
+      "exceeds_threshold": true
+    },
+    {
+      "seed": 43,
+      "baseline_length": 8.041569336618894,
+      "baseline_time": 0.10090351104736328,
+      "algorithm_length": 8.00929615361735,
+      "algorithm_time": 0.15224170684814453,
+      "improvement": 0.40132941283712387,
+      "exceeds_threshold": true
+    },
+    {
+      "seed": 44,
+      "baseline_length": 8.20331842632703,
+      "baseline_time": 0.04016852378845215,
+      "algorithm_length": 7.856220755183254,
+      "algorithm_time": 0.15254735946655273,
+      "improvement": 4.231186126212415,
+      "exceeds_threshold": true
+    },
+    {
+      "seed": 45,
+      "baseline_length": 8.22121071284111,
+      "baseline_time": 0.05941152572631836,
+      "algorithm_length": 7.884705266260755,
+      "algorithm_time": 0.15177345275878906,
+      "improvement": 4.093137353294575,
+      "exceeds_threshold": true
+    },
+    {
+      "seed": 46,
+      "baseline_length": 8.415635860326967,
+      "baseline_time": 0.08181118965148926,
+      "algorithm_length": 8.315760574026108,
+      "algorithm_time": 0.1405189037322998,
+      "improvement": 1.1867824126242437,
+      "exceeds_threshold": true
+    },
+    {
+      "seed": 47,
+      "baseline_length": 7.72728300913949,
+      "baseline_time": 0.054926156997680664,
+      "algorithm_length": 7.611169285788848,
+      "algorithm_time": 0.1366596221923828,
+      "improvement": 1.5026461851249366,
+      "exceeds_threshold": true
+    },
+    {
+      "seed": 48,
+      "baseline_length": 8.573375040886434,
+      "baseline_time": 0.08556294441223145,
+      "algorithm_length": 8.40262717982367,
+      "algorithm_time": 0.14635348320007324,
+      "improvement": 1.9916061090115376,
+      "exceeds_threshold": true
+    },
+    {
+      "seed": 49,
+      "baseline_length": 7.992077075634444,
+      "baseline_time": 0.09918856620788574,
+      "algorithm_length": 7.567111989932821,
+      "algorithm_time": 0.15297365188598633,
+      "improvement": 5.317329671371913,
+      "exceeds_threshold": true
+    },
+    {
+      "seed": 50,
+      "baseline_length": 8.199133621867919,
+      "baseline_time": 0.06965923309326172,
+      "algorithm_length": 8.3787793482652,
+      "algorithm_time": 0.14064383506774902,
+      "improvement": -2.191033036931457,
+      "exceeds_threshold": false
+    },
+    {
+      "seed": 51,
+      "baseline_length": 7.798848128568542,
+      "baseline_time": 0.08649659156799316,
+      "algorithm_length": 7.543545413677312,
+      "algorithm_time": 0.1397385597229004,
+      "improvement": 3.273595160239263,
+      "exceeds_threshold": true
+    }
+  ],
+  "statistics": {
+    "mean_improvement": 2.1747241773051105,
+    "std_improvement": 2.0667276439845317,
+    "sem_improvement": 0.6535566658224712,
+    "ci_95_lower": 0.8937531122930671,
+    "ci_95_upper": 3.455695242317154,
+    "min_improvement": -2.191033036931457,
+    "max_improvement": 5.317329671371913,
+    "t_test": {
+      "statistic": 3.173799389781131,
+      "p_value": 0.05,
+      "significant": false
+    },
+    "sign_test": {
+      "positive_differences": 9,
+      "total_differences": 10,
+      "p_value": 0.05,
+      "significant": false
+    },
+    "effect_size": {
+      "cohens_d": 1.0036434908160905,
+      "interpretation": "Large"
+    },
+    "success_rate": 0.9,
+    "above_threshold_count": 9,
+    "total_seeds": 10
+  },
+  "methodological_assessment": {
+    "meets_seed_requirement": true,
+    "statistically_significant": false,
+    "adequate_effect_size": true,
+    "adequate_consistency": true,
+    "methodologically_sound": false
+  }
+}

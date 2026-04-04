@@ -12,29 +12,17 @@ v19 combines two novel structural approaches:
 
 **Optimization**: Computes paths only between odd vertices (not all vertex pairs) for O(m²) complexity instead of O(n³), where m = number of odd vertices (typically ~n/2). Achieves 36x speedup at n=300.
 
-## ⚠️ Performance Verification (n=500 Benchmark) - **USING WRONG BASELINE**
+## ⚠️ CRITICAL PERFORMANCE ISSUES IDENTIFIED
 
-### Test Results (5 seeds, n=500) - **⚠️ NN BASELINE INSTEAD OF NN+2OPT**
-| Seed | NN Baseline (Wrong) | v19 Optimized | Improvement | Exceeds 0.1% |
-|------|-------------|---------------|-------------|--------------|
-| 42   | 2089.28     | 1715.13       | +17.91%     | ✅ |
-| 123  | 2136.49     | 1737.51       | +18.67%     | ✅ |
-| 456  | 2107.29     | 1715.00       | +18.62%     | ✅ |
-| 789  | 1957.36     | 1736.60       | +11.28%     | ✅ |
-| 1011 | 2021.43     | 1740.65       | +13.89%     | ✅ |
+### **Invalid Performance Claims**
+**Owner's independent verification revealed critical issues:**
 
-**⚠️ IMPORTANT**: This benchmark uses **NN baseline** instead of **NN+2opt baseline**. The 16.07% claim is incorrect. Actual improvement vs correct baseline is estimated 2-4%.
-
-**Summary**:
-- Average improvement: **❌ 16.07% vs wrong baseline** (actual ~2-4% vs correct baseline)
-- Range: 11.28% to 18.67% (vs wrong baseline)
-- Consistency: **5/5 seeds** exceed 0.1% threshold (**100%**) (vs wrong baseline)
-- Runtime: ~9-11 seconds per instance (optimized from >180s timeout)
-
-### Publication Criteria Assessment
-1. **Performance threshold**: **❌ CLAIM INCORRECT** - 16.07% vs wrong baseline, actual ~2-4% vs correct baseline
-2. **Consistency threshold**: **CLAIM UNDER REVIEW** - 100% ≥ 50% (vs wrong baseline)
-3. **Conclusion**: v19 requires re-benchmarking with correct baseline before novelty assessment
+1. **Wrong Baseline Comparison**: v19's 16.07% improvement claim is vs plain NN baseline, not NN+2opt (standard benchmark)
+2. **Actual Performance**: Estimated 2-4% improvement vs NN+2opt (needs verification)
+3. **Single-Seed Insufficiency**: Only seed=42 used for most claims; need ≥10 seeds per size
+4. **No Statistical Tests**: Need mean, standard deviation, and p<0.05 significance (paired t-test or Wilcoxon)
+5. **No TSPLIB Evaluation**: Need gap-to-optimal on standard instances (eil51, kroA100, a280, att532)
+6. **No Strong Solver Comparison**: Need comparison against LKH or OR-Tools
 
 ## Literature Review
 

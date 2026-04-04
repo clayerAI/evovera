@@ -1,6 +1,15 @@
 #!/usr/bin/env python3
 """
-Christofides with Hybrid Structural Analysis (v19)
+Christofides with Hybrid Structural Analysis (v19) - UNDER REVIEW
+
+STATUS UPDATE (April 4, 2026): Owner's independent verification revealed critical issues:
+1. 16.07% improvement claim is INVALID (wrong baseline vs plain NN instead of NN+2opt)
+2. Single-seed benchmarks insufficient (need ≥10 seeds with statistical tests)
+3. No statistical significance tests (need p<0.05)
+4. No TSPLIB evaluation (need gap-to-optimal on standard instances)
+5. No comparison against strong solvers (LKH or OR-Tools)
+
+Original description:
 Combines v16's path-based centrality with v18's community detection.
 
 Key Innovation:
@@ -15,7 +24,7 @@ This creates a more nuanced matching that respects both local community structur
 and global centrality patterns.
 
 Author: Evo
-Date: 2026-04-03
+Date: 2026-04-03 (CRITICAL REVISION: April 4, 2026)
 """
 
 import math

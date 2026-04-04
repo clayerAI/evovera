@@ -4,20 +4,42 @@
 **Evo & Vera** is an autonomous AI research system for algorithmic exploration. Evo (Algorithmic Solver) generates hybrid algorithmic solutions to complex optimization problems, while Vera (Critical Reviewer) provides adversarial quality assurance through systematic stress-testing. This repository documents an exploratory research session on TSP heuristics.
 
 ## 🎯 Current Status
-**COMPLETED - 2 PUBLICATION-READY ALGORITHMS**: TSP research phase completed with comprehensive correction process. All methodological errors addressed, canonical benchmarks established, and review framework implemented. Ready for transition to Vehicle Routing Problem (VRP) research.
+**CRITICAL ISSUES IDENTIFIED - METHODOLOGICAL CORRECTION IN PROGRESS**: Owner conducted independent verification revealing critical methodological issues requiring immediate correction:
 
-## 📊 Version Tracking & Key Results
+### **Critical Issues Identified:**
+1. **v8 is NOT NOVEL**: Christofides-ILS combination is published literature
+2. **v19 16.07% claim INVALID**: Wrong baseline comparison (vs plain NN instead of NN+2opt)
+3. **Single-seed benchmarks insufficient**: Need ≥10 seeds with statistical significance tests
+4. **Additional requirements**: TSPLIB evaluation, strong solver comparison, ablation studies
 
-| Version | Algorithm | Status | Notes |
-|---------|-----------|--------|-------|
-| **v8** | Christofides-ILS Hybrid | ✅ **PUBLICATION-READY** | -1.45% to -3.93% improvement vs NN+2opt. Interface fixed to accept multiple input formats. Novelty confirmed. |
-| **v19** | Christofides Hybrid Structural | ✅ **PUBLICATION-READY** | Mixed results: +5.43% to -5.08% improvement vs NN+2opt. Best on larger instances. Novelty confirmed. |
-| **v16** | Path Centrality Matching | ⚠️ **REQUIRES OPTIMIZATION** | -5.64% improvement on n=200 (best performer). O(n³) complexity needs v19's optimization. |
-| **v18** | Community Detection | ⚠️ **RESEARCH ARTIFACT** | -0.16% avg improvement, inconsistent results. Not publication-ready. |
-| **v20** | Structural-ILS Hybrid | ❌ **ARCHIVED** | Experimental hybrid with 430x runtime overhead. |
-| **v14** | Adaptive Matching | ❌ **REJECTED** | Baseline discrepancy discovered by Vera. |
+### **Quick Validation Results:**
+- Christofides is **WORSE** than NN+2opt baseline (-1.02% improvement, n=30, 5 seeds)
+- Confirms baseline selection error inflated previous claims
+- All algorithms need re-evaluation with corrected methodology
 
-**Note**: Correction process completed. All methodological errors addressed. v8 and v19 confirmed as publication-ready algorithms meeting both performance and novelty criteria.
+### **Correction Status:**
+- ✅ False claims removed from documentation
+- ✅ v8 reclassified as "KNOWN TECHNIQUE - REFERENCE IMPLEMENTATION"
+- ✅ Multi-seed benchmark framework implemented
+- 🔄 Methodological correction in progress
+- ⏳ No algorithm currently publication-ready
+
+## 📊 Algorithm Status Table
+
+| Version | Name | Status | Notes |
+|---------|------|--------|-------|
+| **v1** | Nearest Neighbor | ✅ **BASELINE** | Reference implementation |
+| **v2** | Nearest Neighbor + 2-opt | ✅ **BASELINE** | Strong baseline for comparison |
+| **v8** | Christofides-ILS Hybrid | ⚠️ **KNOWN TECHNIQUE** | Published combination, reference implementation |
+| **v19** | Christofides Structural-ILS Hybrid | 🔄 **UNDER EVALUATION** | Needs multi-seed statistical validation |
+| **v20** | Structural-ILS Hybrid | ❌ **ARCHIVED** | Experimental, 430x runtime overhead |
+| **v14** | Adaptive Matching | ❌ **REJECTED** | Baseline discrepancy discovered |
+
+**Legend:**
+- ✅ **BASELINE**: Reference implementation for comparison
+- ⚠️ **KNOWN TECHNIQUE**: Published combination, not novel
+- 🔄 **UNDER EVALUATION**: Being re-evaluated with corrected methodology
+- ❌ **ARCHIVED/REJECTED**: Not viable for publication
 
 ## 📈 Benchmark Results (Independent Audit)
 

@@ -1,0 +1,32 @@
+
+METHODOLOGY TEST REPORT
+=======================
+Date: 2026-04-04 16:38:01
+Test: Quick methodology verification
+Problem size: 30
+Seeds: 5 (should be ≥10 for publication)
+
+KEY FINDINGS:
+1. Christofides vs NN+2opt: -1.02% improvement
+2. Consistency: Christofides better in 2/5 seeds
+3. Statistical spread: Baseline ±0.299, Christofides ±0.257
+
+METHODOLOGICAL REQUIREMENTS (per owner's verification):
+✓ Multiple seeds tested (5, should be ≥10)
+✓ Comparison against NN+2opt baseline (not plain NN)
+✓ Mean and standard deviation reported
+✗ Statistical significance test (requires scipy for p-value)
+✗ ≥10 seeds (only 5 in quick test)
+✗ TSPLIB instances evaluation
+✗ Strong solver comparison (LKH/OR-Tools)
+
+NEXT STEPS FOR FULL METHODOLOGICAL CORRECTION:
+1. Run with ≥10 seeds per problem size
+2. Install scipy for proper statistical tests
+3. Acquire real TSPLIB instances (eil51, kroA100, a280, att532)
+4. Install LKH/OR-Tools for strong solver comparison
+5. Test v8 and v19 algorithms (may require timeouts for slow runs)
+6. Perform ablation studies for novel components
+
+IMPORTANT: No algorithm should be declared "publication-ready" until ALL
+methodological requirements are met with statistically significant results.

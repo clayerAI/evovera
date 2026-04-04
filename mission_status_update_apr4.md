@@ -1,17 +1,17 @@
-# Mission Status Update - April 4, 2026
+# Mission Status Update - April 4, 2026 (CRITICAL REVISION)
 
 ## Executive Summary
-**All three priority tasks completed successfully.** v8 and v19 are confirmed publication-ready, while v16 and v18 require further optimization before publication consideration.
+**CRITICAL ISSUES IDENTIFIED BY OWNER.** Independent verification revealed: 1) v8 is NOT NOVEL (Christofides-ILS is published), 2) v19 16.07% claim invalid (wrong baseline), 3) Single-seed benchmarks insufficient, 4) Need multi-seed statistical tests, TSPLIB evaluation, and strong solver comparisons. All publication claims withdrawn pending methodological corrections.
 
 ## Task Completion Status
 
-### ✅ **Task 1: Prepare v19 for publication alongside v8** - **COMPLETED**
-- Created comprehensive v19 publication package (`v19_publication_package.md`)
-- Updated v8 publication package with joint publication strategy
-- v19 confirmed by Vera as **NOVELTY CONFIRMED & PUBLICATION-READY**
-- **Key results**: 16.07% avg improvement vs NN baseline, 100% consistency (5/5 seeds)
-- **Novelty**: Combines path-based centrality with community detection in hierarchical matching
-- **Optimization**: Computing paths only between odd vertices (novel efficiency improvement)
+### ⚠️ **Task 1: Prepare v19 for publication alongside v8** - **CRITICAL ISSUES IDENTIFIED**
+- **DELETED** v19 publication package (`v19_publication_package.md`) - contained false 16.07% claim
+- v8 **NOT NOVEL** - Christofides-ILS combination is published literature
+- v19 16.07% claim **INVALID** - wrong baseline comparison (vs plain NN instead of NN+2opt)
+- **Actual performance**: Estimated 2-4% improvement vs NN+2opt (needs verification)
+- **Critical issues**: Single-seed benchmarks insufficient, no statistical tests, no TSPLIB evaluation
+- **Required actions**: Multi-seed benchmarks (≥10 seeds), statistical significance tests, TSPLIB evaluation, comparison against strong solvers
 
 ### ✅ **Task 2: Run n=500 benchmark for v16** - **COMPLETED**
 - Analyzed Vera's review: 1.56% improvement at n=500, potentially novel but inconsistent
@@ -27,20 +27,20 @@
 - **Computational efficiency**: v18 runs fast (7.34s avg) but performance unreliable
 - **Status**: Not publication-ready; archive as research artifact
 
-## Publication-Ready Algorithms
+## Critical Issues Requiring Immediate Attention
 
-### **v8: Christofides-ILS Hybrid** ✅
+### **v8: Christofides-ILS Hybrid** ❌ **NOT NOVEL**
 - **Improvement**: +0.744% vs NN+2opt baseline
-- **Novelty**: Verified novel (no literature conflicts)
-- **Consistency**: 100% above threshold (5/5 seeds)
-- **Status**: **READY FOR PUBLICATION**
+- **Novelty Status**: **NOT NOVEL** - Christofides as initial solution for ILS/local search is published literature
+- **Reclassification**: Should be labeled as "KNOWN TECHNIQUE - REFERENCE IMPLEMENTATION"
+- **Action Required**: Remove from publication candidates, reclassify as known technique
 
-### **v19: Christofides with Structural Hybridization** ✅
-- **Improvement**: 16.07% vs NN baseline (exceeds threshold by 160x)
-- **Novelty**: **CONFIRMED** by Vera (no literature conflicts)
-- **Consistency**: 100% above threshold (5/5 seeds)
-- **Optimization**: Novel efficiency improvement (paths only between odd vertices)
-- **Status**: **READY FOR PUBLICATION**
+### **v19: Christofides with Structural Hybridization** ⚠️ **UNDER REVIEW**
+- **Improvement Claim**: 16.07% vs NN baseline - **INVALID** (wrong baseline)
+- **Actual Performance**: Estimated 2-4% vs NN+2opt (needs multi-seed verification)
+- **Critical Issues**: Single-seed benchmarks, no statistical tests, no TSPLIB evaluation
+- **Required Actions**: Multi-seed benchmarks (≥10 seeds), statistical significance tests (p<0.05), TSPLIB evaluation, comparison against strong solvers (LKH or OR-Tools)
+- **Status**: **NOT PUBLICATION-READY** - needs methodological corrections
 
 ## Algorithms Requiring Further Work
 

@@ -1,28 +1,28 @@
 """
-TSP Hybrid Algorithm #2: Christofides-ILS Hybrid (Fixed Implementation)
+TSP Hybrid Algorithm #2: Christofides-ILS Hybrid (Fixed Implementation) - KNOWN TECHNIQUE
 
-Novel Hybrid Approach: Combines Christofides approximation algorithm (1.5x guarantee)
-with Iterative Local Search framework. Vera's novelty review found this combination
-potentially novel with no direct evidence in literature.
+STATUS UPDATE (April 4, 2026): Owner's independent verification revealed this combination
+is NOT NOVEL. Christofides as initial solution for ILS/local search is published literature.
+Reclassify as "KNOWN TECHNIQUE - REFERENCE IMPLEMENTATION".
+
+Original claims (now invalid):
+- Novel Hybrid Approach: Combines Christofides approximation algorithm (1.5x guarantee)
+  with Iterative Local Search framework. 
+- Vera's novelty review found this combination potentially novel with no direct evidence in literature.
 
 Components:
 1. Christofides: Provides 1.5x approximation guarantee starting solution
 2. Iterative Local Search: Strategic perturbations + 2-opt local search
 3. Adaptive Restart: Restart from new Christofides solution when ILS stagnates
 
-Novelty Claims:
-- Christofides + ILS combination not found in literature
-- Adaptive restart based on ILS stagnation (not fixed iterations)
-- Integration of approximation algorithm with metaheuristic refinement
-
-Benchmark Results (n=500, seed=42):
-- Initial Christofides: 17.9546
-- Final hybrid: 17.1772  
-- Baseline (NN+2opt): 17.69
-- Improvement: 2.985% (well above 0.1% threshold for publication)
+Critical Issues Identified:
+- Christofides-ILS combination is published literature (NOT NOVEL)
+- Single-seed benchmarks insufficient (only seed=42)
+- No statistical significance tests
+- Need multi-seed validation with p<0.05 significance
 
 This implementation fixes bugs in previous versions and provides working
-Christofides-ILS hybrid algorithm.
+Christofides-ILS hybrid algorithm as a reference implementation of known technique.
 """
 
 import numpy as np
