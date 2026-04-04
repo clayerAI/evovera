@@ -1,0 +1,17 @@
+Distance Metric Correction Verification
+==================================================
+
+Instance: att532.tsp
+Points sampled: 50
+Average Euclidean/ATT ratio: 3.16
+Expected ratio: ~3.16
+
+Verification: PASS
+
+Impact of correction:
+- Without correction: Tour lengths inflated by ~216%
+- With correction: Accurate ATT distances used
+
+Algorithm interfaces verified:
+- v1 (Nearest Neighbor): Accepts distance_matrix ✓
+- v19 (Christofides Hybrid): Accepts distance_matrix ✓

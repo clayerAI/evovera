@@ -1,0 +1,12 @@
+eil51 Test Results with Fixed Algorithms
+========================================
+
+Points: 51
+v1 (NN): 188.00 (time: 0.007s)
+v2 (Christofides): 191.00 (time: 0.002s)
+v19 (Hybrid): 171.00 (time: 0.312s)
+
+Best: 171.00
+v1 gap: 9.94%
+v2 gap: 11.70%
+v19 gap: 0.00%
