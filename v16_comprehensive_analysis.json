@@ -1,0 +1,67 @@
+[
+  {
+    "seed": 42,
+    "nn2opt_length": 7.470775075124231,
+    "christofides_length": 7.794947147676917,
+    "v16_length_default": 8.477798783388176,
+    "v16_length_adaptive": 8.477798783388176,
+    "best_weight": 0.0,
+    "imp_vs_nn2opt_default": -13.47950779052465,
+    "imp_vs_nn2opt_adaptive": -13.47950779052465,
+    "imp_vs_christofides_default": -8.760183010538622,
+    "imp_vs_christofides_adaptive": -8.760183010538622,
+    "point_generation_diff": 0.945659250869523
+  },
+  {
+    "seed": 123,
+    "nn2opt_length": 8.200483933991217,
+    "christofides_length": 9.47252817266812,
+    "v16_length_default": 8.198153208276855,
+    "v16_length_adaptive": 8.198153208276855,
+    "best_weight": 0.3,
+    "imp_vs_nn2opt_default": 0.02842180697045433,
+    "imp_vs_nn2opt_adaptive": 0.02842180697045433,
+    "imp_vs_christofides_default": 13.453377400009497,
+    "imp_vs_christofides_adaptive": 13.453377400009497,
+    "point_generation_diff": 0.9537184788696031
+  },
+  {
+    "seed": 456,
+    "nn2opt_length": 8.4406960877893,
+    "christofides_length": 9.00275695944096,
+    "v16_length_default": 8.236771505484827,
+    "v16_length_adaptive": 8.236771505484827,
+    "best_weight": 0.0,
+    "imp_vs_nn2opt_default": 2.415968780104291,
+    "imp_vs_nn2opt_adaptive": 2.415968780104291,
+    "imp_vs_christofides_default": 8.50834313763035,
+    "imp_vs_christofides_adaptive": 8.50834313763035,
+    "point_generation_diff": 0.9758261897342005
+  },
+  {
+    "seed": 789,
+    "nn2opt_length": 7.805519273024675,
+    "christofides_length": 8.615677018884647,
+    "v16_length_default": 7.898177662852179,
+    "v16_length_adaptive": 7.846955092440702,
+    "best_weight": 0.5,
+    "imp_vs_nn2opt_default": -1.187088092239098,
+    "imp_vs_nn2opt_adaptive": -0.530852823068745,
+    "imp_vs_christofides_default": 8.327834881226227,
+    "imp_vs_christofides_adaptive": 8.922362395421606,
+    "point_generation_diff": 0.9366402872426386
+  },
+  {
+    "seed": 999,
+    "nn2opt_length": 8.028516274128982,
+    "christofides_length": 8.397801770055294,
+    "v16_length_default": 8.342304259548573,
+    "v16_length_adaptive": 8.024381975419377,
+    "best_weight": 0.0,
+    "imp_vs_nn2opt_default": -3.908418127403421,
+    "imp_vs_nn2opt_adaptive": 0.05149517754516435,
+    "imp_vs_christofides_default": 0.6608575913831668,
+    "imp_vs_christofides_adaptive": 4.446637404176994,
+    "point_generation_diff": 0.9301728305953303
+  }
+]
