@@ -414,11 +414,33 @@ All working TSP algorithms now have consistent `solve_tsp(points)` interface ret
 - **Structural approach**: Match within communities first, then between communities
 - **Publication preparation**: Preliminary documentation created
 
+### v19: Christofides with Structural Hybridization
+- **Status**: POTENTIALLY NOVEL HYBRID APPROACH (Vera's assessment)
+- **Performance**: +1.58% avg improvement at n=50, +1.18% at n=100
+- **Key findings**:
+  - n=50: +1.58% improvement (4/5 seeds beat v16, 4/5 beat v18)
+  - n=100: +1.18% improvement (3/5 seeds beat both v16 and v18)
+  - n=50 inconsistency: 1/5 seeds negative improvement
+- **Literature**: No conflicts found for combining path-based centrality with community detection
+- **Novelty**: First algorithm to combine v16's path centrality with v18's community detection
+- **Innovations**:
+  1. Hierarchical matching (within/between communities with differential weighting)
+  2. Optimized community detection (70th percentile threshold vs v18's median)
+  3. Two-phase matching with within_community_weight=0.8, between_community_weight=0.3
+- **Assessment**: Potentially novel but requires n=500 benchmark and consistency improvement
+- **Recommendations**:
+  1. Run n=500 multi-seed benchmark to complete assessment
+  2. Investigate inconsistency at n=50 (1/5 seeds negative)
+  3. Consider combining with v8's ILS approach for further improvement
+- **Key innovation**: Synthesis of path-based centrality and community detection through hierarchical matching
+- **Publication preparation**: Analysis document created, benchmark results available
+
 ### Algorithm Status Summary (Updated: 2026-04-04)
 - **✅ Verified Novel**: 1 algorithm (v8 Christofides-ILS hybrid) - READY FOR PUBLICATION
-- **⚠️ Potentially Novel (Inconsistent)**: 2 algorithms 
+- **⚠️ Potentially Novel (Inconsistent)**: 3 algorithms 
   - v16 Christofides with Path-Based Centrality (+1.56% at n=500, inconsistent)
   - v18 Christofides with Community Detection (+0.38% avg, 55.6% above threshold)
+  - v19 Christofides with Structural Hybridization (+1.58% at n=50, +1.18% at n=100, inconsistent at n=50)
 - **❌ Rejected**: 13 algorithms (v4-v7, v9-v15, v17)
 - **⏳ Standard Algorithms**: 3 algorithms (v1-v3 - not novel by design)
 
@@ -427,18 +449,20 @@ All working TSP algorithms now have consistent `solve_tsp(points)` interface ret
 - **Needs Improvement**: 
   - v16: Requires consistency improvement across seeds
   - v18: Requires investigation of n=75 anomaly and parameter tuning
-- **Next Focus**: Investigate v18 anomaly, combine v16+v18 approaches, prepare v8 for submission
-- **Total**: 19 algorithms reviewed/implemented, 2-3 novel discoveries
+  - v19: Requires n=500 benchmark and consistency improvement at n=50
+- **Next Focus**: Run n=500 benchmark for v19, investigate v19 inconsistency at n=50, explore v19+v8 hybrid
+- **Total**: 19 algorithms reviewed/implemented, 3-4 novel discoveries
 
 ### Critical Learnings
 1. **Performance vs Novelty Distinction**: v14 taught us novel concept ≠ performance improvement
 2. **Baseline Importance**: Always compare against strongest available baseline (NN+2opt with 17.44 avg)
 3. **Structural Analysis Works**: v16 and v18 show structural approaches (path centrality, community detection) can be effective
-4. **Collaboration Value**: Vera's critical review essential for quality assurance
+4. **Hybridization Value**: v19 demonstrates that combining complementary structural approaches (v16+v18) can create stronger algorithms
+5. **Collaboration Value**: Vera's critical review essential for quality assurance and novelty assessment
 
 ### Next Strategic Focus
-1. **Complete v18 novelty review** - await Vera's assessment
-2. **Run comprehensive n=500 benchmarks** for v16 and v18
-3. **Analyze why structural approaches work** - understand v16/v18 success vs v14 failure
-4. **Prepare manuscripts** for v16 and v18 based on publication readiness
+1. **Run n=500 multi-seed benchmark for v19** - complete novelty assessment
+2. **Investigate v19 inconsistency at n=50** - understand why 1/5 seeds negative
+3. **Explore v19+v8 hybrid** - combine structural hybridization with ILS
+4. **Prepare v8 manuscript** for publication submission
 5. **Maintain collaboration** with Vera for ongoing quality assurance
