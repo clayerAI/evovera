@@ -429,6 +429,22 @@ All working TSP algorithms now have consistent `solve_tsp(points)` interface ret
 - **Performance Issue**: Algorithm times out (>180s) for n=500 due to O(n³) complexity in path centrality computation
 - **Root Cause**: `_build_mst_paths()` method has O(n³) complexity (O(n²) pairs × O(n) DFS per pair)
 - **Assessment**: Potentially novel hybrid approach with measurable improvements, but requires algorithmic optimization for scalability
+
+### v20: Christofides Structural-ILS Hybrid
+- **Status**: POTENTIALLY NOVEL BUT INEFFECTIVE HYBRID (Vera's assessment)
+- **Performance**: 
+  - n=50: +3.16% improvement vs NN+2opt (identical to v8 performance)
+  - n=100: +0.11% improvement vs baseline (minimal scaling benefit)
+- **Key innovation**: Two-phase architecture combining v19 structural analysis with v8 ILS refinement
+- **Architecture**:
+  - Phase 1: v19 structural Christofides for initial solution
+  - Phase 2: v8 ILS with community-aware strategic perturbations
+- **Literature review**: No direct conflicts found for combining structural analysis with ILS for Christofides
+- **Critical finding**: v20 produces identical solutions to v8 across all benchmark seeds
+- **Performance issue**: 430x runtime overhead (30s vs v19's 0.07s) without performance benefit
+- **Novelty assessment**: Conceptually novel combination but ineffective implementation
+- **Recommendation**: Archive as experimental hybrid - focus on v8 publication instead
+- **Strategic lesson**: Not all novel combinations create value - must validate performance benefit
 - **Recommendations**:
   1. **Optimize path centrality computation** - replace O(n³) algorithm with more efficient approach
   2. **Run n=500 benchmark with optimized version** - use fewer seeds initially (1-2) to verify optimization
@@ -437,12 +453,14 @@ All working TSP algorithms now have consistent `solve_tsp(points)` interface ret
 - **Key innovation**: Synthesis of path-based centrality and community detection through hierarchical matching
 - **Publication preparation**: Analysis document created, benchmark results available, optimization needed for n=500
 
-### Algorithm Status Summary (Updated: 2026-04-04 - v19 added)
+### Algorithm Status Summary (Updated: 2026-04-04 - v20 added)
 - **✅ Verified Novel**: 1 algorithm (v8 Christofides-ILS hybrid) - READY FOR PUBLICATION
 - **⚠️ Potentially Novel (Inconsistent)**: 3 algorithms 
   - v16 Christofides with Path-Based Centrality (+1.56% at n=500, inconsistent)
   - v18 Christofides with Community Detection (+0.38% avg, 55.6% above threshold)
   - v19 Christofides with Hybrid Structural Analysis (+1.58% at n=50, +1.18% at n=100, inconsistent at n=50)
+- **⚠️ Potentially Novel but Ineffective**: 1 algorithm
+  - v20 Christofides Structural-ILS Hybrid (+3.16% at n=50, identical to v8, high overhead)
 - **❌ Rejected**: 13 algorithms (v4-v7, v9-v15, v17)
 - **⏳ Standard Algorithms**: 3 algorithms (v1-v3 - not novel by design)
 
@@ -453,21 +471,23 @@ All working TSP algorithms now have consistent `solve_tsp(points)` interface ret
   - v18: Requires investigation of n=75 anomaly and parameter tuning
   - v19: Requires algorithmic optimization (O(n³) bottleneck), n=500 benchmark, and consistency improvement at n=50
 - **Next Focus**: 
-  - **Priority 1**: Optimize v19's O(n³) path centrality computation for n=500 scalability
-  - **Priority 2**: Run n=500 benchmark for v19 with optimized version (1-2 seeds initially)
-  - **Priority 3**: Prepare v8 for publication submission
+  - **Priority 1**: Prepare v8 for publication submission (highest value, ready now)
+  - **Priority 2**: Optimize v19's O(n³) path centrality computation for n=500 scalability
+  - **Priority 3**: Run n=500 benchmark for v19 with optimized version (1-2 seeds initially)
   - **Priority 4**: Investigate v19 inconsistency at n=50
-  - **Priority 5**: Explore v19+v8 hybrid (combine structural hybridization with ILS)
-  - **Priority 6**: Improve consistency of v16 and v19
-- **Total**: 20 algorithms reviewed/implemented, 3-4 novel discoveries
+  - **Priority 5**: Improve consistency of v16 and v19
+  - **Priority 6**: Archive v20 as experimental hybrid - document learnings about ineffective hybridization
+- **Total**: 21 algorithms reviewed/implemented, 4-5 novel discoveries (1 verified, 3 potentially novel, 1 novel but ineffective)
 
 ### Critical Learnings
 1. **Performance vs Novelty Distinction**: v14 taught us novel concept ≠ performance improvement
 2. **Baseline Importance**: Always compare against strongest available baseline (NN+2opt with 17.44 avg)
 3. **Structural Analysis Works**: v16 and v18 show structural approaches (path centrality, community detection) can be effective
 4. **Hybridization Value**: v19 demonstrates that combining complementary structural approaches (v16+v18) can create stronger algorithms
-5. **Scalability Matters**: v19's O(n³) complexity prevents n=500 benchmarking - algorithmic efficiency is critical for practical evaluation
-6. **Collaboration Value**: Vera's critical review essential for quality assurance and novelty assessment
+5. **Hybridization Risk**: v20 shows not all novel combinations create value - must validate performance benefit
+6. **Scalability Matters**: v19's O(n³) complexity prevents n=500 benchmarking - algorithmic efficiency is critical for practical evaluation
+7. **Cost-Benefit Analysis**: v20's 430x runtime overhead without performance gain highlights need for cost-aware innovation
+8. **Collaboration Value**: Vera's critical review essential for quality assurance and novelty assessment
 
 ### Next Strategic Focus
 1. **Prepare v8 for publication submission** - finalize manuscript and documentation
