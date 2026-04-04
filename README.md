@@ -1,25 +1,41 @@
 # Evo & Vera: Algorithmic Solver and Critical Reviewer
 
 ## 📋 Abstract
-**Evo & Vera** is an autonomous AI research system for novel algorithm discovery. Evo (Algorithmic Solver) generates hybrid algorithmic solutions to complex optimization problems, while Vera (Critical Reviewer) provides adversarial quality assurance through systematic stress-testing and novelty verification. The system has successfully discovered 3+ novel hybrid TSP algorithms, with 2 ready for publication, demonstrating systematic novel algorithm discovery with adversarial review quality assurance.
+**Evo & Vera** is an autonomous AI research system for algorithmic exploration. Evo (Algorithmic Solver) generates hybrid algorithmic solutions to complex optimization problems, while Vera (Critical Reviewer) provides adversarial quality assurance through systematic stress-testing. This repository documents an exploratory research session on TSP heuristics.
 
 ## 🎯 Current Status
-**MISSION ACCOMPLISHED**: Novel Hybrid Algorithm Discovery completed successfully. 3+ novel hybrid algorithms discovered (v8, v19, v16/v18), with v8 and v19 ready for publication. All priority tasks completed, repository organized, and communication protocol established.
+**UNDER CORRECTION**: Independent audit revealed methodological errors requiring correction. All previous performance claims and novelty assessments are being re-evaluated. This is exploratory research, not peer-reviewed work.
 
 ## 📊 Version Tracking & Key Results
 
-| Version | Algorithm | Improvement vs NN+2opt | Novelty Status | Publication Ready | Key Contribution |
-|---------|-----------|------------------------|----------------|-------------------|------------------|
-| **v8** | Christofides-ILS Hybrid | +0.744% | ✅ **VERIFIED NOVEL** | ✅ **YES** | First novel hybrid combining Christofides guarantee with ILS metaheuristic |
-| **v19** | Christofides Hybrid Structural | +16.07% | ✅ **VERIFIED NOVEL** | ✅ **YES** | Optimized structural analysis with 36x speedup, 100% consistency |
-| **v16** | Path Centrality Matching | +1.56% | ⚠️ **POTENTIALLY NOVEL** | ⏳ **NEEDS WORK** | Novel centrality-based matching, needs consistency improvement |
-| **v18** | Community Detection | -0.16% | ⚠️ **POTENTIALLY NOVEL** | ⏳ **NEEDS WORK** | Community-based matching, needs performance improvement |
-| **v20** | Structural-ILS Hybrid | +3.16% (n=50) | 📚 **NOVEL BUT INEFFECTIVE** | ❌ **ARCHIVED** | Experimental hybrid with 430x runtime overhead |
-| **v14** | Adaptive Matching | -0.71% | ❌ **REJECTED** | ❌ **NO** | Baseline discrepancy discovered by Vera |
+| Version | Algorithm | Status | Notes |
+|---------|-----------|--------|-------|
+| **v8** | Christofides-ILS Hybrid | ⚠️ **NEEDS FIXING** | Implementation issues (crashes on standard inputs). Performance claims under review. |
+| **v19** | Christofides Hybrid Structural | ⚠️ **UNDER REVIEW** | Previous 16.07% claim incorrect (wrong baseline). Actual improvement estimated 2-4% vs NN+2opt. |
+| **v16** | Path Centrality Matching | ⚠️ **UNDER REVIEW** | Performance claims under verification. |
+| **v18** | Community Detection | ⚠️ **UNDER REVIEW** | Performance claims under verification. |
+| **v20** | Structural-ILS Hybrid | ❌ **ARCHIVED** | Experimental hybrid with 430x runtime overhead. |
+| **v14** | Adaptive Matching | ❌ **REJECTED** | Baseline discrepancy discovered by Vera. |
 
-**Benchmark**: NN+2opt baseline = 17.69 avg tour length (500-node instances)
-**Threshold**: >0.1% improvement required for publication consideration
-**Total Algorithms Reviewed**: 21 | **Verified Novel**: 2 (v8, v19) | **Potentially Novel**: 2 (v16, v18)
+**Note**: All performance claims and novelty assessments are being re-evaluated following independent audit. Previous claims about publication readiness and novelty verification are withdrawn.
+
+## 📈 Benchmark Results (Independent Audit)
+
+**Independent re-benchmark results (same instances, same scale, NN+2opt baseline):**
+
+| Problem Size (n) | NN+2opt Baseline | v19 Christofides Hybrid | Improvement |
+|------------------|------------------|-------------------------|-------------|
+| 50 | 6.099 | 5.851 | -4.1% |
+| 100 | 8.378 | 8.053 | -3.9% |
+| 200 | 11.348 | 11.079 | -2.4% |
+| 500 | 17.845 | 17.172 | -3.8% |
+
+**Key Findings from Audit:**
+- Real improvement for v19 is **2-4%** (not 16.07%)
+- 16.07% claim was based on wrong baseline comparison (vs plain NN instead of NN+2opt)
+- v19's improvement primarily comes from Christofides + 2-opt, not the novel matching component
+- No ground truth testing against TSPLIB instances with known optimal solutions
+- New canonical benchmark script needed for consistent methodology
 
 ## 🏗️ Repository Structure
 ```
@@ -49,30 +65,22 @@ evovera/
 5. **Statistical Validation**: 0.1% improvement threshold with p<0.05 significance
 6. **Documentation**: Full audit trail for reproducibility and transparency
 
-## 📈 Key Achievements
-- **3+ novel hybrid algorithms** discovered exceeding publication threshold
-- **v8 Christofides-ILS**: First publication-ready novel hybrid (+0.744% improvement)
-- **v19 Optimized Structural**: 16.07% average improvement with 100% consistency (5/5 seeds)
+## 📈 Exploratory Findings (Under Review)
+- **21 algorithm variants** generated and tested in exploratory research session
+- **v19 Christofides variant**: Shows 2-4% improvement over NN+2opt based on independent audit (not 16.07% as previously claimed)
 - **Critical Discovery**: Prevented false publication claim (v14 baseline discrepancy)
-- **Systematic Methodology**: Established reproducible novel algorithm discovery pipeline
-- **Repository Organization**: Professional structure for scientific collaboration
-- **Communication Protocol**: Established efficient agent collaboration framework
+- **Methodology Exploration**: Tested algorithmic collaboration framework
+- **Repository Organization**: Structured documentation of exploratory work
+- **Communication Protocol**: Established agent collaboration framework
 
-## 📊 Performance Diagrams (Conceptual)
-```
-Algorithm Performance vs Baseline (n=500)
-v19: ████████████████████████ 16.07% improvement
-v8:  ████████ 0.74% improvement  
-v16: █████ 1.56% improvement
-NN+2opt: ████████████████████████ Baseline (17.69)
+## ⚠️ Performance Claims Under Review
+All previous performance claims are being re-evaluated following independent audit. Key issues identified:
+- **Baseline inconsistency**: Different benchmarks used different baselines (NN vs NN+2opt)
+- **Scale inconsistency**: Different coordinate scales ([0,1] vs [0,100]) across benchmarks
+- **No ground truth**: No testing against TSPLIB instances with known optimal solutions
+- **Methodological errors**: v19's 16.07% claim based on wrong baseline comparison
 
-Consistency Score (5 seeds)
-v19: ████████████████████████ 100% (5/5)
-v8:  ████████████████████ 80% (4/5)
-v16: ████████████ 60% (3/5)
-```
-
-*Note: Actual performance data available in `reports/` directory*
+*New benchmarks with consistent methodology are being developed.*
 
 ## 🚀 Getting Started
 1. **Explore Solutions**: Check `solutions/` for algorithm implementations
@@ -82,13 +90,15 @@ v16: ████████████ 60% (3/5)
 5. **Understand Structure**: See `docs/repository_structure.md` for detailed organization
 6. **Understand Workflow**: Review `config/communication_protocol.md` for agent collaboration
 
-## 👥 For Scientists & Investors
-This repository demonstrates:
-- **Autonomous AI research** capable of novel scientific discovery
-- **Rigorous quality assurance** through adversarial review
-- **Reproducible methodology** with full documentation
-- **Publication-ready results** meeting scientific standards
-- **Scalable framework** for algorithmic innovation across domains
+## 👥 For Scientists & Researchers
+This repository documents:
+- **Exploratory AI research** on algorithmic collaboration
+- **Adversarial review methodology** for quality assurance
+- **Documentation practices** for research reproducibility
+- **Methodological learning** from audit findings
+- **Framework exploration** for algorithmic innovation
+
+**Important**: This is exploratory research, not peer-reviewed work. All claims are under review following independent audit.
 
 ## 📞 Communication Protocol
 - **Daily Summary**: One summary maximum per day from Vera
@@ -96,4 +106,4 @@ This repository demonstrates:
 - **Centralized Communication**: All updates routed through Vera
 - **Repository Standards**: Maintained at science novel level
 
-*Last Updated: April 4, 2026 | Status: Mission Accomplished*
+*Last Updated: April 4, 2026 | Status: Under Correction - Benchmark table updated with realistic numbers from independent audit*
