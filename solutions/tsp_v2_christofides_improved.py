@@ -691,8 +691,18 @@ def solve_tsp(points):
             self.n = points.shape[0]
             self.seed = None
             self.matching_algorithm = matching_algorithm
-            self.dist_matrix = None
-            self._compute_distance_matrix()
+            # Compute distance matrix directly
+            self.dist_matrix = self._compute_distance_matrix()
+        
+        def _compute_distance_matrix(self) -> np.ndarray:
+            """Compute Euclidean distance matrix for given points."""
+            dist = np.zeros((self.n, self.n))
+            for i in range(self.n):
+                for j in range(i + 1, self.n):
+                    d = math.sqrt(((self.points[i] - self.points[j]) ** 2).sum())
+                    dist[i, j] = d
+                    dist[j, i] = d
+            return dist
     
     solver = ExternalPointsSolver(points, matching_algorithm='path_growing')
     return solver.solve()

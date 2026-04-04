@@ -572,3 +572,33 @@ class ChristofidesHybridStructural:
         runtime = time.time() - start_time
         
         return tour, tour_length, runtime
+
+
+def solve_tsp(points):
+    """
+    Standard interface for TSP algorithms.
+    
+    Args:
+        points: numpy array of shape (n, 2) with (x, y) coordinates
+        
+    Returns:
+        tuple: (tour, length) where tour is list of indices, length is float
+    """
+    # Convert points to list of tuples if needed
+    if isinstance(points, np.ndarray):
+        points_list = [(float(p[0]), float(p[1])) for p in points]
+    else:
+        points_list = points
+    
+    # Create solver instance with default parameters
+    solver = ChristofidesHybridStructural(points_list, seed=42)
+    
+    # Run with optimized parameters from v19 analysis
+    tour, length, _ = solver.solve(
+        percentile_threshold=70,
+        within_community_weight=0.8,
+        between_community_weight=0.3,
+        apply_2opt=True
+    )
+    
+    return tour, length

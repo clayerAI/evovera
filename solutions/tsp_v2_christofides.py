@@ -496,9 +496,11 @@ def solve_tsp(points):
         
         def _compute_distance_matrix(self):
             dist = np.zeros((self.n, self.n))
+            # Convert points to numpy array if needed
+            points_array = np.array(self.points)
             for i in range(self.n):
                 for j in range(i + 1, self.n):
-                    d = math.sqrt(((self.points[i] - self.points[j]) ** 2).sum())
+                    d = math.sqrt(((points_array[i] - points_array[j]) ** 2).sum())
                     dist[i, j] = d
                     dist[j, i] = d
             return dist

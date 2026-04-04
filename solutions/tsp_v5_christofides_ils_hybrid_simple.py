@@ -48,8 +48,63 @@ def tour_length(tour: List[int], dist_matrix: np.ndarray) -> float:
     total = 0.0
     for i in range(len(tour)):
         j = (i + 1) % len(tour)
-        total += dist_matrix[tour[i], tour[j]]
+        # Ensure indices are integers
+        idx_i = int(tour[i])
+        idx_j = int(tour[j])
+        total += dist_matrix[idx_i, idx_j]
     return total
+
+
+def two_opt_improvement_fast(tour: List[int], dist_matrix: np.ndarray, 
+                           max_iterations: int = 500) -> Tuple[List[int], float]:
+    """
+    Simple 2-opt local search improvement.
+    
+    Args:
+        tour: Current tour
+        dist_matrix: Distance matrix
+        max_iterations: Maximum iterations
+        
+    Returns:
+        Improved tour and its length
+    """
+    n = len(tour)
+    best_tour = tour[:]
+    best_length = tour_length(tour, dist_matrix)
+    
+    improved = True
+    iterations = 0
+    
+    while improved and iterations < max_iterations:
+        improved = False
+        iterations += 1
+        
+        for i in range(n - 1):
+            for j in range(i + 2, n):
+                if j == n - 1 and i == 0:
+                    continue  # Don't swap first and last
+                
+                # Calculate gain from 2-opt swap
+                a, b = best_tour[i], best_tour[(i + 1) % n]
+                c, d = best_tour[j], best_tour[(j + 1) % n]
+                
+                current = dist_matrix[a, b] + dist_matrix[c, d]
+                new = dist_matrix[a, c] + dist_matrix[b, d]
+                
+                if new < current - 1e-9:  # Small epsilon for floating point
+                    # Perform 2-opt swap
+                    new_tour = best_tour[:i+1] + best_tour[i+1:j+1][::-1] + best_tour[j+1:]
+                    new_length = best_length - current + new
+                    
+                    best_tour = new_tour
+                    best_length = new_length
+                    improved = True
+                    break  # Restart search after improvement
+            
+            if improved:
+                break
+    
+    return best_tour, best_length
 
 def christofides_ils_hybrid_simple(
     points: np.ndarray,
@@ -93,7 +148,11 @@ def christofides_ils_hybrid_simple(
     # Generate initial Christofides solution
     # Convert points to list of tuples for Christofides
     points_list = [(float(p[0]), float(p[1])) for p in points]
-    current_tour = christofides_solve(points_list)
+    current_tour, christofides_length = christofides_solve(points_list)
+    # Debug: check tour contents
+    # print(f"Debug: n={n}, current_tour={current_tour}, tour length={len(current_tour)}")
+    # print(f"Debug: tour types: {[type(x) for x in current_tour[:3]]}")
+    # print(f"Debug: dist_matrix shape: {dist_matrix.shape}")
     current_length = tour_length(current_tour, dist_matrix)
     
     best_tour = current_tour[:]
@@ -159,7 +218,7 @@ def christofides_ils_hybrid_simple(
     
     return best_tour, best_length, stats
 
-def solve_tsp(
+def solve_tsp_original(
     points: np.ndarray,
     time_limit: float = 30.0
 ) -> Tuple[List[int], float, dict]:
@@ -189,6 +248,21 @@ def solve_tsp(
     )
     
     return tour, length, stats
+
+
+# Standard interface
+def solve_tsp(points):
+    """
+    Standard interface for TSP algorithms.
+    
+    Args:
+        points: numpy array of shape (n, 2) with (x, y) coordinates
+        
+    Returns:
+        tuple: (tour, length) where tour is list of indices, length is float
+    """
+    tour, length, _ = solve_tsp_original(points)
+    return tour, length
 
 def benchmark():
     """Run benchmark tests."""

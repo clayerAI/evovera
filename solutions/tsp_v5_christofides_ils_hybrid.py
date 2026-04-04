@@ -640,6 +640,10 @@ def solve_tsp(points: np.ndarray, time_limit: float = 30.0) -> Tuple[List[int], 
     """
     tour, length, stats = solve_tsp_original(points, time_limit)
     
+    # Fix bug: remove duplicate vertices at start (e.g., [0, 0, ...])
+    while len(tour) > 1 and tour[0] == tour[1]:
+        tour = tour[1:]
+    
     # Convert closed tour to open tour (remove duplicate start city)
     if len(tour) > 0 and tour[0] == tour[-1]:
         tour = tour[:-1]
