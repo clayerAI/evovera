@@ -1,0 +1,40 @@
+QUICK MULTI-SEED BENCHMARK RESULTS
+Generated: 2026-04-04 17:02:43
+n=30, seeds=[42, 43, 44, 45, 46, 47, 48, 49, 50, 51]
+
+Nearest Neighbor + 2-opt:
+  Seed 42: 4.585 (0.01s)
+  Seed 43: 4.537 (0.00s)
+  Seed 44: 4.687 (0.00s)
+  Seed 45: 4.391 (0.00s)
+  Seed 46: 4.850 (0.07s)
+  Seed 47: 4.756 (0.01s)
+  Seed 48: 4.298 (0.00s)
+  Seed 49: 4.906 (0.00s)
+  Seed 50: 5.093 (0.01s)
+  Seed 51: 4.628 (0.01s)
+
+Christofides-ILS Hybrid:
+  Seed 42: 4.259 (30.01s)
+  Seed 43: 4.537 (30.08s)
+  Seed 44: 4.641 (30.01s)
+  Seed 45: 4.366 (30.09s)
+  Seed 46: 4.757 (30.01s)
+  Seed 47: 4.544 (30.01s)
+  Seed 48: 4.286 (30.01s)
+  Seed 49: 4.633 (30.02s)
+  Seed 50: 5.013 (30.01s)
+  Seed 51: 4.488 (30.01s)
+
+Christofides Structural Hybrid:
+  Seed 42: 4.259 (0.06s)
+  Seed 43: 4.537 (0.01s)
+  Seed 44: 4.953 (0.01s)
+  Seed 45: 4.432 (0.01s)
+  Seed 46: 4.757 (0.01s)
+  Seed 47: 4.667 (0.01s)
+  Seed 48: 4.476 (0.02s)
+  Seed 49: 4.832 (0.01s)
+  Seed 50: 5.266 (0.01s)
+  Seed 51: 4.699 (0.01s)
+

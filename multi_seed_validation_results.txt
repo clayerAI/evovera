@@ -1,0 +1,15 @@
+MULTI-SEED VALIDATION RESULTS
+==================================================
+
+Problem size: n = 30
+Seeds: [42, 43, 44, 45, 46, 47, 48, 49, 50, 51]
+Baseline: v1_nn_2opt (Nearest Neighbor with 2-opt)
+
+v19 Christofides Structural Hybrid:
+  Improvements: [np.float64(4.395086603441955), np.float64(11.851750962889417), np.float64(-1.9339813107625188e-14), np.float64(-2.8774297987058177), np.float64(-4.0971232572924413e-14), np.float64(3.6165299167912677), np.float64(2.8969806069894957), np.float64(7.47592681941702), np.float64(9.462533869306752), np.float64(17.340490465956023)]
+  Mean: +5.42%
+  Std: 5.85%
+  Wins/Losses/Ties: 7/3/0
+  t-statistic: 2.927
+
+v8 Christofides-ILS:

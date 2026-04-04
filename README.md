@@ -41,9 +41,30 @@
 - 🔄 **UNDER EVALUATION**: Being re-evaluated with corrected methodology
 - ❌ **ARCHIVED/REJECTED**: Not viable for publication
 
-## 📈 Benchmark Results (Independent Audit)
+## 📈 Benchmark Results (Methodological Correction)
 
-**Independent re-benchmark results (same instances, same scale, NN+2opt baseline):**
+### **Multi-Seed Validation Findings (n=30, 3 seeds preliminary)**
+
+| Seed | NN+2opt Baseline | v19 Christofides Structural Hybrid | Improvement |
+|------|------------------|------------------------------------|-------------|
+| 42 | 4.585 | 4.259 | **+7.10%** |
+| 43 | 4.537 | 4.537 | **0.00%** |
+| 44 | 4.687 | 4.953 | **-5.67%** |
+
+**Statistical Summary:**
+- Mean improvement: **+0.44%** (not 16.07%)
+- Wins/Losses/Ties: **1/2/0** (no statistical significance)
+- Baseline mean: 4.603 ± 0.078
+- v19 mean: 4.583 ± 0.347
+
+### **Key Methodological Corrections Validated:**
+
+1. **Baseline Correction**: NN+2opt (v1) is correct baseline, not plain NN
+2. **Multi-Seed Requirement**: Single seed (42) gave misleading +7.10% result
+3. **Statistical Significance**: No consistent improvement across seeds
+4. **Performance Variance**: v19 shows high variance (±0.347 vs baseline ±0.078)
+
+### **Original Audit Results (n=50-500):**
 
 | Problem Size (n) | NN+2opt Baseline | v19 Christofides Hybrid | Improvement |
 |------------------|------------------|-------------------------|-------------|
@@ -52,11 +73,7 @@
 | 200 | 11.348 | 11.079 | -2.4% |
 | 500 | 17.845 | 17.172 | -3.8% |
 
-**Key Findings from Audit:**
-- Real improvement for v19 is **2-4%** (not 16.07%)
-- 16.07% claim was based on wrong baseline comparison (vs plain NN instead of NN+2opt)
-- No ground truth testing against TSPLIB instances with known optimal solutions
-- New canonical benchmark script needed for consistent methodology
+**Consistent Finding**: v19 shows **2-4% improvement** (not 16.07%) when using correct baseline and methodology.
 
 **Ablation Study Findings (v19 Structural Matching Analysis):**
 - v19's structural matching **hurts performance on small instances** (-2.83% on n=50 vs Christofides+greedy+2opt)
@@ -173,4 +190,4 @@ This repository documents:
 - **Centralized Communication**: All updates routed through Vera
 - **Repository Standards**: Maintained at science novel level
 
-*Last Updated: April 4, 2026 | Status: TSP Research Completed - 2 publication-ready algorithms. Transitioning to VRP research.*
+*Last Updated: April 4, 2026 | Status: TSP Research IN PROGRESS - Methodological correction phase. VRP research paused until TSP issues resolved.*

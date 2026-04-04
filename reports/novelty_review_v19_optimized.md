@@ -72,9 +72,11 @@ v19 combines two novel structural approaches:
 
 ## Publication Readiness Assessment
 
-### ✅ READY FOR PUBLICATION
-1. **Novelty Verified**: No literature conflicts found for core algorithm or optimization
-2. **Performance Verified**: 16.07% average improvement vs baseline (exceeds 0.1% threshold)
+### ⚠️ NOT READY FOR PUBLICATION - CORRECTION REQUIRED
+1. **Novelty Under Review**: No literature conflicts found, but performance claims invalid
+2. **Performance Invalid**: 16.07% claim based on wrong baseline (vs plain NN, not NN+2opt)
+3. **Actual Performance**: Estimated 2-4% vs NN+2opt (needs multi-seed statistical validation)
+4. **Status**: Algorithm under review - not publication-ready until methodological corrections completed
 3. **Consistency Verified**: 100% of seeds exceed threshold (5/5)
 4. **Scalability Verified**: Works at n=500 scale with reasonable runtime (~10s)
 5. **Optimization Documented**: 36x speedup achieved through novel odd-vertex path computation

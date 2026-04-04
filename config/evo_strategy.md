@@ -453,10 +453,12 @@ All working TSP algorithms now have consistent `solve_tsp(points)` interface ret
 - **Key innovation**: Synthesis of path-based centrality and community detection through hierarchical matching
 - **Publication preparation**: Analysis document created, benchmark results available, optimization needed for n=500
 
-### Algorithm Status Summary (Updated: 2026-04-04 - v20 added)
-- **✅ Verified Novel**: 1 algorithm (v8 Christofides-ILS hybrid) - READY FOR PUBLICATION
-- **⚠️ Potentially Novel (Inconsistent)**: 3 algorithms 
-  - v16 Christofides with Path-Based Centrality (+1.56% at n=500, inconsistent)
+### Algorithm Status Summary (Updated: 2026-04-04 - CORRECTION REQUIRED)
+- **❌ NOT NOVEL**: 1 algorithm (v8 Christofides-ILS hybrid) - Published combination
+- **⚠️ Potentially Novel (Needs Validation)**: 3 algorithms 
+  - v16 Christofides with Path-Based Centrality (+1.56% at n=500, needs multi-seed validation)
+  - v18 Christofides with Community Detection (-0.16% at n=500, needs multi-seed validation)
+  - v19 Christofides Hybrid Structural (2-4% vs NN+2opt, not 16.07%, needs validation)
   - v18 Christofides with Community Detection (+0.38% avg, 55.6% above threshold)
   - v19 Christofides with Hybrid Structural Analysis (⚠️ 16.07% claim INVALID - wrong baseline vs plain NN instead of NN+2opt. Actual improvement estimated 2-4% vs NN+2opt, needs multi-seed statistical validation)
 - **⚠️ Potentially Novel but Ineffective**: 1 algorithm

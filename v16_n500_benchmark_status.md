@@ -38,11 +38,11 @@
 
 ## Recommendations
 
-### Short-term (Current Mission)
-1. **Accept Vera's assessment** that v16 shows 1.56% improvement at n=500
-2. **Document as "potentially novel but needs consistency verification"**
-3. **Focus resources** on v18 n=500 benchmark (community detection approach)
-4. **Prioritize v8 and v19** for publication (both verified and ready)
+### Short-term (Current Mission - CORRECTION REQUIRED)
+1. **Re-evaluate all claims** - v8 is NOT NOVEL (published), v19 16.07% claim INVALID
+2. **Document as "needs multi-seed statistical validation"** for v16, v18, v19
+3. **Pause VRP research** until TSP methodological issues resolved
+4. **No algorithm currently publication-ready** - all need re-evaluation with corrected methodology
 
 ### Medium-term (Algorithm Improvement)
 1. **Optimize v16** using v19's approach: compute paths only between odd vertices

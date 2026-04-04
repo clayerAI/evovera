@@ -15,7 +15,7 @@ This document summarizes the novelty assessment of all hybrid TSP algorithms dev
 
 | Algorithm | Status | Avg Improvement (n=500) | Literature Conflict | Consistency | Notes |
 |-----------|--------|-------------------------|---------------------|-------------|-------|
-| **v8** | ✅ **VERIFIED NOVEL** | +1.32% | None found | Good | Christofides with ILS improvement |
+| **v8** | ❌ **NOT NOVEL** | +0.744% | Published literature | Good | Christofides-ILS is published combination |
 | **v14** | ❌ **REJECTED** | -0.71% | None found | Good | Edge centrality approach |
 | **v16** | ⚠️ **POTENTIALLY NOVEL** | +1.56% | None found | Moderate | Path-based centrality, inconsistent |
 | **v17** | ❌ **REJECTED** | N/A | Direct conflict | N/A | Learning-based matching (arXiv:2601.01132) |
@@ -24,11 +24,11 @@ This document summarizes the novelty assessment of all hybrid TSP algorithms dev
 
 ## Detailed Assessments
 
-### ✅ v8: Christofides with ILS Improvement
-- **Improvement**: +1.32% at n=500
-- **Novelty**: No literature found combining Christofides with ILS
+### ❌ v8: Christofides with ILS Improvement
+- **Improvement**: +0.744% at n=500
+- **Novelty**: **NOT NOVEL** - Christofides as initial solution for ILS/local search is published literature
 - **Consistency**: Good across multiple seeds
-- **Status**: **VERIFIED NOVEL** - Ready for publication consideration
+- **Status**: **KNOWN TECHNIQUE** - Reclassify as reference implementation
 
 ### ❌ v14: Christofides with Edge Centrality
 - **Improvement**: -0.71% at n=500
@@ -107,12 +107,12 @@ This document summarizes the novelty assessment of all hybrid TSP algorithms dev
 ## Repository Status
 
  ### Documentation Complete
- - ✅ v8: Verified novel, ready for publication
+ - ⚠️ v8: NOT NOVEL - published combination, reclassified as known technique
  - ✅ v14: Rejected, documented
- - ✅ v16: Potentially novel, documented
+ - ⚠️ v16: Potentially novel, needs multi-seed validation
  - ✅ v17: Rejected (literature conflict), documented
- - ✅ v18: Potentially novel, documented
- - ✅ v19: Potentially novel, documented
+ - ⚠️ v18: Potentially novel, needs multi-seed validation
+ - ⚠️ v19: Potentially novel, needs multi-seed validation and baseline correction
 
 ### Next Documentation Tasks
 1. Create comprehensive publication package for v8
@@ -121,8 +121,15 @@ This document summarizes the novelty assessment of all hybrid TSP algorithms dev
 
 ## Conclusion
 
- **Current Novel Algorithms Found: 1/6 (v8)**
- **Potentially Novel (Needs Work): 3/6 (v16, v18, v19)**
+ **Current Novel Algorithms Found: 0/6 (v8 NOT NOVEL)**
+ **Potentially Novel (Needs Validation): 3/6 (v16, v18, v19)**
  **Rejected: 2/6 (v14, v17)**
+ **Known Technique: 1/6 (v8)**
 
- The mission to discover novel hybrid algorithms is progressing well. v8 represents a verified novel discovery ready for publication. v16, v18, and v19 show promise but require further refinement to achieve consistent performance. The adversarial review process has successfully prevented false publication claims (v14, v17) while identifying genuine novel approaches. v19 represents an interesting hybrid of v16 and v18 concepts, demonstrating that combining structural analyses can yield improved performance.
+ **⚠️ CORRECTION REQUIRED**: Independent audit revealed critical methodological issues:
+ 1. v8 is NOT NOVEL - Christofides-ILS combination is published literature
+ 2. v19's 16.07% claim INVALID - wrong baseline comparison (vs plain NN instead of NN+2opt)
+ 3. All algorithms need multi-seed statistical validation with ≥10 seeds
+ 4. Project status changed from "COMPLETED" to "IN PROGRESS"
+
+ The mission is in methodological correction phase. No algorithm is currently publication-ready. All performance claims and novelty assessments are being re-evaluated with corrected methodology.
