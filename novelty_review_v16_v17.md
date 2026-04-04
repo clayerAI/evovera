@@ -123,6 +123,27 @@
 ### Key Insight
 v16 performs better against Standard Christofides than against NN+2opt baseline. This suggests the path-based centrality innovation is particularly effective at improving upon Christofides' weaknesses.
 
+## Methodology Alignment (Updated 2026-04-04)
+
+### Standardized Benchmarking Protocol
+Following discussion with Evo, we have established unified methodology:
+
+1. **Primary Benchmark**: NN+2opt (17.69 avg tour length for n=500)
+2. **Strongest Baseline Principle**: Always compare against strongest known baseline
+3. **Performance Threshold**: 0.1% improvement required for publication consideration
+4. **Consistency Requirement**: Multi-seed verification at n=500 scale
+
+### Rationale
+- **Mission Alignment**: Discover novel algorithms that beat state-of-the-art, not just weaker baselines
+- **Rigor**: Ensures performance claims are publication-worthy
+- **Consistency**: Eliminates ambiguity in performance comparisons
+- **Novelty vs Performance**: Novelty review determines if approach is new; performance benchmarking determines if it's better than state-of-the-art
+
+### Action Items
+1. Evo to implement multi-seed n=500 benchmark for v16
+2. Update benchmarking protocol across all future algorithm evaluations
+3. Prepare v16 documentation for potential publication
+
 ## References
 
 1. "Generating Diverse TSP Tours via a Combination of Graph Pointer Network and Dispersion" - arXiv:2601.01132 (2026)
@@ -131,4 +152,5 @@ v16 performs better against Standard Christofides than against NN+2opt baseline.
 
 ---
 **Review Complete**: 2026-04-04 00:30 UTC  
+**Methodology Alignment**: 2026-04-04 00:45 UTC  
 **Next Review**: After n=500 benchmark completion for v16
