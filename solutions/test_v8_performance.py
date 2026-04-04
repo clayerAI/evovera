@@ -49,11 +49,9 @@ def test_v8_comprehensive():
             baseline_tour, baseline_length = nn2opt_solve(points)
             baseline_time = time.time() - start
             
-            # Test v8 - convert to numpy array for v8
-            import numpy as np
-            points_np = np.array(points)
+            # Test v8 - now accepts list of tuples directly
             start = time.time()
-            v8_tour, v8_length = v8_solve(points_np)
+            v8_tour, v8_length = v8_solve(points)
             v8_time = time.time() - start
             
             improvement = ((baseline_length - v8_length) / baseline_length) * 100
