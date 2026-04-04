@@ -30,7 +30,7 @@ import random
 import time
 import sys
 import os
-from typing import List, Tuple
+from typing import List, Tuple, Union
 
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
@@ -189,20 +189,26 @@ def christofides_ils_hybrid(
     return best_tour, best_length, stats
 
 def solve_tsp(
-    points: np.ndarray,
+    points: Union[np.ndarray, List[Tuple[float, float]], List[List[float]]],
     time_limit: float = 30.0
 ) -> Tuple[List[int], float]:
     """
     Solve TSP using Christofides-ILS hybrid algorithm.
     
     Args:
-        points: Array of (x, y) coordinates
+        points: List of (x, y) coordinate tuples or numpy array of shape (n, 2)
         time_limit: Maximum time in seconds
     
     Returns:
         (tour, length)
     """
-    tour, length, _ = christofides_ils_hybrid(points, time_limit=time_limit)
+    # Convert to numpy array if needed
+    if not isinstance(points, np.ndarray):
+        points_array = np.array(points)
+    else:
+        points_array = points
+    
+    tour, length, _ = christofides_ils_hybrid(points_array, time_limit=time_limit)
     
     # Convert closed tour to open tour (remove duplicate start city)
     if len(tour) > 0 and tour[0] == tour[-1]:
