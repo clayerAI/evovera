@@ -74,10 +74,10 @@ v18 fails to meet the publication criteria:
 2. `v18_n500_benchmark_results.json` - Complete benchmark results
 3. `v18_n500_benchmark_status.md` - This status document
 
-## Next Steps
+## Next Steps - CORRECTED
 1. Complete the v18 benchmark task
 2. Update overall mission status with v18 findings
-3. Focus publication efforts on v8 and v19
+3. **NOTE**: v8 reclassified as KNOWN TECHNIQUE (not publication candidate). v19 requires multi-seed validation.
 4. Consider applying v19's optimization (compute paths only between odd vertices) to v18 if further research is warranted
 
 ---

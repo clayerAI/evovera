@@ -6,16 +6,16 @@
 **Benchmark:** **UNDER REVIEW** - Previous NN+2opt claims inconsistent  
 **Success Criteria:** **UNDER REVIEW** - Independent audit revealed methodological errors
 
-## ⚠️ **MISSION STATUS: CRITICAL ISSUES IDENTIFIED - UNDER REVIEW**
+## ⚠️ **AUDIT FINDINGS: MAJOR CORRECTIONS REQUIRED**
 
-### **Executive Summary**
-Independent verification by owner revealed critical issues with TSP research claims:
-- **❌ v8**: NOT NOVEL - Christofides-ILS combination is published literature (reclassify as "KNOWN TECHNIQUE - REFERENCE IMPLEMENTATION")
-- **❌ v19**: Performance claims invalid - 16.07% improvement claim based on wrong baseline (vs plain NN instead of NN+2opt)
-- **⚠️ v16/v18**: Need multi-seed benchmarks with statistical significance tests
-- **📚 v20**: Novel but ineffective (archived as experimental)
+### **Executive Summary (Corrected)**
+Independent audit revealed critical methodological errors requiring correction:
+- **❌ v8**: Implementation issues (crashes on standard inputs), performance claims unverified, NOT NOVEL (Christofides-ILS is published technique)
+- **❌ v19**: 16.07% claim incorrect (actual ~2-4% vs correct baseline), novelty claims weak, requires statistical validation with multi-seed testing
+- **⚠️ v16/v18**: Performance claims under verification, requires multi-seed testing and statistical significance
+- **📚 v20**: Experimental hybrid (archived)
 
-**Mission Status:** Critical issues require immediate attention - project status changed from "COMPLETED" to "IN PROGRESS"
+**Previous claims about publication readiness and novelty are withdrawn pending methodological correction.**
 
 ---
 
@@ -23,67 +23,74 @@ Independent verification by owner revealed critical issues with TSP research cla
 
 | Algorithm | Status | Notes |
 |-----------|--------|-------|
-| **v8** | ❌ **KNOWN TECHNIQUE** | Christofides-ILS combination is published literature. Reclassify as "KNOWN TECHNIQUE - REFERENCE IMPLEMENTATION". |
-| **v19** | ⚠️ **UNDER REVIEW** | 16.07% claim incorrect (actual 2-4% vs correct baseline). Needs multi-seed statistical validation. |
-| **v16** | ⚠️ **UNDER REVIEW** | Performance claims under verification. Needs multi-seed statistical validation. |
-| **v18** | ⚠️ **UNDER REVIEW** | Performance claims under verification. Needs multi-seed statistical validation. |
-| **v20** | 📚 **EXPERIMENTAL** | Archived hybrid with high runtime overhead. Novel but ineffective. |
+| **v8** | ❌ **NEEDS FIXING** | Implementation issues (crashes on standard inputs). Performance claims unverified. |
+| **v19** | ⚠️ **UNDER REVIEW** | 16.07% claim incorrect (actual ~2-4% vs correct baseline). Novelty claims weak. Requires multi-seed validation and statistical testing. |
+| **v16** | ⚠️ **UNDER REVIEW** | Performance claims under verification. |
+| **v18** | ⚠️ **UNDER REVIEW** | Performance claims under verification. |
+| **v20** | 📚 **EXPERIMENTAL** | Archived hybrid with high runtime overhead. |
 | **v14** | ❌ **REJECTED** | -0.71% | Good | No conflicts | ❌ Fails threshold |
 | **v17** | ❌ **REJECTED** | N/A | N/A | Direct conflict | ❌ Not novel |
 
 **Total Algorithms Reviewed:** 21  
-**Known Technique:** 1 (v8 - Christofides-ILS is published)  
-**Under Review:** 3 (v16, v18, v19 - need multi-seed statistical validation)  
+**Verified Novel:** 0 (none meet publication criteria)  
+**Potentially Novel:** 2 (v16, v19 - require validation)  
+**Known Techniques:** 1 (v8 - Christofides-ILS is published)  
 **Rejected:** 13 (v4-v7, v9-v15, v17)  
-**Standard Algorithms:** 3 (v1-v3)  
-**Archived:** 1 (v20)
+**Standard Algorithms:** 3 (v1-v3)
 
 ---
 
-## ⚠️ **CRITICAL ISSUES IDENTIFIED**
+## ⚠️ **ALGORITHMS UNDER REVIEW**
 
-### **1. v8: Christofides-ILS Hybrid** ❌ **NOT NOVEL**
-- **Performance:** 0.744% improvement vs NN+2opt (17.69 → 17.559)
-- **Novelty Status:** **NOT NOVEL** - Christofides as initial solution for ILS/local search is published literature
-- **Reclassification:** Should be labeled as "KNOWN TECHNIQUE - REFERENCE IMPLEMENTATION"
-- **Literature Evidence:** Multiple sources document using Christofides as initial solution for ILS/local search
-- **Action Required:** Remove from publication candidates, reclassify as known technique
+### **1. v8: Christofides-ILS Hybrid** ❌ **KNOWN TECHNIQUE - REFERENCE IMPLEMENTATION**
+- **Performance:** **REFERENCE** - 0.744% improvement vs NN+2opt (17.69 → 17.559) with 100x runtime penalty (30s vs 0.3s)
+- **Novelty:** **NOT NOVEL** - Christofides as initialization for ILS/local search is published (Glover & Gutin 1997, ScienceDirect 2018)
+- **Consistency:** **REFERENCE** - Good across multiple seeds
+- **Key Innovation:** **STANDARD TECHNIQUE** - ILS refinement of Christofides solutions is known approach
+- **Publication Value:** **REFERENCE IMPLEMENTATION** - Useful as baseline, not publication candidate
 
-### **2. v19: Christofides with Hybrid Structural Analysis** ⚠️ **UNDER REVIEW**
-- **Performance Claim:** **16.07% average improvement** vs NN baseline (5 seeds) - **INVALID**
-- **Actual Performance:** Estimated 2-4% improvement vs NN+2opt (needs verification)
-- **Critical Issues:**
-  1. **Wrong Baseline**: Compared vs plain NN instead of NN+2opt
-  2. **Single-seed benchmarks**: Only seed=42 used for most claims
-  3. **No statistical tests**: Need ≥10 seeds with mean, standard deviation, and p<0.05 significance
-  4. **Publication package contains false claim**: v19_publication_package.md deleted
-- **Action Required:** Multi-seed benchmarks with statistical tests, TSPLIB evaluation, comparison against strong solvers (LKH or OR-Tools)
+### **2. v19: Christofides with Hybrid Structural Analysis** ⚠️ **EXPLORATORY RESEARCH**
+- **Performance:** **PRELIMINARY** - Mixed results: +1.17% improvement on n=200, -2.83% on n=50 vs Christofides+greedy+2opt (single seed only)
+- **Consistency:** **UNKNOWN** - Requires multi-seed testing (minimum 10 seeds)
+- **Range:** **UNKNOWN** - Requires statistical significance testing (p<0.05)
+- **Novelty:** **PRELIMINARY** - No literature found combining path centrality + community detection, but contribution not validated
+- **Key Innovations:**
+  1. **Hybrid Structural Analysis**: Combines v16 path-based centrality with v18 community detection
+  2. **Hierarchical Matching**: Within-community (weight=0.8) then between-community (weight=0.3)
+  3. **Optimization**: Computes paths only between odd vertices (36x speedup)
+- **Publication Value:** **EXPLORATORY** - Requires multi-seed validation, statistical testing, TSPLIB evaluation, and comparison against strong solvers (LKH/OR-Tools)
 
 ---
 
-## 🔬 **REQUIRED METHODOLOGICAL IMPROVEMENTS**
+## 🔬 **DETAILED PERFORMANCE DATA**
 
-### **Critical Issues Identified by Owner:**
-1. **v8 is NOT NOVEL** - Christofides-ILS combination is published literature
-2. **v19 16.07% claim is INVALID** - Wrong baseline comparison (vs plain NN instead of NN+2opt)
-3. **Single-seed benchmarks insufficient** - Need ≥10 seeds per size with statistical tests
-4. **No statistical significance tests** - Need paired t-test or Wilcoxon signed-rank test with p<0.05
-5. **No TSPLIB evaluation** - Need gap-to-optimal on standard instances (eil51, kroA100, a280, att532)
-6. **No comparison against strong solvers** - Need comparison vs LKH or OR-Tools
+### **v19 Preliminary Results (Single Seed Only) - REQUIRES VALIDATION**
+**⚠️ CRITICAL METHODOLOGICAL ISSUES:**
+1. **Single seed testing only** (seed=42) - insufficient for statistical claims
+2. **Wrong baseline comparison** - NN vs NN+2opt discrepancy
+3. **No statistical significance testing** - p-value not computed
+4. **No TSPLIB evaluation** - only synthetic instances tested
 
-### **Required Actions Before Any Publication Claim:**
-1. **Multi-seed benchmarks**: ≥10 seeds per problem size
-2. **Statistical tests**: Mean, standard deviation, p<0.05 significance
-3. **Ablation studies**: Prove novel component helps with statistical significance
-4. **TSPLIB evaluation**: Gap-to-optimal on standard instances
-5. **Strong solver comparison**: Benchmark against LKH or OR-Tools
-6. **Correct baseline**: Always compare against NN+2opt (not plain NN)
+**Preliminary Ablation Study (n=50, n=200, seed=42):**
+| Instance Size | Christofides+Greedy+2opt | v19 Structural Matching | Improvement |
+|---------------|--------------------------|-------------------------|-------------|
+| n=50          | 5.851                    | 5.985                   | -2.83%      |
+| n=200         | 11.079                   | 10.950                  | +1.17%      |
 
-### **v8 Benchmark Results**
+**Required Validation Steps:**
+1. Multi-seed testing (minimum 10 seeds per size)
+2. Statistical significance testing (paired t-test, p<0.05)
+3. TSPLIB evaluation (eil51, kroA100, a280, att532)
+4. Comparison against strong solvers (LKH, OR-Tools)
+5. Independent performance verification
+
+### **v8 Reference Implementation Results**
 - **Average tour length:** 17.559 (n=500)
 - **Baseline (NN+2opt):** 17.69
 - **Improvement:** 0.744% (exceeds 0.1% threshold)
-- **Runtime:** ~34 seconds
+- **Runtime:** ~34 seconds (100x slower than NN+2opt at 0.3s)
+- **Status:** Known technique - Christofides as ILS initialization is published (Glover & Gutin 1997, ScienceDirect 2018)
+- **Value:** Reference implementation only, not publication candidate
 
 ### **v20 Assessment: Novel but Ineffective**
 - **Performance:** Identical to v8 across all benchmark seeds
@@ -96,12 +103,16 @@ Independent verification by owner revealed critical issues with TSP research cla
 
 ## 📚 **LITERATURE REVIEW SUMMARY**
 
-### **Verified Novel Approaches**
-1. **v8 (Christofides-ILS)**: No literature found for this specific combination
-2. **v19 (Hybrid Structural)**: No literature found for:
-   - Combining path-based centrality with community detection
+### **Preliminary Research Directions (Require Validation)**
+1. **v19 (Hybrid Structural)**: Preliminary exploration of:
+   - Combining path-based centrality with community detection (unpublished but unvalidated)
    - Hierarchical matching with community-aware centrality weighting
    - Computing paths only between odd vertices for centrality optimization
+   - **Status**: Requires multi-seed validation, statistical testing, TSPLIB evaluation
+
+2. **v16 (Path Centrality)**: Preliminary exploration of:
+   - Path-based centrality for matching vertex selection
+   - **Status**: Requires validation and optimization (O(n³) complexity)
 
 ### **Rejected Approaches**
 1. **v17 (Learning-Based)**: Direct conflict with arXiv:2601.01132 (2026)
@@ -118,22 +129,20 @@ Independent verification by owner revealed critical issues with TSP research cla
 
 ---
 
-## 🎯 **PUBLICATION ROADMAP**
+## 🎯 **RESEARCH VALIDATION ROADMAP**
 
-### **Phase 1: Immediate Submissions (Next 30 Days)**
-1. **v8 Manuscript** (Priority: High)
-   - Title: "Christofides with Iterative Local Search: A Novel Hybrid for TSP"
-   - Target: TSP-focused conference (e.g., CPAIOR, LION)
-   - Key Contribution: First combination of Christofides with ILS
+### **Phase 1: Methodological Correction & Validation (Next 30 Days)**
+1. **v8 Reclassification** (Priority: High)
+   - Status: Reclassify as "KNOWN TECHNIQUE - REFERENCE IMPLEMENTATION"
+   - Action: Remove from publication candidates, document as baseline reference
+   - Note: Christofides-ILS combination is published (Glover & Gutin 1997, ScienceDirect 2018)
 
-2. **v19 Manuscript** (Priority: High)
-   - Title: "Christofides with Hybrid Structural Analysis: Combining Path Centrality and Community Detection"
-   - Target: Algorithm-focused journal (e.g., Algorithmica, J. Heuristics)
-   - Key Contributions:
-     - Novel hybrid structural approach
-     - Hierarchical matching strategy
-     - Optimization technique (odd-vertex path computation)
-     - Exceptional empirical results (16.07% improvement)
+2. **v19 Validation** (Priority: High)
+   - **Multi-seed testing**: Minimum 10 seeds per instance size (50, 100, 200, 500)
+   - **Statistical significance**: Paired t-test or Wilcoxon signed-rank test (p<0.05)
+   - **TSPLIB evaluation**: Test on standard instances (eil51, kroA100, a280, att532)
+   - **Strong solver comparison**: Compare against LKH or OR-Tools
+   - **Ablation validation**: Verify structural matching contribution with statistical rigor
 
 ### **Phase 2: Refinement & Additional Papers (Next 60 Days)**
 1. **v16 Consistency Improvement**
@@ -226,11 +235,11 @@ Independent verification by owner revealed critical issues with TSP research cla
 
 ## 📈 **MISSION SUCCESS METRICS**
 
-### **Quantitative Success (UNDER REVIEW - CORRECTION REQUIRED)**
-- **Target:** 3+ novel hybrid algorithms ⚠️ **UNDER REVIEW** (v8 NOT NOVEL, v19/v16/v18 need validation)
-- **Publication-ready:** 0 algorithms ❌ **CORRECTION REQUIRED** (v8 NOT NOVEL, v19 claims invalid)
-- **Performance:** 2-4% improvement (v19) ⚠️ **UNDER REVIEW** (not 16.07%, needs statistical validation)
-- **Consistency:** Mixed results ⚠️ **UNDER REVIEW** (1 win, 2 losses in preliminary multi-seed test)
+### **Quantitative Success (REQUIRES CORRECTION)**
+- **Target:** 3+ novel hybrid algorithms ❌ **NOT ACHIEVED** (v8 is known technique, v19/v16 require validation)
+- **Publication-ready:** 2 algorithms ❌ **NOT ACHIEVED** (0 algorithms meet publication criteria)
+- **Performance:** 16.07% improvement (v19) ❌ **INCORRECT CLAIM** (actual ~2-4%, requires validation)
+- **Consistency:** 100% (v19) ❌ **UNVERIFIED** (single seed only, requires multi-seed testing)
 
 ### **Qualitative Success**
 - **Novelty Verification:** Systematic literature review for each algorithm

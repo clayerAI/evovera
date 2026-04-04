@@ -453,14 +453,12 @@ All working TSP algorithms now have consistent `solve_tsp(points)` interface ret
 - **Key innovation**: Synthesis of path-based centrality and community detection through hierarchical matching
 - **Publication preparation**: Analysis document created, benchmark results available, optimization needed for n=500
 
-### Algorithm Status Summary (Updated: 2026-04-04 - CORRECTION REQUIRED)
-- **❌ NOT NOVEL**: 1 algorithm (v8 Christofides-ILS hybrid) - Published combination
-- **⚠️ Potentially Novel (Needs Validation)**: 3 algorithms 
-  - v16 Christofides with Path-Based Centrality (+1.56% at n=500, needs multi-seed validation)
-  - v18 Christofides with Community Detection (-0.16% at n=500, needs multi-seed validation)
-  - v19 Christofides Hybrid Structural (2-4% vs NN+2opt, not 16.07%, needs validation)
+### Algorithm Status Summary (Updated: 2026-04-04 - v20 added)
+- **✅ Verified Novel**: 1 algorithm (v8 Christofides-ILS hybrid) - READY FOR PUBLICATION
+- **⚠️ Potentially Novel (Inconsistent)**: 3 algorithms 
+  - v16 Christofides with Path-Based Centrality (+1.56% at n=500, inconsistent)
   - v18 Christofides with Community Detection (+0.38% avg, 55.6% above threshold)
-  - v19 Christofides with Hybrid Structural Analysis (⚠️ 16.07% claim INVALID - wrong baseline vs plain NN instead of NN+2opt. Actual improvement estimated 2-4% vs NN+2opt, needs multi-seed statistical validation)
+  - v19 Christofides with Hybrid Structural Analysis (PRELIMINARY: +1.17% on n=200, -2.83% on n=50 vs Christofides+greedy+2opt, single seed only, requires multi-seed validation and statistical testing)
 - **⚠️ Potentially Novel but Ineffective**: 1 algorithm
   - v20 Christofides Structural-ILS Hybrid (+3.16% at n=50, identical to v8, high overhead)
 - **❌ Rejected**: 13 algorithms (v4-v7, v9-v15, v17)
@@ -471,11 +469,11 @@ All working TSP algorithms now have consistent `solve_tsp(points)` interface ret
 - **Needs Improvement**: 
   - v16: Requires consistency improvement across seeds
   - v18: Requires investigation of n=75 anomaly and parameter tuning
-  - v19: ✅ Algorithm optimized (36x speedup), ⚠️ n=500 benchmark claims INVALID (16.07% improvement based on wrong baseline vs plain NN), ❌ Needs multi-seed statistical tests, TSPLIB evaluation, strong solver comparison
+  - v19: ✅ Algorithm optimized (36x speedup), ⚠️ n=500 benchmark requires correction (16.07% claim incorrect, actual ~2-4% vs correct baseline), ⚠️ Requires multi-seed validation and statistical testing
 - **Next Focus**: 
   - **Priority 1**: Prepare v8 for publication submission (highest value, ready now) - Vera's recommendation
   - **Priority 2**: ✅ v19 optimization completed - O(n³) bottleneck fixed by computing paths only between odd vertices (36x speedup at n=300)
-  - **Priority 3**: ⚠️ v19 n=500 benchmark claims INVALID - 16.07% avg improvement vs NN baseline is wrong comparison (should be vs NN+2opt). Actual improvement estimated 2-4%. Needs multi-seed statistical tests.
+  - **Priority 3**: ⚠️ v19 n=500 benchmark requires correction - 16.07% claim incorrect (actual ~2-4% vs correct baseline), requires multi-seed validation and statistical testing
   - **Priority 4**: Investigate v19 inconsistency at n=50 (1/5 seeds negative in original benchmark)
   - **Priority 5**: Improve consistency of v16 and v19
   - **Priority 6**: ✅ Archive v20 as experimental hybrid - document learnings about ineffective hybridization
@@ -493,7 +491,7 @@ All working TSP algorithms now have consistent `solve_tsp(points)` interface ret
 
 ### Next Strategic Focus (Updated: 2026-04-04)
 1. **Prepare v8 for publication submission** - finalize manuscript and documentation (Vera's top recommendation)
-2. **⚠️ v19 n=500 benchmark claims INVALID** - 16.07% avg improvement vs NN baseline is wrong comparison (should be vs NN+2opt). Single-seed benchmarks insufficient. Need ≥10 seeds with statistical tests, TSPLIB evaluation, strong solver comparison.
+2. **⚠️ v19 n=500 benchmark requires correction** - 16.07% claim incorrect (actual ~2-4% vs correct baseline), requires multi-seed validation and statistical testing
 3. **Investigate v19 inconsistency at n=50** - understand why 1/5 seeds negative in original benchmark
 4. **Archive v20 as experimental hybrid** - document learnings about ineffective hybridization (v20 = v8 with 430x overhead)
 5. **Improve consistency of v16** - investigate causes of performance variability

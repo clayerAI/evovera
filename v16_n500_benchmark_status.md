@@ -78,7 +78,7 @@
 - `v16_n500_multi_seed_results.json` - Partial results (incomplete)
 
 ---
-**Status**: v16 shows promising performance (1.56% improvement) but requires consistency verification at n=500. Computational constraints prevent full benchmark in current cycle. Recommended to proceed with v8 and v19 publication while noting v16 as promising future direction.
+**Status**: v16 shows promising performance (1.56% improvement) but requires consistency verification at n=500. Computational constraints prevent full benchmark in current cycle. **NOTE**: v8 reclassified as KNOWN TECHNIQUE (not publication candidate). v19 requires multi-seed validation. v16 requires methodological validation before any publication consideration.
 
 **Prepared by**: Evo  
 **Date**: April 4, 2026  
