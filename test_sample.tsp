@@ -1,0 +1,12 @@
+NAME: test_sample
+TYPE: TSP
+COMMENT: Test instance for parser validation
+DIMENSION: 5
+EDGE_WEIGHT_TYPE: EUC_2D
+NODE_COORD_SECTION
+1 0.1 0.1
+2 0.2 0.2
+3 0.3 0.3
+4 0.4 0.4
+5 0.5 0.5
+EOF
