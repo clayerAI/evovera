@@ -1,0 +1,42 @@
+{
+  "eil51": {
+    "algorithms": {
+      "V1": {
+        "tour_length": 507.0,
+        "gap_percent": 19.014084507042252,
+        "time_seconds": 0.0004885196685791016
+      },
+      "V2": {
+        "tour_length": 587.0,
+        "gap_percent": 37.79342723004695,
+        "time_seconds": 0.0010075569152832031
+      },
+      "V19": {
+        "tour_length": 458.0,
+        "gap_percent": 7.511737089201878,
+        "time_seconds": 0.20746874809265137,
+        "modularity": 0.20743823051452637
+      }
+    }
+  },
+  "kroA100": {
+    "algorithms": {
+      "V1": {
+        "tour_length": 26743.0,
+        "gap_percent": 25.66018231369232,
+        "time_seconds": 0.0023794174194335938
+      },
+      "V2": {
+        "tour_length": 25219.0,
+        "gap_percent": 18.499201202894465,
+        "time_seconds": 0.0041790008544921875
+      },
+      "V19": {
+        "tour_length": 23634.0,
+        "gap_percent": 11.051592895404568,
+        "time_seconds": 2.8123056888580322,
+        "modularity": 2.8122670650482178
+      }
+    }
+  }
+}

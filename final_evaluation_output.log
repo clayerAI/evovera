@@ -1,0 +1,156 @@
+================================================================================
+FINAL CORRECTED TSPLIB EVALUATION
+Started: 2026-04-04 23:31:08
+================================================================================
+
+📊 Processing instance: eil51
+  File: data/tsplib/eil51.tsp
+  Optimal: 426
+✓ Parsed eil51: 51 nodes, optimal=426
+  Dimension: 51
+  Edge weight type: EUC_2D
+  Calculating distance matrix...
+  Distance matrix calculated in 0.00s
+
+  🚀 Testing Nearest Neighbor (Fixed) (timeout: 10s)...
+    Tour length: 507.00
+    Gap to optimal: 19.01%
+    Improvement over baseline: -1.32%
+    Time: 0.001s
+
+  🚀 Testing Christofides Improved (Fixed) (timeout: 10s)...
+    Tour length: 587.00
+    Gap to optimal: 37.79%
+    Improvement over baseline: -20.10%
+    Time: 0.001s
+
+  🚀 Testing Christofides Hybrid Structural (Fixed) (timeout: 60s)...
+    Tour length: 458.00
+    Gap to optimal: 7.51%
+    Improvement over baseline: 10.18%
+    Time: 0.301s
+    Additional metric: 0.3011
+
+📊 Processing instance: kroA100
+  File: data/tsplib/kroA100.tsp
+  Optimal: 21282
+✓ Parsed kroA100: 100 nodes, optimal=21282
+  Dimension: 100
+  Edge weight type: EUC_2D
+  Calculating distance matrix...
+  Distance matrix calculated in 0.00s
+
+  🚀 Testing Nearest Neighbor (Fixed) (timeout: 10s)...
+    Tour length: 26743.00
+    Gap to optimal: 25.66%
+    Improvement over baseline: -7.97%
+    Time: 0.002s
+
+  🚀 Testing Christofides Improved (Fixed) (timeout: 10s)...
+    Tour length: 25219.00
+    Gap to optimal: 18.50%
+    Improvement over baseline: -0.81%
+    Time: 0.004s
+
+  🚀 Testing Christofides Hybrid Structural (Fixed) (timeout: 60s)...
+    Tour length: 23634.00
+    Gap to optimal: 11.05%
+    Improvement over baseline: 6.64%
+    Time: 3.206s
+    Additional metric: 3.2059
+
+📊 Processing instance: a280
+  File: data/tsplib/a280.tsp
+  Optimal: 2579
+✓ Parsed a280: 280 nodes, optimal=2579
+  Dimension: 280
+  Edge weight type: EUC_2D
+  Calculating distance matrix...
+  Distance matrix calculated in 0.01s
+
+  🚀 Testing Nearest Neighbor (Fixed) (timeout: 10s)...
+    Tour length: 3313.00
+    Gap to optimal: 28.46%
+    Improvement over baseline: -10.77%
+    Time: 0.008s
+
+  🚀 Testing Christofides Improved (Fixed) (timeout: 10s)...
+    Tour length: 3414.00
+    Gap to optimal: 32.38%
+    Improvement over baseline: -14.69%
+    Time: 0.012s
+
+  🚀 Testing Christofides Hybrid Structural (Fixed) (timeout: 60s)...
+    ⏰ TIMEOUT after 60s
+
+📊 Processing instance: att532
+  File: data/tsplib/att532.tsp
+  Optimal: 27686
+✓ Parsed att532: 532 nodes, optimal=27686
+  Dimension: 532
+  Edge weight type: ATT
+  Calculating distance matrix...
+  Distance matrix calculated in 0.02s
+
+  🚀 Testing Nearest Neighbor (Fixed) (timeout: 10s)...
+    Tour length: 35023.00
+    Gap to optimal: 26.50%
+    Improvement over baseline: -8.81%
+    Time: 0.208s
+
+  🚀 Testing Christofides Improved (Fixed) (timeout: 10s)...
+    Tour length: 34588.00
+    Gap to optimal: 24.93%
+    Improvement over baseline: -7.24%
+    Time: 0.206s
+
+  🚀 Testing Christofides Hybrid Structural (Fixed) (timeout: 60s)...
+    ⏰ TIMEOUT after 60s
+
+================================================================================
+SUMMARY ANALYSIS
+================================================================================
+
+Nearest Neighbor (Fixed):
+  Success rate: 100.0% (4/4 instances)
+  Average gap to optimal: 24.91%
+  Average improvement over baseline: -7.22%
+  Novelty confirmed on 0/4 successful instances
+  ❌ Novelty NOT confirmed (below 0.1% threshold)
+
+Christofides Improved (Fixed):
+  Success rate: 100.0% (4/4 instances)
+  Average gap to optimal: 28.40%
+  Average improvement over baseline: -10.71%
+  Novelty confirmed on 0/4 successful instances
+  ❌ Novelty NOT confirmed (below 0.1% threshold)
+
+Christofides Hybrid Structural (Fixed):
+  Success rate: 50.0% (2/4 instances)
+  Average gap to optimal: 9.28%
+  Average improvement over baseline: 8.41%
+  Novelty confirmed on 2/2 successful instances
+  ✅ OVERALL NOVELTY CONFIRMED (exceeds 0.1% threshold)
+Traceback (most recent call last):
+  File "/data/workspace/evovera/execute_corrected_tsplib_evaluation_final.py", line 236, in <module>
+    main()
+  File "/data/workspace/evovera/execute_corrected_tsplib_evaluation_final.py", line 221, in main
+    json.dump({
+  File "/usr/local/lib/python3.12/json/__init__.py", line 179, in dump
+    for chunk in iterable:
+                 ^^^^^^^^
+  File "/usr/local/lib/python3.12/json/encoder.py", line 432, in _iterencode
+    yield from _iterencode_dict(o, _current_indent_level)
+  File "/usr/local/lib/python3.12/json/encoder.py", line 406, in _iterencode_dict
+    yield from chunks
+  File "/usr/local/lib/python3.12/json/encoder.py", line 406, in _iterencode_dict
+    yield from chunks
+  File "/usr/local/lib/python3.12/json/encoder.py", line 406, in _iterencode_dict
+    yield from chunks
+  [Previous line repeated 2 more times]
+  File "/usr/local/lib/python3.12/json/encoder.py", line 439, in _iterencode
+    o = _default(o)
+        ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/json/encoder.py", line 180, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type bool is not JSON serializable

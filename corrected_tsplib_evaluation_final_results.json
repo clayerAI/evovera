@@ -1,0 +1,19 @@
+{
+  "timestamp": "2026-04-04T23:33:13.142640",
+  "baseline_gap_percent": 17.69,
+  "novelty_threshold_percent": 0.1,
+  "instances": {
+    "eil51": {
+      "name": "eil51",
+      "dimension": 51,
+      "edge_weight_type": "EUC_2D",
+      "optimal": 426,
+      "distance_matrix_calc_time": 0.0008242130279541016,
+      "algorithms": {
+        "V1": {
+          "name": "Nearest Neighbor (Fixed)",
+          "tour_length": 507.0,
+          "gap_percent": 19.014084507042252,
+          "improvement_over_baseline": -1.324084507042251,
+          "time_seconds": 0.0007107257843017578,
+          "novelty_confirmed": 

@@ -1,0 +1,26 @@
+TSPLIB EVALUATION FINAL SUMMARY (Fixed Distance Metrics)
+======================================================================
+Evaluation time: 2026-04-04 23:33:10
+Instances: eil51, kroA100, a280, att532
+Algorithms: tsp_v1_nearest_neighbor_fixed, tsp_v2_christofides_improved_fixed, tsp_v19_christofides_hybrid_structural_fixed
+
+eil51:
+  tsp_v1_nearest_neighbor_fixed: length=485.00, gap=13.85%, time=0.01s
+  tsp_v2_christofides_improved_fixed: length=587.00, gap=37.79%, time=0.09s
+  tsp_v19_christofides_hybrid_structural_fixed: length=458.00, gap=7.51%, time=0.30s
+
+kroA100:
+  tsp_v1_nearest_neighbor_fixed: length=25525.00, gap=19.94%, time=0.09s
+  tsp_v2_christofides_improved_fixed: length=25219.00, gap=18.50%, time=0.01s
+  tsp_v19_christofides_hybrid_structural_fixed: length=23634.00, gap=11.05%, time=3.70s
+
+a280:
+  tsp_v1_nearest_neighbor_fixed: length=2982.00, gap=15.63%, time=0.79s
+  tsp_v2_christofides_improved_fixed: length=3414.00, gap=32.38%, time=0.32s
+  tsp_v19_christofides_hybrid_structural_fixed: TIMEOUT after 120.4s
+
+att532:
+  tsp_v1_nearest_neighbor_fixed: length=33497.00, gap=20.99%, time=1.41s
+  tsp_v2_christofides_improved_fixed: length=34588.00, gap=24.93%, time=0.79s
+  tsp_v19_christofides_hybrid_structural_fixed: TIMEOUT after 180.5s
+
