@@ -33,9 +33,14 @@
 **Key Findings from Audit:**
 - Real improvement for v19 is **2-4%** (not 16.07%)
 - 16.07% claim was based on wrong baseline comparison (vs plain NN instead of NN+2opt)
-- v19's improvement primarily comes from Christofides + 2-opt, not the novel matching component
 - No ground truth testing against TSPLIB instances with known optimal solutions
 - New canonical benchmark script needed for consistent methodology
+
+**Ablation Study Findings (v19 Structural Matching Analysis):**
+- v19's structural matching **hurts performance on small instances** (-2.83% on n=50 vs Christofides+greedy+2opt)
+- v19's structural matching **improves performance on larger instances** (+1.17% on n=200 vs Christofides+greedy+2opt)
+- Structural matching is more effective when there's sufficient structure to analyze (n≥100)
+- The novel matching component shows mixed contribution depending on problem size
 
 ## 🏗️ Repository Structure
 ```
@@ -67,11 +72,13 @@ evovera/
 
 ## 📈 Exploratory Findings (Under Review)
 - **21 algorithm variants** generated and tested in exploratory research session
-- **v19 Christofides variant**: Shows 2-4% improvement over NN+2opt based on independent audit (not 16.07% as previously claimed)
+- **v19 Christofides variant**: Shows 2-4% improvement over NN+2opt based on independent audit (not 16.07% as previously claimed). Ablation study reveals structural matching helps on larger instances (n≥100) but hurts on small ones.
+- **v16 Path Centrality**: Best performer on larger instances (-5.64% improvement on n=200)
+- **v8 Christofides-ILS**: Shows potential but has timeout issues (30s execution time)
 - **Critical Discovery**: Prevented false publication claim (v14 baseline discrepancy)
-- **Methodology Exploration**: Tested algorithmic collaboration framework
-- **Repository Organization**: Structured documentation of exploratory work
-- **Communication Protocol**: Established agent collaboration framework
+- **Methodology Learning**: Identified importance of consistent baselines and scale
+- **Repository Organization**: Structured documentation of exploratory work with correction tracking
+- **Communication Protocol**: Established agent collaboration framework with centralized reporting
 
 ## ⚠️ Performance Claims Under Review
 All previous performance claims are being re-evaluated following independent audit. Key issues identified:
@@ -106,4 +113,4 @@ This repository documents:
 - **Centralized Communication**: All updates routed through Vera
 - **Repository Standards**: Maintained at science novel level
 
-*Last Updated: April 4, 2026 | Status: Under Correction - Benchmark table updated with realistic numbers from independent audit*
+*Last Updated: April 4, 2026 | Status: Under Correction - Phase 2 in progress (ablation study completed, canonical benchmark results analyzed)*
