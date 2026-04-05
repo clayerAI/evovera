@@ -1,0 +1,59 @@
+{
+  "timestamp": "2026-04-05T00:10:36.224370",
+  "instances": [
+    "eil51",
+    "kroA100"
+  ],
+  "seed": 42,
+  "ortools_time_limit_seconds": 30,
+  "results": {
+    "eil51": {
+      "instance": "eil51",
+      "dimension": 51,
+      "edge_weight_type": "EUC_2D",
+      "optimal": 426,
+      "results": {
+        "v19_christofides_hybrid_structural": {
+          "tour": [],
+          "tour_length": Infinity,
+          "runtime": 0,
+          "success": false,
+          "timeout": false,
+          "gap_percent": Infinity
+        },
+        "ortools": {
+          "tour": [],
+          "tour_length": Infinity,
+          "runtime": 0,
+          "success": false,
+          "timeout": false,
+          "gap_percent": Infinity
+        }
+      }
+    },
+    "kroA100": {
+      "instance": "kroA100",
+      "dimension": 100,
+      "edge_weight_type": "EUC_2D",
+      "optimal": 21282,
+      "results": {
+        "v19_christofides_hybrid_structural": {
+          "tour": [],
+          "tour_length": Infinity,
+          "runtime": 0,
+          "success": false,
+          "timeout": false,
+          "gap_percent": Infinity
+        },
+        "ortools": {
+          "tour": [],
+          "tour_length": Infinity,
+          "runtime": 0,
+          "success": false,
+          "timeout": false,
+          "gap_percent": Infinity
+        }
+      }
+    }
+  }
+}
