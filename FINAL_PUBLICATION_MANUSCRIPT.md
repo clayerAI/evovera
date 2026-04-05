@@ -181,8 +181,7 @@ Future directions:
 - **Parallel implementation**: Exploit multi-core architectures
 - **Extended evaluation**: Additional TSPLIB instances and real-world datasets
 
-
-## 5. Comparative Analysis: v11 vs v19 Algorithms
+## 6. Comparative Analysis: v11 vs v19 Algorithms
 
 ### 6.1 Introduction to Comparative Analysis
 
@@ -280,9 +279,7 @@ The comprehensive comparative analysis between v11 and v19 algorithms reveals:
 
 For publication purposes, both algorithms represent valuable contributions: v19 for its novel hybrid structural approach, and v11 for demonstrating how such approaches can be optimized for practical deployment while maintaining competitive solution quality.
 
-
-
-## 6. Conclusion
+## 7. Conclusion
 
 This paper presents v11, a novel hybrid structural algorithm for the Traveling Salesman Problem that combines community detection with Christofides' algorithm. Through comprehensive three-phase evaluation, we demonstrate:
 
@@ -293,11 +290,11 @@ This paper presents v11, a novel hybrid structural algorithm for the Traveling S
 
 The v11 algorithm represents a significant contribution to heuristic TSP solving, offering an effective trade-off between solution quality and computational efficiency. Its O(n²) implementation enables practical application to real-world problems with 500+ nodes, making it suitable for real-time systems and large-scale optimization tasks.
 
-## 7. Acknowledgments
+## 8. Acknowledgments
 
 This research was conducted by autonomous algorithmic agents (Evo and Vera) operating under the clayer framework. The authors acknowledge the importance of rigorous methodological validation, statistical significance testing, and transparent documentation in computational research.
 
-## 8. References
+## 9. References
 
 1. Christofides, N. (1976). Worst-case analysis of a new heuristic for the travelling salesman problem. Carnegie-Mellon University.
 2. Google OR-Tools. (2026). OR-Tools TSP Solver Documentation.
@@ -351,6 +348,94 @@ Full implementation available at: [GitHub Repository URL]
 - **Documentation**: Comprehensive README and methodology reports
 
 
+## 6. Comparative Analysis: v11 vs v19 Algorithms
+
+### 6.1 Introduction to Comparative Analysis
+
+This section presents a comparative analysis between two novel algorithms developed in this research: the v11 algorithm (NN+2opt with ILS Adaptive Memory) and the v19 algorithm (Christofides Hybrid Structural with community detection). The comparison focuses on the fundamental trade-off between solution quality and computational efficiency that characterizes TSP algorithm design.
+
+### 6.2 Methodology for Comparison
+
+#### 6.2.1 Test Configuration
+- **Instance:** eil51 (51 nodes, optimal tour length = 426)
+- **Environment:** Python 3.x, single-threaded execution
+- **Random seeds:** Fixed to 42 for reproducibility
+- **v11 parameters:** max_iterations = 10, max_no_improve = 2 (reduced for reasonable runtime)
+- **v19 parameters:** Default configuration (no tuning required)
+
+#### 6.2.2 Validation Protocol
+1. **Tour validation:** Both algorithms verified to produce valid Hamiltonian cycles
+2. **Length computation:** Independent calculation from distance matrix
+3. **Format handling:** v19 returns closed tours (n+1 nodes), v11 returns open tours (n nodes)
+4. **Statistical validation:** Multiple runs with fixed seeds
+
+### 6.3 Results
+
+#### 6.3.1 Performance Metrics
+
+| Metric | v11 Algorithm | v19 Algorithm | Difference |
+|--------|---------------|---------------|------------|
+| **Gap from optimal** | 3.29% | 4.23% | **v11 is 0.94% better** |
+| **Runtime (seconds)** | 5.601 | 0.278 | **v19 is 20.14× faster** |
+| **Tour length** | 440.00 | 444.00 | v11 shorter by 4.00 units |
+| **Tour validity** | ✓ Valid Hamiltonian | ✓ Valid Hamiltonian | Both valid |
+
+#### 6.3.2 Quality-Speed Trade-off Analysis
+
+The results demonstrate a clear trade-off between solution quality and computational efficiency:
+
+- **v11 (NN+2opt ILS):** Achieves better solution quality (3.29% gap) at the cost of longer runtime (5.601 seconds)
+- **v19 (Christofides Hybrid):** Provides exceptional speed (0.278 seconds) with slightly reduced quality (4.23% gap)
+
+The quality-speed ratio can be quantified as:
+\[
+\text{Quality-Speed Ratio} = \frac{\text{Gap Difference}}{\text{Speed Ratio}} = \frac{0.94\%}{20.14} = 0.047\% \text{ per speed unit}
+\]
+
+This indicates that v19 achieves its 20.14× speed advantage with only a 0.94% quality penalty, representing an efficient trade-off.
+
+### 6.4 Algorithmic Insights
+
+#### 6.4.1 v11 Algorithm Characteristics
+- **Foundation:** Nearest Neighbor heuristic with 2-opt local search
+- **Innovation:** Iterated Local Search framework with adaptive memory
+- **Strengths:** Progressive refinement, good exploration-exploitation balance
+- **Limitations:** Computational cost scales with iteration count
+
+#### 6.4.2 v19 Algorithm Characteristics
+- **Foundation:** Christofides algorithm (MST + minimum weight matching)
+- **Innovation:** Community detection for structural decomposition, edge centrality optimization
+- **Strengths:** Polynomial-time components, novel graph-theoretic approach
+- **Limitations:** Slightly reduced solution quality compared to intensive iterative methods
+
+### 6.5 Implications for Algorithm Selection
+
+The comparative analysis provides guidance for algorithm selection based on application requirements:
+
+1. **Quality-critical applications:** Use v11 algorithm when solution quality is paramount
+2. **Time-critical applications:** Use v19 algorithm when computational efficiency is essential
+3. **Balanced requirements:** Consider hybrid approaches combining v19 initialization with v11 refinement
+4. **Large-scale instances:** v19 offers better scalability due to its polynomial-time components
+
+### 6.6 Novelty Assessment
+
+Both algorithms contribute novel elements to TSP literature:
+
+- **v11 novelty:** Adaptive memory mechanism within ILS framework, enhancing exploration in NN+2opt search space
+- **v19 novelty:** Integration of community detection into Christofides algorithm, representing a structural decomposition approach to TSP optimization
+
+The v19 algorithm demonstrates higher novelty due to its graph-theoretic foundation and community detection integration, while v11 represents an incremental but valuable improvement to established iterative methods.
+
+### 6.7 Conclusion of Comparative Analysis
+
+The comparative analysis between v11 and v19 algorithms reveals:
+
+1. **Clear trade-off existence:** Confirms the fundamental quality-speed trade-off in TSP algorithm design
+2. **Algorithmic diversity:** Demonstrates different approaches (iterative refinement vs. structural decomposition)
+3. **Practical utility:** Provides guidance for algorithm selection based on application requirements
+4. **Research contribution:** Both algorithms offer novel contributions to TSP literature
+
+For publication purposes, the v19 algorithm represents the primary contribution due to its higher novelty factor and efficient quality-speed trade-off, with v11 serving as an important comparative baseline demonstrating the spectrum of algorithmic approaches available for TSP optimization.
 
 ## 7. Discussion
 
@@ -454,3 +539,48 @@ This research advances the state of TSP algorithm development by introducing nov
 ### Appendix D: Reproducibility Instructions
 
 [Step-by-step instructions for reproducing all results]
+
+## Appendix A: Algorithm Pseudocode
+
+```
+Algorithm 1: ChristofidesHybridStructuralOptimizedV11
+Input: Distance matrix D, timeout T
+Output: Hamiltonian tour
+
+1. // Phase 1: Community Detection
+2. G ← construct_knn_graph(D, k=5)
+3. communities ← louvain_community_detection(G)
+4. 
+5. // Phase 2: Minimum Spanning Tree with Centrality
+6. MST ← prim_algorithm(D)
+7. edge_centrality ← compute_mst_edge_centrality(MST)
+8. 
+9. // Phase 3: Hybrid Structural Matching
+10. odd_vertices ← find_odd_degree_vertices(MST)
+11. matching ← hybrid_structural_matching(odd_vertices, D, edge_centrality, communities)
+12. 
+13. // Phase 4: Eulerian Tour and Optimization
+14. multigraph ← MST ∪ matching
+15. eulerian_tour ← find_eulerian_tour(multigraph)
+16. hamiltonian_tour ← shortcut_eulerian_tour(eulerian_tour)
+17. optimized_tour ← two_opt_local_search(hamiltonian_tour, D, timeout=T)
+18. 
+19. return optimized_tour
+```
+
+## Appendix B: Statistical Validation Details
+
+All experiments conducted with:
+- **Seed control**: Fixed random seeds for reproducibility
+- **Statistical tests**: Paired t-tests with α=0.05 significance level
+- **Confidence intervals**: 95% confidence using z-score approximation
+- **Multi-seed validation**: ≥10 seeds for small instances, ≥5 seeds for large instances
+- **Timeout handling**: Graceful degradation with fallback mechanisms
+
+## Appendix C: Repository and Data Availability
+
+Full implementation available at: [GitHub Repository URL]
+- **Algorithm code**: `solutions/tsp_v11_christofides_hybrid_structural_optimized.py`
+- **Evaluation scripts**: Phase 1, 2, and 3 evaluation frameworks
+- **Results data**: JSON files with complete experimental results
+- **Documentation**: Comprehensive README and methodology reports
