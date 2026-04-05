@@ -1,0 +1,24 @@
+FINAL COMPARISON: v11 vs v19 (corrected)
+==================================================
+
+Instance: eil51 (n=51, optimal=426)
+v11: NN+2opt with ILS Adaptive Memory (max_iterations=10)
+v19: Christofides Hybrid Structural with community detection
+
+v11 Results:
+  Gap: 3.29%
+  Time: 5.601s
+v19 Results:
+  Gap: 4.23%
+  Time: 0.278s
+
+Comparison:
+  Gap difference: 0.94% (v19 - v11)
+  Time ratio: 0.05x (v19/v11)
+  Speed advantage: v19 is 20.14x faster
+
+Key Findings:
+  1. v11 produces higher quality solutions
+  2. v19 is significantly faster
+  3. Trade-off: quality vs speed
+  4. v19's novel hybrid approach shows promise
