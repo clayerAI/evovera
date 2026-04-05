@@ -56,4 +56,5 @@ Evaluating a280 (optimal=2579)
 ============================================================
 ✓ Parsed a280: 280 nodes, optimal=2579
 Instance: a280, n=280
-  Seed 1/10 (seed=42)... 
+  Seed 1/10 (seed=42)... ✅ Length=2686.00, Gap=4.15%, Time=471.10s
+  Seed 2/10 (seed=142)... 
