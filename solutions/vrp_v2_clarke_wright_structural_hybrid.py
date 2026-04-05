@@ -636,7 +636,7 @@ class CapacitatedVRPStructuralHybrid:
         
         for trial in range(n_trials):
             # Create new instance with different seed
-            instance = CapacitatedVRP(
+            instance = CapacitatedVRPStructuralHybrid(
                 n_customers=self.n_customers,
                 capacity=self.capacity,
                 seed=trial * 1000 + 42,
@@ -645,8 +645,8 @@ class CapacitatedVRPStructuralHybrid:
             
             result = instance.solve_cvrp(method=method)
             distances.append(result['total_distance'])
-            times.append(result['elapsed_time'])
-            vehicles.append(result['num_vehicles'])
+            times.append(result['computation_time'])
+            vehicles.append(result['num_routes'])
         
         return {
             'avg_distance': np.mean(distances),
@@ -683,7 +683,7 @@ class CapacitatedVRPStructuralHybrid:
         n_customers = n - 1
     
         # Create VRP instance
-        vrp = CapacitatedVRP(n_customers=n_customers, capacity=capacity, seed=None)
+        vrp = CapacitatedVRPStructuralHybrid(n_customers=n_customers, capacity=capacity, seed=None)
     
         # Override generated points and demands with provided ones
         vrp.points = points.copy()
@@ -704,7 +704,7 @@ if __name__ == "__main__":
     print("=" * 60)
     
     # Create instance
-    vrp = CapacitatedVRP(n_customers=100, capacity=100.0, seed=42)
+    vrp = CapacitatedVRPStructuralHybrid(n_customers=100, capacity=100.0, seed=42)
     
     print(f"Problem: {vrp.n_customers} customers, capacity = {vrp.capacity}")
     print(f"Total demand: {sum(vrp.demands[1:]):.1f}")
@@ -716,7 +716,7 @@ if __name__ == "__main__":
     result_seq = vrp.solve_cvrp(method='sequential')
     print(f"  Distance: {result_seq['total_distance']:.4f}")
     print(f"  Vehicles: {result_seq['num_vehicles']}")
-    print(f"  Time: {result_seq['elapsed_time']:.4f}s")
+    print(f"  Time: {result_seq['computation_time']:.4f}s")
     print()
     
     # Test parallel method
@@ -724,7 +724,7 @@ if __name__ == "__main__":
     result_par = vrp.solve_cvrp(method='parallel')
     print(f"  Distance: {result_par['total_distance']:.4f}")
     print(f"  Vehicles: {result_par['num_vehicles']}")
-    print(f"  Time: {result_par['elapsed_time']:.4f}s")
+    print(f"  Time: {result_par['computation_time']:.4f}s")
     print()
     
     # Run benchmark
