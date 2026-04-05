@@ -1,0 +1,474 @@
+#!/usr/bin/env python3
+"""
+Optimized Christofides Hybrid Structural Algorithm (v19 optimized) - FIXED MATCHING
+
+This version fixes the matching algorithm to use the SAME sequential greedy
+strategy as the original algorithm, ensuring identical matching results
+while preserving all other optimizations.
+"""
+
+import math
+import random
+import heapq
+from typing import List, Tuple, Dict, Set
+from collections import defaultdict, deque
+
+class ChristofidesHybridStructuralOptimized:
+    """Optimized Christofides algorithm with hybrid structural enhancements."""
+    
+    def __init__(self, points: List[Tuple[float, float]], seed: int = 42):
+        self.points = points
+        self.n = len(points)
+        self.seed = seed
+        random.seed(seed)
+        
+        # Precompute distance matrix
+        self.dist_matrix = self._compute_distance_matrix()
+        
+        # LCA structures (built lazily)
+        self.parent = None
+        self.depth = None
+        self.jump = None  # Binary lifting table
+        self.log_n = None
+        
+    def _compute_distance_matrix(self) -> List[List[float]]:
+        """Compute Euclidean distance matrix."""
+        n = self.n
+        dist_matrix = [[0.0] * n for _ in range(n)]
+        
+        for i in range(n):
+            xi, yi = self.points[i]
+            for j in range(i + 1, n):
+                xj, yj = self.points[j]
+                dx = xi - xj
+                dy = yi - yj
+                dist = math.sqrt(dx * dx + dy * dy)
+                dist_matrix[i][j] = dist
+                dist_matrix[j][i] = dist
+                
+        return dist_matrix
+    
+    def _compute_mst(self) -> Tuple[List[List[Tuple[int, float]]], List[int]]:
+        """Compute Minimum Spanning Tree using Prim's algorithm."""
+        n = self.n
+        
+        # Adjacency list for MST
+        mst_adj = [[] for _ in range(n)]
+        
+        # Parent array for MST (for LCA)
+        parent = [-1] * n
+        
+        # Prim's algorithm
+        visited = [False] * n
+        min_edge = [float('inf')] * n
+        min_edge[0] = 0.0
+        
+        for _ in range(n):
+            # Find minimum edge
+            u = -1
+            for i in range(n):
+                if not visited[i] and (u == -1 or min_edge[i] < min_edge[u]):
+                    u = i
+            
+            visited[u] = True
+            
+            # Add edge to MST
+            if parent[u] != -1:
+                p = parent[u]
+                weight = self.dist_matrix[u][p]
+                mst_adj[u].append((p, weight))
+                mst_adj[p].append((u, weight))
+            
+            # Update neighbors
+            for v in range(n):
+                if not visited[v] and self.dist_matrix[u][v] < min_edge[v]:
+                    min_edge[v] = self.dist_matrix[u][v]
+                    parent[v] = u
+        
+        return mst_adj, parent
+    
+    def _build_lca_structure(self, parent: List[int]):
+        """Build LCA structure for efficient path queries."""
+        n = self.n
+        self.parent = parent
+        
+        # Compute depth
+        self.depth = [0] * n
+        children = [[] for _ in range(n)]
+        
+        for v in range(n):
+            p = parent[v]
+            if p != -1:
+                children[p].append(v)
+        
+        # BFS to compute depth
+        stack = [0]  # Root is 0
+        while stack:
+            u = stack.pop()
+            for v in children[u]:
+                self.depth[v] = self.depth[u] + 1
+                stack.append(v)
+        
+        # Binary lifting preprocessing
+        self.log_n = (n).bit_length()
+        self.jump = [[-1] * self.log_n for _ in range(n)]
+        
+        for v in range(n):
+            self.jump[v][0] = parent[v] if parent[v] != -1 else v
+        
+        for k in range(1, self.log_n):
+            for v in range(n):
+                self.jump[v][k] = self.jump[self.jump[v][k-1]][k-1]
+    
+    def _lca(self, u: int, v: int) -> int:
+        """Find lowest common ancestor using binary lifting."""
+        if self.depth[u] < self.depth[v]:
+            u, v = v, u
+        
+        # Lift u to same depth as v
+        diff = self.depth[u] - self.depth[v]
+        for k in range(self.log_n):
+            if diff & (1 << k):
+                u = self.jump[u][k]
+        
+        if u == v:
+            return u
+        
+        # Lift both until parents match
+        for k in range(self.log_n - 1, -1, -1):
+            if self.jump[u][k] != self.jump[v][k]:
+                u = self.jump[u][k]
+                v = self.jump[v][k]
+        
+        return self.jump[u][0]
+    
+    def _get_path_edges_lazy(self, u: int, v: int) -> List[Tuple[int, int]]:
+        """Get edges on path between u and v in MST (lazy)."""
+        if u == v:
+            return []
+        
+        lca = self._lca(u, v)
+        path_edges = []
+        
+        # Walk from u to lca
+        current = u
+        while current != lca:
+            parent = self.jump[current][0]
+            edge = (min(current, parent), max(current, parent))
+            path_edges.append(edge)
+            current = parent
+        
+        # Walk from v to lca
+        current = v
+        while current != lca:
+            parent = self.jump[current][0]
+            edge = (min(current, parent), max(current, parent))
+            path_edges.append(edge)
+            current = parent
+        
+        return path_edges
+    
+    def _compute_path_centrality_lazy(self, u: int, v: int, 
+                                     edge_centrality: Dict[Tuple[int, int], float]) -> float:
+        """
+        Compute path centrality for a single pair (u, v) on-demand.
+        
+        Instead of precomputing for all pairs, compute only when needed.
+        """
+        path_edges = self._get_path_edges_lazy(u, v)
+        
+        if not path_edges:
+            return 0.0
+        
+        total_centrality = sum(edge_centrality.get(edge, 0.0) for edge in path_edges)
+        return total_centrality / len(path_edges)
+    
+    def _compute_edge_centrality(self, mst_adj: List[List[Tuple[int, float]]]) -> Dict[Tuple[int, int], float]:
+        """Compute edge centrality in MST."""
+        n = self.n
+        edge_centrality = {}
+        
+        # For each edge in MST, compute its betweenness
+        for u in range(n):
+            for v, _ in mst_adj[u]:
+                if u < v:  # Process each edge once
+                    # Count paths that go through this edge
+                    # Simplified: use subtree sizes
+                    # This is O(n) per edge in naive implementation
+                    # But we can compute all at once with DFS
+                    pass
+        
+        # For now, use simplified centrality
+        # In MST, each edge gets centrality proportional to product of subtree sizes
+        # We'll compute with DFS
+        visited = [False] * n
+        subtree_size = [0] * n
+        
+        def dfs(node: int) -> int:
+            visited[node] = True
+            size = 1
+            
+            for neighbor, _ in mst_adj[node]:
+                if not visited[neighbor]:
+                    child_size = dfs(neighbor)
+                    size += child_size
+                    
+                    # Edge centrality = (child_size) * (n - child_size)
+                    edge = (min(node, neighbor), max(node, neighbor))
+                    edge_centrality[edge] = child_size * (n - child_size)
+            
+            subtree_size[node] = size
+            return size
+        
+        dfs(0)
+        
+        # Normalize to [0, 1]
+        max_centrality = max(edge_centrality.values()) if edge_centrality else 1.0
+        for edge in edge_centrality:
+            edge_centrality[edge] /= max_centrality
+        
+        return edge_centrality
+    
+    def _detect_communities(self, mst_adj: List[List[Tuple[int, float]]]) -> Dict[int, int]:
+        """Detect communities in MST using edge weights."""
+        n = self.n
+        
+        # Build edges with weights
+        edges = []
+        for u in range(n):
+            for v, weight in mst_adj[u]:
+                if u < v:
+                    edges.append((weight, u, v))
+        
+        # Sort by weight (ascending)
+        edges.sort()
+        
+        # Union-Find for community detection
+        parent = list(range(n))
+        rank = [0] * n
+        
+        def find(x: int) -> int:
+            if parent[x] != x:
+                parent[x] = find(parent[x])
+            return parent[x]
+        
+        def union(x: int, y: int):
+            rx, ry = find(x), find(y)
+            if rx == ry:
+                return
+            if rank[rx] < rank[ry]:
+                parent[rx] = ry
+            elif rank[rx] > rank[ry]:
+                parent[ry] = rx
+            else:
+                parent[ry] = rx
+                rank[rx] += 1
+        
+        # Connect components with smallest edges first
+        # Stop when we have sqrt(n) communities or all edges processed
+        target_communities = max(2, int(math.sqrt(n)))
+        
+        for weight, u, v in edges:
+            if find(u) != find(v):
+                union(u, v)
+            
+            # Count distinct communities
+            communities = set(find(i) for i in range(n))
+            if len(communities) <= target_communities:
+                break
+        
+        # Assign community IDs
+        community_map = {}
+        community_id = 0
+        for i in range(n):
+            root = find(i)
+            if root not in community_map:
+                community_map[root] = community_id
+                community_id += 1
+        
+        communities = {i: community_map[find(i)] for i in range(n)}
+        return communities
+    
+    def _hybrid_structural_matching_optimized(self, odd_vertices: List[int],
+                                             communities: Dict[int, int],
+                                             edge_centrality: Dict[Tuple[int, int], float],
+                                             within_community_weight: float = 0.8,
+                                             between_community_weight: float = 0.3) -> List[Tuple[int, int]]:
+        """
+        Optimized hybrid structural matching with lazy path centrality.
+        
+        Uses the SAME sequential greedy algorithm as the original
+        to ensure identical matching results.
+        """
+        k = len(odd_vertices)
+        if k % 2 != 0:
+            raise ValueError(f"Number of odd vertices must be even, got {k}")
+        
+        # Build weight matrix (lazy computation)
+        # We'll store base distances and compute adjusted weights on-demand
+        dist_matrix = self._compute_distance_matrix()
+        odd_dist_base = [[0.0] * k for _ in range(k)]
+        
+        for i in range(k):
+            u = odd_vertices[i]
+            for j in range(i + 1, k):
+                v = odd_vertices[j]
+                dist = dist_matrix[u][v]
+                odd_dist_base[i][j] = dist
+                odd_dist_base[j][i] = dist
+        
+        # Compute adjusted weights matrix (like original does)
+        odd_dist_adjusted = [[0.0] * k for _ in range(k)]
+        for i in range(k):
+            u = odd_vertices[i]
+            for j in range(i + 1, k):
+                v = odd_vertices[j]
+                dist = odd_dist_base[i][j]
+                
+                # Get community relationship
+                comm_u = communities.get(u, 0)
+                comm_v = communities.get(v, 0)
+                
+                # Get path centrality (lazy)
+                path_cent = self._compute_path_centrality_lazy(u, v, edge_centrality)
+                
+                # Apply hybrid weighting (EXACTLY like original)
+                if comm_u == comm_v:
+                    # Within same community: strong centrality influence
+                    weight = dist * (1.0 - within_community_weight * path_cent)
+                else:
+                    # Between communities: moderate centrality influence
+                    weight = dist * (1.0 - between_community_weight * path_cent)
+                
+                odd_dist_adjusted[i][j] = weight
+                odd_dist_adjusted[j][i] = weight
+        
+        # SEQUENTIAL GREEDY MATCHING (EXACTLY like original)
+        visited = [False] * k
+        matching = []
+        
+        for i in range(k):
+            if not visited[i]:
+                # Find best unmatched neighbor (j > i)
+                best_j = -1
+                best_weight = float('inf')
+                
+                for j in range(i + 1, k):
+                    if not visited[j] and odd_dist_adjusted[i][j] < best_weight:
+                        best_weight = odd_dist_adjusted[i][j]
+                        best_j = j
+                
+                if best_j != -1:
+                    matching.append((odd_vertices[i], odd_vertices[best_j]))
+                    visited[i] = True
+                    visited[best_j] = True
+        
+        return matching
+    
+    def _find_eulerian_tour(self, mst_adj: List[List[Tuple[int, float]]], 
+                           matching: List[Tuple[int, int]]) -> List[int]:
+        """Find Eulerian tour in multigraph (MST + matching edges)."""
+        n = self.n
+        
+        # Build multigraph adjacency list
+        adj = [[] for _ in range(n)]
+        
+        # Add MST edges
+        for u in range(n):
+            for v, weight in mst_adj[u]:
+                if u < v:  # Add each edge once
+                    adj[u].append(v)
+                    adj[v].append(u)
+        
+        # Add matching edges
+        for u, v in matching:
+            adj[u].append(v)
+            adj[v].append(u)
+        
+        # Hierholzer's algorithm for Eulerian tour
+        stack = [0]
+        tour = []
+        
+        while stack:
+            u = stack[-1]
+            if adj[u]:
+                v = adj[u].pop()
+                # Remove reverse edge
+                adj[v].remove(u)
+                stack.append(v)
+            else:
+                tour.append(stack.pop())
+        
+        # Reverse to get correct order
+        tour.reverse()
+        return tour
+    
+    def _shortcut_eulerian_tour(self, eulerian_tour: List[int]) -> Tuple[List[int], float]:
+        """Shortcut Eulerian tour to Hamiltonian cycle."""
+        visited = [False] * self.n
+        tour = []
+        
+        for vertex in eulerian_tour:
+            if not visited[vertex]:
+                visited[vertex] = True
+                tour.append(vertex)
+        
+        # Close the tour
+        tour.append(tour[0])
+        
+        # Compute tour length
+        length = 0.0
+        for i in range(len(tour) - 1):
+            length += self.dist_matrix[tour[i]][tour[i + 1]]
+        
+        return tour, length
+    
+    def solve(self, percentile_threshold: float = 70.0) -> Tuple[List[int], float]:
+        """Solve TSP using optimized Christofides hybrid structural algorithm."""
+        n = self.n
+        
+        if n <= 2:
+            # Trivial cases
+            if n == 1:
+                return [0, 0], 0.0
+            elif n == 2:
+                return [0, 1, 0], self.dist_matrix[0][1] * 2
+        
+        # 1. Compute MST
+        mst_adj, parent = self._compute_mst()
+        
+        # 2. Build LCA structure for efficient path queries
+        self._build_lca_structure(parent)
+        
+        # 3. Compute edge centrality
+        edge_centrality = self._compute_edge_centrality(mst_adj)
+        
+        # 4. Detect communities
+        communities = self._detect_communities(mst_adj)
+        
+        # 5. Find odd-degree vertices in MST
+        odd_vertices = []
+        for i in range(n):
+            if len(mst_adj[i]) % 2 == 1:
+                odd_vertices.append(i)
+        
+        # 6. Hybrid structural matching
+        matching = self._hybrid_structural_matching_optimized(
+            odd_vertices, communities, edge_centrality,
+            within_community_weight=0.8, between_community_weight=0.3
+        )
+        
+        # 7. Find Eulerian tour in multigraph (MST + matching)
+        eulerian_tour = self._find_eulerian_tour(mst_adj, matching)
+        
+        # 8. Shortcut to Hamiltonian cycle
+        tour, length = self._shortcut_eulerian_tour(eulerian_tour)
+        
+        return tour, length
+
+# For backward compatibility
+def solve_tsp(points, seed=42, percentile_threshold=70.0):
+    """Wrapper function for compatibility."""
+    solver = ChristofidesHybridStructuralOptimized(points, seed)
+    tour, length = solver.solve(percentile_threshold)
+    return tour, length, {}
