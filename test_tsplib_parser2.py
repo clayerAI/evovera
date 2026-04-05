@@ -3,8 +3,8 @@ sys.path.append('.')
 from tsplib_parser import TSPLIBParser
 
 # Test loading eil51
-parser = TSPLIBParser()
-success = parser.load_instance("data/tsplib/eil51.tsp")
+parser = TSPLIBParser("data/tsplib/eil51.tsp")
+success = parser.parse()
 
 if success:
     print(f"Successfully loaded eil51")
@@ -41,10 +41,13 @@ if success:
     print(f"Diagonal (should be 0): {np.diag(dist_matrix)[:5]}")
     
     # Check for any zeros in non-diagonal positions
+    zero_count = 0
     for i in range(n):
         for j in range(n):
             if i != j and dist_matrix[i][j] == 0:
-                print(f"WARNING: Zero distance between nodes {i} and {j}!")
+                zero_count += 1
+    if zero_count > 0:
+        print(f"WARNING: Found {zero_count} zero distances in non-diagonal positions!")
     
 else:
     print("Failed to load eil51")
