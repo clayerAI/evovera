@@ -68,3 +68,28 @@
 
 **Last Updated:** April 5, 2026 05:17 UTC  
 **Next Update:** Upon receipt of TSPLIB evaluation results
+
+## **EXECUTION STATUS UPDATE - 05:20 UTC**
+
+### **Previous Evaluation Issues Identified:**
+1. **API Mismatch**: v1 and v2 algorithms fail with `time_limit` parameter error
+2. **Timeout**: v19 algorithm timed out on att532 (300s timeout)
+3. **Algorithm Selection**: Previous evaluation used v19 fixed, not v11
+
+### **Required Corrections:**
+1. Update evaluation script to use v11 algorithm (`tsp_v19_optimized_fixed_v11_proper.py`)
+2. Fix API compatibility for baseline algorithms (remove `time_limit` parameter or update implementations)
+3. Increase timeout for att532 or optimize v11 for large instances
+4. Run multi-seed validation (min 10 seeds per instance)
+
+### **Current Status:**
+- ✅ v11 algorithm validated and selected (9.92% better than v9)
+- ✅ Notification sent to Evo (05:17 UTC)
+- ⏳ Awaiting Evo's execution of corrected evaluation
+
+### **Next Verification Steps:**
+1. Monitor for new evaluation script creation/update
+2. Check for execution results in `/workspace/evovera/`
+3. Verify multi-seed statistical validation
+4. Generate gap-to-optimal reports for publication assessment
+
