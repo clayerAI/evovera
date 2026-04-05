@@ -1,24 +1,53 @@
-================================================================================
-TSPLIB Phase 2 Complete Evaluation - v11 Algorithm
-Required instances: att532, a280, d198, lin318, pr439
-Seeds per instance: 10
-================================================================================
+TSPLIB Phase 2 Complete Evaluation Results
+============================================================
 
-================================================================================
-Evaluating att532 (optimal: 27,686)
-================================================================================
-✓ Parsed att532: 532 nodes, optimal=27686
-✓ Loaded att532: 532 nodes, ATT metric
-Traceback (most recent call last):
-  File "/data/workspace/evovera/evaluate_v11_tsplib_complete.py", line 248, in <module>
-    sys.exit(main())
-             ^^^^^^
-  File "/data/workspace/evovera/evaluate_v11_tsplib_complete.py", line 180, in main
-    results = evaluate_instance(instance_name, info["file"], info["optimal"], N_SEEDS)
-              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/data/workspace/evovera/evaluate_v11_tsplib_complete.py", line 70, in evaluate_instance
-    solver = V11Solver()
-             ^^^^^^^^^^^
-  File "/data/workspace/evovera/solutions/tsp_v19_optimized_fixed_v11_proper.py", line 122, in __init__
-    raise ValueError("Must provide either points or distance_matrix")
-ValueError: Must provide either points or distance_matrix
+Instance: att532
+  Nodes: 532
+  Optimal: 27,686
+  Average Gap: 6.24%
+  Std Dev Gap: 0.00%
+  95% CI: [6.24%, 6.24%]
+  Average Runtime: 20.09s
+  Success Rate: 100%
+  Individual Gaps: 6.24%, 6.24%, 6.24%, 6.24%, 6.24%, 6.24%, 6.24%, 6.24%, 6.24%, 6.24%
+
+Instance: a280
+  Nodes: 280
+  Optimal: 2,579
+  Average Gap: 5.23%
+  Std Dev Gap: 0.00%
+  95% CI: [5.23%, 5.23%]
+  Average Runtime: 4.94s
+  Success Rate: 100%
+  Individual Gaps: 5.23%, 5.23%, 5.23%, 5.23%, 5.23%, 5.23%, 5.23%, 5.23%, 5.23%, 5.23%
+
+Instance: d198
+  Nodes: 198
+  Optimal: 15,780
+  Average Gap: 2.66%
+  Std Dev Gap: 0.00%
+  95% CI: [2.66%, 2.66%]
+  Average Runtime: 2.78s
+  Success Rate: 100%
+  Individual Gaps: 2.66%, 2.66%, 2.66%, 2.66%, 2.66%, 2.66%, 2.66%, 2.66%, 2.66%, 2.66%
+
+Instance: lin318
+  Nodes: 318
+  Optimal: 42,029
+  Average Gap: 6.31%
+  Std Dev Gap: 0.00%
+  95% CI: [6.31%, 6.31%]
+  Average Runtime: 19.38s
+  Success Rate: 100%
+  Individual Gaps: 6.31%, 6.31%, 6.31%, 6.31%, 6.31%, 6.31%, 6.31%, 6.31%, 6.31%, 6.31%
+
+Instance: pr439
+  Nodes: 439
+  Optimal: 107,217
+  Average Gap: 6.14%
+  Std Dev Gap: 0.00%
+  95% CI: [6.14%, 6.14%]
+  Average Runtime: 24.82s
+  Success Rate: 100%
+  Individual Gaps: 6.14%, 6.14%, 6.14%, 6.14%, 6.14%, 6.14%, 6.14%, 6.14%, 6.14%, 6.14%
+

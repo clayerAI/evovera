@@ -1,0 +1,214 @@
+✓ Loaded optimized v11 algorithm from solutions directory
+✓ Loaded TSPLIB parser
+================================================================================
+COMPREHENSIVE TSPLIB PHASE 2 EVALUATION - OPTIMIZED V11 ALGORITHM
+Per Vera's Coordination Signal: All 7 instances, proper seed counts
+Started: 2026-04-05 07:26:20
+================================================================================
+
+================================================================================
+STARTING: EIL51
+================================================================================
+
+================================================================================
+Evaluating eil51 (optimal: 426)
+================================================================================
+✓ Parsing eil51...
+✓ Parsed eil51: 51 nodes, optimal=426
+✓ Loaded eil51: 51 nodes, EUC_2D metric
+  Seed 1/10: Optimized v11: n=51, tour_length=439.00, runtime=0.029s
+Optimized v11: n=51, tour_length=439.00, runtime=0.029s
+  length=439 (3.05% gap), 0.03s
+  Seed 2/10: Optimized v11: n=51, tour_length=439.00, runtime=0.012s
+Optimized v11: n=51, tour_length=439.00, runtime=0.012s
+  length=439 (3.05% gap), 0.01s
+  Seed 3/10: Optimized v11: n=51, tour_length=439.00, runtime=0.012s
+Optimized v11: n=51, tour_length=439.00, runtime=0.012s
+  length=439 (3.05% gap), 0.01s
+  Seed 4/10: Optimized v11: n=51, tour_length=439.00, runtime=0.012s
+Optimized v11: n=51, tour_length=439.00, runtime=0.012s
+  length=439 (3.05% gap), 0.01s
+  Seed 5/10: Optimized v11: n=51, tour_length=439.00, runtime=0.012s
+Optimized v11: n=51, tour_length=439.00, runtime=0.012s
+  length=439 (3.05% gap), 0.01s
+  Seed 6/10: Optimized v11: n=51, tour_length=439.00, runtime=0.020s
+Optimized v11: n=51, tour_length=439.00, runtime=0.020s
+  length=439 (3.05% gap), 0.02s
+  Seed 7/10: Optimized v11: n=51, tour_length=439.00, runtime=0.012s
+Optimized v11: n=51, tour_length=439.00, runtime=0.012s
+  length=439 (3.05% gap), 0.01s
+  Seed 8/10: Optimized v11: n=51, tour_length=439.00, runtime=0.012s
+Optimized v11: n=51, tour_length=439.00, runtime=0.012s
+  length=439 (3.05% gap), 0.01s
+  Seed 9/10: Optimized v11: n=51, tour_length=439.00, runtime=0.012s
+Optimized v11: n=51, tour_length=439.00, runtime=0.012s
+  length=439 (3.05% gap), 0.01s
+  Seed 10/10: Optimized v11: n=51, tour_length=439.00, runtime=0.012s
+Optimized v11: n=51, tour_length=439.00, runtime=0.012s
+  length=439 (3.05% gap), 0.01s
+
+  Summary: 3.05% gap (95% CI: [3.05, 3.05]), 0.01s avg, 100% success
+
+Completed eil51 in 0.2s
+
+================================================================================
+STARTING: KROA100
+================================================================================
+
+================================================================================
+Evaluating kroA100 (optimal: 21,282)
+================================================================================
+✓ Parsing kroA100...
+✓ Parsed kroA100: 100 nodes, optimal=21282
+✓ Loaded kroA100: 100 nodes, EUC_2D metric
+  Seed 1/10: Optimized v11: n=100, tour_length=23004.00, runtime=0.076s
+Optimized v11: n=100, tour_length=23004.00, runtime=0.077s
+  length=23,004 (8.09% gap), 0.08s
+  Seed 2/10: Optimized v11: n=100, tour_length=23004.00, runtime=0.082s
+Optimized v11: n=100, tour_length=23004.00, runtime=0.083s
+  length=23,004 (8.09% gap), 0.08s
+  Seed 3/10: Optimized v11: n=100, tour_length=23004.00, runtime=0.082s
+Optimized v11: n=100, tour_length=23004.00, runtime=0.083s
+  length=23,004 (8.09% gap), 0.08s
+  Seed 4/10: Optimized v11: n=100, tour_length=23004.00, runtime=0.064s
+Optimized v11: n=100, tour_length=23004.00, runtime=0.065s
+  length=23,004 (8.09% gap), 0.07s
+  Seed 5/10: Optimized v11: n=100, tour_length=23004.00, runtime=0.082s
+Optimized v11: n=100, tour_length=23004.00, runtime=0.083s
+  length=23,004 (8.09% gap), 0.08s
+  Seed 6/10: Optimized v11: n=100, tour_length=23004.00, runtime=0.081s
+Optimized v11: n=100, tour_length=23004.00, runtime=0.082s
+  length=23,004 (8.09% gap), 0.08s
+  Seed 7/10: Optimized v11: n=100, tour_length=23004.00, runtime=0.080s
+Optimized v11: n=100, tour_length=23004.00, runtime=0.080s
+  length=23,004 (8.09% gap), 0.08s
+  Seed 8/10: Optimized v11: n=100, tour_length=23004.00, runtime=0.107s
+Optimized v11: n=100, tour_length=23004.00, runtime=0.109s
+  length=23,004 (8.09% gap), 0.11s
+  Seed 9/10: Optimized v11: n=100, tour_length=23004.00, runtime=0.108s
+Optimized v11: n=100, tour_length=23004.00, runtime=0.110s
+  length=23,004 (8.09% gap), 0.11s
+  Seed 10/10: Optimized v11: n=100, tour_length=23004.00, runtime=0.087s
+Optimized v11: n=100, tour_length=23004.00, runtime=0.088s
+  length=23,004 (8.09% gap), 0.09s
+
+  Summary: 8.09% gap (95% CI: [8.09, 8.09]), 0.09s avg, 100% success
+
+Completed kroA100 in 0.9s
+
+================================================================================
+STARTING: D198
+================================================================================
+
+================================================================================
+Evaluating d198 (optimal: 15,780)
+================================================================================
+✓ Parsing d198...
+✓ Parsed d198: 198 nodes, optimal=15780
+✓ Loaded d198: 198 nodes, EUC_2D metric
+  Seed 1/10: Optimized v11: n=198, tour_length=16199.00, runtime=0.779s
+Optimized v11: n=198, tour_length=16199.00, runtime=0.784s
+  length=16,199 (2.66% gap), 0.78s
+  Seed 2/10: Optimized v11: n=198, tour_length=16199.00, runtime=0.786s
+Optimized v11: n=198, tour_length=16199.00, runtime=0.790s
+  length=16,199 (2.66% gap), 0.79s
+  Seed 3/10: Optimized v11: n=198, tour_length=16199.00, runtime=0.718s
+Optimized v11: n=198, tour_length=16199.00, runtime=0.723s
+  length=16,199 (2.66% gap), 0.72s
+  Seed 4/10: Optimized v11: n=198, tour_length=16199.00, runtime=0.763s
+Optimized v11: n=198, tour_length=16199.00, runtime=0.767s
+  length=16,199 (2.66% gap), 0.77s
+  Seed 5/10: Optimized v11: n=198, tour_length=16199.00, runtime=0.716s
+Optimized v11: n=198, tour_length=16199.00, runtime=0.720s
+  length=16,199 (2.66% gap), 0.72s
+  Seed 6/10: Optimized v11: n=198, tour_length=16199.00, runtime=0.736s
+Optimized v11: n=198, tour_length=16199.00, runtime=0.740s
+  length=16,199 (2.66% gap), 0.74s
+  Seed 7/10: Optimized v11: n=198, tour_length=16199.00, runtime=0.715s
+Optimized v11: n=198, tour_length=16199.00, runtime=0.719s
+  length=16,199 (2.66% gap), 0.72s
+  Seed 8/10: Optimized v11: n=198, tour_length=16199.00, runtime=0.745s
+Optimized v11: n=198, tour_length=16199.00, runtime=0.749s
+  length=16,199 (2.66% gap), 0.75s
+  Seed 9/10: Optimized v11: n=198, tour_length=16199.00, runtime=0.729s
+Optimized v11: n=198, tour_length=16199.00, runtime=0.734s
+  length=16,199 (2.66% gap), 0.73s
+  Seed 10/10: Optimized v11: n=198, tour_length=16199.00, runtime=0.758s
+Optimized v11: n=198, tour_length=16199.00, runtime=0.762s
+  length=16,199 (2.66% gap), 0.76s
+
+  Summary: 2.66% gap (95% CI: [2.66, 2.66]), 0.75s avg, 100% success
+
+Completed d198 in 7.5s
+
+================================================================================
+STARTING: A280
+================================================================================
+
+================================================================================
+Evaluating a280 (optimal: 2,579)
+================================================================================
+✓ Parsing a280...
+✓ Parsed a280: 280 nodes, optimal=2579
+✓ Loaded a280: 280 nodes, EUC_2D metric
+  Seed 1/5: Optimized v11: n=280, tour_length=2714.00, runtime=1.446s
+Optimized v11: n=280, tour_length=2714.00, runtime=1.458s
+  length=2,714 (5.23% gap), 1.46s
+  Seed 2/5: Optimized v11: n=280, tour_length=2714.00, runtime=1.470s
+Optimized v11: n=280, tour_length=2714.00, runtime=1.481s
+  length=2,714 (5.23% gap), 1.48s
+  Seed 3/5: Optimized v11: n=280, tour_length=2714.00, runtime=1.431s
+Optimized v11: n=280, tour_length=2714.00, runtime=1.442s
+  length=2,714 (5.23% gap), 1.44s
+  Seed 4/5: Optimized v11: n=280, tour_length=2714.00, runtime=1.548s
+Optimized v11: n=280, tour_length=2714.00, runtime=1.561s
+  length=2,714 (5.23% gap), 1.56s
+  Seed 5/5: Optimized v11: n=280, tour_length=2714.00, runtime=1.520s
+Optimized v11: n=280, tour_length=2714.00, runtime=1.532s
+  length=2,714 (5.23% gap), 1.53s
+
+  Summary: 5.23% gap (95% CI: [5.23, 5.23]), 1.49s avg, 100% success
+
+Completed a280 in 7.5s
+
+================================================================================
+STARTING: LIN318
+================================================================================
+
+================================================================================
+Evaluating lin318 (optimal: 42,029)
+================================================================================
+✓ Parsing lin318...
+✓ Parsed lin318: 318 nodes, optimal=42029
+✓ Loaded lin318: 318 nodes, EUC_2D metric
+  Seed 1/5: Optimized v11: n=318, tour_length=44683.00, runtime=3.200s
+Optimized v11: n=318, tour_length=44683.00, runtime=3.222s
+  length=44,683 (6.31% gap), 3.22s
+  Seed 2/5: Optimized v11: n=318, tour_length=44683.00, runtime=3.186s
+Optimized v11: n=318, tour_length=44683.00, runtime=3.205s
+  length=44,683 (6.31% gap), 3.21s
+  Seed 3/5: Optimized v11: n=318, tour_length=44683.00, runtime=3.303s
+Optimized v11: n=318, tour_length=44683.00, runtime=3.333s
+  length=44,683 (6.31% gap), 3.33s
+  Seed 4/5: Optimized v11: n=318, tour_length=44683.00, runtime=3.234s
+Optimized v11: n=318, tour_length=44683.00, runtime=3.251s
+  length=44,683 (6.31% gap), 3.25s
+  Seed 5/5: Optimized v11: n=318, tour_length=44683.00, runtime=3.283s
+Optimized v11: n=318, tour_length=44683.00, runtime=3.299s
+  length=44,683 (6.31% gap), 3.30s
+
+  Summary: 6.31% gap (95% CI: [6.31, 6.31]), 3.26s avg, 100% success
+
+Completed lin318 in 16.4s
+
+================================================================================
+STARTING: PR439
+================================================================================
+
+================================================================================
+Evaluating pr439 (optimal: 107,217)
+================================================================================
+✓ Parsing pr439...
+✓ Parsed pr439: 439 nodes, optimal=107217
+✓ Loaded pr439: 439 nodes, EUC_2D metric
+  Seed 1/5: 

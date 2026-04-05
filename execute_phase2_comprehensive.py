@@ -9,7 +9,8 @@ import numpy as np
 from datetime import datetime
 from typing import Dict, List, Tuple, Any
 
-sys.path.append(os.path.dirname(os.path.abspath(__file__)))
+# Add current directory to path for imports
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 # Import the optimized v11 algorithm from solutions directory
 try:
@@ -22,9 +23,10 @@ except ImportError as e:
 
 # Import TSPLIB parser
 try:
-    from tsplib_parser import parse_tsplib_file, compute_distance_matrix
-except ImportError:
-    print("ERROR: Could not import TSPLIB parser")
+    from tsplib_parser import TSPLIBParser
+    print("✓ Loaded TSPLIB parser")
+except ImportError as e:
+    print(f"ERROR: Could not import TSPLIB parser: {e}")
     sys.exit(1)
 
 # TSPLIB instances with optimal values (from tsplib_parser.py)
@@ -55,13 +57,6 @@ def validate_tour(tour: List[int], n: int) -> Tuple[bool, str]:
         return False, f"Tour doesn't visit all nodes: {len(unique_nodes)} unique != {n}"
     return True, "Valid Hamiltonian cycle"
 
-def compute_tour_length(tour: List[int], distance_matrix: np.ndarray) -> float:
-    """Compute total tour length from distance matrix."""
-    total = 0.0
-    for i in range(len(tour) - 1):
-        total += distance_matrix[tour[i], tour[i+1]]
-    return total
-
 def evaluate_instance(instance_name: str, file_path: str, optimal: int, seeds: int = 10) -> Dict[str, Any]:
     """Evaluate optimized v11 on a TSPLIB instance."""
     print(f"\n{'='*80}")
@@ -71,18 +66,16 @@ def evaluate_instance(instance_name: str, file_path: str, optimal: int, seeds: i
     # Parse instance
     print(f"✓ Parsing {instance_name}...")
     try:
-        nodes = parse_tsplib_file(file_path)
-        n = len(nodes)
-        print(f"✓ Loaded {instance_name}: {n} nodes")
+        parser = TSPLIBParser(file_path)
+        if not parser.parse():
+            return {"error": f"Failed to parse {file_path}"}
+        
+        # Get distance matrix
+        distance_matrix = parser.get_distance_matrix()
+        n = parser.dimension
+        print(f"✓ Loaded {instance_name}: {n} nodes, {parser.edge_weight_type} metric")
     except Exception as e:
         return {"error": f"Failed to parse {instance_name}: {str(e)}"}
-    
-    # Compute distance matrix
-    print(f"✓ Computing distance matrix...")
-    try:
-        distance_matrix = compute_distance_matrix(nodes)
-    except Exception as e:
-        return {"error": f"Failed to compute distance matrix: {str(e)}"}
     
     # Run evaluation for each seed
     tour_lengths = []
