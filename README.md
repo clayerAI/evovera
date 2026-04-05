@@ -86,17 +86,17 @@
 | Version | Name | Status | Notes |
 |---------|------|--------|-------|
 | **v1** | Clarke-Wright Savings | ✅ **BASELINE** | Reference implementation for VRP |
-| **v2** | Clarke-Wright Structural Hybrid | 🔄 **REFINED** | Original hybrid with community detection (+20%/-10% adjustments) |
-| **v2.1** | Refined Structural Hybrid | ✅ **COMPLETED** | Adaptive thresholds, edge centrality, balanced adjustments (+15%/-5%) |
-| **v2.1 Performance** | Synthetic Benchmarks | 📊 **VALIDATED** | +7.35% average improvement over v2, ready for real benchmarks |
+| **v2** | Clarke-Wright Structural Hybrid | ❌ **FAILED** | -1.00% degradation vs baseline (16.7% success rate) |
+| **v2.1** | Refined Structural Hybrid | ❌ **FAILED** | -0.57% degradation vs baseline (33.3% success rate) |
 
 **VRP Research Status:**
 - ✅ Clarke-Wright baseline established
 - ✅ VRP v2 structural hybrid implemented  
 - ✅ VRP v2.1 refined with adaptive methods
-- 🔄 Awaiting real CVRPLIB benchmark validation
-- 🔄 Novelty verification pending (Vera review)
-- 🔄 OR-Tools comparison blocked (installation required)
+- ✅ Statistical validation completed (30 seeds, 3 instance sizes)
+- ❌ **ALGORITHM FAILS BASELINE**: Both v2 (-1.00%) and v2.1 (-0.57%) show degradation
+- ❌ **RESEARCH HALTED**: All VRP activities blocked until fundamental improvements
+- 🔄 **TRANSITIONING TO TSP**: Returning to TSP domain with proven success (v8, v19)
 
 **Key Improvements (v2.1 vs v2):**
 - 20 customers: +8.19% improvement (vs -1.86% regression)
@@ -140,24 +140,24 @@
 - Structural matching is more effective when there's sufficient structure to analyze (n≥100)
 - The novel matching component shows mixed contribution depending on problem size
 
-## 🚀 Next Steps: Vehicle Routing Problem (VRP) Research
+## 🚀 Next Steps: TSP Research (VRP Halted)
 
-**Rationale for VRP Transition:**
-1. **Foundation exists**: v1 Clarke-Wright implementation already in repository
-2. **VRP benchmark loader**: Already implemented in solutions/
-3. **Natural progression**: From TSP (single route) to VRP (multiple routes with capacity constraints)
-4. **High impact**: VRP has real-world applications in logistics, delivery, transportation
+**VRP Research Status:**
+- ❌ **HALTED**: VRP v2 and v2.1 algorithms fail baseline (-1.00% and -0.57% degradation)
+- ✅ **Statistical validation completed**: 30 seeds across 3 instance sizes
+- 🔄 **Transitioning back to TSP domain**: Building on proven success with v8 and v19
 
-**Strategy:**
-1. Start with Clarke-Wright baseline (v1)
-2. Develop novel VRP hybrids using lessons from TSP research
-3. Apply same rigorous methodology: performance benchmarking + novelty verification
-4. Leverage existing repository structure and communication protocols
+**TSP Research Priorities:**
+1. **Publication focus**: Complete strong solver comparison (v19 vs LKH/OR-Tools)
+2. **Novel hybrid discovery**: Continue exploring novel TSP algorithm combinations
+3. **Scalability optimization**: Optimize v19 for larger TSPLIB instances (a280, att532)
 
-## 🏗️ Repository Structure
-```
-evovera/
-├── README.md                    # This file - project overview and tracking
+**Rationale for TSP Focus:**
+1. **Proven success**: v8 and v19 show 6.57-8.89% improvements over baseline
+2. **Novelty established**: Hybrid structural methods validated as novel
+3. **Methodological completeness**: Strong solver comparison needed for publication rigor
+4. **Scalability path**: Clear roadmap for larger instance optimization
+
 ├── solutions/                   # Algorithm implementations (v1-v20)
 ├── benchmarks/                  # Benchmark and performance test scripts
 ├── reports/                     # Review reports, analysis, and publication packages
@@ -263,4 +263,4 @@ This repository documents:
 - **Centralized Communication**: All updates routed through Vera
 - **Repository Standards**: Maintained at science novel level
 
-*Last Updated: April 5, 2026 | Status: TSP Research COMPLETED - Publication-ready algorithms v8 and v19 verified. VRP Research ACTIVE - Clarke-Wright baseline established. VRP v2.1 REFINED STRUCTURAL HYBRID ALGORITHM COMPLETED with +7.35% average improvement. Ready for real benchmark validation and novelty verification.*
+*Last Updated: April 5, 2026 | Status: TSP Research COMPLETED - Publication-ready algorithms v8 and v19 verified. VRP Research HALTED - Algorithms fail baseline (v2: -1.00%, v2.1: -0.57%). Transitioning back to TSP domain for further research.*
