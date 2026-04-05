@@ -15,7 +15,7 @@ import numpy as np
 
 # Import both algorithms
 from tsp_v19_christofides_hybrid_structural_corrected import ChristofidesHybridStructuralCorrected as OriginalV19
-from tsp_v19_optimized_fixed_v11 import ChristofidesHybridStructuralOptimizedV11 as OptimizedV11
+from tsp_v19_optimized_fixed_v11_proper import ChristofidesHybridStructuralOptimizedV11 as OptimizedV11
 
 def generate_random_points(n: int, seed: int = 42) -> List[Tuple[float, float]]:
     """Generate n random points in [0, 1000] x [0, 1000]."""
