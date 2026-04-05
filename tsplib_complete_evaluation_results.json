@@ -1,0 +1,67 @@
+{
+  "timestamp": "2026-04-04T23:59:54.909098",
+  "instances": [
+    "a280",
+    "att532"
+  ],
+  "algorithms": [
+    "tsp_v1_nearest_neighbor_fixed",
+    "tsp_v2_christofides_improved_fixed",
+    "tsp_v19_christofides_hybrid_structural_fixed"
+  ],
+  "results": {
+    "a280": {
+      "instance": "a280",
+      "dimension": 280,
+      "optimal": 2579,
+      "edge_weight_type": "EUC_2D",
+      "results": {
+        "tsp_v1_nearest_neighbor_fixed": {
+          "error": "NearestNeighborTSP.solve() got an unexpected keyword argument 'time_limit'",
+          "success": false,
+          "timeout": false,
+          "runtime": 0.0018715858459472656
+        },
+        "tsp_v2_christofides_improved_fixed": {
+          "error": "ImprovedMatchingChristofides.solve() got an unexpected keyword argument 'time_limit'",
+          "success": false,
+          "timeout": false,
+          "runtime": 5.888938903808594e-05
+        },
+        "tsp_v19_christofides_hybrid_structural_fixed": {
+          "tour_length": 2820.0,
+          "gap_percent": 9.34470725087243,
+          "runtime": 117.42020463943481,
+          "success": true,
+          "timeout": false
+        }
+      }
+    },
+    "att532": {
+      "instance": "att532",
+      "dimension": 532,
+      "optimal": 27686,
+      "edge_weight_type": "ATT",
+      "results": {
+        "tsp_v1_nearest_neighbor_fixed": {
+          "error": "NearestNeighborTSP.solve() got an unexpected keyword argument 'time_limit'",
+          "success": false,
+          "timeout": false,
+          "runtime": 0.0004563331604003906
+        },
+        "tsp_v2_christofides_improved_fixed": {
+          "error": "ImprovedMatchingChristofides.solve() got an unexpected keyword argument 'time_limit'",
+          "success": false,
+          "timeout": false,
+          "runtime": 3.910064697265625e-05
+        },
+        "tsp_v19_christofides_hybrid_structural_fixed": {
+          "error": "Timeout after 300.1s",
+          "success": false,
+          "timeout": true,
+          "runtime": 300.0913405418396
+        }
+      }
+    }
+  }
+}
