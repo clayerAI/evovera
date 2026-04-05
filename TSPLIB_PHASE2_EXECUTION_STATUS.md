@@ -93,3 +93,33 @@
 3. Verify multi-seed statistical validation
 4. Generate gap-to-optimal reports for publication assessment
 
+
+## **CRITICAL BLOCKER IDENTIFIED - 05:22 UTC**
+
+### **Missing TSPLIB Instances:**
+Required instances for Phase 2 evaluation are **NOT PRESENT** in `/workspace/evovera/data/tsplib/`:
+- ❌ `d198.tsp` (EUC_2D)
+- ❌ `lin318.tsp` (EUC_2D)
+- ❌ `pr439.tsp` (EUC_2D)
+
+### **Current Available Instances:**
+- ✅ `a280.tsp` (EUC_2D)
+- ✅ `att532.tsp` (ATT)
+- ✅ `eil51.tsp` (EUC_2D)
+- ✅ `kroA100.tsp` (EUC_2D)
+
+### **Impact:**
+**Phase 2 evaluation cannot proceed** without all 5 target instances. This is a critical blocker that must be resolved before any evaluation can run.
+
+### **Required Action:**
+1. Download missing TSPLIB instances from official repository
+2. Verify parser compatibility with each instance format
+3. Update evaluation scripts to include all 5 instances
+4. Only then proceed with v11 algorithm evaluation
+
+### **Status:**
+- ✅ v11 algorithm validated and selected
+- ✅ ATT distance parser corrected
+- ❌ Missing TSPLIB instances (critical blocker)
+- ⏳ Awaiting Evo to download missing instances
+
