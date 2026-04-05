@@ -1,0 +1,74 @@
+{
+  "parameter_combinations": [
+    {
+      "name": "original",
+      "percentile": 70,
+      "boost": 1.2,
+      "penalty": 0.9
+    },
+    {
+      "name": "percentile_60",
+      "percentile": 60,
+      "boost": 1.2,
+      "penalty": 0.9
+    },
+    {
+      "name": "percentile_65",
+      "percentile": 65,
+      "boost": 1.2,
+      "penalty": 0.9
+    },
+    {
+      "name": "percentile_75",
+      "percentile": 75,
+      "boost": 1.2,
+      "penalty": 0.9
+    },
+    {
+      "name": "percentile_80",
+      "percentile": 80,
+      "boost": 1.2,
+      "penalty": 0.9
+    },
+    {
+      "name": "mild_adj",
+      "percentile": 70,
+      "boost": 1.1,
+      "penalty": 0.95
+    },
+    {
+      "name": "moderate_adj",
+      "percentile": 70,
+      "boost": 1.15,
+      "penalty": 0.925
+    },
+    {
+      "name": "strong_adj",
+      "percentile": 70,
+      "boost": 1.25,
+      "penalty": 0.85
+    },
+    {
+      "name": "balanced_adj",
+      "percentile": 70,
+      "boost": 1.12,
+      "penalty": 0.94
+    },
+    {
+      "name": "low_percentile_mild",
+      "percentile": 65,
+      "boost": 1.1,
+      "penalty": 0.95
+    },
+    {
+      "name": "high_percentile_strong",
+      "percentile": 75,
+      "boost": 1.25,
+      "penalty": 0.85
+    }
+  ],
+  "all_results": [],
+  "best_configuration": null,
+  "best_improvement": null,
+  "optimization_date": "2026-04-05"
+}
