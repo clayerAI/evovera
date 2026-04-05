@@ -312,4 +312,16 @@ Evaluating pr439 (optimal: 107,217)
 ✓ Loaded pr439: 439 nodes, EUC_2D metric
   Seed 1/10: Optimized v11: n=439, tour_length=113804.00, runtime=5.891s
 length=113,804 (6.14% gap), 5.92s
-  Seed 2/10: 
+  Seed 2/10: Optimized v11: n=439, tour_length=113804.00, runtime=8.674s
+length=113,804 (6.14% gap), 8.70s
+  Seed 3/10: Optimized v11: n=439, tour_length=113804.00, runtime=6.058s
+length=113,804 (6.14% gap), 6.08s
+  Seed 4/10: Optimized v11: n=439, tour_length=113804.00, runtime=6.400s
+length=113,804 (6.14% gap), 6.42s
+  Seed 5/10: Optimized v11: n=439, tour_length=113804.00, runtime=5.857s
+length=113,804 (6.14% gap), 5.88s
+  Seed 6/10: Optimized v11: n=439, tour_length=113804.00, runtime=5.853s
+length=113,804 (6.14% gap), 5.88s
+  Seed 7/10: Optimized v11: n=439, tour_length=113804.00, runtime=5.761s
+length=113,804 (6.14% gap), 5.79s
+  Seed 8/10: 
