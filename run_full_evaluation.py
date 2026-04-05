@@ -1,167 +1,77 @@
 #!/usr/bin/env python3
+"""Run full TSPLIB Phase 2 evaluation on all 5 required instances."""
+
 import sys
 import os
-import time
 import json
+import time
 from datetime import datetime
-import numpy as np
 
-sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from tsplib_parser import TSPLIBParser
+sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 
-# Import fixed algorithms
-try:
-    from tsp_algorithms_fixed import algorithms
-    ALGORITHMS_AVAILABLE = True
-    print("✓ Imported fixed TSP algorithms")
-except ImportError as e:
-    print(f"✗ Failed to import fixed algorithms: {e}")
-    ALGORITHMS_AVAILABLE = False
-    sys.exit(1)
+from evaluate_v11_tsplib_complete_fixed_optimized import evaluate_instance, TSPLIB_INSTANCES
 
-def evaluate_algorithm_on_instance(algorithm_name, solve_func, parser, seed=42):
-    """Evaluate a single algorithm on a TSPLIB instance."""
-    start_time = time.time()
+def main():
+    print("=" * 80)
+    print("FULL TSPLIB PHASE 2 EVALUATION - OPTIMIZED V11 ALGORITHM")
+    print(f"Started: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
+    print("=" * 80)
     
-    try:
-        # Get points and distance matrix from parser
-        points = parser.get_points_array()
-        distance_matrix = parser.get_distance_matrix()
+    all_results = {}
+    total_start = time.time()
+    
+    # Run evaluation for each instance
+    for instance_name, config in TSPLIB_INSTANCES.items():
+        print(f"\n{'='*80}")
+        print(f"STARTING: {instance_name.upper()}")
+        print(f"{'='*80}")
         
-        # Run algorithm with distance matrix
-        tour, tour_length = solve_func(points, distance_matrix=distance_matrix)
+        instance_start = time.time()
+        results = evaluate_instance(
+            instance_name, 
+            config["file"], 
+            config["optimal"],
+            seeds=10
+        )
+        instance_time = time.time() - instance_start
         
-        runtime = time.time() - start_time
+        all_results[instance_name] = results
+        all_results[instance_name]["evaluation_time"] = instance_time
         
-        # Calculate gap to optimal
-        optimal = parser.optimal_value
-        if optimal is not None and optimal > 0:
-            gap_percent = ((tour_length - optimal) / optimal) * 100
+        print(f"\nCompleted {instance_name} in {instance_time:.1f}s")
+    
+    total_time = time.time() - total_start
+    
+    # Save results
+    output_file = "v11_tsplib_phase2_complete_results.json"
+    with open(output_file, 'w') as f:
+        json.dump(all_results, f, indent=2, default=str)
+    
+    # Generate summary
+    print(f"\n{'='*80}")
+    print("EVALUATION COMPLETE - SUMMARY")
+    print(f"{'='*80}")
+    print(f"Total evaluation time: {total_time:.1f}s")
+    print(f"Results saved to: {output_file}")
+    
+    print("\nInstance Performance Summary:")
+    print("-" * 80)
+    print(f"{'Instance':<10} {'Nodes':<6} {'Avg Gap %':<12} {'Avg Time (s)':<15} {'Success %':<10}")
+    print("-" * 80)
+    
+    for instance_name, results in all_results.items():
+        if "error" in results:
+            print(f"{instance_name:<10} {'N/A':<6} {'ERROR':<12} {'N/A':<15} {'0%':<10}")
+            print(f"  Error: {results['error']}")
         else:
-            gap_percent = None
-        
-        return {
-            "algorithm": algorithm_name,
-            "instance": parser.name,
-            "tour": tour.tolist() if isinstance(tour, np.ndarray) else tour,
-            "tour_length": float(tour_length),
-            "optimal": optimal,
-            "gap_percent": gap_percent,
-            "runtime": runtime,
-            "success": True
-        }
-        
-    except Exception as e:
-        runtime = time.time() - start_time
-        return {
-            "algorithm": algorithm_name,
-            "instance": parser.name,
-            "error": str(e),
-            "runtime": runtime,
-            "success": False
-        }
-
-# TSPLIB instances to evaluate
-TSPLIB_INSTANCES = ["eil51", "kroA100", "a280", "att532"]
-
-print("=" * 80)
-print("TSPLIB EVALUATION WITH FIXED DISTANCE METRICS")
-print("=" * 80)
-print(f"Instances: {', '.join(TSPLIB_INSTANCES)}")
-print(f"Algorithms: {', '.join(algorithms.keys())}")
-print("=" * 80)
-
-all_results = {}
-instance_results = {}
-
-# Process each instance
-for instance_name in TSPLIB_INSTANCES:
-    print(f"\n📊 Processing {instance_name}...")
+            print(f"{instance_name:<10} {results.get('n_nodes', 'N/A'):<6} "
+                  f"{results.get('avg_gap_pct', 0):.2f}%{'':<5} "
+                  f"{results.get('avg_runtime', 0):.2f}{'':<8} "
+                  f"{results.get('success_rate', 0):.0f}%")
     
-    # Load TSPLIB instance
-    filepath = f"data/tsplib/{instance_name}.tsp"
-    if not os.path.exists(filepath):
-        print(f"  ❌ File not found: {filepath}")
-        continue
-    
-    parser = TSPLIBParser(filepath)
-    if not parser.parse():
-        print(f"  ❌ Failed to parse {instance_name}")
-        continue
-    
-    print(f"  ✓ Loaded: {parser.dimension} nodes, optimal={parser.optimal_value}")
-    print(f"    Edge weight type: {parser.edge_weight_type}")
-    
-    instance_results[instance_name] = {}
-    
-    # Evaluate each algorithm
-    for algo_name, solve_func in algorithms.items():
-        print(f"  🧪 Running {algo_name}...", end=" ", flush=True)
-        
-        result = evaluate_algorithm_on_instance(algo_name, solve_func, parser)
-        
-        if result["success"]:
-            gap = result["gap_percent"]
-            print(f"gap={gap:.2f}%, time={result['runtime']:.2f}s")
-            instance_results[instance_name][algo_name] = result
-            all_results[f"{instance_name}_{algo_name}"] = result
-        else:
-            print(f"❌ Failed: {result['error']}")
-            instance_results[instance_name][algo_name] = result
+    print(f"\n{'='*80}")
+    print("FULL EVALUATION COMPLETED")
+    print(f"{'='*80}")
 
-# Generate summary report
-print("\n" + "=" * 80)
-print("EVALUATION SUMMARY")
-print("=" * 80)
-
-# Calculate average gaps
-for algo_name in algorithms.keys():
-    gaps = []
-    for instance_name in TSPLIB_INSTANCES:
-        if instance_name in instance_results and algo_name in instance_results[instance_name]:
-            result = instance_results[instance_name][algo_name]
-            if result["success"] and result["gap_percent"] is not None:
-                gaps.append(result["gap_percent"])
-    
-    if gaps:
-        avg_gap = np.mean(gaps)
-        print(f"{algo_name}: Average gap = {avg_gap:.2f}% (over {len(gaps)} instances)")
-    else:
-        print(f"{algo_name}: No successful evaluations")
-
-# Save detailed results
-output_file = "tsplib_evaluation_fixed_results.json"
-with open(output_file, 'w') as f:
-    json.dump({
-        "timestamp": datetime.now().isoformat(),
-        "instances": TSPLIB_INSTANCES,
-        "algorithms": list(algorithms.keys()),
-        "results": instance_results,
-        "summary": all_results
-    }, f, indent=2)
-
-print(f"\n✓ Detailed results saved to {output_file}")
-
-# Also save a simplified summary
-summary_file = "tsplib_evaluation_summary.txt"
-with open(summary_file, 'w') as f:
-    f.write("TSPLIB EVALUATION SUMMARY (Fixed Distance Metrics)\n")
-    f.write("=" * 60 + "\n")
-    f.write(f"Evaluation time: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n")
-    f.write(f"Instances: {', '.join(TSPLIB_INSTANCES)}\n")
-    f.write(f"Algorithms: {', '.join(algorithms.keys())}\n\n")
-    
-    for instance_name in TSPLIB_INSTANCES:
-        f.write(f"{instance_name}:\n")
-        if instance_name in instance_results:
-            for algo_name in algorithms.keys():
-                if algo_name in instance_results[instance_name]:
-                    result = instance_results[instance_name][algo_name]
-                    if result["success"]:
-                        f.write(f"  {algo_name}: length={result['tour_length']:.2f}, ")
-                        f.write(f"gap={result['gap_percent']:.2f}%, time={result['runtime']:.2f}s\n")
-                    else:
-                        f.write(f"  {algo_name}: FAILED - {result['error']}\n")
-        f.write("\n")
-
-print(f"✓ Summary saved to {summary_file}")
+if __name__ == "__main__":
+    main()

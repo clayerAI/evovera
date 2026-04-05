@@ -1,0 +1,102 @@
+{
+  "att532": {
+    "instance": "att532",
+    "n_nodes": 532,
+    "optimal": 27686,
+    "avg_length": 29414.0,
+    "avg_gap_pct": 6.241421657155241,
+    "std_gap_pct": 0.0,
+    "avg_runtime": 90.7084391117096,
+    "success_rate": 100.0,
+    "valid_tours": 1,
+    "total_seeds": 1,
+    "ci_95_lower": 6.241421657155241,
+    "ci_95_upper": 6.241421657155241,
+    "gap_pcts": [
+      6.241421657155241
+    ],
+    "runtimes": [
+      90.7084391117096
+    ]
+  },
+  "a280": {
+    "instance": "a280",
+    "n_nodes": 280,
+    "optimal": 2579,
+    "avg_length": 2714.0,
+    "avg_gap_pct": 5.234587049243893,
+    "std_gap_pct": 0.0,
+    "avg_runtime": 10.598023414611816,
+    "success_rate": 100.0,
+    "valid_tours": 1,
+    "total_seeds": 1,
+    "ci_95_lower": 5.234587049243893,
+    "ci_95_upper": 5.234587049243893,
+    "gap_pcts": [
+      5.234587049243893
+    ],
+    "runtimes": [
+      10.598023414611816
+    ]
+  },
+  "d198": {
+    "instance": "d198",
+    "n_nodes": 198,
+    "optimal": 15780,
+    "avg_length": 16199.0,
+    "avg_gap_pct": 2.6552598225602027,
+    "std_gap_pct": 0.0,
+    "avg_runtime": 6.185060501098633,
+    "success_rate": 100.0,
+    "valid_tours": 1,
+    "total_seeds": 1,
+    "ci_95_lower": 2.6552598225602027,
+    "ci_95_upper": 2.6552598225602027,
+    "gap_pcts": [
+      2.6552598225602027
+    ],
+    "runtimes": [
+      6.185060501098633
+    ]
+  },
+  "lin318": {
+    "instance": "lin318",
+    "n_nodes": 318,
+    "optimal": 42029,
+    "avg_length": 44683.0,
+    "avg_gap_pct": 6.3146874776939725,
+    "std_gap_pct": 0.0,
+    "avg_runtime": 27.404160499572754,
+    "success_rate": 100.0,
+    "valid_tours": 1,
+    "total_seeds": 1,
+    "ci_95_lower": 6.3146874776939725,
+    "ci_95_upper": 6.3146874776939725,
+    "gap_pcts": [
+      6.3146874776939725
+    ],
+    "runtimes": [
+      27.404160499572754
+    ]
+  },
+  "pr439": {
+    "instance": "pr439",
+    "n_nodes": 439,
+    "optimal": 107217,
+    "avg_length": 113804.0,
+    "avg_gap_pct": 6.143615284889523,
+    "std_gap_pct": 0.0,
+    "avg_runtime": 49.08751130104065,
+    "success_rate": 100.0,
+    "valid_tours": 1,
+    "total_seeds": 1,
+    "ci_95_lower": 6.143615284889523,
+    "ci_95_upper": 6.143615284889523,
+    "gap_pcts": [
+      6.143615284889523
+    ],
+    "runtimes": [
+      49.08751130104065
+    ]
+  }
+}

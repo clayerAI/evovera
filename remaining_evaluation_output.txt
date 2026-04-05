@@ -1,0 +1,67 @@
+================================================================================
+RUNNING REMAINING TSPLIB INSTANCES
+Started: 2026-04-05 07:01:30
+================================================================================
+
+================================================================================
+STARTING: LIN318
+================================================================================
+
+================================================================================
+Evaluating lin318 (optimal: 42,029)
+================================================================================
+✓ Parsed lin318: 318 nodes, optimal=42029
+✓ Loaded lin318: 318 nodes, EUC_2D metric
+  Seed 1/10: Optimized v11: n=318, tour_length=44683.00, runtime=18.299s
+length=44,683 (6.31% gap), 18.40s
+  Seed 2/10: Optimized v11: n=318, tour_length=44683.00, runtime=18.394s
+length=44,683 (6.31% gap), 18.49s
+  Seed 3/10: Optimized v11: n=318, tour_length=44683.00, runtime=19.793s
+length=44,683 (6.31% gap), 19.81s
+  Seed 4/10: Optimized v11: n=318, tour_length=44683.00, runtime=20.203s
+length=44,683 (6.31% gap), 20.30s
+  Seed 5/10: Optimized v11: n=318, tour_length=44683.00, runtime=19.890s
+length=44,683 (6.31% gap), 19.99s
+  Seed 6/10: Optimized v11: n=318, tour_length=44683.00, runtime=14.221s
+length=44,683 (6.31% gap), 14.31s
+  Seed 7/10: Optimized v11: n=318, tour_length=44683.00, runtime=13.412s
+length=44,683 (6.31% gap), 13.50s
+  Seed 8/10: Optimized v11: n=318, tour_length=44683.00, runtime=12.700s
+length=44,683 (6.31% gap), 12.79s
+  Seed 9/10: Optimized v11: n=318, tour_length=44683.00, runtime=12.206s
+length=44,683 (6.31% gap), 12.30s
+  Seed 10/10: Optimized v11: n=318, tour_length=44683.00, runtime=16.805s
+length=44,683 (6.31% gap), 16.90s
+
+  Summary: 6.31% gap (95% CI: [6.31, 6.31]), 16.68s avg, 100% success
+
+Completed lin318 in 167.3s
+
+================================================================================
+STARTING: PR439
+================================================================================
+
+================================================================================
+Evaluating pr439 (optimal: 107,217)
+================================================================================
+✓ Parsed pr439: 439 nodes, optimal=107217
+✓ Loaded pr439: 439 nodes, EUC_2D metric
+  Seed 1/10: Optimized v11: n=439, tour_length=113804.00, runtime=34.919s
+length=113,804 (6.14% gap), 35.09s
+  Seed 2/10: Optimized v11: n=439, tour_length=113804.00, runtime=48.911s
+length=113,804 (6.14% gap), 49.10s
+  Seed 3/10: Optimized v11: n=439, tour_length=113804.00, runtime=45.998s
+length=113,804 (6.14% gap), 46.11s
+  Seed 4/10: Optimized v11: n=439, tour_length=113804.00, runtime=52.099s
+length=113,804 (6.14% gap), 52.30s
+  Seed 5/10: Optimized v11: n=439, tour_length=113804.00, runtime=46.405s
+length=113,804 (6.14% gap), 46.51s
+  Seed 6/10: Optimized v11: n=439, tour_length=113804.00, runtime=37.910s
+length=113,804 (6.14% gap), 38.09s
+  Seed 7/10: Optimized v11: n=439, tour_length=113804.00, runtime=47.503s
+length=113,804 (6.14% gap), 47.62s
+  Seed 8/10: Optimized v11: n=439, tour_length=113804.00, runtime=46.605s
+length=113,804 (6.14% gap), 46.80s
+  Seed 9/10: Optimized v11: n=439, tour_length=113804.00, runtime=52.284s
+length=113,804 (6.14% gap), 52.39s
+  Seed 10/10: 
