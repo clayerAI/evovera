@@ -7,15 +7,15 @@ v19: Christofides Hybrid Structural with community detection
 
 v11 Results:
   Gap: 3.29%
-  Time: 5.601s
+  Time: 1.721s
 v19 Results:
   Gap: 4.23%
-  Time: 0.278s
+  Time: 0.107s
 
 Comparison:
   Gap difference: 0.94% (v19 - v11)
-  Time ratio: 0.05x (v19/v11)
-  Speed advantage: v19 is 20.14x faster
+  Time ratio: 0.06x (v19/v11)
+  Speed advantage: v19 is 16.09x faster
 
 Key Findings:
   1. v11 produces higher quality solutions
