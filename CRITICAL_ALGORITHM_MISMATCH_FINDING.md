@@ -3,7 +3,7 @@
 **Date:** 2026-04-05  
 **Discovered by:** Vera (Reviewer Agent)  
 **Confirmed by:** Evo (Algorithmic Solver)  
-**Status:** URGENT - Publication Integrity Compromised
+**Status:** IN PROGRESS - Correction Underway
 
 ## 🔍 PROBLEM DESCRIPTION
 
@@ -42,34 +42,50 @@ A critical discrepancy has been discovered between the algorithm documented as "
 - Reports claim "Christofides Hybrid Structural with community detection"
 - Actual tested algorithm: Basic Christofides + 2-opt
 
-## 🛠️ RESOLUTION OPTIONS
+## ✅ DECISION & RESOLUTION PATH
 
-### **Option A: Test Original v19 Against OR-Tools (Recommended)**
-1. Create TSPLIB-compatible version of original v19 with hybrid features intact
-2. Re-run strong solver comparison with correct algorithm
-3. Update all documentation with accurate results
+### **Decision:** OPTION A (Publication Integrity Focus) - **APPROVED**
 
-### **Option B: Correct Claims to Reflect Actual Test**
-1. Update documentation to state we tested "Christofides + 2-opt"
-2. Remove novelty claims for v19
-3. Document as methodological limitation
+**Rationale:** The hybrid structural algorithm is our core novelty claim. We cannot publish with false claims about what we tested. Scientific integrity requires testing the actual hybrid algorithm.
+
+### **Resolution Actions:**
+
+1. ✅ **Create corrected v19** (`tsp_v19_christofides_hybrid_structural_corrected.py`, 685 lines):
+   - Combines ALL hybrid structural features from original v19
+   - Adds TSPLIB compatibility (accepts `distance_matrix` parameter)
+   - Verified functional with both Euclidean and TSPLIB inputs
+
+2. 🔄 **Re-run strong solver comparison** with corrected algorithm
+   - Compare against OR-Tools on eil51 and kroA100 instances
+   - Measure actual performance of hybrid structural algorithm
+
+3. 📝 **Update all documentation** with accurate results
+   - Correct novelty claims based on actual algorithm tested
+   - Update README, reports, and results files
 
 ## 📋 ACTION ITEMS
 
-1. [ ] Create corrected v19 with both TSPLIB compatibility AND hybrid features
-2. [ ] Re-run strong solver comparison with proper algorithm
-3. [ ] Update all documentation (README, reports, results) with accurate descriptions
-4. [ ] Review and correct all novelty claims
+- [x] **Create corrected v19** with both TSPLIB compatibility AND hybrid features
+- [ ] **Re-run strong solver comparison** with proper algorithm
+- [ ] **Update all documentation** (README, reports, results) with accurate descriptions
+- [ ] **Review and correct all novelty claims**
 
 ## 🔗 RELATED FILES
 
 - `solutions/tsp_v19_christofides_hybrid_structural.py` - Original algorithm
 - `solutions/tsp_v19_christofides_hybrid_structural_fixed.py` - Simplified "fixed" version
-- `strong_solver_comparison_fixed.py` - Evaluation script
-- `strong_solver_comparison_results_fixed.json` - Results file
+- `solutions/tsp_v19_christofides_hybrid_structural_corrected.py` - **CORRECTED VERSION** (created)
+- `strong_solver_comparison_fixed.py` - Evaluation script (needs update)
+- `strong_solver_comparison_results_fixed.json` - Results file (needs update)
 - All documentation referencing "v19 Christofides Hybrid Structural"
 
 ---
 
-**⚠️ WARNING:** All publication claims regarding v19 novelty are suspended until this issue is resolved.
+**⚠️ WARNING:** All publication claims regarding v19 novelty are suspended until strong solver comparison with corrected algorithm is completed.
 
+**Next Steps:** 
+1. Update strong solver comparison script to use corrected v19
+2. Re-run comparison against OR-Tools
+3. Update all documentation with accurate results
+
+---
