@@ -1,0 +1,53 @@
+{
+  "timestamp": "2026-04-05T05:30:00",
+  "algorithm": "ChristofidesHybridStructuralOptimizedV11",
+  "baseline_target": 17.69,
+  "results": {
+    "eil51": {
+      "instance": "eil51",
+      "n": 51,
+      "optimal": 426,
+      "mean_gap": 6.57,
+      "std_gap": 0.0,
+      "seeds_tested": 10,
+      "deterministic": true,
+      "time_mean": 0.33,
+      "time_std": 0.15,
+      "baseline_comparison": "beats",
+      "improvement_factor": 2.7
+    },
+    "kroA100": {
+      "instance": "kroA100",
+      "n": 100,
+      "optimal": 21282,
+      "mean_gap": 7.48,
+      "std_gap": null,
+      "seeds_tested": 1,
+      "deterministic": null,
+      "time_mean": 12.71,
+      "time_std": null,
+      "baseline_comparison": "beats",
+      "improvement_factor": 2.4
+    },
+    "a280": {
+      "instance": "a280",
+      "n": 280,
+      "optimal": 2579,
+      "mean_gap": 4.15,
+      "std_gap": null,
+      "seeds_tested": 1,
+      "deterministic": null,
+      "time_mean": 106.0,
+      "time_std": null,
+      "baseline_comparison": "beats",
+      "improvement_factor": 4.3
+    }
+  },
+  "summary": {
+    "instances_evaluated": 3,
+    "instances_beating_baseline": 3,
+    "average_improvement_vs_baseline": 11.62,
+    "success_rate": 1.0,
+    "phase2_status": "PASSED"
+  }
+}

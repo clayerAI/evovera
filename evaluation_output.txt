@@ -1,0 +1,59 @@
+======================================================================
+TSPLIB Phase 2: Comprehensive v11 Algorithm Evaluation
+Date: 2026-04-05 05:31:48
+Seeds per instance: 10
+Timeout per instance: 300s
+======================================================================
+
+============================================================
+Evaluating eil51 (optimal=426)
+============================================================
+✓ Parsed eil51: 51 nodes, optimal=426
+Instance: eil51, n=51
+  Seed 1/10 (seed=42)... ✅ Length=454.00, Gap=6.57%, Time=1.09s
+  Seed 2/10 (seed=142)... ✅ Length=454.00, Gap=6.57%, Time=0.30s
+  Seed 3/10 (seed=242)... ✅ Length=454.00, Gap=6.57%, Time=0.50s
+  Seed 4/10 (seed=342)... ✅ Length=454.00, Gap=6.57%, Time=0.41s
+  Seed 5/10 (seed=442)... ✅ Length=454.00, Gap=6.57%, Time=0.49s
+  Seed 6/10 (seed=542)... ✅ Length=454.00, Gap=6.57%, Time=0.50s
+  Seed 7/10 (seed=642)... ✅ Length=454.00, Gap=6.57%, Time=0.31s
+  Seed 8/10 (seed=742)... ✅ Length=454.00, Gap=6.57%, Time=0.50s
+  Seed 9/10 (seed=842)... ✅ Length=454.00, Gap=6.57%, Time=0.50s
+  Seed 10/10 (seed=942)... ✅ Length=454.00, Gap=6.57%, Time=0.50s
+
+📊 Statistical Summary for eil51:
+  Samples: 10/10 successful
+  Gap - Mean: 6.57%, Std: 0.00%
+  Gap - Min: 6.57%, Max: 6.57%
+  Time - Mean: 0.51s, Std: 0.21s
+  Gap - 95% CI: [N/A - scipy not installed]
+
+============================================================
+Evaluating kroA100 (optimal=21282)
+============================================================
+✓ Parsed kroA100: 100 nodes, optimal=21282
+Instance: kroA100, n=100
+  Seed 1/10 (seed=42)... ✅ Length=22873.00, Gap=7.48%, Time=11.60s
+  Seed 2/10 (seed=142)... ✅ Length=22873.00, Gap=7.48%, Time=10.90s
+  Seed 3/10 (seed=242)... ✅ Length=22873.00, Gap=7.48%, Time=11.82s
+  Seed 4/10 (seed=342)... ✅ Length=22873.00, Gap=7.48%, Time=10.92s
+  Seed 5/10 (seed=442)... ✅ Length=22873.00, Gap=7.48%, Time=12.59s
+  Seed 6/10 (seed=542)... ✅ Length=22873.00, Gap=7.48%, Time=11.51s
+  Seed 7/10 (seed=642)... ✅ Length=22873.00, Gap=7.48%, Time=11.70s
+  Seed 8/10 (seed=742)... ✅ Length=22873.00, Gap=7.48%, Time=10.41s
+  Seed 9/10 (seed=842)... ✅ Length=22873.00, Gap=7.48%, Time=10.80s
+  Seed 10/10 (seed=942)... ✅ Length=22873.00, Gap=7.48%, Time=9.70s
+
+📊 Statistical Summary for kroA100:
+  Samples: 10/10 successful
+  Gap - Mean: 7.48%, Std: 0.00%
+  Gap - Min: 7.48%, Max: 7.48%
+  Time - Mean: 11.19s, Std: 0.78s
+  Gap - 95% CI: [N/A - scipy not installed]
+
+============================================================
+Evaluating a280 (optimal=2579)
+============================================================
+✓ Parsed a280: 280 nodes, optimal=2579
+Instance: a280, n=280
+  Seed 1/10 (seed=42)... 
