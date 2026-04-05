@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Run remaining instances from comprehensive evaluation."""
+"""Run remaining instances from comprehensive evaluation with fixed tour handling."""
 
 import sys
 import os
@@ -21,10 +21,13 @@ TSPLIB_INSTANCES = {
     "att532": {"file": "data/tsplib/att532.tsp", "optimal": 27686, "seeds": 5},
 }
 
-TIMEOUTS = {
-    "att532": 300,
-    "default": 180
-}
+def calculate_tour_length(tour, distance_matrix):
+    """Calculate tour length safely for numpy arrays."""
+    n = len(tour)
+    total = 0.0
+    for i in range(n):
+        total += distance_matrix[int(tour[i]), int(tour[(i + 1) % n])]
+    return total
 
 def run_instance(instance_name, instance_info, results):
     print(f"\n{'='*80}")
@@ -61,15 +64,18 @@ def run_instance(instance_name, instance_info, results):
         start_time = time.time()
         try:
             solver = ChristofidesHybridStructuralOptimizedV11(distance_matrix, seed=seed)
-            tour = solver.solve()
+            result = solver.solve()
+            
+            # Handle tuple return (tour, tour_length)
+            if isinstance(result, tuple) and len(result) == 2:
+                tour, computed_tour_length = result
+                tour_length = computed_tour_length
+            else:
+                tour = result
+                tour_length = calculate_tour_length(tour, distance_matrix)
+            
             end_time = time.time()
             runtime = end_time - start_time
-            
-            # Calculate tour length
-            n = parser.dimension
-            tour_length = 0
-            for i in range(n):
-                tour_length += distance_matrix[tour[i]][tour[(i + 1) % n]]
             
             gap_pct = (tour_length - optimal) / optimal * 100
             
@@ -82,6 +88,8 @@ def run_instance(instance_name, instance_info, results):
             
         except Exception as e:
             print(f"✗ Error: {e}")
+            import traceback
+            traceback.print_exc()
             return False
     
     # Calculate statistics

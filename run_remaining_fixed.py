@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Run remaining instances from comprehensive evaluation."""
+"""Run remaining instances from comprehensive evaluation with fixed tour length calculation."""
 
 import sys
 import os
@@ -21,10 +21,13 @@ TSPLIB_INSTANCES = {
     "att532": {"file": "data/tsplib/att532.tsp", "optimal": 27686, "seeds": 5},
 }
 
-TIMEOUTS = {
-    "att532": 300,
-    "default": 180
-}
+def calculate_tour_length(tour, distance_matrix):
+    """Calculate tour length safely for numpy arrays."""
+    n = len(tour)
+    total = 0.0
+    for i in range(n):
+        total += distance_matrix[int(tour[i]), int(tour[(i + 1) % n])]
+    return total
 
 def run_instance(instance_name, instance_info, results):
     print(f"\n{'='*80}")
@@ -65,12 +68,8 @@ def run_instance(instance_name, instance_info, results):
             end_time = time.time()
             runtime = end_time - start_time
             
-            # Calculate tour length
-            n = parser.dimension
-            tour_length = 0
-            for i in range(n):
-                tour_length += distance_matrix[tour[i]][tour[(i + 1) % n]]
-            
+            # Calculate tour length safely
+            tour_length = calculate_tour_length(tour, distance_matrix)
             gap_pct = (tour_length - optimal) / optimal * 100
             
             print(f"Optimized v11: n={parser.dimension}, tour_length={tour_length:.2f}, runtime={runtime:.3f}s")
@@ -82,6 +81,8 @@ def run_instance(instance_name, instance_info, results):
             
         except Exception as e:
             print(f"✗ Error: {e}")
+            import traceback
+            traceback.print_exc()
             return False
     
     # Calculate statistics
