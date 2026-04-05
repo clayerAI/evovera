@@ -1,0 +1,38 @@
+{
+  "10": {
+    "original_distance": 3.4236988078699437,
+    "refined_distance": 3.4249604746393056,
+    "improvement_percent": -0.036850986028962314,
+    "original_time": 0.0011546611785888672,
+    "refined_time": 0.0011425018310546875,
+    "original_violations": false,
+    "refined_violations": false
+  },
+  "20": {
+    "original_distance": 4.901992080275092,
+    "refined_distance": 4.5005992826354895,
+    "improvement_percent": 8.18836079427279,
+    "original_time": 0.0014827251434326172,
+    "refined_time": 0.001661062240600586,
+    "original_violations": false,
+    "refined_violations": false
+  },
+  "30": {
+    "original_distance": 6.796408002415187,
+    "refined_distance": 6.429795591487064,
+    "improvement_percent": 5.394208393578525,
+    "original_time": 0.0019817352294921875,
+    "refined_time": 0.0013556480407714844,
+    "original_violations": false,
+    "refined_violations": false
+  },
+  "50": {
+    "original_distance": 10.557309423945066,
+    "refined_distance": 8.888141637039727,
+    "improvement_percent": 15.81054149194012,
+    "original_time": 0.003835439682006836,
+    "refined_time": 0.004027128219604492,
+    "original_violations": false,
+    "refined_violations": false
+  }
+}
