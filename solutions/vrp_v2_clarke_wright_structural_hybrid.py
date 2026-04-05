@@ -296,7 +296,7 @@ class CapacitatedVRPStructuralHybrid:
             route_demands.append(combined_demand)
         
         return routes
-def _compute_distance_matrix(self) -> np.ndarray:
+    def _compute_distance_matrix(self) -> np.ndarray:
         """Compute Euclidean distance matrix between all points."""
         dist = np.zeros((self.n, self.n))
         for i in range(self.n):
@@ -305,15 +305,12 @@ def _compute_distance_matrix(self) -> np.ndarray:
                 dist[i, j] = d
                 dist[j, i] = d
         return dist
-    
     def distance(self, i: int, j: int) -> float:
         """Get distance between two points."""
         return self.dist_matrix[i, j]
-    
     def total_demand(self, customers: List[int]) -> float:
         """Calculate total demand for a list of customer indices."""
         return sum(self.demands[c] for c in customers)
-    
     def clarke_wright_savings_sequential(self) -> List[List[int]]:
         """
         Clarke-Wright savings algorithm (sequential version).
@@ -525,7 +522,6 @@ def _compute_distance_matrix(self) -> np.ndarray:
             cost += self.distance(route[k], route[k + 1])
         cost += self.distance(route[-1], 0)  # Last customer to depot
         return cost
-    
     def two_opt_route(self, route: List[int]) -> List[int]:
         """
         Apply 2-opt local search to improve a single route.
@@ -565,11 +561,9 @@ def _compute_distance_matrix(self) -> np.ndarray:
     def two_opt_all_routes(self, routes: List[List[int]]) -> List[List[int]]:
         """Apply 2-opt to all routes."""
         return [self.two_opt_route(route) for route in routes]
-    
     def total_cost(self, routes: List[List[int]]) -> float:
         """Calculate total distance for all routes."""
         return sum(self.route_cost(route) for route in routes)
-    
     def solve_cvrp(self, method: str = 'structural_hybrid', apply_2opt: bool = True) -> Dict:
         """
         Solve CVRP using specified method.
@@ -624,7 +618,8 @@ def _compute_distance_matrix(self) -> np.ndarray:
             'has_capacity_violations': has_capacity_violations,
             'capacity_violations': capacity_violations,
             'method_used': method
-        }def benchmark(self, n_trials: int = 10, method: str = 'parallel') -> Dict:
+        }
+    def benchmark(self, n_trials: int = 10, method: str = "parallel") -> Dict:
         """
         Run benchmark tests.
         
@@ -669,38 +664,38 @@ def _compute_distance_matrix(self) -> np.ndarray:
         }
 
 
-def solve_vrp(points: np.ndarray, demands: np.ndarray, capacity: float, 
+    def solve_vrp(points: np.ndarray, demands: np.ndarray, capacity: float, 
               method: str = 'parallel', apply_2opt: bool = True) -> Dict:
-    """
-    Wrapper function for adversarial testing framework.
+        """
+        Wrapper function for adversarial testing framework.
     
-    Args:
+        Args:
         points: Array of shape (n, 2) with coordinates (first point is depot)
         demands: Array of length n with demands (depot demand should be 0)
         capacity: Vehicle capacity
         method: 'sequential' or 'parallel'
         apply_2opt: Whether to apply 2-opt intra-route improvement
         
-    Returns:
+        Returns:
         Dictionary with solution
-    """
-    n = len(points)
-    n_customers = n - 1
+        """
+        n = len(points)
+        n_customers = n - 1
     
-    # Create VRP instance
-    vrp = CapacitatedVRP(n_customers=n_customers, capacity=capacity, seed=None)
+        # Create VRP instance
+        vrp = CapacitatedVRP(n_customers=n_customers, capacity=capacity, seed=None)
     
-    # Override generated points and demands with provided ones
-    vrp.points = points.copy()
-    vrp.demands = demands.copy()
-    vrp.n = n
-    vrp.n_customers = n_customers
+        # Override generated points and demands with provided ones
+        vrp.points = points.copy()
+        vrp.demands = demands.copy()
+        vrp.n = n
+        vrp.n_customers = n_customers
     
-    # Recompute distance matrix
-    vrp.dist_matrix = vrp._compute_distance_matrix()
+        # Recompute distance matrix
+        vrp.dist_matrix = vrp._compute_distance_matrix()
     
-    # Solve
-    return vrp.solve_cvrp(method=method, apply_2opt=apply_2opt)
+        # Solve
+        return vrp.solve_cvrp(method=method, apply_2opt=apply_2opt)
 
 
 if __name__ == "__main__":

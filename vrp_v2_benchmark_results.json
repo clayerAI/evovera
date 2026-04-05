@@ -1,0 +1,106 @@
+{
+  "Small (10 customers)": {
+    "sequential": {
+      "total_distance": 3.445725010162241,
+      "num_routes": 2,
+      "computation_time": 8.678436279296875e-05,
+      "has_capacity_violations": false,
+      "capacity_violations": [],
+      "wall_time": 0.00014066696166992188
+    },
+    "parallel": {
+      "total_distance": 3.445725010162241,
+      "num_routes": 2,
+      "computation_time": 6.985664367675781e-05,
+      "has_capacity_violations": false,
+      "capacity_violations": [],
+      "wall_time": 0.00010585784912109375
+    },
+    "structural_hybrid": {
+      "total_distance": 3.4236988078699437,
+      "num_routes": 2,
+      "computation_time": 0.010426044464111328,
+      "has_capacity_violations": false,
+      "capacity_violations": [],
+      "wall_time": 0.010543584823608398
+    }
+  },
+  "Medium (20 customers)": {
+    "sequential": {
+      "total_distance": 4.747025415512686,
+      "num_routes": 3,
+      "computation_time": 0.0002808570861816406,
+      "has_capacity_violations": false,
+      "capacity_violations": [],
+      "wall_time": 0.0004754066467285156
+    },
+    "parallel": {
+      "total_distance": 4.747025415512686,
+      "num_routes": 3,
+      "computation_time": 0.00022172927856445312,
+      "has_capacity_violations": false,
+      "capacity_violations": [],
+      "wall_time": 0.0003948211669921875
+    },
+    "structural_hybrid": {
+      "total_distance": 4.835107267340264,
+      "num_routes": 3,
+      "computation_time": 0.000507354736328125,
+      "has_capacity_violations": false,
+      "capacity_violations": [],
+      "wall_time": 0.000759124755859375
+    }
+  },
+  "Large (30 customers)": {
+    "sequential": {
+      "total_distance": 6.3235479834106885,
+      "num_routes": 5,
+      "computation_time": 0.0008075237274169922,
+      "has_capacity_violations": false,
+      "capacity_violations": [],
+      "wall_time": 0.0010223388671875
+    },
+    "parallel": {
+      "total_distance": 6.3235479834106885,
+      "num_routes": 5,
+      "computation_time": 0.0005011558532714844,
+      "has_capacity_violations": false,
+      "capacity_violations": [],
+      "wall_time": 0.0007143020629882812
+    },
+    "structural_hybrid": {
+      "total_distance": 6.280820808379103,
+      "num_routes": 5,
+      "computation_time": 0.025609970092773438,
+      "has_capacity_violations": false,
+      "capacity_violations": [],
+      "wall_time": 0.025924205780029297
+    }
+  },
+  "Extra Large (50 customers)": {
+    "sequential": {
+      "total_distance": 9.156278007698898,
+      "num_routes": 7,
+      "computation_time": 0.0026450157165527344,
+      "has_capacity_violations": false,
+      "capacity_violations": [],
+      "wall_time": 0.0030634403228759766
+    },
+    "parallel": {
+      "total_distance": 9.156278007698898,
+      "num_routes": 7,
+      "computation_time": 0.0015492439270019531,
+      "has_capacity_violations": false,
+      "capacity_violations": [],
+      "wall_time": 0.001973867416381836
+    },
+    "structural_hybrid": {
+      "total_distance": 9.219281209793547,
+      "num_routes": 7,
+      "computation_time": 0.0031647682189941406,
+      "has_capacity_violations": false,
+      "capacity_violations": [],
+      "wall_time": 0.0036149024963378906
+    }
+  }
+}
