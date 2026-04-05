@@ -1,0 +1,24 @@
+================================================================================
+TSPLIB Phase 2 Complete Evaluation - v11 Algorithm
+Required instances: att532, a280, d198, lin318, pr439
+Seeds per instance: 10
+================================================================================
+
+================================================================================
+Evaluating att532 (optimal: 27,686)
+================================================================================
+✓ Parsed att532: 532 nodes, optimal=27686
+✓ Loaded att532: 532 nodes, ATT metric
+Traceback (most recent call last):
+  File "/data/workspace/evovera/evaluate_v11_tsplib_complete.py", line 248, in <module>
+    sys.exit(main())
+             ^^^^^^
+  File "/data/workspace/evovera/evaluate_v11_tsplib_complete.py", line 180, in main
+    results = evaluate_instance(instance_name, info["file"], info["optimal"], N_SEEDS)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/workspace/evovera/evaluate_v11_tsplib_complete.py", line 70, in evaluate_instance
+    solver = V11Solver()
+             ^^^^^^^^^^^
+  File "/data/workspace/evovera/solutions/tsp_v19_optimized_fixed_v11_proper.py", line 122, in __init__
+    raise ValueError("Must provide either points or distance_matrix")
+ValueError: Must provide either points or distance_matrix
