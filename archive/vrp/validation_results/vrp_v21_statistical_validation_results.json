@@ -1,0 +1,44 @@
+{
+  "20": {
+    "baseline_mean": 4.783539389382511,
+    "baseline_std": 0.6169660290797371,
+    "v21_mean": 4.793033276748246,
+    "v21_std": 0.6157948293449709,
+    "mean_improvement": -0.2016051769840474,
+    "improvement_ci_lower": -0.9419536359950815,
+    "improvement_ci_upper": 0.5387432820269866,
+    "t_statistic": -0.6693006540040197,
+    "p_value": 0.5,
+    "success_rate": 20.0,
+    "n_seeds": 10,
+    "valid_pairs": 10
+  },
+  "30": {
+    "baseline_mean": 6.503290204205223,
+    "baseline_std": 0.5457407981172161,
+    "v21_mean": 6.540956345829206,
+    "v21_std": 0.5705068548000123,
+    "mean_improvement": -0.5811098424262308,
+    "improvement_ci_lower": -2.562789731503195,
+    "improvement_ci_upper": 1.4005700466507336,
+    "t_statistic": -0.6533431439268826,
+    "p_value": 0.5,
+    "success_rate": 40.0,
+    "n_seeds": 10,
+    "valid_pairs": 10
+  },
+  "50": {
+    "baseline_mean": 9.275788222933842,
+    "baseline_std": 0.370907426527766,
+    "v21_mean": 9.360981083649829,
+    "v21_std": 0.38899136086036473,
+    "mean_improvement": -0.9296290241140405,
+    "improvement_ci_lower": -2.287859334723311,
+    "improvement_ci_upper": 0.4286012864952301,
+    "t_statistic": -1.5569307541382686,
+    "p_value": 0.5,
+    "success_rate": 40.0,
+    "n_seeds": 10,
+    "valid_pairs": 10
+  }
+}
