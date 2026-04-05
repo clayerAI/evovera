@@ -1,0 +1,123 @@
+✓ Loaded v11 algorithm
+✓ Loaded TSPLIB parser
+✓ Loaded OR-Tools
+✓ Loaded Phase 2 results from v11_tsplib_phase2_comprehensive_results.json
+
+================================================================================
+PHASE 3: STRONG SOLVER COMPARISON (FULL EVALUATION)
+v11 (Christofides Hybrid Structural Optimized) vs OR-Tools TSP Solver
+================================================================================
+
+============================================================
+Processing instance: eil51
+============================================================
+  File: data/tsplib/eil51.tsp
+  Optimal: 426
+  Seeds: 2
+  Timeouts: v11=180s, OR-Tools=30s
+✓ Parsed eil51: 51 nodes, optimal=426
+  ✓ Parsed eil51: 51 nodes, optimal=426
+  ✓ Using v11 results from Phase 2 (2 seeds)
+  Seed 1/2: v11(gap=3.05%, time=0.03s) OR-Tools(gap=1.41%, time=30.03s)
+  Seed 2/2: v11(gap=3.05%, time=0.02s) OR-Tools(gap=1.41%, time=30.00s)
+
+  ✓ Completed eil51
+
+============================================================
+Processing instance: kroA100
+============================================================
+  File: data/tsplib/kroA100.tsp
+  Optimal: 21282
+  Seeds: 2
+  Timeouts: v11=180s, OR-Tools=60s
+✓ Parsed kroA100: 100 nodes, optimal=21282
+  ✓ Parsed kroA100: 100 nodes, optimal=21282
+  ✓ Using v11 results from Phase 2 (2 seeds)
+  Seed 1/2: v11(gap=8.09%, time=0.08s) OR-Tools(gap=0.00%, time=60.00s)
+  Seed 2/2: v11(gap=8.09%, time=0.09s) OR-Tools(gap=0.00%, time=60.00s)
+
+  ✓ Completed kroA100
+
+============================================================
+Processing instance: d198
+============================================================
+  File: data/tsplib/d198.tsp
+  Optimal: 15780
+  Seeds: 2
+  Timeouts: v11=180s, OR-Tools=60s
+✓ Parsed d198: 198 nodes, optimal=15780
+  ✓ Parsed d198: 198 nodes, optimal=15780
+  ✓ Using v11 results from Phase 2 (2 seeds)
+  Seed 1/2: v11(gap=2.66%, time=0.79s) OR-Tools(gap=1.44%, time=60.01s)
+  Seed 2/2: v11(gap=2.66%, time=0.81s) OR-Tools(gap=1.44%, time=60.00s)
+
+  ✓ Completed d198
+
+============================================================
+Processing instance: a280
+============================================================
+  File: data/tsplib/a280.tsp
+  Optimal: 2579
+  Seeds: 2
+  Timeouts: v11=180s, OR-Tools=120s
+✓ Parsed a280: 280 nodes, optimal=2579
+  ✓ Parsed a280: 280 nodes, optimal=2579
+  ✓ Using v11 results from Phase 2 (2 seeds)
+  Seed 1/2: v11(gap=5.23%, time=1.47s) OR-Tools(gap=1.78%, time=120.00s)
+  Seed 2/2: v11(gap=5.23%, time=1.62s) OR-Tools(gap=1.78%, time=120.00s)
+
+  ✓ Completed a280
+
+============================================================
+Processing instance: lin318
+============================================================
+  File: data/tsplib/lin318.tsp
+  Optimal: 42029
+  Seeds: 2
+  Timeouts: v11=180s, OR-Tools=120s
+✓ Parsed lin318: 318 nodes, optimal=42029
+  ✓ Parsed lin318: 318 nodes, optimal=42029
+  ✓ Using v11 results from Phase 2 (2 seeds)
+  Seed 1/2: v11(gap=6.31%, time=3.21s) OR-Tools(gap=3.62%, time=120.00s)
+  Seed 2/2: v11(gap=6.31%, time=3.33s) OR-Tools(gap=3.62%, time=120.00s)
+
+  ✓ Completed lin318
+
+============================================================
+Processing instance: pr439
+============================================================
+  File: data/tsplib/pr439.tsp
+  Optimal: 107217
+  Seeds: 1
+  Timeouts: v11=180s, OR-Tools=180s
+✓ Parsed pr439: 439 nodes, optimal=107217
+  ✓ Parsed pr439: 439 nodes, optimal=107217
+  ✓ Using v11 results from Phase 2 (1 seeds)
+  Seed 1/1: v11(gap=6.14%, time=6.36s) OR-Tools(gap=6.35%, time=180.00s)
+
+  ✓ Completed pr439
+
+============================================================
+Processing instance: att532
+============================================================
+  File: data/tsplib/att532.tsp
+  Optimal: 27686
+  Seeds: 1
+  Timeouts: v11=180s, OR-Tools=180s
+✓ Parsed att532: 532 nodes, optimal=27686
+  ✓ Parsed att532: 532 nodes, optimal=27686
+  ✓ Using v11 results from Phase 2 (1 seeds)
+  Seed 1/1: v11(gap=6.24%, time=12.00s) OR-Tools(gap=3.47%, time=180.00s)
+
+  ✓ Completed att532
+
+================================================================================
+OVERALL RESULTS
+================================================================================
+
+✓ Results saved to v11_tsplib_phase3_strong_solver_results.json
+✓ Summary report saved to v11_tsplib_phase3_strong_solver_summary.md
+
+================================================================================
+PHASE 3 COMPLETED SUCCESSFULLY
+================================================================================

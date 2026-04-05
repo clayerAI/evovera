@@ -1,0 +1,290 @@
+{
+  "metadata": {
+    "phase": 3,
+    "description": "Strong solver comparison: v11 vs OR-Tools TSP solver",
+    "timestamp": "2026-04-05 08:17:55",
+    "v11_algorithm": "ChristofidesHybridStructuralOptimizedV11",
+    "ortools_version": "9.15.6755",
+    "comparison_methodology": "Same TSPLIB instances, reduced seeds for feasibility",
+    "timeout_v11": 180,
+    "note": "Reduced seeds for OR-Tools feasibility (full seeds would take ~24 hours)"
+  },
+  "instances": {
+    "eil51": {
+      "instance": "eil51",
+      "n_nodes": 51,
+      "optimal": 426,
+      "num_seeds": 2,
+      "timeout_v11": 180,
+      "timeout_ortools": 30,
+      "v11": {
+        "gaps": [
+          3.051643192488263,
+          3.051643192488263
+        ],
+        "runtimes": [
+          0.030041217803955078,
+          0.019471168518066406
+        ],
+        "success_rate": 100.0,
+        "avg_gap": 3.051643192488263,
+        "gap_std": 0.0,
+        "avg_runtime": 0.024756193161010742,
+        "runtime_std": 0.007474153527527904
+      },
+      "ortools": {
+        "gaps": [
+          1.41
+        ],
+        "runtimes": [
+          30.03
+        ],
+        "success_rate": 100.0,
+        "avg_gap": 1.41,
+        "gap_std": 0,
+        "avg_runtime": 30.03,
+        "runtime_std": 0
+      },
+      "comparison": {
+        "gap_difference": 1.641643192488263,
+        "gap_difference_pct": 116.42859521193355
+      }
+    },
+    "kroA100": {
+      "instance": "kroA100",
+      "n_nodes": 100,
+      "optimal": 21282,
+      "num_seeds": 2,
+      "timeout_v11": 180,
+      "timeout_ortools": 60,
+      "v11": {
+        "gaps": [
+          8.091344798421202,
+          8.091344798421202
+        ],
+        "runtimes": [
+          0.07741975784301758,
+          0.08624792098999023
+        ],
+        "success_rate": 100.0,
+        "avg_gap": 8.091344798421202,
+        "gap_std": 0.0,
+        "avg_runtime": 0.0818338394165039,
+        "runtime_std": 0.006242454026645537
+      },
+      "ortools": {
+        "gaps": [
+          0.0
+        ],
+        "runtimes": [
+          60.0
+        ],
+        "success_rate": 100.0,
+        "avg_gap": 0.0,
+        "gap_std": 0,
+        "avg_runtime": 60.0,
+        "runtime_std": 0
+      },
+      "comparison": {
+        "gap_difference": 8.091344798421202,
+        "gap_difference_pct": Infinity
+      }
+    },
+    "d198": {
+      "instance": "d198",
+      "n_nodes": 198,
+      "optimal": 15780,
+      "num_seeds": 2,
+      "timeout_v11": 180,
+      "timeout_ortools": 60,
+      "v11": {
+        "gaps": [
+          2.6552598225602027,
+          2.6552598225602027
+        ],
+        "runtimes": [
+          0.7864511013031006,
+          0.8052830696105957
+        ],
+        "success_rate": 100.0,
+        "avg_gap": 2.6552598225602027,
+        "gap_std": 0.0,
+        "avg_runtime": 0.7958670854568481,
+        "runtime_std": 0.013316212493319948
+      },
+      "ortools": {
+        "gaps": [
+          1.44
+        ],
+        "runtimes": [
+          60.01
+        ],
+        "success_rate": 100.0,
+        "avg_gap": 1.44,
+        "gap_std": 0,
+        "avg_runtime": 60.01,
+        "runtime_std": 0
+      },
+      "comparison": {
+        "gap_difference": 1.2152598225602027,
+        "gap_difference_pct": 84.39304323334741
+      }
+    },
+    "a280": {
+      "instance": "a280",
+      "n_nodes": 280,
+      "optimal": 2579,
+      "num_seeds": 2,
+      "timeout_v11": 180,
+      "timeout_ortools": 120,
+      "v11": {
+        "gaps": [
+          5.234587049243893,
+          5.234587049243893
+        ],
+        "runtimes": [
+          1.4729297161102295,
+          1.6166455745697021
+        ],
+        "success_rate": 100.0,
+        "avg_gap": 5.234587049243893,
+        "gap_std": 0.0,
+        "avg_runtime": 1.5447876453399658,
+        "runtime_std": 0.10162245808073916
+      },
+      "ortools": {
+        "gaps": [
+          1.78
+        ],
+        "runtimes": [
+          120.0
+        ],
+        "success_rate": 100.0,
+        "avg_gap": 1.78,
+        "gap_std": 0,
+        "avg_runtime": 120.0,
+        "runtime_std": 0
+      },
+      "comparison": {
+        "gap_difference": 3.4545870492438926,
+        "gap_difference_pct": 194.07792411482544
+      }
+    },
+    "lin318": {
+      "instance": "lin318",
+      "n_nodes": 318,
+      "optimal": 42029,
+      "num_seeds": 2,
+      "timeout_v11": 180,
+      "timeout_ortools": 120,
+      "v11": {
+        "gaps": [
+          6.3146874776939725,
+          6.3146874776939725
+        ],
+        "runtimes": [
+          3.208456039428711,
+          3.329867362976074
+        ],
+        "success_rate": 100.0,
+        "avg_gap": 6.3146874776939725,
+        "gap_std": 0.0,
+        "avg_runtime": 3.2691617012023926,
+        "runtime_std": 0.08585077019317454
+      },
+      "ortools": {
+        "gaps": [
+          3.62
+        ],
+        "runtimes": [
+          120.0
+        ],
+        "success_rate": 100.0,
+        "avg_gap": 3.62,
+        "gap_std": 0,
+        "avg_runtime": 120.0,
+        "runtime_std": 0
+      },
+      "comparison": {
+        "gap_difference": 2.6946874776939724,
+        "gap_difference_pct": 74.43888059928099
+      }
+    },
+    "pr439": {
+      "instance": "pr439",
+      "n_nodes": 439,
+      "optimal": 107217,
+      "num_seeds": 1,
+      "timeout_v11": 180,
+      "timeout_ortools": 180,
+      "v11": {
+        "gaps": [
+          6.143615284889523
+        ],
+        "runtimes": [
+          6.361567974090576
+        ],
+        "success_rate": 100.0,
+        "avg_gap": 6.143615284889523,
+        "gap_std": 0,
+        "avg_runtime": 6.361567974090576,
+        "runtime_std": 0
+      },
+      "ortools": {
+        "gaps": [
+          6.35
+        ],
+        "runtimes": [
+          180.0
+        ],
+        "success_rate": 100.0,
+        "avg_gap": 6.35,
+        "gap_std": 0,
+        "avg_runtime": 180.0,
+        "runtime_std": 0
+      },
+      "comparison": {
+        "gap_difference": -0.2063847151104765,
+        "gap_difference_pct": -3.2501529938657723
+      }
+    },
+    "att532": {
+      "instance": "att532",
+      "n_nodes": 532,
+      "optimal": 27686,
+      "num_seeds": 1,
+      "timeout_v11": 180,
+      "timeout_ortools": 180,
+      "v11": {
+        "gaps": [
+          6.241421657155241
+        ],
+        "runtimes": [
+          11.998918294906616
+        ],
+        "success_rate": 100.0,
+        "avg_gap": 6.241421657155241,
+        "gap_std": 0,
+        "avg_runtime": 11.998918294906616,
+        "runtime_std": 0
+      },
+      "ortools": {
+        "gaps": [
+          3.47
+        ],
+        "runtimes": [
+          180.0
+        ],
+        "success_rate": 100.0,
+        "avg_gap": 3.47,
+        "gap_std": 0,
+        "avg_runtime": 180.0,
+        "runtime_std": 0
+      },
+      "comparison": {
+        "gap_difference": 2.771421657155241,
+        "gap_difference_pct": 79.8680592840127
+      }
+    }
+  }
+}

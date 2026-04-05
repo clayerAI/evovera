@@ -1,0 +1,27 @@
+✓ Loaded v11 algorithm
+✓ Loaded TSPLIB parser
+✓ Loaded OR-Tools
+✓ Loaded Phase 2 results from v11_tsplib_phase2_comprehensive_results.json
+
+================================================================================
+PHASE 3: REMAINING INSTANCES
+================================================================================
+
+============================================================
+Processing instance: lin318
+============================================================
+  File: data/tsplib/lin318.tsp
+  Optimal: 42029
+  Seeds: 2
+  Timeouts: v11=180s, OR-Tools=120s
+✓ Parsed lin318: 318 nodes, optimal=42029
+  ✓ Parsed lin318: 318 nodes, optimal=42029
+  Seed 1/2: Optimized v11: n=318, tour_length=44683.00, runtime=9.616s
+Traceback (most recent call last):
+  File "/data/workspace/evovera/phase3_remaining_fixed.py", line 121, in <module>
+    tour_length = sum(dist_matrix_np[tour[i]][tour[i+1]] for i in range(len(tour)-1))
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/workspace/evovera/phase3_remaining_fixed.py", line 121, in <genexpr>
+    tour_length = sum(dist_matrix_np[tour[i]][tour[i+1]] for i in range(len(tour)-1))
+                      ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+IndexError: only integers, slices (`:`), ellipsis (`...`), numpy.newaxis (`None`) and integer or boolean arrays are valid indices

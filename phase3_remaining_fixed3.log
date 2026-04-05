@@ -1,0 +1,36 @@
+✓ Loaded v11 algorithm
+✓ Loaded TSPLIB parser
+✓ Loaded OR-Tools
+✓ Loaded Phase 2 results from v11_tsplib_phase2_comprehensive_results.json
+
+================================================================================
+PHASE 3: REMAINING INSTANCES
+================================================================================
+
+============================================================
+Processing instance: lin318
+============================================================
+  File: data/tsplib/lin318.tsp
+  Optimal: 42029
+  Seeds: 2
+  Timeouts: v11=180s, OR-Tools=120s
+✓ Parsed lin318: 318 nodes, optimal=42029
+  ✓ Parsed lin318: 318 nodes, optimal=42029
+  Seed 1/2: Optimized v11: n=318, tour_length=44683.00, runtime=3.223s
+v11(gap=6.31%, time=3.24s) OR-Tools(gap=2.87%, time=120.00s)
+  Seed 2/2: Optimized v11: n=318, tour_length=44683.00, runtime=3.286s
+v11(gap=6.31%, time=3.30s) OR-Tools(gap=3.05%, time=120.00s)
+  ✓ Completed lin318
+
+============================================================
+Processing instance: pr439
+============================================================
+  File: data/tsplib/pr439.tsp
+  Optimal: 107217
+  Seeds: 2
+  Timeouts: v11=180s, OR-Tools=180s
+✓ Parsed pr439: 439 nodes, optimal=107217
+  ✓ Parsed pr439: 439 nodes, optimal=107217
+  Seed 1/2: Optimized v11: n=439, tour_length=113804.00, runtime=5.782s
+v11(gap=6.14%, time=5.80s) OR-Tools(gap=6.18%, time=180.00s)
+  Seed 2/2: 

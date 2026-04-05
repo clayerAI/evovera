@@ -1,0 +1,23 @@
+✓ Loaded v11 algorithm
+✓ Loaded TSPLIB parser
+✓ Loaded OR-Tools
+✓ Loaded Phase 2 results from v11_tsplib_phase2_comprehensive_results.json
+
+================================================================================
+PHASE 3: REMAINING INSTANCES
+================================================================================
+
+============================================================
+Processing instance: lin318
+============================================================
+  File: data/tsplib/lin318.tsp
+  Optimal: 42029
+  Seeds: 2
+  Timeouts: v11=180s, OR-Tools=120s
+✓ Parsed lin318: 318 nodes, optimal=42029
+  ✓ Parsed lin318: 318 nodes, optimal=42029
+  Seed 1/2: Traceback (most recent call last):
+  File "/data/workspace/evovera/phase3_remaining.py", line 117, in <module>
+    v11 = ChristofidesHybridStructuralOptimizedV11()
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: ChristofidesHybridStructuralOptimizedV11.__init__() missing 1 required positional argument: 'distance_matrix'
