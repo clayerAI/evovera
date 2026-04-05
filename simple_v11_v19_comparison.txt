@@ -1,0 +1,15 @@
+Simple v11 vs v19 Comparison
+========================================
+
+Instance: eil51 (n=51, optimal=426)
+v11: gap=1.64%, time=24.900s
+v19: gap=4.23%, time=0.325s
+Difference: 2.58%
+Time ratio: 0.01x
+
+Instance: kroA100 (n=100, optimal=21282)
+v11: gap=1.55%, time=115.707s
+v19: gap=7.27%, time=3.069s
+Difference: 5.73%
+Time ratio: 0.03x
+
