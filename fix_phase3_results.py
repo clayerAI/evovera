@@ -111,7 +111,6 @@ summary_lines.append("")
 for instance_name, instance_info in results["instances"].items():
     summary_lines.append(f"### {instance_name}")
     summary_lines.append(f"- Optimal: {instance_info['optimal']}")
-    summary_lines.append(f"- Seeds: {instance_info['seeds']}")
     summary_lines.append("")
     
     # v11 results
