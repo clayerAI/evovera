@@ -9,17 +9,30 @@ sys.path.insert(0, 'solutions')
 from tsp_v19_optimized_fixed_v11 import solve_tsp
 
 def partition_recursive_bisection(points, k=2):
-    """Partition points into k clusters using recursive bisection."""
+    """Partition points into k clusters using recursive bisection.
+    
+    BUG FIX (May 23, 09:15 UTC): Do NOT truncate to k clusters, as this loses nodes.
+    Instead, create exactly k clusters through controlled bisection.
+    """
     if k == 1:
         return [list(range(len(points)))]
     
     clusters = [list(range(len(points)))]
-    for _ in range(int(np.ceil(np.log2(k)))):
+    target_iterations = int(np.ceil(np.log2(k)))
+    
+    for iteration in range(target_iterations):
         new_clusters = []
         for cluster in clusters:
-            if len(cluster) <= 1:
+            if len(cluster) <= 1 or len(new_clusters) >= k:
+                # Don't split if we've already reached k clusters
                 new_clusters.append(cluster)
                 continue
+            
+            if len(cluster) == 2:
+                # Can't split further; add both to new_clusters
+                new_clusters.extend([[cluster[0]], [cluster[1]]])
+                continue
+            
             pts = np.array([points[i] for i in cluster])
             # PCA-based split
             mean = pts.mean(axis=0)
@@ -34,12 +47,17 @@ def partition_recursive_bisection(points, k=2):
             mask = proj >= median
             left = [cluster[i] for i in range(len(cluster)) if not mask[i]]
             right = [cluster[i] for i in range(len(cluster)) if mask[i]]
-            if left and right:
+            
+            if len(left) > 0 and len(right) > 0:
                 new_clusters.extend([left, right])
             else:
                 new_clusters.append(cluster)
+        
         clusters = new_clusters
-    return clusters[:k]
+        if len(clusters) >= k:
+            break
+    
+    return clusters
 
 def merge_tours_simple(subtours, partition, points, distance_matrix):
     """Merge k subtours using simple bridge connection + 2-opt."""
