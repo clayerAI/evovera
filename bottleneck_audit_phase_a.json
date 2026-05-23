@@ -1,0 +1,538 @@
+{
+  "100": {
+    "n": 100,
+    "num_seeds": 3,
+    "runs": [
+      {
+        "seed": 0,
+        "total_time": 0.11144566535949707,
+        "solution_quality": 8409.737342112616,
+        "top_functions": [
+          [
+            "/data/workspace/evovera/solutions/tsp_v19_optimized_fixed_v11_optimized.py:453(_two_opt)",
+            {
+              "cumtime": 0.035,
+              "pct": 31.405438593863988
+            }
+          ],
+          [
+            "/data/workspace/evovera/solutions/tsp_v19_optimized_fixed_v11_optimized.py:320(_compute_path_centrality)",
+            {
+              "cumtime": 0.015,
+              "pct": 13.459473683084566
+            }
+          ],
+          [
+            "/data/workspace/evovera/solutions/tsp_v19_optimized_fixed_v11_optimized.py:249(_compute_edge_centrality_optimized)",
+            {
+              "cumtime": 0.005,
+              "pct": 4.486491227694856
+            }
+          ],
+          [
+            "/data/workspace/evovera/solutions/tsp_v19_optimized_fixed_v11_optimized.py:343(_hybrid_structural_matching)",
+            {
+              "cumtime": 0.002,
+              "pct": 1.7945964910779422
+            }
+          ],
+          [
+            "/data/workspace/evovera/solutions/tsp_v19_optimized_fixed_v11_optimized.py:164(_prim_mst)",
+            {
+              "cumtime": 0.002,
+              "pct": 1.7945964910779422
+            }
+          ]
+        ]
+      },
+      {
+        "seed": 1,
+        "total_time": 0.06898808479309082,
+        "solution_quality": 8059.2379198248445,
+        "top_functions": [
+          [
+            "/data/workspace/evovera/solutions/tsp_v19_optimized_fixed_v11_optimized.py:453(_two_opt)",
+            {
+              "cumtime": 0.008,
+              "pct": 11.596205379513888
+            }
+          ],
+          [
+            "/data/workspace/evovera/solutions/tsp_v19_optimized_fixed_v11_optimized.py:249(_compute_edge_centrality_optimized)",
+            {
+              "cumtime": 0.005,
+              "pct": 7.24762836219618
+            }
+          ],
+          [
+            "/data/workspace/evovera/solutions/tsp_v19_optimized_fixed_v11_optimized.py:320(_compute_path_centrality)",
+            {
+              "cumtime": 0.004,
+              "pct": 5.798102689756944
+            }
+          ],
+          [
+            "/data/workspace/evovera/solutions/tsp_v19_optimized_fixed_v11_optimized.py:164(_prim_mst)",
+            {
+              "cumtime": 0.002,
+              "pct": 2.899051344878472
+            }
+          ]
+        ]
+      },
+      {
+        "seed": 2,
+        "total_time": 0.055884599685668945,
+        "solution_quality": 8513.20061556886,
+        "top_functions": [
+          [
+            "/data/workspace/evovera/solutions/tsp_v19_optimized_fixed_v11_optimized.py:453(_two_opt)",
+            {
+              "cumtime": 0.014,
+              "pct": 25.05162438085812
+            }
+          ],
+          [
+            "/data/workspace/evovera/solutions/tsp_v19_optimized_fixed_v11_optimized.py:249(_compute_edge_centrality_optimized)",
+            {
+              "cumtime": 0.005,
+              "pct": 8.947008707449328
+            }
+          ],
+          [
+            "/data/workspace/evovera/solutions/tsp_v19_optimized_fixed_v11_optimized.py:320(_compute_path_centrality)",
+            {
+              "cumtime": 0.002,
+              "pct": 3.578803482979731
+            }
+          ]
+        ]
+      }
+    ],
+    "avg_time": 0.07877278327941895,
+    "std_time": 0.023714457588204493
+  },
+  "150": {
+    "n": 150,
+    "num_seeds": 3,
+    "runs": [
+      {
+        "seed": 0,
+        "total_time": 0.19291257858276367,
+        "solution_quality": 9907.385655746777,
+        "top_functions": [
+          [
+            "/data/workspace/evovera/solutions/tsp_v19_optimized_fixed_v11_optimized.py:453(_two_opt)",
+            {
+              "cumtime": 0.069,
+              "pct": 35.767496607484055
+            }
+          ],
+          [
+            "/data/workspace/evovera/solutions/tsp_v19_optimized_fixed_v11_optimized.py:249(_compute_edge_centrality_optimized)",
+            {
+              "cumtime": 0.01,
+              "pct": 5.183695160504935
+            }
+          ],
+          [
+            "/data/workspace/evovera/solutions/tsp_v19_optimized_fixed_v11_optimized.py:320(_compute_path_centrality)",
+            {
+              "cumtime": 0.007,
+              "pct": 3.6285866123534545
+            }
+          ],
+          [
+            "/data/workspace/evovera/solutions/tsp_v19_optimized_fixed_v11_optimized.py:164(_prim_mst)",
+            {
+              "cumtime": 0.004,
+              "pct": 2.073478064201974
+            }
+          ],
+          [
+            "/data/workspace/evovera/solutions/tsp_v19_optimized_fixed_v11_optimized.py:343(_hybrid_structural_matching)",
+            {
+              "cumtime": 0.002,
+              "pct": 1.036739032100987
+            }
+          ]
+        ]
+      },
+      {
+        "seed": 1,
+        "total_time": 0.11173653602600098,
+        "solution_quality": 9935.744406282878,
+        "top_functions": [
+          [
+            "/data/workspace/evovera/solutions/tsp_v19_optimized_fixed_v11_optimized.py:453(_two_opt)",
+            {
+              "cumtime": 0.053,
+              "pct": 47.433007935441054
+            }
+          ],
+          [
+            "/data/workspace/evovera/solutions/tsp_v19_optimized_fixed_v11_optimized.py:320(_compute_path_centrality)",
+            {
+              "cumtime": 0.006,
+              "pct": 5.369774483257479
+            }
+          ],
+          [
+            "/data/workspace/evovera/solutions/tsp_v19_optimized_fixed_v11_optimized.py:249(_compute_edge_centrality_optimized)",
+            {
+              "cumtime": 0.004,
+              "pct": 3.579849655504986
+            }
+          ],
+          [
+            "/data/workspace/evovera/solutions/tsp_v19_optimized_fixed_v11_optimized.py:343(_hybrid_structural_matching)",
+            {
+              "cumtime": 0.002,
+              "pct": 1.789924827752493
+            }
+          ],
+          [
+            "/data/workspace/evovera/solutions/tsp_v19_optimized_fixed_v11_optimized.py:164(_prim_mst)",
+            {
+              "cumtime": 0.002,
+              "pct": 1.789924827752493
+            }
+          ]
+        ]
+      },
+      {
+        "seed": 2,
+        "total_time": 0.17377758026123047,
+        "solution_quality": 10117.317197492775,
+        "top_functions": [
+          [
+            "/data/workspace/evovera/solutions/tsp_v19_optimized_fixed_v11_optimized.py:453(_two_opt)",
+            {
+              "cumtime": 0.063,
+              "pct": 36.253238136528026
+            }
+          ],
+          [
+            "/data/workspace/evovera/solutions/tsp_v19_optimized_fixed_v11_optimized.py:249(_compute_edge_centrality_optimized)",
+            {
+              "cumtime": 0.009,
+              "pct": 5.179034019504003
+            }
+          ],
+          [
+            "/data/workspace/evovera/solutions/tsp_v19_optimized_fixed_v11_optimized.py:320(_compute_path_centrality)",
+            {
+              "cumtime": 0.008,
+              "pct": 4.60358579511467
+            }
+          ],
+          [
+            "/data/workspace/evovera/solutions/tsp_v19_optimized_fixed_v11_optimized.py:343(_hybrid_structural_matching)",
+            {
+              "cumtime": 0.004,
+              "pct": 2.301792897557335
+            }
+          ],
+          [
+            "/data/workspace/evovera/solutions/tsp_v19_optimized_fixed_v11_optimized.py:164(_prim_mst)",
+            {
+              "cumtime": 0.004,
+              "pct": 2.301792897557335
+            }
+          ]
+        ]
+      }
+    ],
+    "avg_time": 0.15947556495666504,
+    "std_time": 0.034648696008396
+  },
+  "200": {
+    "n": 200,
+    "num_seeds": 3,
+    "runs": [
+      {
+        "seed": 0,
+        "total_time": 0.39870262145996094,
+        "solution_quality": 11344.568510853487,
+        "top_functions": [
+          [
+            "/data/workspace/evovera/solutions/tsp_v19_optimized_fixed_v11_optimized.py:453(_two_opt)",
+            {
+              "cumtime": 0.237,
+              "pct": 59.44279953117899
+            }
+          ],
+          [
+            "/data/workspace/evovera/solutions/tsp_v19_optimized_fixed_v11_optimized.py:249(_compute_edge_centrality_optimized)",
+            {
+              "cumtime": 0.021,
+              "pct": 5.267083502762696
+            }
+          ],
+          [
+            "/data/workspace/evovera/solutions/tsp_v19_optimized_fixed_v11_optimized.py:320(_compute_path_centrality)",
+            {
+              "cumtime": 0.013,
+              "pct": 3.26057550171024
+            }
+          ],
+          [
+            "/data/workspace/evovera/solutions/tsp_v19_optimized_fixed_v11_optimized.py:164(_prim_mst)",
+            {
+              "cumtime": 0.007,
+              "pct": 1.7556945009208986
+            }
+          ],
+          [
+            "/data/workspace/evovera/solutions/tsp_v19_optimized_fixed_v11_optimized.py:343(_hybrid_structural_matching)",
+            {
+              "cumtime": 0.003,
+              "pct": 0.7524405003946708
+            }
+          ]
+        ]
+      },
+      {
+        "seed": 1,
+        "total_time": 0.31189846992492676,
+        "solution_quality": 11507.225457231709,
+        "top_functions": [
+          [
+            "/data/workspace/evovera/solutions/tsp_v19_optimized_fixed_v11_optimized.py:453(_two_opt)",
+            {
+              "cumtime": 0.146,
+              "pct": 46.81010459433862
+            }
+          ],
+          [
+            "/data/workspace/evovera/solutions/tsp_v19_optimized_fixed_v11_optimized.py:320(_compute_path_centrality)",
+            {
+              "cumtime": 0.016,
+              "pct": 5.129874476091904
+            }
+          ],
+          [
+            "/data/workspace/evovera/solutions/tsp_v19_optimized_fixed_v11_optimized.py:249(_compute_edge_centrality_optimized)",
+            {
+              "cumtime": 0.007,
+              "pct": 2.2443200832902077
+            }
+          ],
+          [
+            "/data/workspace/evovera/solutions/tsp_v19_optimized_fixed_v11_optimized.py:343(_hybrid_structural_matching)",
+            {
+              "cumtime": 0.004,
+              "pct": 1.282468619022976
+            }
+          ],
+          [
+            "/data/workspace/evovera/solutions/tsp_v19_optimized_fixed_v11_optimized.py:164(_prim_mst)",
+            {
+              "cumtime": 0.003,
+              "pct": 0.961851464267232
+            }
+          ]
+        ]
+      },
+      {
+        "seed": 2,
+        "total_time": 0.3402376174926758,
+        "solution_quality": 11981.604293266233,
+        "top_functions": [
+          [
+            "/data/workspace/evovera/solutions/tsp_v19_optimized_fixed_v11_optimized.py:453(_two_opt)",
+            {
+              "cumtime": 0.148,
+              "pct": 43.49901139405491
+            }
+          ],
+          [
+            "/data/workspace/evovera/solutions/tsp_v19_optimized_fixed_v11_optimized.py:320(_compute_path_centrality)",
+            {
+              "cumtime": 0.018,
+              "pct": 5.290420304682353
+            }
+          ],
+          [
+            "/data/workspace/evovera/solutions/tsp_v19_optimized_fixed_v11_optimized.py:343(_hybrid_structural_matching)",
+            {
+              "cumtime": 0.018,
+              "pct": 5.290420304682353
+            }
+          ],
+          [
+            "/data/workspace/evovera/solutions/tsp_v19_optimized_fixed_v11_optimized.py:249(_compute_edge_centrality_optimized)",
+            {
+              "cumtime": 0.007,
+              "pct": 2.0573856740431378
+            }
+          ],
+          [
+            "/data/workspace/evovera/solutions/tsp_v19_optimized_fixed_v11_optimized.py:164(_prim_mst)",
+            {
+              "cumtime": 0.003,
+              "pct": 0.8817367174470591
+            }
+          ]
+        ]
+      }
+    ],
+    "avg_time": 0.3502795696258545,
+    "std_time": 0.03614204184338127
+  },
+  "280": {
+    "n": 280,
+    "num_seeds": 3,
+    "runs": [
+      {
+        "seed": 0,
+        "total_time": 0.7126035690307617,
+        "solution_quality": 13113.280060137893,
+        "top_functions": [
+          [
+            "/data/workspace/evovera/solutions/tsp_v19_optimized_fixed_v11_optimized.py:453(_two_opt)",
+            {
+              "cumtime": 0.382,
+              "pct": 53.60624288193957
+            }
+          ],
+          [
+            "/data/workspace/evovera/solutions/tsp_v19_optimized_fixed_v11_optimized.py:320(_compute_path_centrality)",
+            {
+              "cumtime": 0.039,
+              "pct": 5.472888671192782
+            }
+          ],
+          [
+            "/data/workspace/evovera/solutions/tsp_v19_optimized_fixed_v11_optimized.py:249(_compute_edge_centrality_optimized)",
+            {
+              "cumtime": 0.015,
+              "pct": 2.1049571812279932
+            }
+          ],
+          [
+            "/data/workspace/evovera/solutions/tsp_v19_optimized_fixed_v11_optimized.py:343(_hybrid_structural_matching)",
+            {
+              "cumtime": 0.007,
+              "pct": 0.9823133512397303
+            }
+          ],
+          [
+            "/data/workspace/evovera/solutions/tsp_v19_optimized_fixed_v11_optimized.py:164(_prim_mst)",
+            {
+              "cumtime": 0.006,
+              "pct": 0.8419828724911973
+            }
+          ],
+          [
+            "/data/workspace/evovera/solutions/tsp_v19_optimized_fixed_v11_optimized.py:299(_build_mst_paths)",
+            {
+              "cumtime": 0.004,
+              "pct": 0.5613219149941315
+            }
+          ]
+        ]
+      },
+      {
+        "seed": 1,
+        "total_time": 1.0285685062408447,
+        "solution_quality": 13340.059781735137,
+        "top_functions": [
+          [
+            "/data/workspace/evovera/solutions/tsp_v19_optimized_fixed_v11_optimized.py:453(_two_opt)",
+            {
+              "cumtime": 0.57,
+              "pct": 55.41682411443885
+            }
+          ],
+          [
+            "/data/workspace/evovera/solutions/tsp_v19_optimized_fixed_v11_optimized.py:320(_compute_path_centrality)",
+            {
+              "cumtime": 0.039,
+              "pct": 3.791677439408975
+            }
+          ],
+          [
+            "/data/workspace/evovera/solutions/tsp_v19_optimized_fixed_v11_optimized.py:249(_compute_edge_centrality_optimized)",
+            {
+              "cumtime": 0.015,
+              "pct": 1.4583374766957595
+            }
+          ],
+          [
+            "/data/workspace/evovera/solutions/tsp_v19_optimized_fixed_v11_optimized.py:343(_hybrid_structural_matching)",
+            {
+              "cumtime": 0.009,
+              "pct": 0.8750024860174556
+            }
+          ],
+          [
+            "/data/workspace/evovera/solutions/tsp_v19_optimized_fixed_v11_optimized.py:164(_prim_mst)",
+            {
+              "cumtime": 0.006,
+              "pct": 0.5833349906783039
+            }
+          ],
+          [
+            "/data/workspace/evovera/solutions/tsp_v19_optimized_fixed_v11_optimized.py:299(_build_mst_paths)",
+            {
+              "cumtime": 0.004,
+              "pct": 0.38888999378553585
+            }
+          ]
+        ]
+      },
+      {
+        "seed": 2,
+        "total_time": 1.1066522598266602,
+        "solution_quality": 13391.382148913779,
+        "top_functions": [
+          [
+            "/data/workspace/evovera/solutions/tsp_v19_optimized_fixed_v11_optimized.py:453(_two_opt)",
+            {
+              "cumtime": 0.749,
+              "pct": 67.68160398618073
+            }
+          ],
+          [
+            "/data/workspace/evovera/solutions/tsp_v19_optimized_fixed_v11_optimized.py:320(_compute_path_centrality)",
+            {
+              "cumtime": 0.048,
+              "pct": 4.337405862932811
+            }
+          ],
+          [
+            "/data/workspace/evovera/solutions/tsp_v19_optimized_fixed_v11_optimized.py:299(_build_mst_paths)",
+            {
+              "cumtime": 0.019,
+              "pct": 1.7168898207442373
+            }
+          ],
+          [
+            "/data/workspace/evovera/solutions/tsp_v19_optimized_fixed_v11_optimized.py:249(_compute_edge_centrality_optimized)",
+            {
+              "cumtime": 0.016,
+              "pct": 1.4458019543109368
+            }
+          ],
+          [
+            "/data/workspace/evovera/solutions/tsp_v19_optimized_fixed_v11_optimized.py:343(_hybrid_structural_matching)",
+            {
+              "cumtime": 0.006,
+              "pct": 0.5421757328666014
+            }
+          ],
+          [
+            "/data/workspace/evovera/solutions/tsp_v19_optimized_fixed_v11_optimized.py:164(_prim_mst)",
+            {
+              "cumtime": 0.006,
+              "pct": 0.5421757328666014
+            }
+          ]
+        ]
+      }
+    ],
+    "avg_time": 0.9492747783660889,
+    "std_time": 0.17036082127785382
+  }
+}
